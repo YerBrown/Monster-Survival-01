@@ -1,0 +1,760 @@
+fileFormatVersion: 2
+guid: ba5de83d2ca674b6f987256aa0ad7662
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 269
+        width: 32
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93d15a1e3806643499ad3e08ebe84997
+      internalID: -573252875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 269
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e8b484fe2004c3cba53ab19ce6d508
+      internalID: 417475732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 269
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cdbcf3b0278d48edbf3cf84323407c8
+      internalID: 136073593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_3
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 269
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93d8fdf92823c44079644ab9d9aed813
+      internalID: -2088803551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 269
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81f12f760506a416baa3e0294d67200c
+      internalID: -1237265965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_5
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 269
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43b61865ba97148c3b9f4d5c09f3b84e
+      internalID: -1543430240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f04df1ec370994e0ab590e4f15412f9a
+      internalID: 239845651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_7
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1fd87d1f868f4e7b9219a71ef352a87
+      internalID: 1547972721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_8
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dd4e7e069c6a44de932d5db3b593a21
+      internalID: 727409559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_9
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1701d173936f44264b0e9325026f42fc
+      internalID: -618343520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_10
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abd548445616e411b9ba3c7dc3e33bdc
+      internalID: -1302764468
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_11
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d8bc81583be64ae2abcbcbf41a2ca5f
+      internalID: 2075614067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_12
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a904af259b1d24407a1fc12dfdefbac8
+      internalID: -999409033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_13
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 237
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a23090f4fc44b4251a9aa2281f4ff2f1
+      internalID: 2046438649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_14
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 205
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2c56af4552994bf3abc12d1f6489d1e
+      internalID: 1013238322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_15
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 205
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fea27765d4ce4bd0a992ef0927c6260
+      internalID: 1138543451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_16
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 205
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 753ae564ba3fb4fc5b896654b8c3a8e8
+      internalID: -1556257670
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_17
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 205
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c126be0d683d54bbabce26e773afa989
+      internalID: 937576015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_18
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 205
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6aa22e015ced24c1b999808f56f3ba4a
+      internalID: -1897240255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_19
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 205
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16c6281abd44d4ffda29ca55df147a9e
+      internalID: -1448377334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbac435fe363c45e6a75d95ae261017d
+      internalID: 1654398701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_21
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b428df924823c4605a5669eb36cb7cad
+      internalID: 1864783617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_22
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0cea34982411418dbd803d5a75d4486
+      internalID: -1748726167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_23
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 085cc1d08ecec4d5aa395be91ea6d7ad
+      internalID: -1547030629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81d81745d10b3438a849ceef2e8b46a9
+      internalID: 115721101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_25
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c143aaeca042f42e4ad5496c24351701
+      internalID: 521647424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_0: -573252875
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_1: 417475732
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_10: -1302764468
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_11: 2075614067
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_12: -999409033
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_13: 2046438649
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_14: 1013238322
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_15: 1138543451
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_16: -1556257670
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_17: 937576015
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_18: -1897240255
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_19: -1448377334
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_2: 136073593
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_20: 1654398701
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_21: 1864783617
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_22: -1748726167
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_23: -1547030629
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_24: 115721101
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_25: 521647424
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_26: 645189616
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_27: 2142622795
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_28: -726176156
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_29: 2008747623
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_3: -2088803551
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_30: 284736483
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_31: 1709194753
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_32: 545434467
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_33: -1456560258
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_34: 1816025046
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_35: -1759092590
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_36: 907974730
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_37: -1844472763
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_38: -1855596183
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_39: 1296650963
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_4: -1237265965
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_40: 1573341092
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_41: 1647041063
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_42: 2031601684
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_43: -969741779
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_44: -1779800480
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_45: -1612284735
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_46: 237100812
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_47: -194764447
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_5: -1543430240
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_6: 239845651
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_7: 1547972721
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_8: 727409559
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Makuhita & Hariyama-export_9: -618343520
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
