@@ -15,5 +15,5 @@ MonoBehaviour:
   i_Name: 
   i_Description: 
   i_Sprite: {fileID: 0}
-  i_StackMax: 0
+  i_StackMax: 15
   i_Weight: 0

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class UISetTransferAmountController : MonoBehaviour
 {
+    public StashManagementController InventoryManagmentController;
     private int _transferAmount;
     public int TransferAmount
     {
@@ -17,26 +18,30 @@ public class UISetTransferAmountController : MonoBehaviour
             {
                 _transferAmount = CheckAmountMax(value);
                 TransferAmountField.text = _transferAmount.ToString();
+                TransferAmountButton.interactable = _transferAmount > 0;
             }
         }
     }
-    public TMP_Text TransferAmountField;
-    public ItemSlot ItemToTransfer;
+    public ItemsSO ItemToTransfer;
+    public int CurrentAmount;
     public Image ItemIcon;
     public TMP_Text CurrentAmountText;
+    public TMP_Text TransferAmountField;
+    public Button TransferAmountButton;
     private void OnEnable()
     {
-        if (ItemToTransfer.ItemInfo != null)
+        if (ItemToTransfer != null)
         {
-            ItemIcon.sprite = ItemsRelatedUtilities.CheckItemIcon(ItemToTransfer.ItemInfo);
-            CurrentAmountText.text = $"x{ItemToTransfer.Amount}";
+            ItemIcon.sprite = ItemsRelatedUtilities.CheckItemIcon(ItemToTransfer);
+            CurrentAmountText.text = $"x{CurrentAmount}";
         }
+        TransferAmountButton.onClick.AddListener(TransferAmountSet);
     }
     private int CheckAmountMax(int value)
     {
-        if (value > ItemToTransfer.Amount)
+        if (value > CurrentAmount)
         {
-            return ItemToTransfer.Amount;
+            return CurrentAmount;
         }
         else
         {
@@ -66,6 +71,12 @@ public class UISetTransferAmountController : MonoBehaviour
     public void ResetNumber()
     {
         TransferAmount = 0;
+    }
+    public void TransferAmountSet()
+    {
+        InventoryManagmentController.TransferPart(TransferAmount);
+        ResetNumber();
+        ClosePopup();
     }
     public void ClosePopup()
     {

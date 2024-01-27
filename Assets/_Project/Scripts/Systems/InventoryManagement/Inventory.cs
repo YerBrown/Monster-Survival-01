@@ -1,20 +1,19 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Unity.Burst.CompilerServices;
 using UnityEngine;
-
-public class Inventory : MonoBehaviour
+using UnityEngine.Events;
+[Serializable]
+public class Inventory
 {
     public List<ItemSlot> Slots = new List<ItemSlot>();
     public int MaxSlots;
     private ItemSlot CheckItemInInventory(ItemSlot slot)
     {
-        foreach (var inv_slot in Slots)
+        for (int i = Slots.Count - 1; i >= 0; i--)
         {
-            if (inv_slot.Amount < inv_slot.ItemInfo.i_StackMax && slot.ItemInfo == inv_slot.ItemInfo)
+            if (slot.ItemInfo == Slots[i].ItemInfo)
             {
-                return inv_slot;
+                return Slots[i];
             }
         }
         return null;
@@ -23,6 +22,7 @@ public class Inventory : MonoBehaviour
     {
         if (Slots.Count == MaxSlots)
         {
+            //Trigger evento fin
             return newItem.Amount;
         }
         else
@@ -30,6 +30,7 @@ public class Inventory : MonoBehaviour
             int newAmount = newItem.Amount;
             ItemSlot addedSlot = new ItemSlot(newItem.ItemInfo, 0);
             Slots.Add(addedSlot);
+            Slots.Sort(new ItemsRelatedUtilities.CompareItemsByName());
             if (newAmount > addedSlot.ItemInfo.i_StackMax)
             {
                 addedSlot.Amount = addedSlot.ItemInfo.i_StackMax;
@@ -41,6 +42,7 @@ public class Inventory : MonoBehaviour
             else
             {
                 addedSlot.Amount = newAmount;
+                //Trigger evento fin
                 return 0;
             }
         }
@@ -70,15 +72,6 @@ public class Inventory : MonoBehaviour
             return TryAddNewSlot(newItem);
         }
     }
-    public void RemoveItem(ItemSlot removedItem, int amountRemoved)
-    {
-        int newAmount = removedItem.Amount - amountRemoved;
-        if (newAmount == 0)
-        {
-            Slots.Remove(removedItem);
-        }
-
-    }
     public void RemoveItemOfType(ItemsSO itemType, int amountRemoved)
     {
         for (int i = Slots.Count - 1; i >= 0; i--)
@@ -92,13 +85,27 @@ public class Inventory : MonoBehaviour
                     if (newAmount < 0)
                     {
                         RemoveItemOfType(itemType, Mathf.Abs(newAmount));
+
                     }
                 }
                 else
                 {
                     Slots[i].Amount = newAmount;
                 }
+                return;
             }
         }
+    }
+    public int GetAmountOfType(ItemsSO itemType)
+    {
+        int amount = 0;
+        for (int i = 0; i < Slots.Count; i++)
+        {
+            if (Slots[i].ItemInfo == itemType)
+            {
+                amount += Slots[i].Amount;
+            }
+        }
+        return amount;
     }
 }

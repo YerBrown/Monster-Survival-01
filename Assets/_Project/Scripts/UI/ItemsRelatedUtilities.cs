@@ -9,7 +9,7 @@ public static class ItemsRelatedUtilities
     {
         if (itemInfo != null)
         {
-            if(itemInfo.i_Sprite == null)
+            if (itemInfo.i_Sprite == null)
             {
                 return Resources.Load<Sprite>(_defaultSprite);
             }
@@ -21,6 +21,27 @@ public static class ItemsRelatedUtilities
         else
         {
             return Resources.Load<Sprite>(_defaultSprite);
+        }
+    }
+
+    public static Sprite DefaultIcon()
+    {
+        return Resources.Load<Sprite>(_defaultSprite);
+    }
+    public class CompareItemsByName : IComparer<ItemSlot>
+    {
+        public int Compare(ItemSlot x, ItemSlot y)
+        {
+            // Primero, compara por nombre
+            int comparacionNombre = x.ItemInfo.i_Name.CompareTo(y.ItemInfo.i_Name);
+
+            // Si los nombres son iguales, compara por cantidad de manera descendente
+            if (comparacionNombre == 0)
+            {
+                return y.Amount.CompareTo(x.Amount);
+            }
+
+            return comparacionNombre;
         }
     }
 }

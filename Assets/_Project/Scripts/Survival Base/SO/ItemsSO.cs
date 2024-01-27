@@ -14,9 +14,35 @@ public class ItemsSO : ScriptableObject
 [Serializable]
 public class ItemSlot
 {
-    public ItemsSO ItemInfo;
-    public int Amount;
+    [SerializeField]
+    private ItemsSO _ItemInfo;
+    [SerializeField]
+    private int _Amount;
 
+
+    public ItemsSO ItemInfo
+    {
+        get { return _ItemInfo; }
+        set
+        {
+            if (_ItemInfo != value)
+            {
+                _ItemInfo = value;
+            }
+        }
+    }
+
+    public int Amount
+    {
+        get { return _Amount; }
+        set
+        {
+            if (_Amount != value)
+            {
+                _Amount = value;
+            }
+        }
+    }
     public ItemSlot(ItemsSO itemInfo, int amount)
     {
         ItemInfo = itemInfo;
