@@ -10,14 +10,11 @@ public class UIInventoryController : MonoBehaviour
     public List<UIItemSlotController> Items = new List<UIItemSlotController>();
     public UnityEvent<UIInventoryController, ItemsSO> ItemSlotSelected;
 
-    public Color SelectedColor;
-    public Color UnselectedColor;
     private void Awake()
     {
+        //Add all the items in the parent to the list "Items"
         UIItemSlotController[] allItems = GetComponentsInChildren<UIItemSlotController>();
         Items.AddRange(allItems);
-
-
     }
     private void OnEnable()
     {
@@ -25,8 +22,8 @@ public class UIInventoryController : MonoBehaviour
         {
             UpdateFullInventory();
             for (int i = 0; i < Items.Count; i++)
-            {
-                
+            {          
+                //Add select item functionality to each button
                 Items[i].SelectSlotEvent?.AddListener(SelectItem);
             }
         }
@@ -43,16 +40,18 @@ public class UIInventoryController : MonoBehaviour
             Items[i].SelectSlotEvent?.RemoveListener(SelectItem);
         }
     }
+    //Disable not needed button
     private void DisableItemSlot(UIItemSlotController itemSLot)
     {
         itemSLot.Slot = null;
         itemSLot.gameObject.SetActive(false);
     }
-
+    //Trigger item selection event 
     private void SelectItem(UIItemSlotController itemSlot)
     {
         ItemSlotSelected?.Invoke(this, itemSlot.Slot.ItemInfo);
     }
+    //Update UI after any change in inventory
     public void UpdateFullInventory()
     {
         if (UI_Inventory != null)
@@ -68,12 +67,11 @@ public class UIInventoryController : MonoBehaviour
                 else
                 {
                     DisableItemSlot(Items[i]);
-                }
-                
+                }                
             }
         }
     }
-
+    //Update all buttons to show item selected status
     public void SetSelectedUI(ItemsSO selectedItemType, bool thisInventory)
     {
         foreach (var item in Items)
@@ -88,13 +86,14 @@ public class UIInventoryController : MonoBehaviour
             }
         }
     }
-
+    //Add item to the inventory
     public int AddItemToInventory(ItemSlot itemSlot)
     {
         int remainingAmount = UI_Inventory.AddNewItem(itemSlot);
         UpdateFullInventory();
         return remainingAmount;
     }
+    //Remove item from inventory
     public void RemoveItemFromInventory(ItemsSO itemInfo, int amount)
     {
         UI_Inventory.RemoveItemOfType(itemInfo, amount);

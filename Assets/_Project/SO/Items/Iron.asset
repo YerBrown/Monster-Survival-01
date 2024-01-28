@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e75ccca5514acdf40a5e1c09623d2f37, type: 3}
   m_Name: Iron
   m_EditorClassIdentifier: 
-  i_Name: 
-  i_Description: 
-  i_Sprite: {fileID: 0}
+  i_Name: Iron
+  i_Description: Iron, a robust and malleable metal forged from the earth's core,
+    epitomizes strength and adaptability, showcasing its industrial prowess in construction,
+    machinery, and artistic endeavors with a timeless allure.
+  i_Sprite: {fileID: 21300000, guid: 6d16a2a556eb6aa409f1bc84e36993b1, type: 3}
   i_StackMax: 15
-  i_Weight: 0
+  i_Weight: 1.5

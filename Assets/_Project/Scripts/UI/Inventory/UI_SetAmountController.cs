@@ -1,41 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UISetTransferAmountController : MonoBehaviour
+public class UI_SetAmountController : MonoBehaviour
 {
-    public StashManagementController InventoryManagmentController;
-    private int _transferAmount;
-    public int TransferAmount
+
+    [SerializeField] private int _amount;
+    public int Amount
     {
-        get { return _transferAmount; }
+        get { return _amount; }
         set
         {
-            if (value != _transferAmount)
+            if (value != _amount)
             {
-                _transferAmount = CheckAmountMax(value);
-                TransferAmountField.text = _transferAmount.ToString();
-                TransferAmountButton.interactable = _transferAmount > 0;
+                _amount = CheckAmountMax(value);
+                TransferAmountField.text = _amount.ToString();
+                ConfirmButton.interactable = _amount > 0;
             }
         }
     }
+    [Header("Item Info")]
     public ItemsSO ItemToTransfer;
     public int CurrentAmount;
+    [Header("UI Elements")]
     public Image ItemIcon;
     public TMP_Text CurrentAmountText;
     public TMP_Text TransferAmountField;
-    public Button TransferAmountButton;
-    private void OnEnable()
+    public Button ConfirmButton;
+    protected virtual void OnEnable()
     {
         if (ItemToTransfer != null)
         {
             ItemIcon.sprite = ItemsRelatedUtilities.CheckItemIcon(ItemToTransfer);
             CurrentAmountText.text = $"x{CurrentAmount}";
         }
-        TransferAmountButton.onClick.AddListener(TransferAmountSet);
     }
     private int CheckAmountMax(int value)
     {
@@ -50,13 +50,13 @@ public class UISetTransferAmountController : MonoBehaviour
     }
     public void AddNumber(int number)
     {
-        string newNumberString = TransferAmount.ToString() + number.ToString();
+        string newNumberString = Amount.ToString() + number.ToString();
         int newNumber = int.Parse(newNumberString);
-        TransferAmount = newNumber;
+        Amount = newNumber;
     }
     public void RemoveLastNumber()
     {
-        string newNumberString = TransferAmount.ToString();
+        string newNumberString = Amount.ToString();
         if (newNumberString.Length > 1)
         {
             newNumberString = newNumberString.Substring(0, newNumberString.Length - 1);
@@ -66,20 +66,10 @@ public class UISetTransferAmountController : MonoBehaviour
             newNumberString = "0";
         }
         int newNumber = int.Parse(newNumberString);
-        TransferAmount = newNumber;
+        Amount = newNumber;
     }
     public void ResetNumber()
     {
-        TransferAmount = 0;
-    }
-    public void TransferAmountSet()
-    {
-        InventoryManagmentController.TransferPart(TransferAmount);
-        ResetNumber();
-        ClosePopup();
-    }
-    public void ClosePopup()
-    {
-        gameObject.SetActive(false);
+        Amount = 0;
     }
 }

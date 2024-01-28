@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Wood
   m_EditorClassIdentifier: 
   i_Name: Wood
-  i_Description: 
+  i_Description: Wood, a natural and versatile material sourced from trees, blends
+    strength, warmth, and timeless beauty in its varied grains and hues, serving
+    as a cornerstone in diverse applications from construction to craftsmanship.
   i_Sprite: {fileID: 21300000, guid: 49761038adabd2b43a31a7489b279452, type: 3}
   i_StackMax: 50
   i_Weight: 1
