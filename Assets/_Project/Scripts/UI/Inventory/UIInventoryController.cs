@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -7,6 +8,7 @@ using UnityEngine.UI;
 public class UIInventoryController : MonoBehaviour
 {
     public Inventory UI_Inventory;
+    public TMP_Text InventoryNameText;
     public List<UIItemSlotController> Items = new List<UIItemSlotController>();
     public UnityEvent<UIInventoryController, ItemsSO> ItemSlotSelected;
 
@@ -20,9 +22,12 @@ public class UIInventoryController : MonoBehaviour
     {
         if (UI_Inventory != null)
         {
+            if (InventoryNameText != null)
+                InventoryNameText.text = UI_Inventory.Inv_Name;
+
             UpdateFullInventory();
             for (int i = 0; i < Items.Count; i++)
-            {          
+            {
                 //Add select item functionality to each button
                 Items[i].SelectSlotEvent?.AddListener(SelectItem);
             }
@@ -67,7 +72,7 @@ public class UIInventoryController : MonoBehaviour
                 else
                 {
                     DisableItemSlot(Items[i]);
-                }                
+                }
             }
         }
     }

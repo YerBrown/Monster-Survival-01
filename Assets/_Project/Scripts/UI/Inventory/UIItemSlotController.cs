@@ -4,9 +4,10 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class UIItemSlotController : MonoBehaviour
+public class UIItemSlotController : MonoBehaviour, IPointerClickHandler
 {
     [SerializeField]
     private ItemSlot _Slot;
@@ -39,16 +40,6 @@ public class UIItemSlotController : MonoBehaviour
             AmountText.text = $"x{Slot.Amount}";
         }
     }
-
-    private void ChangeItemImage(ItemsSO itemInfo)
-    {
-        ItemImage.sprite = ItemsRelatedUtilities.CheckItemIcon(itemInfo);
-    }
-    private void ChangeAmountText(int newAmount)
-    {
-        AmountText.text = $"x{newAmount}";
-    }
-
     public void EnableBack(bool enable)
     {
         if (enable)
@@ -59,6 +50,11 @@ public class UIItemSlotController : MonoBehaviour
         {
             ItemBack.color = Color.clear;
         }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        SelectItemSlot();
     }
 }
 

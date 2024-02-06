@@ -26,6 +26,8 @@ public class UIInventoriesManagementController : MonoBehaviour
     public Button TransferPartButton;
     public Button TrashButton;
 
+    public RectTransform ArrowIcon;
+
     [Header("Other")]
     public UISetTransferAmountController TransferPartController;
     public UITrashController TrashController;
@@ -62,14 +64,15 @@ public class UIInventoriesManagementController : MonoBehaviour
             SelectedItemType = itemType;
             if (Inventory2 == uiInventory)
             {
-
                 Inventory2.SetSelectedUI(itemType, true);
                 Inventory1.SetSelectedUI(itemType, false);
+                ArrowIcon.rotation = Quaternion.Euler(0f, 0f, 90f);
             }
             else
             {
                 Inventory2.SetSelectedUI(itemType, false);
                 Inventory1.SetSelectedUI(itemType, true);
+                ArrowIcon.rotation = Quaternion.Euler(0f, 0f, 270f);
             }
             Debug.Log($"Inventario: {uiInventory.name}, ItemSlot: {itemType.i_Name} {SelectedInventory.UI_Inventory.GetAmountOfType(itemType)}");
         }
@@ -123,6 +126,7 @@ public class UIInventoriesManagementController : MonoBehaviour
         TransferStackButton.interactable = SelectedItemType != null;
         TransferPartButton.interactable = SelectedItemType != null;
         TrashButton.interactable = SelectedItemType != null;
+        ArrowIcon.gameObject.SetActive(SelectedItemType != null);
     }
     //Open transfer part popup
     public void OpenTransferAmountPopup()
@@ -165,7 +169,7 @@ public class UIInventoriesManagementController : MonoBehaviour
         ItemSlot transferedSlot = new ItemSlot(SelectedItemType, amount);
         SelectTransferTargets(transferedSlot);
     }
-   
+
     //Set the transfer origin and destination
     private void SelectTransferTargets(ItemSlot transferedSlot)
     {
@@ -199,5 +203,9 @@ public class UIInventoriesManagementController : MonoBehaviour
 
         Inventory1.SetSelectedUI(null, false);
         Inventory2.SetSelectedUI(null, false);
+    }
+    public void CloseMenu()
+    {
+        gameObject.SetActive(false);
     }
 }

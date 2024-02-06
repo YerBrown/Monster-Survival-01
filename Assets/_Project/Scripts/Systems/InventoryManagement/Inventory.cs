@@ -5,6 +5,7 @@ using UnityEngine.Events;
 [Serializable]
 public class Inventory
 {
+    public string Inv_Name;
     public List<ItemSlot> Slots = new List<ItemSlot>();
     public int MaxSlots;
     private ItemSlot CheckItemInInventory(ItemSlot slot)
