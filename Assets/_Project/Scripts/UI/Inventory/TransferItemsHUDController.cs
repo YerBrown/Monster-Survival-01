@@ -1,21 +1,44 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Tracing;
 using UnityEngine;
 
 public class TransferItemsHUDController : MonoBehaviour
 {
     public UIInventoriesManagementController InventoriesManagementController;
-    public Inventory Test1;
-    public Inventory Test2;
-    public void OpenMenu(Inventory inventoryL, Inventory inventoryR)
+
+    public PairInventoriesEventChannelSO OnOpenManageInventoriesMenu;
+    private void OnEnable()
     {
-        InventoriesManagementController.Inventory1.UI_Inventory = inventoryL;
-        InventoriesManagementController.Inventory2.UI_Inventory = inventoryR;
+        if (OnOpenManageInventoriesMenu != null)
+            OnOpenManageInventoriesMenu.OnEventRaised += OpenMenu;
+    }
+    private void OnDisable()
+    {
+        if (OnOpenManageInventoriesMenu != null)
+            OnOpenManageInventoriesMenu.OnEventRaised -= OpenMenu;
+    }
+    public void OpenMenu(PairInventories pairInventories)
+    {
+        InventoriesManagementController.Inventory1.UI_Inventory = pairInventories.LeftInventory;
+        InventoriesManagementController.Inventory2.UI_Inventory = pairInventories.RightInventory;
         InventoriesManagementController.gameObject.SetActive(true);
     }
+}
+[Serializable]
+public class PairInventories
+{
+    public Inventory LeftInventory;
+    public Inventory RightInventory;
 
-    public void OpenTestMenu()
+    public PairInventories()
     {
-        OpenMenu(Test1, Test2);
+    }
+
+    public PairInventories(Inventory leftInv, Inventory righInv)
+    {
+        LeftInventory = leftInv;
+        RightInventory = righInv;
     }
 }
