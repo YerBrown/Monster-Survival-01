@@ -25,6 +25,7 @@ public class UIInventoriesManagementController : MonoBehaviour
     public Button TransferStackButton;
     public Button TransferPartButton;
     public Button TrashButton;
+    public Button CloseButton;
 
     public RectTransform ArrowIcon;
 
@@ -40,6 +41,10 @@ public class UIInventoriesManagementController : MonoBehaviour
         TransferStackButton.onClick.AddListener(TransferStack);
         TransferPartButton.onClick.AddListener(OpenTransferAmountPopup);
         TrashButton.onClick.AddListener(OpenTrashPopup);
+        CloseButton.onClick.AddListener(CloseMenu);
+        //reset selected item
+        ResetSelected();
+        SelectItemToTransfer();
     }
     private void OnDisable()
     {
@@ -50,6 +55,7 @@ public class UIInventoriesManagementController : MonoBehaviour
         TransferStackButton.onClick.RemoveListener(TransferStack);
         TransferPartButton.onClick.RemoveListener(OpenTransferAmountPopup);
         TrashButton.onClick.RemoveListener(OpenTrashPopup);
+        CloseButton.onClick.RemoveListener(CloseMenu);
     }
     //Select item and inventory 
     private void SelectItemSlot(UIInventoryController uiInventory, ItemsSO itemType)
@@ -207,5 +213,6 @@ public class UIInventoriesManagementController : MonoBehaviour
     public void CloseMenu()
     {
         gameObject.SetActive(false);
+        GeneralUIController.Instance.OpenMenu(false);
     }
 }

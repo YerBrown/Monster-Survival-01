@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class OverlayTile : MonoBehaviour
@@ -10,6 +11,8 @@ public class OverlayTile : MonoBehaviour
     public bool isBlocked;
     public OverlayTile previous;
     public Vector3Int gridLocation;
+
+    public InteractiveElement I_Element;
     private void Update()
     {
         if (Input.GetMouseButtonDown(0))

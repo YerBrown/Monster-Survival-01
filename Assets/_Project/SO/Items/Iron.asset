@@ -16,6 +16,6 @@ MonoBehaviour:
   i_Description: Iron, a robust and malleable metal forged from the earth's core,
     epitomizes strength and adaptability, showcasing its industrial prowess in construction,
     machinery, and artistic endeavors with a timeless allure.
-  i_Sprite: {fileID: 21300000, guid: 6d16a2a556eb6aa409f1bc84e36993b1, type: 3}
+  i_Sprite: {fileID: 21300000, guid: 4b2016affbdd9cf4aa5e1d04e7e3d18c, type: 3}
   i_StackMax: 15
   i_Weight: 1.5

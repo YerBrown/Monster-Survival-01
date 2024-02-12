@@ -16,6 +16,6 @@ MonoBehaviour:
   i_Description: Rock, an enduring and elemental formation shaped by geological forces,
     captures the essence of rugged beauty and stability, gracing landscapes and constructions
     alike with its solid, timeless presence.
-  i_Sprite: {fileID: 21300000, guid: f2e9a889db6d6814a8103dae69e7b766, type: 3}
+  i_Sprite: {fileID: 21300000, guid: 060f781a73945482480877a8dbe597f6, type: 3}
   i_StackMax: 50
   i_Weight: 1.5

@@ -24,6 +24,7 @@ public class TransferItemsHUDController : MonoBehaviour
         InventoriesManagementController.Inventory1.UI_Inventory = pairInventories.LeftInventory;
         InventoriesManagementController.Inventory2.UI_Inventory = pairInventories.RightInventory;
         InventoriesManagementController.gameObject.SetActive(true);
+        GeneralUIController.Instance.OpenMenu(true);
     }
 }
 [Serializable]

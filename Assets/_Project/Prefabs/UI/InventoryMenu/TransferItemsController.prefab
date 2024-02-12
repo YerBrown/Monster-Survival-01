@@ -3491,6 +3491,7 @@ MonoBehaviour:
   TransferStackButton: {fileID: 3171628003207878474}
   TransferPartButton: {fileID: 6271144346689677577}
   TrashButton: {fileID: 3974240822497274534}
+  CloseButton: {fileID: 1420686763557500788}
   ArrowIcon: {fileID: 3039962901741705582}
   TransferPartController: {fileID: 15656699928577239}
   TrashController: {fileID: 9018227949199061301}
@@ -16653,6 +16654,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de62566e7a7964a398052809f242d5b1, type: 3}
+--- !u!114 &1420686763557500788 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7227472638589678014, guid: de62566e7a7964a398052809f242d5b1, type: 3}
+  m_PrefabInstance: {fileID: 8645344514708309706}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8748857093117591779 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1049409269857895977, guid: de62566e7a7964a398052809f242d5b1, type: 3}

@@ -10,11 +10,13 @@ public class MouseController : MonoBehaviour
     public float speed;
     public GameObject characterPrefab;
     private CharacterInfo character;
-
+    public SpriteRenderer CursorRenderer;
 
     private PathFinder pathFinder;
 
     private List<OverlayTile> path = new List<OverlayTile>();
+
+    private OverlayTile _currentOverlayClicked;
 
     private void Start()
     {
@@ -30,8 +32,25 @@ public class MouseController : MonoBehaviour
             OverlayTile overlayTile = focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>();
             transform.position = overlayTile.transform.position;
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
-
-            if (Input.GetMouseButtonDown(0))
+            if (overlayTile.I_Element != null)
+            {
+                if (overlayTile.I_Element is not ItemElement)
+                {
+                    if (CursorRenderer.color != Color.blue)
+                        CursorRenderer.color = Color.blue;
+                }
+                else
+                {
+                    if (CursorRenderer.color != Color.yellow)
+                        CursorRenderer.color = Color.yellow;
+                }
+            }
+            else
+            {
+                if (CursorRenderer.color != Color.white)
+                    CursorRenderer.color = Color.white;
+            }
+            if (Input.GetMouseButtonDown(0) && !GeneralUIController.Instance.MenuOpened)
             {
                 //overlayTile.ShowTile();
 
@@ -42,7 +61,19 @@ public class MouseController : MonoBehaviour
                 }
                 else
                 {
-                    path = pathFinder.FindPath(character.activeTile, overlayTile);
+                    _currentOverlayClicked = overlayTile;
+                    path = pathFinder.FindPath(character.ActiveTile, overlayTile);
+                    if (overlayTile.I_Element != null)
+                    {
+                        if (overlayTile.I_Element is not ItemElement)
+                        {
+                            path.RemoveAt(path.Count - 1);
+                        }
+                        if (path.Count == 0)
+                        {
+                            FinishPath();
+                        }
+                    }
                 }
             }
         }
@@ -59,12 +90,22 @@ public class MouseController : MonoBehaviour
 
         var zIndex = path[0].transform.position.z;
         character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
+
         character.transform.position = new Vector3(character.transform.position.x, character.transform.position.y, zIndex);
 
         if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
         {
             PositionCharacterOnTile(path[0]);
             path.RemoveAt(0);
+            if (path.Count == 0)
+            {
+                //Path Finished
+                FinishPath();
+            }
+        }
+        else
+        {
+            character.SetMovement((path[0].transform.position - character.transform.position).normalized);
         }
     }
 
@@ -85,6 +126,16 @@ public class MouseController : MonoBehaviour
     {
         character.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y + .0001f, tile.transform.position.z);
         character.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
-        character.activeTile = tile;
+        character.ActiveTile = tile;
+    }
+
+    private void FinishPath()
+    {
+        if (_currentOverlayClicked != null && _currentOverlayClicked.I_Element != null)
+        {
+            character.SetMovement((_currentOverlayClicked.transform.position - character.transform.position).normalized);
+            _currentOverlayClicked.I_Element.Interact(character);
+        }
+        character.SetMovement(Vector2.zero);
     }
 }

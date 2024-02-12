@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.Events;
 [Serializable]
@@ -8,6 +9,8 @@ public class Inventory
     public string Inv_Name;
     public List<ItemSlot> Slots = new List<ItemSlot>();
     public int MaxSlots;
+    public ItemSlotEventChannelSO OnItemAdded;
+    public ItemSlotEventChannelSO OnItemRemoved;
     private ItemSlot CheckItemInInventory(ItemSlot slot)
     {
         for (int i = Slots.Count - 1; i >= 0; i--)
@@ -51,6 +54,7 @@ public class Inventory
     public int AddNewItem(ItemSlot newItem)
     {
         ItemSlot inv_slot = CheckItemInInventory(newItem);
+        int remainingAmount = 0;
         if (inv_slot != null)
         {
             int newAmount = inv_slot.Amount + newItem.Amount;
@@ -60,17 +64,34 @@ public class Inventory
 
                 int excess = newAmount - inv_slot.ItemInfo.i_StackMax;
                 ItemSlot newItemExcess = new ItemSlot(inv_slot.ItemInfo, excess);
-                return TryAddNewSlot(newItemExcess);
+                remainingAmount = TryAddNewSlot(newItemExcess);
+                if (OnItemAdded != null)
+                {
+                    if (newItem.Amount - remainingAmount > 0)
+                        OnItemAdded.RaiseEvent(new ItemSlot(newItem.ItemInfo, newItem.Amount - remainingAmount));
+                }
+                return remainingAmount;
             }
             else
             {
                 inv_slot.Amount = newAmount;
+                if (OnItemAdded != null)
+                {
+                    if (newItem.Amount - remainingAmount > 0)
+                        OnItemAdded.RaiseEvent(new ItemSlot(newItem.ItemInfo, newItem.Amount));
+                }
                 return 0;
             }
         }
         else
         {
-            return TryAddNewSlot(newItem);
+            remainingAmount = TryAddNewSlot(newItem);
+            if (OnItemAdded != null)
+            {
+                if (newItem.Amount - remainingAmount > 0)
+                    OnItemAdded.RaiseEvent(new ItemSlot(newItem.ItemInfo, newItem.Amount - remainingAmount));
+            }
+            return remainingAmount;
         }
     }
     public void RemoveItemOfType(ItemsSO itemType, int amountRemoved)
@@ -82,15 +103,22 @@ public class Inventory
                 int newAmount = Slots[i].Amount - amountRemoved;
                 if (newAmount <= 0)
                 {
+                    if (OnItemRemoved != null)
+                    {
+                        OnItemRemoved.RaiseEvent(new ItemSlot(itemType, Slots[i].Amount));
+                    }
                     Slots.RemoveAt(i);
                     if (newAmount < 0)
                     {
                         RemoveItemOfType(itemType, Mathf.Abs(newAmount));
-
                     }
                 }
                 else
                 {
+                    if (OnItemRemoved != null)
+                    {
+                        OnItemRemoved.RaiseEvent(new ItemSlot(itemType, amountRemoved));
+                    }
                     Slots[i].Amount = newAmount;
                 }
                 return;

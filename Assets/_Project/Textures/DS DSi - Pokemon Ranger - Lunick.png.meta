@@ -1,0 +1,765 @@
+fileFormatVersion: 2
+guid: 7b7fa2f2088705f488427e0f36c5c119
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_0
+      rect:
+        serializedVersion: 2
+        x: 644
+        y: 116
+        width: 14
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44ef405ef23c837408479f31bb0ae06f
+      internalID: 85135144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_1
+      rect:
+        serializedVersion: 2
+        x: 678
+        y: 116
+        width: 14
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3357bbbdd0a8e454f8486e822a34c2cd
+      internalID: 564768539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_2
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 83
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5625, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8725c090b3a97c4ebf4b9fd5dddf157
+      internalID: -1774660992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_3
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 83
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5625, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67c1a64ed02c82644bdcad2bee0a90f4
+      internalID: 1710787177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_4
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 83
+        width: 15
+        height: 33
+      alignment: 9
+      pivot: {x: 0.53333336, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01777ab2f2a30df4faff95cc1ee286d0
+      internalID: -85059891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_5
+      rect:
+        serializedVersion: 2
+        x: 222
+        y: 83
+        width: 18
+        height: 32
+      alignment: 9
+      pivot: {x: 0.6111111, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14c9ce2d7f8b6a49ab5e9fe70b39bf1
+      internalID: 1070579892
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_6
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 83
+        width: 18
+        height: 32
+      alignment: 9
+      pivot: {x: 0.6111111, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf057a2e168561e41b66818eeb0a9183
+      internalID: 1720812597
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_7
+      rect:
+        serializedVersion: 2
+        x: 543
+        y: 83
+        width: 14
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b416b8355f14d7429af079fae925ede
+      internalID: -83426962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_8
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 83
+        width: 14
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fdb1167217799f43a73d5ccdfba1673
+      internalID: -2063786910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_9
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 83
+        width: 14
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90066c96d9ded9c4c8a62cca40ae6b17
+      internalID: 617485552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_10
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 83
+        width: 14
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c33c1499b9df8a4db698a31c8198eb5
+      internalID: 1375337330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_11
+      rect:
+        serializedVersion: 2
+        x: 611
+        y: 83
+        width: 14
+        height: 32
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b676a077fb4d00d4492c6af72a12746f
+      internalID: -1016797418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_12
+      rect:
+        serializedVersion: 2
+        x: 628
+        y: 83
+        width: 15
+        height: 32
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b775c3239ec42843b3d1a0d64270eac
+      internalID: 1362334601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_13
+      rect:
+        serializedVersion: 2
+        x: 645
+        y: 83
+        width: 15
+        height: 32
+      alignment: 9
+      pivot: {x: 0.6, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90661e91b8ded6f419e29e30d2723076
+      internalID: 1079338278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_14
+      rect:
+        serializedVersion: 2
+        x: 663
+        y: 83
+        width: 14
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5714286, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f16915e1c6641c14288ad2892b3b95a1
+      internalID: 1630621839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_15
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 50
+        width: 17
+        height: 32
+      alignment: 9
+      pivot: {x: 0.64705884, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb6f56fc143fdd2439b318011a5a689e
+      internalID: -1045902189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_16
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 50
+        width: 17
+        height: 32
+      alignment: 9
+      pivot: {x: 0.64705884, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 550188bb10e0ed64e895b8483925d9f2
+      internalID: 726317589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_17
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 50
+        width: 19
+        height: 32
+      alignment: 9
+      pivot: {x: 0.47368422, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0115452fba4244d48a3b9e9fb761c21f
+      internalID: 1830895056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_18
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 50
+        width: 16
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5625, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129c51b70a254dd42a3d5ce70492a87b
+      internalID: -938177201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_19
+      rect:
+        serializedVersion: 2
+        x: 238
+        y: 50
+        width: 13
+        height: 32
+      alignment: 9
+      pivot: {x: 0.53846157, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdfcf89d6cf19a44185a3f8a941ea605
+      internalID: -1525894247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_20
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 51
+        width: 18
+        height: 32
+      alignment: 9
+      pivot: {x: 0.5555556, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bacbc518be85e784a97e10ea7c93e18a
+      internalID: 1368269905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_21
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 52
+        width: 23
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5217391, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4fade1914a140e489f402c2d0dc7b2d
+      internalID: 1167604704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_22
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 51
+        width: 23
+        height: 31
+      alignment: 9
+      pivot: {x: 0.47826087, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afb2a965d33f13e4a96ea6a620fe7df9
+      internalID: -353236729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_23
+      rect:
+        serializedVersion: 2
+        x: 445
+        y: 52
+        width: 22
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29e9eafe80887204aa1d31d5fdb419c1
+      internalID: -737500721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_24
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 51
+        width: 15
+        height: 31
+      alignment: 9
+      pivot: {x: 0.4, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e168f48a8d01f49a997bde2a7fa434
+      internalID: 2019547573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_25
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 50
+        width: 19
+        height: 31
+      alignment: 9
+      pivot: {x: 0.47368422, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9994acd5a6bf46f479aac59fb603ec36
+      internalID: -421372273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_26
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 83
+        width: 14
+        height: 33
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afba4e2c2c1090a468bed1d7fce13d10
+      internalID: 308848753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_27
+      rect:
+        serializedVersion: 2
+        x: 126
+        y: 118
+        width: 23
+        height: 28
+      alignment: 9
+      pivot: {x: 0.43478262, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16b618ef8e8bd494a81fc23860f69216
+      internalID: 1352120265
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Lunick_28
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 116
+        width: 22
+        height: 30
+      alignment: 9
+      pivot: {x: 0.45454547, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed271b9b4cf48f44f917a7857b221b25
+      internalID: 388230262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      DS DSi - Pokemon Ranger - Lunick_0: 85135144
+      DS DSi - Pokemon Ranger - Lunick_1: 564768539
+      DS DSi - Pokemon Ranger - Lunick_10: 1375337330
+      DS DSi - Pokemon Ranger - Lunick_11: -1016797418
+      DS DSi - Pokemon Ranger - Lunick_12: 1362334601
+      DS DSi - Pokemon Ranger - Lunick_13: 1079338278
+      DS DSi - Pokemon Ranger - Lunick_14: 1630621839
+      DS DSi - Pokemon Ranger - Lunick_15: -1045902189
+      DS DSi - Pokemon Ranger - Lunick_16: 726317589
+      DS DSi - Pokemon Ranger - Lunick_17: 1830895056
+      DS DSi - Pokemon Ranger - Lunick_18: -938177201
+      DS DSi - Pokemon Ranger - Lunick_19: -1525894247
+      DS DSi - Pokemon Ranger - Lunick_2: -1774660992
+      DS DSi - Pokemon Ranger - Lunick_20: 1368269905
+      DS DSi - Pokemon Ranger - Lunick_21: 1167604704
+      DS DSi - Pokemon Ranger - Lunick_22: -353236729
+      DS DSi - Pokemon Ranger - Lunick_23: -737500721
+      DS DSi - Pokemon Ranger - Lunick_24: 2019547573
+      DS DSi - Pokemon Ranger - Lunick_25: -421372273
+      DS DSi - Pokemon Ranger - Lunick_26: 308848753
+      DS DSi - Pokemon Ranger - Lunick_27: 1352120265
+      DS DSi - Pokemon Ranger - Lunick_28: 388230262
+      DS DSi - Pokemon Ranger - Lunick_3: 1710787177
+      DS DSi - Pokemon Ranger - Lunick_4: -85059891
+      DS DSi - Pokemon Ranger - Lunick_5: 1070579892
+      DS DSi - Pokemon Ranger - Lunick_6: 1720812597
+      DS DSi - Pokemon Ranger - Lunick_7: -83426962
+      DS DSi - Pokemon Ranger - Lunick_8: -2063786910
+      DS DSi - Pokemon Ranger - Lunick_9: 617485552
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

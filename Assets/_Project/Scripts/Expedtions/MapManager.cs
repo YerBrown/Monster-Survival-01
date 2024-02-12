@@ -12,6 +12,7 @@ public class MapManager : MonoBehaviour
     public GameObject overlayContainer;
 
     public Dictionary<Vector2Int, OverlayTile> map;
+    public List<InteractiveElement> InitialElements = new List<InteractiveElement>();
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -21,9 +22,15 @@ public class MapManager : MonoBehaviour
         else
         {
             _instance = this;
+            AddAllOverlayTiles();
         }
     }
     private void Start()
+    {
+        InitialElements = AddAllInteractiveELementsInScene();
+        Invoke(nameof(InitializeInteractiveElements), 0.5f);
+    }
+    private void AddAllOverlayTiles()
     {
         var tileMap = gameObject.GetComponentInChildren<Tilemap>();
         map = new Dictionary<Vector2Int, OverlayTile>();
@@ -51,4 +58,26 @@ public class MapManager : MonoBehaviour
             }
         }
     }
+    private List<InteractiveElement> AddAllInteractiveELementsInScene()
+    {
+        List<InteractiveElement> interactiveElements = new List<InteractiveElement>();
+
+        // Buscamos todos los GameObjects en la escena.
+        InteractiveElement[] allInteractive = FindObjectsOfType<InteractiveElement>();
+
+        // Añadimos a la lista todos InteractiveElement del array
+        foreach (InteractiveElement in_element in allInteractive)
+        {
+            interactiveElements.Add(in_element);
+        }
+        return interactiveElements;
+    }
+    private void InitializeInteractiveElements()
+    {
+        foreach (var interactiveElement in InitialElements)
+        {
+            interactiveElement.InitializeElement();
+        }
+    }
 }
+
