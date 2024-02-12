@@ -4,19 +4,39 @@ using UnityEngine;
 
 public class ResourceElement : InteractiveElement
 {
-    public int LP; //Loot points
+    public int LP = 10; //Loot points, por cada punto que resta es un loot 
     public List<LootRate> Loot = new List<LootRate>(); //Posible loot chances
-
+    public ResourceElementEventChannelSO OnResourceElementInteracted;
+    public bool LootFinished = false;
     public override void Interact(CharacterInfo character = null)
     {
         base.Interact(character);
-        ItemSlot newLoot = GetLoot();
+
+        if (OnResourceElementInteracted != null)
+            OnResourceElementInteracted.RaiseEvent(this);
+    }
+    private void HitResource(Inventory targetInventory)
+    {
+        if (LootFinished) return;
+
+        int hitPoints = 1;
+        if (LP - hitPoints < 0)
+        {
+            hitPoints = LP;
+        }
+        LP -= hitPoints;
+        ItemSlot newLoot = GetLoot(hitPoints);
         if (newLoot != null)
-            AddLootToPlayerInventory(character, GetLoot());
+            AddLootToInventory(targetInventory, newLoot);
+
+        if (LP <= 0)
+        {
+            //Finish resource loot
+            LootFinished = true;
+        }
 
     }
-
-    private ItemSlot GetLoot()
+    private ItemSlot GetLoot(int lp)
     {
         int maxNumber = 0;
         foreach (LootRate rate in Loot)
@@ -28,7 +48,8 @@ public class ResourceElement : InteractiveElement
         {
             if (lootNumber < Loot[i].ChanceRate)
             {
-                return new ItemSlot(Loot[i].ItemType, Loot[i].Amount);
+                //lp = loot point done
+                return new ItemSlot(Loot[i].ItemType, Loot[i].Amount * lp);
             }
             else
             {
@@ -38,23 +59,23 @@ public class ResourceElement : InteractiveElement
         }
         return null;
     }
-    private void AddLootToPlayerInventory(CharacterInfo character, ItemSlot item)
+    private void AddLootToInventory(Inventory inventoryTarget, ItemSlot item)
     {
-        if (character == null) return;
-        int remaining = character.PlayerInventory.AddNewItem(item);
+        if (inventoryTarget == null) return;
+        int remaining = inventoryTarget.AddNewItem(item);
         if (remaining != item.Amount)
         {
-            Debug.Log($"Player has loted {item.Amount - remaining} {item.ItemInfo.i_Name}");
+            Debug.Log($"{inventoryTarget.Inv_Name} has loted {item.Amount - remaining} {item.ItemInfo.i_Name}");
         }
         if (remaining > 0)
         {
             if (remaining == item.Amount)
             {
-                Debug.Log($"No slot free in player inventory");
+                Debug.Log($"No slot free in {inventoryTarget.Inv_Name} inventory");
             }
             else
             {
-                Debug.Log($"Not enough space in player inventory, only {item.Amount - remaining} added");
+                Debug.Log($"Not enough space in {inventoryTarget.Inv_Name} inventory, only {item.Amount - remaining} added");
             }
         }
     }
