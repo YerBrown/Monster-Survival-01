@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 [CreateAssetMenu(fileName = "ItemSO", menuName = "ScriptableObjects/Item")]
 public class ItemsSO : ScriptableObject

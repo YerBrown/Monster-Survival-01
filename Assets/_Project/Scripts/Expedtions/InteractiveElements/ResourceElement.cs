@@ -1,14 +1,22 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ResourceElement : InteractiveElement
 {
     public int LP = 10; //Loot points, por cada punto que resta es un loot 
     public List<LootRate> Loot = new List<LootRate>(); //Posible loot chances
+    public ResourceSO ResourceInfo;
     public ResourceElementEventChannelSO OnResourceElementInteracted;
     public bool LootFinished = false;
     public Sprite LootFinishedSprite;
+    public TMP_Text LootText;
+    public float AnimY = 25;
+    public float AnimDuration = 1f;
+
+    private Sequence secuencia; // Referencia a la secuencia de Dotween
     public override void Interact(CharacterInfo character = null)
     {
         base.Interact(character);
@@ -37,6 +45,7 @@ public class ResourceElement : InteractiveElement
             LootFinished = true;
             GetComponent<SpriteRenderer>().sprite = LootFinishedSprite;
         }
+        ShowLootText(newLoot);
         return (newLoot, remainingLoot, hitPoints);
     }
     private ItemSlot GetLoot(int lp)
@@ -84,6 +93,39 @@ public class ResourceElement : InteractiveElement
             }
         }
         return null;
+    }
+
+    public void ShowLootText(ItemSlot loot)
+    {
+        if (LootText == null) return;
+        // Detener y eliminar la secuencia anterior si existe
+        if (secuencia != null)
+        {
+            secuencia.Kill();
+        }
+        //Set start values to text
+        LootText.transform.localPosition = Vector3.zero;
+        LootText.text = $"+ {loot.Amount} {loot.ItemInfo.i_Name}";
+        LootText.color = Color.white;
+        LootText.gameObject.SetActive(true);
+        // Crear una secuencia de tweens encadenados
+        secuencia = DOTween.Sequence();
+        // Agregar tweens para mover el texto y cambiar su color
+        secuencia.Append(LootText.rectTransform.DOLocalMoveY(AnimY, AnimDuration).SetEase(Ease.InOutQuad)); // Mover durante 2 segundos
+                                                                                                            // Agregar un retraso antes de comenzar la animación de desvanecimiento
+        secuencia.AppendInterval(1f); // Esperar 1 segundo antes de comenzar el desvanecimiento
+
+        secuencia.Join(LootText.DOColor(Color.clear, 2f)); // Cambiar el color durante 2 segundos
+
+        // Agregar una función OnComplete para desactivar el GameObject cuando la secuencia termine
+        secuencia.OnComplete(() =>
+        {
+            // Desactivar el GameObject del texto
+            LootText.gameObject.SetActive(false);
+        });
+
+        // Reproducir la secuencia
+        secuencia.Play();
     }
     [System.Serializable]
     public class LootRate

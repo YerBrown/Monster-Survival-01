@@ -23,9 +23,12 @@ public class UIResourceElementInteractionController : MonoBehaviour
     public Button CloseButton;
     public TMP_Text PlayerHitResourceText;
     public RectTransform CreaturePos, PlayerPos;
+    public Image PlayerHitButtonFillImage;
 
     public Vector3 PunchAnimScale = Vector3.one;
     public float PunchAnimDuration = 1f;
+    public float HitCooldownTime = 2f;
+
     public Transform PlayerLootInfoParent;
     private List<LootInfo> PlayerLootInfos = new();
 
@@ -61,14 +64,17 @@ public class UIResourceElementInteractionController : MonoBehaviour
     {
         if (newResource == null) return;
         ResourceTarget = newResource;
-        if (ResourceTarget.LP == 0)
+        if (ResourceTarget.LP <= 0)
         {
             //Actualizar imagen para dar a entender que se han terminado los recurso de esa fuente
-            ResourceImage.color = Color.red;
+            ResourceImage.sprite = ResourceTarget.ResourceInfo.R_EmptySprite;
+        }
+        else
+        {
+            ResourceImage.sprite = ResourceTarget.ResourceInfo.R_FullSprite;
         }
         ResourceNameText.text = ResourceTarget.name;
         PlayerTarget = MapManager.Instance.Character;
-        ResourceImage.sprite = ResourceTarget.GetComponent<SpriteRenderer>().sprite;
         //Checkear el equipo del jugador
         UIParent.SetActive(true);
         GeneralUIController.Instance.OpenMenu(true);
@@ -78,12 +84,14 @@ public class UIResourceElementInteractionController : MonoBehaviour
     {
         if (ResourceTarget == null || PlayerTarget == null) return;
         (ItemSlot, ItemSlot, int) hitResourceAnswer = ResourceTarget.HitResource(PlayerTarget.ResourcesHitPower, PlayerTarget.PlayerInventory);
-        //AddPlayerHitText(hitResourceAnswer.Item3,hitResourceAnswer );
+        AddPlayerHitText(hitResourceAnswer.Item3, hitResourceAnswer.Item1);
         if (ResourceTarget.LP == 0)
         {
             //Actualizar imagen para dar a entender que se han terminado los recurso de esa fuente
-            ResourceImage.color = Color.red;
+            ResourceImage.sprite = ResourceTarget.ResourceInfo.R_EmptySprite;
         }
+        LootButton.interactable = false;
+        StartCoroutine(UpdateHitCooldown());
     }
 
     private void AddPlayerHitText(int lp, ItemSlot loot)
@@ -92,6 +100,7 @@ public class UIResourceElementInteractionController : MonoBehaviour
         PlayerHitResourceText.text = $"-{lp} HP";
         PlayerHitResourceText.gameObject.SetActive(true);
         PlayerHitResourceText.gameObject.GetComponent<RectTransform>().DOPunchScale(PunchAnimScale, PunchAnimDuration);
+
 
         foreach (var lootInfo in PlayerLootInfos)
         {
@@ -121,7 +130,6 @@ public class UIResourceElementInteractionController : MonoBehaviour
     {
         ResourceTarget = null;
         UIParent.SetActive(false);
-        ResourceImage.color = Color.white;
         ResetLootInfo();
         GeneralUIController.Instance.OpenMenu(false);
     }
@@ -133,6 +141,33 @@ public class UIResourceElementInteractionController : MonoBehaviour
             lootInfo.LI_ItemSlot = null;
             lootInfo.LI_ItemText.transform.parent.gameObject.SetActive(false);
         }
+    }
+
+
+    IEnumerator UpdateHitCooldown()
+    {
+        float currentTime = 0f;
+        PlayerHitButtonFillImage.fillAmount = 0;
+        PlayerHitButtonFillImage.enabled = true;
+        // Iterar hasta que haya pasado el tiempo de duración de la transición
+        while (currentTime < HitCooldownTime)
+        {
+            // Calcular el valor actual en función del tiempo pasado
+            float currentValue = Mathf.Lerp(0f, 1f, currentTime / HitCooldownTime);
+            //Update image
+            PlayerHitButtonFillImage.fillAmount = currentValue;
+
+            // Incrementar el tiempo pasado
+            currentTime += Time.deltaTime;
+
+            // Esperar un frame antes de continuar
+            yield return null;
+        }
+        //Cooldown finished
+        PlayerHitResourceText.gameObject.SetActive(false);
+        PlayerHitButtonFillImage.fillAmount = 1;
+        LootButton.interactable = true;
+        PlayerHitButtonFillImage.enabled = false;
     }
     [Serializable]
     private class LootInfo
