@@ -13,6 +13,8 @@ public class MapManager : MonoBehaviour
 
     public Dictionary<Vector2Int, OverlayTile> map;
     public List<InteractiveElement> InitialElements = new List<InteractiveElement>();
+
+    public CharacterInfo Character;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -65,7 +67,7 @@ public class MapManager : MonoBehaviour
         // Buscamos todos los GameObjects en la escena.
         InteractiveElement[] allInteractive = FindObjectsOfType<InteractiveElement>();
 
-        // Añadimos a la lista todos InteractiveElement del array
+        // Aï¿½adimos a la lista todos InteractiveElement del array
         foreach (InteractiveElement in_element in allInteractive)
         {
             interactiveElements.Add(in_element);

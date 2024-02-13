@@ -9,7 +9,7 @@ public class MouseController : MonoBehaviour
 {
     public float speed;
     public GameObject characterPrefab;
-    private CharacterInfo character;
+    private CharacterInfo Character;
     public SpriteRenderer CursorRenderer;
 
     private PathFinder pathFinder;
@@ -54,15 +54,16 @@ public class MouseController : MonoBehaviour
             {
                 //overlayTile.ShowTile();
 
-                if (character == null)
+                if (Character == null)
                 {
-                    character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
+                    Character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
+                    MapManager.Instance.Character = Character;
                     PositionCharacterOnTile(overlayTile);
                 }
                 else
                 {
                     _currentOverlayClicked = overlayTile;
-                    path = pathFinder.FindPath(character.ActiveTile, overlayTile);
+                    path = pathFinder.FindPath(Character.ActiveTile, overlayTile);
                     if (overlayTile.I_Element != null)
                     {
                         if (overlayTile.I_Element is not ItemElement)
@@ -89,11 +90,11 @@ public class MouseController : MonoBehaviour
         var step = speed * Time.deltaTime;
 
         var zIndex = path[0].transform.position.z;
-        character.transform.position = Vector2.MoveTowards(character.transform.position, path[0].transform.position, step);
+        Character.transform.position = Vector2.MoveTowards(Character.transform.position, path[0].transform.position, step);
 
-        character.transform.position = new Vector3(character.transform.position.x, character.transform.position.y, zIndex);
+        Character.transform.position = new Vector3(Character.transform.position.x, Character.transform.position.y, zIndex);
 
-        if (Vector2.Distance(character.transform.position, path[0].transform.position) < 0.0001f)
+        if (Vector2.Distance(Character.transform.position, path[0].transform.position) < 0.0001f)
         {
             PositionCharacterOnTile(path[0]);
             path.RemoveAt(0);
@@ -105,7 +106,7 @@ public class MouseController : MonoBehaviour
         }
         else
         {
-            character.SetMovement((path[0].transform.position - character.transform.position).normalized);
+            Character.SetMovement((path[0].transform.position - Character.transform.position).normalized);
         }
     }
 
@@ -124,18 +125,18 @@ public class MouseController : MonoBehaviour
     }
     private void PositionCharacterOnTile(OverlayTile tile)
     {
-        character.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y + .0001f, tile.transform.position.z);
-        character.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
-        character.ActiveTile = tile;
+        Character.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y + .0001f, tile.transform.position.z);
+        Character.GetComponent<SpriteRenderer>().sortingOrder = tile.GetComponent<SpriteRenderer>().sortingOrder;
+        Character.ActiveTile = tile;
     }
 
     private void FinishPath()
     {
         if (_currentOverlayClicked != null && _currentOverlayClicked.I_Element != null)
         {
-            character.SetMovement((_currentOverlayClicked.transform.position - character.transform.position).normalized);
-            _currentOverlayClicked.I_Element.Interact(character);
+            Character.SetMovement((_currentOverlayClicked.transform.position - Character.transform.position).normalized);
+            _currentOverlayClicked.I_Element.Interact(Character);
         }
-        character.SetMovement(Vector2.zero);
+        Character.SetMovement(Vector2.zero);
     }
 }

@@ -18,7 +18,10 @@ public class ItemSlot
     private ItemsSO _ItemInfo;
     [SerializeField]
     private int _Amount;
+    public ItemSlot()
+    {
 
+    }
 
     public ItemsSO ItemInfo
     {

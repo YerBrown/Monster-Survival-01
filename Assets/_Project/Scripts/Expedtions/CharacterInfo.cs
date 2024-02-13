@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,6 +9,8 @@ public class CharacterInfo : MonoBehaviour
     public Animator FollowerAnimator;
     public Inventory PlayerInventory;
     public PairInventoriesEventChannelSO OnOpenInventoriesMenu;
+    public Creature[] Team = new Creature[5];
+    public int ResourcesHitPower = 1;
     public void SetMovement(Vector2 newMovement)
     {
         Movement = newMovement;

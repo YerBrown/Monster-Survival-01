@@ -8,6 +8,7 @@ public class ResourceElement : InteractiveElement
     public List<LootRate> Loot = new List<LootRate>(); //Posible loot chances
     public ResourceElementEventChannelSO OnResourceElementInteracted;
     public bool LootFinished = false;
+    public Sprite LootFinishedSprite;
     public override void Interact(CharacterInfo character = null)
     {
         base.Interact(character);
@@ -15,26 +16,28 @@ public class ResourceElement : InteractiveElement
         if (OnResourceElementInteracted != null)
             OnResourceElementInteracted.RaiseEvent(this);
     }
-    private void HitResource(Inventory targetInventory)
+    public (ItemSlot, ItemSlot, int) HitResource(int hitPoints, Inventory targetInventory)
     {
-        if (LootFinished) return;
+        if (LootFinished) return (null, null, 0);
 
-        int hitPoints = 1;
         if (LP - hitPoints < 0)
         {
             hitPoints = LP;
         }
         LP -= hitPoints;
         ItemSlot newLoot = GetLoot(hitPoints);
+        //Loot that is remaining because of space lack in inventory
+        ItemSlot remainingLoot = new();
         if (newLoot != null)
-            AddLootToInventory(targetInventory, newLoot);
+            remainingLoot = AddLootToInventory(targetInventory, newLoot);
 
         if (LP <= 0)
         {
             //Finish resource loot
             LootFinished = true;
+            GetComponent<SpriteRenderer>().sprite = LootFinishedSprite;
         }
-
+        return (newLoot, remainingLoot, hitPoints);
     }
     private ItemSlot GetLoot(int lp)
     {
@@ -59,9 +62,9 @@ public class ResourceElement : InteractiveElement
         }
         return null;
     }
-    private void AddLootToInventory(Inventory inventoryTarget, ItemSlot item)
+    private ItemSlot AddLootToInventory(Inventory inventoryTarget, ItemSlot item)
     {
-        if (inventoryTarget == null) return;
+        if (inventoryTarget == null) return null;
         int remaining = inventoryTarget.AddNewItem(item);
         if (remaining != item.Amount)
         {
@@ -72,12 +75,15 @@ public class ResourceElement : InteractiveElement
             if (remaining == item.Amount)
             {
                 Debug.Log($"No slot free in {inventoryTarget.Inv_Name} inventory");
+                return item;
             }
             else
             {
                 Debug.Log($"Not enough space in {inventoryTarget.Inv_Name} inventory, only {item.Amount - remaining} added");
+                return new ItemSlot(item.ItemInfo, remaining);
             }
         }
+        return null;
     }
     [System.Serializable]
     public class LootRate
