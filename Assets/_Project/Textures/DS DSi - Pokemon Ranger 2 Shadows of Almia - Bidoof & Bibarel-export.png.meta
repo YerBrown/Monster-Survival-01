@@ -152,12 +152,12 @@ TextureImporter:
       name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_0
       rect:
         serializedVersion: 2
-        x: 4
-        y: 169
-        width: 32
-        height: 32
+        x: 8
+        y: 173
+        width: 24
+        height: 22
       alignment: 9
-      pivot: {x: 0.5, y: 0.3}
+      pivot: {x: 0.5, y: 0.18181819}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -165,6 +165,1077 @@ TextureImporter:
       bones: []
       spriteID: e743435fae13c40769b0ae1ebeed63a0
       internalID: 727465193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_1
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 174
+        width: 24
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.18181819}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2bf0fdf89c64adc4d8f37799330af57d
+      internalID: -110874927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_2
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 174
+        width: 22
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5, y: 0.17391305}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96ec3e0379fee6346ad68fa383a69bd3
+      internalID: 1989253364
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_3
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 174
+        width: 25
+        height: 20
+      alignment: 9
+      pivot: {x: 0.52, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9e449129871a941b7c8d35a0b7a0df
+      internalID: 187165595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_4
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 174
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc09e2673ff94554da4a12d816af673a
+      internalID: -1022348526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_5
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 174
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5b5071885eea7d449d2c0cb6af13256
+      internalID: -1934268541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_6
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 174
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e848d8772dbfda4cbed28f6dda7a5d6
+      internalID: -1267726478
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_7
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 174
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2bdda6788cc69d408912a7dbf0fe464
+      internalID: 549454276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_8
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 162
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42e44790410f77144bebb8c62f5e8c9d
+      internalID: 2081536534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_9
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 163
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d26fde03d173034aa8d26c683b8a1e2
+      internalID: -306293679
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_10
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 163
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 403cd560cefd6b74db7cd44ef9e2ca1b
+      internalID: 994431134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_11
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 163
+        width: 24
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df09c9fcd958a404e84da41d9c86355c
+      internalID: -186244613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_12
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 163
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aab44c84c463954c90bd3cd722c96bb
+      internalID: -362947752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_16
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 147
+        width: 24
+        height: 22
+      alignment: 9
+      pivot: {x: 0.5, y: 0.18181819}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0581e79debc1cec479b2ccac04b06b36
+      internalID: -92995187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_17
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 148
+        width: 24
+        height: 21
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1904762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b8bff267d36c242b4396bb10053fdc
+      internalID: 1279547749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 148
+        width: 24
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cf88bf12eafd0a44b2a83d36d9e3edd
+      internalID: 1571653415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_19
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 148
+        width: 23
+        height: 23
+      alignment: 9
+      pivot: {x: 0.5217391, y: 0.17391305}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 15de6c7a420aeee4c9b82b70023720f2
+      internalID: 845800837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_20
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 147
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fac99f08a33b0140938f4897bc8e507
+      internalID: 859930689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_21
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 147
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f06bd39fb8ed7184d83f5f29e23e464b
+      internalID: -1312989489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_22
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 147
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd868f5cd73c18b4a844d6620d7d1f67
+      internalID: -671807008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_23
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 147
+        width: 23
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914190fd7031f644dbdbabb16e8c8c88
+      internalID: 1924535133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_27
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 122
+        width: 27
+        height: 21
+      alignment: 9
+      pivot: {x: 0.4814815, y: 0.23809524}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b8a5b016ce0b254ea12c9e41fd1c9c6
+      internalID: 2055723129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_28
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 123
+        width: 27
+        height: 20
+      alignment: 9
+      pivot: {x: 0.4814815, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0517dcb33e85f71418c7eac0ffa7fd65
+      internalID: 1588408481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_29
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 124
+        width: 21
+        height: 20
+      alignment: 9
+      pivot: {x: 0.5714286, y: 0.2}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42b75ef1f0295c945887061b47bab855
+      internalID: 1810731046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_30
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 125
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 047d063412c5a0b4e8cd00b400c12454
+      internalID: -966881273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_31
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 122
+        width: 24
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95a968cb8f3555043866fa6ccb27b542
+      internalID: 684452270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_32
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 124
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 469ac1bd1e44ccc4b944a0338ebfed10
+      internalID: 847181962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_33
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 132
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08d877c4e6f64f345abb8980e23a1cf5
+      internalID: -36637511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_34
+      rect:
+        serializedVersion: 2
+        x: 285
+        y: 132
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db011b5306c12f84fb00cd84c8a544a7
+      internalID: 2014749406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_35
+      rect:
+        serializedVersion: 2
+        x: 314
+        y: 132
+        width: 25
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 194ff2571b9b6194f82aa44b8503733d
+      internalID: -779320689
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_36
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 132
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecbd904d2e0c8cb47b73663620c6870b
+      internalID: 593008405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_37
+      rect:
+        serializedVersion: 2
+        x: 374
+        y: 132
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ab0f36214d61d469362c425bf097f7
+      internalID: 653512264
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_38
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 95
+        width: 24
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6d98a6e170bdc74ca17b8d644b80dc7
+      internalID: 804385510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_39
+      rect:
+        serializedVersion: 2
+        x: 279
+        y: 97
+        width: 23
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0312f07479dc67747941170d7a94968a
+      internalID: 522465051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_40
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 96
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2081776918b9be47952782b9cfe6d5d
+      internalID: -1538869080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_41
+      rect:
+        serializedVersion: 2
+        x: 329
+        y: 94
+        width: 27
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f2d98defe85afa458f5e6be48ed76ce
+      internalID: -415366000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_42
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 96
+        width: 29
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 308968117ac99084f98b67de82a6ebe6
+      internalID: -1263582021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_43
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 96
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1d8810346c82524484d8104451b6e67
+      internalID: -1997812568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_54
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 65
+        width: 25
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2410792b6bcfe4da1f9fecd73ab686
+      internalID: 2003084662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_55
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 65
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e7fa87fa1349c44a7ebdd6516f6e94
+      internalID: -33054837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_56
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 65
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cffa8ffaad89e7646bf15b9056ca39a1
+      internalID: 11528429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_57
+      rect:
+        serializedVersion: 2
+        x: 351
+        y: 66
+        width: 27
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae4dfc962db9e1e4e874ff7b726662a7
+      internalID: 850621377
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_58
+      rect:
+        serializedVersion: 2
+        x: 382
+        y: 66
+        width: 29
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1d2ea63bc2d9244963d8ab882a232b
+      internalID: -405875481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_59
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 66
+        width: 24
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97ac4fc621003a24ab459fb51a2d8153
+      internalID: -1886872164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_60
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 37
+        width: 29
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a7e517f14003a741994bb5812b2cfa4
+      internalID: 294015863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_61
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 39
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bcb77fd5cd3c4c449a3faf9e70393e2
+      internalID: -1763314728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_62
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 36
+        width: 32
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfa33f6c980d9494cb102f0f468f3bde
+      internalID: 958897496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_63
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 34
+        width: 34
+        height: 24
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5785e710384f2749a70ae83604b6341
+      internalID: -1510137404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_72
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 5
+        width: 28
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 030196889d47ad942b213127a4c56a6f
+      internalID: 657417393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_73
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 3
+        width: 27
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74bdd53765199b448a34baae7d363caa
+      internalID: 856205466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_74
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 3
+        width: 30
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e82339e5b71475945ad60f8874352658
+      internalID: -21521381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_75
+      rect:
+        serializedVersion: 2
+        x: 353
+        y: 4
+        width: 31
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846812bcfcf00d0429bb3cbfc7248d75
+      internalID: 1065282537
       vertices: []
       indices: 
       edges: []
@@ -181,6 +1252,81 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_0: 727465193
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_1: -110874927
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_10: 994431134
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_11: -186244613
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_12: -362947752
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_13: -431225820
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_14: 63052225
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_15: 1507246015
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_16: -92995187
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_17: 1279547749
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_18: 1571653415
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_19: 845800837
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_2: 1989253364
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_20: 859930689
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_21: -1312989489
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_22: -671807008
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_23: 1924535133
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_24: 1972186728
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_25: 56608879
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_26: -229450104
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_27: 2055723129
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_28: 1588408481
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_29: 1810731046
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_3: 187165595
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_30: -966881273
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_31: 684452270
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_32: 847181962
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_33: -36637511
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_34: 2014749406
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_35: -779320689
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_36: 593008405
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_37: 653512264
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_38: 804385510
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_39: 522465051
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_4: -1022348526
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_40: -1538869080
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_41: -415366000
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_42: -1263582021
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_43: -1997812568
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_44: 898880298
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_45: -879354654
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_46: 1320670413
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_47: 826966958
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_48: 1278457291
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_49: 313817743
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_5: -1934268541
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_50: 1954976259
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_51: 1392084903
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_52: -475219419
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_53: 1137806311
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_54: 2003084662
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_55: -33054837
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_56: 11528429
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_57: 850621377
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_58: -405875481
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_59: -1886872164
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_6: -1267726478
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_60: 294015863
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_61: -1763314728
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_62: 958897496
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_63: -1510137404
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_64: -1078123893
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_65: 500029031
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_66: -199253668
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_67: 233044137
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_68: 416640662
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_69: -321226187
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_7: 549454276
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_70: 1868843902
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_71: 1884923820
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_72: 657417393
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_73: 856205466
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_74: -21521381
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_75: 1065282537
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_8: 2081536534
+      DS DSi - Pokemon Ranger 2 Shadows of Almia - Bidoof & Bibarel-export_9: -306293679
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

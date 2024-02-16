@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using UnityEditor.Animations;
 using UnityEngine;
 /// <summary>
 /// A Scriptable Object with the basic info of a Creature race
@@ -9,6 +11,8 @@ public class CreatureSO : ScriptableObject
     public string c_Name;
     public string c_Description;
     public Sprite c_Sprite;
+    public AnimatorOverrideController c_Animator;
+    public List<Skills> c_Skills = new();
 }
 [Serializable]
 public class Creature

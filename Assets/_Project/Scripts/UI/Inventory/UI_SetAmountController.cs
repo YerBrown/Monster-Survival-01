@@ -31,6 +31,7 @@ public class UI_SetAmountController : MonoBehaviour
     public Button ConfirmButton;
     protected virtual void OnEnable()
     {
+        Amount = 0;
         if (ItemToTransfer != null)
         {
             ItemIcon.sprite = ItemsRelatedUtilities.CheckItemIcon(ItemToTransfer);

@@ -31,7 +31,7 @@ public class PathFinder
             foreach (var neighbour in neighbourTiles)
             {
                 //1 = jump height
-                if (neighbour.isBlocked || closedList.Contains(neighbour) || Mathf.Abs(currentOverlayTile.gridLocation.z - neighbour.gridLocation.z) > 1 || (neighbour.I_Element != null && neighbour != end && neighbour.I_Element is not ItemElement))
+                if (neighbour.isBlocked || closedList.Contains(neighbour) || Mathf.Abs(currentOverlayTile.gridLocation.z - neighbour.gridLocation.z) > 1 || (neighbour.I_Element != null && neighbour != end && neighbour.I_Element.BlockMovement))
                 {
                     continue;
                 }

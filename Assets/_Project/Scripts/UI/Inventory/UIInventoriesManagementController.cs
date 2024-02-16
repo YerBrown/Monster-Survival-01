@@ -154,6 +154,15 @@ public class UIInventoriesManagementController : MonoBehaviour
         ItemSlot transferedSlot = new ItemSlot(SelectedItemType, SelectedInventory.UI_Inventory.GetAmountOfType(SelectedItemType));
         SelectTransferTargets(transferedSlot);
     }
+    public void TransferAllItems()
+    {
+        //foreach (var item in collection)
+        //{
+
+        //}
+        //ItemSlot transferedSlot = new ItemSlot(SelectedItemType, SelectedInventory.UI_Inventory.GetAmountOfType(SelectedItemType));
+        //SelectTransferTargets(transferedSlot);
+    }
     //Transfer one stack of one type of item
     public void TransferStack()
     {

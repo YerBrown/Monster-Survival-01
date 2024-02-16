@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class UITrashController : UI_SetAmountController
 {
     public UIInventoriesManagementController InventoriesController;
+    public PlayerInventoryManagementController PlayerInventoryController;
     [Header("+ UI Elements")]
     public Button RemoveAllButton;
     protected override void OnEnable()
@@ -22,12 +23,14 @@ public class UITrashController : UI_SetAmountController
     }
     public void ConfirmRemove()
     {
-        InventoriesController.RemoveItem(Amount);
+        if (InventoriesController != null) InventoriesController.RemoveItem(Amount);
+        if (PlayerInventoryController != null) PlayerInventoryController.RemoveItem(Amount);
         ClosePopup();
     }
     public void RemoveAll()
     {
-        InventoriesController.RemoveItem(CurrentAmount);
+        if (InventoriesController != null) InventoriesController.RemoveItem(CurrentAmount);
+        if (PlayerInventoryController != null) PlayerInventoryController.RemoveItem(CurrentAmount);
         ClosePopup();
     }
     public void ClosePopup()

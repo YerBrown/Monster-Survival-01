@@ -6,11 +6,9 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Follower
+  m_Name: Makuhita
   m_Controller: {fileID: 9100000, guid: ab483266015fa7f499ef06ab10c0a429, type: 2}
   m_Clips:
-  - m_OriginalClip: {fileID: 7400000, guid: 275e7451e4c994843b1de8246b79a13d, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: 490d05253896ba04b8e408b2273161be, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 328223f78c477674bb06dfbf01e52bdc, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 6cc30af5a5f26c94a9e57ddcff1b4fb3, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: 3220e52b49e6b474fb1f53b433f1d42d, type: 2}
@@ -19,3 +17,11 @@ AnimatorOverrideController:
     m_OverrideClip: {fileID: 7400000, guid: 4771b1f76ff244845ac24b7a1f34ec59, type: 2}
   - m_OriginalClip: {fileID: 7400000, guid: f7485d8e319904e46be9515204d97d69, type: 2}
     m_OverrideClip: {fileID: 7400000, guid: 31fee4c44a2d14540803585912bda68d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 532a03f9d2b20814e8202f6985340292, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fae6e488b30d6b74798845b79d9705ba, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 3094fdc878f9dde43bc480025b0d2cd2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 89d0bd73ba60e664f9d5bf7a72a57a16, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 88330bd95dcc1c14490d9baeee6b86f9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: b2b9858c43178814dbd69f688d6dc142, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0b02b19f455d0b84db062b421fae87e6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e47974c0c6fd91d4fbfeca6b80fab21b, type: 2}

@@ -18,6 +18,7 @@ public class MouseController : MonoBehaviour
 
     private OverlayTile _currentOverlayClicked;
 
+    public VoidEventChannelSO OnMovementGridPointed;
     private void Start()
     {
         pathFinder = new PathFinder();
@@ -30,20 +31,12 @@ public class MouseController : MonoBehaviour
         if (focusedTileHit.HasValue)
         {
             OverlayTile overlayTile = focusedTileHit.Value.collider.gameObject.GetComponent<OverlayTile>();
-            transform.position = overlayTile.transform.position;
+            transform.position = overlayTile.transform.position + new Vector3(0, 0.001f, 0);
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = overlayTile.GetComponent<SpriteRenderer>().sortingOrder;
             if (overlayTile.I_Element != null)
             {
-                if (overlayTile.I_Element is not ItemElement)
-                {
-                    if (CursorRenderer.color != Color.blue)
-                        CursorRenderer.color = Color.blue;
-                }
-                else
-                {
-                    if (CursorRenderer.color != Color.yellow)
-                        CursorRenderer.color = Color.yellow;
-                }
+                if (CursorRenderer.color != overlayTile.I_Element.CursorColor)
+                    CursorRenderer.color = overlayTile.I_Element.CursorColor;
             }
             else
             {
@@ -62,19 +55,32 @@ public class MouseController : MonoBehaviour
                 }
                 else
                 {
-                    _currentOverlayClicked = overlayTile;
-                    path = pathFinder.FindPath(Character.ActiveTile, overlayTile);
-                    if (overlayTile.I_Element != null)
+                    if (_currentOverlayClicked != overlayTile)
                     {
-                        if (overlayTile.I_Element is not ItemElement)
+                        OnMovementGridPointed.RaiseEvent();
+                    }
+                    _currentOverlayClicked = overlayTile;
+                    List<OverlayTile> newPath = pathFinder.FindPath(Character.ActiveTile, overlayTile);
+                    if (newPath != null && newPath.Count > 0)
+                    {
+                        path = newPath;
+                        if (overlayTile.I_Element != null)
                         {
-                            path.RemoveAt(path.Count - 1);
-                        }
-                        if (path.Count == 0)
-                        {
-                            FinishPath();
+                            if (overlayTile.I_Element.BlockMovement)
+                            {
+                                path.RemoveAt(path.Count - 1);
+                            }
+                            if (path.Count == 0)
+                            {
+                                FinishPath();
+                            }
                         }
                     }
+                    else
+                    {
+                        Debug.Log("It is not possible to reach this location");
+                    }
+
                 }
             }
         }

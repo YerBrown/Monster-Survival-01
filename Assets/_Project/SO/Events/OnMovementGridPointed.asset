@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 350015f3d686a4aa09543ddb31b6cbbc, type: 3}
-  m_Name: Bidoff
+  m_Script: {fileID: 11500000, guid: db3c3981ff26d4bd9a6013dfea35b5f9, type: 3}
+  m_Name: OnMovementGridPointed
   m_EditorClassIdentifier: 
-  c_Name: Bidoof
-  c_Description: Un castor de mierda :(
-  c_Sprite: {fileID: 727465193, guid: 81146138fe8ed495d9a3710f235f5d53, type: 3}
-  c_Skills: 00000000
+  m_Description: 'Cuando el jugador pulsa en una casilla de movimiento '

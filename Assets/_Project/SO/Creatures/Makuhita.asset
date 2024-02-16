@@ -15,3 +15,5 @@ MonoBehaviour:
   c_Name: Makuhita
   c_Description: Un mini luchador de sumo, que mono uWu <3
   c_Sprite: {fileID: -573252875, guid: ba5de83d2ca674b6f987256aa0ad7662, type: 3}
+  c_Animator: {fileID: 22100000, guid: 9abf2bdfae3383644a486fc1cf9afa6c, type: 2}
+  c_Skills: 01000000

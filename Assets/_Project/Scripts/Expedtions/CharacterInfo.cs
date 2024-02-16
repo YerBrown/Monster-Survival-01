@@ -9,8 +9,12 @@ public class CharacterInfo : MonoBehaviour
     public Animator FollowerAnimator;
     public Inventory PlayerInventory;
     public PairInventoriesEventChannelSO OnOpenInventoriesMenu;
-    public Creature[] Team = new Creature[5];
     public int ResourcesHitPower = 1;
+    private void OnEnable()
+    {
+        if (PlayerManager.Instance == null) return;
+        PlayerInventory = PlayerManager.Instance.P_Inventory;
+    }
     public void SetMovement(Vector2 newMovement)
     {
         Movement = newMovement;

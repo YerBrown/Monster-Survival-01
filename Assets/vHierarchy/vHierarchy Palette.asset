@@ -76,3 +76,11 @@ MonoBehaviour:
     - Settings Icon
     customIcons: []
     enabled: 1
+  - builtinIcons: []
+    customIcons:
+    - bf52a5a498031477eb8a50d51280dc70
+    - 3ade1d4f8d22745aa871e08a870b87a4
+    enabled: 1
+  - builtinIcons: []
+    customIcons: []
+    enabled: 1

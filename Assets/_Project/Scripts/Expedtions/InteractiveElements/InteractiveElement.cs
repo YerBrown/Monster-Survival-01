@@ -6,6 +6,8 @@ using UnityEngine;
 public class InteractiveElement : MonoBehaviour
 {
     public OverlayTile OverlayTileUnder;
+    public bool BlockMovement = false;
+    public Color CursorColor = Color.white;
     private void OnEnable()
     {
         InitializeElement();

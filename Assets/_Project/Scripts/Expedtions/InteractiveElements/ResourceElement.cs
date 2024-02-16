@@ -20,14 +20,16 @@ public class ResourceElement : InteractiveElement
     public override void Interact(CharacterInfo character = null)
     {
         base.Interact(character);
-
-        if (OnResourceElementInteracted != null)
-            OnResourceElementInteracted.RaiseEvent(this);
+        if (LP > 0)
+        {
+            if (OnResourceElementInteracted != null)
+                OnResourceElementInteracted.RaiseEvent(this);
+        }
     }
     public (ItemSlot, ItemSlot, int) HitResource(int hitPoints, Inventory targetInventory)
     {
         if (LootFinished) return (null, null, 0);
-
+        //Play hit animation
         if (LP - hitPoints < 0)
         {
             hitPoints = LP;
@@ -43,7 +45,10 @@ public class ResourceElement : InteractiveElement
         {
             //Finish resource loot
             LootFinished = true;
+            BlockMovement = false;
             GetComponent<SpriteRenderer>().sprite = LootFinishedSprite;
+            if (OnResourceElementInteracted != null)
+                OnResourceElementInteracted.RaiseEvent(this);
         }
         ShowLootText(newLoot);
         return (newLoot, remainingLoot, hitPoints);
@@ -112,10 +117,8 @@ public class ResourceElement : InteractiveElement
         secuencia = DOTween.Sequence();
         // Agregar tweens para mover el texto y cambiar su color
         secuencia.Append(LootText.rectTransform.DOLocalMoveY(AnimY, AnimDuration).SetEase(Ease.InOutQuad)); // Mover durante 2 segundos
-                                                                                                            // Agregar un retraso antes de comenzar la animación de desvanecimiento
-        secuencia.AppendInterval(1f); // Esperar 1 segundo antes de comenzar el desvanecimiento
 
-        secuencia.Join(LootText.DOColor(Color.clear, 2f)); // Cambiar el color durante 2 segundos
+        secuencia.Join(LootText.DOColor(Color.clear, AnimDuration).SetEase(Ease.InOutQuint)); // Cambiar el color durante 2 segundos
 
         // Agregar una función OnComplete para desactivar el GameObject cuando la secuencia termine
         secuencia.OnComplete(() =>
