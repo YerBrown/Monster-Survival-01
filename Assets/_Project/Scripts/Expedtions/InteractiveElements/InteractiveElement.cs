@@ -8,11 +8,11 @@ public class InteractiveElement : MonoBehaviour
     public OverlayTile OverlayTileUnder;
     public bool BlockMovement = false;
     public Color CursorColor = Color.white;
-    private void OnEnable()
+    public virtual void OnEnable()
     {
         InitializeElement();
     }
-    private void OnDisable()
+    public virtual void OnDisable()
     {
         if (OverlayTileUnder != null)
         {

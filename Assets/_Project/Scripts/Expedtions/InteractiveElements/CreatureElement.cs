@@ -38,7 +38,7 @@ public class CreatureElement : InteractiveElement
                 }
                 else
                 {
-                    Debug.LogError("CreaturesTeam[i].CreatureInfo.c_Animator missing");
+                    Debug.LogWarning("CreaturesTeam[i].CreatureInfo.c_Animator missing");
                 }
                 SpriteRenderers[i].enabled = true;
             }

@@ -1,3 +1,4 @@
+using Cinemachine;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -11,7 +12,7 @@ public class MouseController : MonoBehaviour
     public GameObject characterPrefab;
     private CharacterInfo Character;
     public SpriteRenderer CursorRenderer;
-
+    public CinemachineVirtualCamera PlayerFollowCamera;
     private PathFinder pathFinder;
 
     private List<OverlayTile> path = new List<OverlayTile>();
@@ -52,6 +53,7 @@ public class MouseController : MonoBehaviour
                     Character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
                     MapManager.Instance.Character = Character;
                     PositionCharacterOnTile(overlayTile);
+                    PlayerFollowCamera.Follow = Character.transform;
                 }
                 else
                 {
@@ -78,7 +80,14 @@ public class MouseController : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("It is not possible to reach this location");
+                        if (new Vector3(overlayTile.transform.position.x, overlayTile.transform.position.y + .0001f, overlayTile.transform.position.z) == Character.transform.position)
+                        {
+                            FinishPath();
+                        }
+                        else
+                        {
+                            Debug.Log("It is not possible to reach this location");
+                        }
                     }
 
                 }

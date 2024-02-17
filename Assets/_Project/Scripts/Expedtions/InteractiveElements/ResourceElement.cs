@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -16,6 +17,7 @@ public class ResourceElement : InteractiveElement
     public float AnimY = 25;
     public float AnimDuration = 1f;
 
+    public GameObject DropedItemContainerPrefab;
     private Sequence secuencia; // Referencia a la secuencia de Dotween
     public override void Interact(CharacterInfo character = null)
     {
@@ -26,7 +28,7 @@ public class ResourceElement : InteractiveElement
                 OnResourceElementInteracted.RaiseEvent(this);
         }
     }
-    public (ItemSlot, ItemSlot, int) HitResource(int hitPoints, Inventory targetInventory)
+    public (ItemSlot, ItemSlot, int) HitResource(int hitPoints, Inventory targetInventory, Transform targetTransform)
     {
         if (LootFinished) return (null, null, 0);
         //Play hit animation
@@ -40,6 +42,12 @@ public class ResourceElement : InteractiveElement
         ItemSlot remainingLoot = new();
         if (newLoot != null)
             remainingLoot = AddLootToInventory(targetInventory, newLoot);
+
+        //Remaining loot add to droped container
+        if (remainingLoot != null && remainingLoot.Amount > 0)
+        {
+            SpawnDropItemsContainer(targetTransform.position, remainingLoot);
+        }
 
         if (LP <= 0)
         {
@@ -130,6 +138,38 @@ public class ResourceElement : InteractiveElement
         // Reproducir la secuencia
         secuencia.Play();
     }
+    private RaycastHit2D? DetectOverlayTile(Vector3 checkPosition)
+    {
+
+        RaycastHit2D[] hits = Physics2D.RaycastAll(checkPosition, Vector2.zero);
+
+        if (hits.Length > 0)
+        {
+            return hits.OrderByDescending(i => i.collider.transform.position.z).First();
+        }
+        return null;
+    }
+    public void SpawnDropItemsContainer(Vector3 targetPos, ItemSlot dropedSlot)
+    {
+        var overlayDetected = DetectOverlayTile(targetPos);
+        if (overlayDetected.HasValue)
+        {
+            OverlayTile targetPositionOverlay = overlayDetected.Value.collider.gameObject.GetComponent<OverlayTile>();
+            DropedItemsContainerElement dropedContainer = null;
+            if (targetPositionOverlay.I_Element != null && targetPositionOverlay.I_Element is DropedItemsContainerElement)
+            {
+                dropedContainer = targetPositionOverlay.I_Element.GetComponent<DropedItemsContainerElement>();
+            }
+            else if (targetPositionOverlay.I_Element == null)
+            {
+                dropedContainer = Instantiate(DropedItemContainerPrefab, targetPos, Quaternion.identity).GetComponent<DropedItemsContainerElement>();
+            }
+
+            if (dropedContainer == null) return;
+            dropedContainer.AddNewItem(dropedSlot);
+        }
+    }
+
     [System.Serializable]
     public class LootRate
     {

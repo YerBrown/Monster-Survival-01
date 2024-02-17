@@ -3262,11 +3262,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8748857093117591779}
   - {fileID: 7980357905046291339}
   - {fileID: 1364986065363218652}
   - {fileID: 1252935175911907278}
   - {fileID: 3039962901741705582}
-  - {fileID: 8748857093117591779}
   - {fileID: 4608248202049786156}
   - {fileID: 8418579263041584916}
   - {fileID: 4020683403013420793}
@@ -3480,8 +3480,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1137d4235cec80b4a80da5b013042dce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Inventory1: {fileID: 5259851549170091082}
-  Inventory2: {fileID: 277458953590336114}
+  Inventory_L: {fileID: 5259851549170091082}
+  Inventory_R: {fileID: 277458953590336114}
   SelectedInventory: {fileID: 0}
   SelectedItemType: {fileID: 0}
   SelectedItemImage: {fileID: 4378276842232478770}
@@ -3494,9 +3494,12 @@ MonoBehaviour:
   TransferPartButton: {fileID: 6271144346689677577}
   TrashButton: {fileID: 3974240822497274534}
   CloseButton: {fileID: 1420686763557500788}
+  TransferAllItemsButton_L: {fileID: 7790448961574860600}
+  TransferAllItemsButton_R: {fileID: 2728926943474494254}
   ArrowIcon: {fileID: 3039962901741705582}
   TransferPartController: {fileID: 15656699928577239}
   TrashController: {fileID: 9018227949199061301}
+  OnClosePopup: {fileID: 11400000, guid: 4dd663c0d342a3f4db7e242906509872, type: 2}
 --- !u!1 &1962439790435197306
 GameObject:
   m_ObjectHideFlags: 0
@@ -5345,8 +5348,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -66.404755, y: 166}
-  m_SizeDelta: {x: 237.1905, y: 28.0513}
+  m_AnchoredPosition: {x: -80, y: 130}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &8581229694860419442
 CanvasRenderer:
@@ -7309,8 +7312,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 66.404755, y: 166}
-  m_SizeDelta: {x: 237.1905, y: 28.0513}
+  m_AnchoredPosition: {x: 80, y: 130.00002}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4384393386824898566
 CanvasRenderer:
@@ -9257,10 +9260,10 @@ RectTransform:
   - {fileID: 5368279924929403209}
   m_Father: {fileID: 6847708426184683060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: 120.00001}
-  m_SizeDelta: {x: 60, y: 60.000015}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 40, y: 130}
+  m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5450094236838626923
 CanvasRenderer:
@@ -9343,7 +9346,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 8539011914408022415}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 987839171374055019}
+        m_TargetAssemblyTypeName: UIInventoriesManagementController, Assembly-CSharp
+        m_MethodName: TransferAllItems
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &6942667321455077512
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10407,10 +10422,10 @@ RectTransform:
   - {fileID: 9161686264073843136}
   m_Father: {fileID: 6847708426184683060}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 50, y: 120.00001}
-  m_SizeDelta: {x: 60, y: 60.000015}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -40, y: 130}
+  m_SizeDelta: {x: 60, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8279004037801456817
 CanvasRenderer:
@@ -10493,7 +10508,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6746032681904774731}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 987839171374055019}
+        m_TargetAssemblyTypeName: UIInventoriesManagementController, Assembly-CSharp
+        m_MethodName: TransferAllItems
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1385707686280408998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13033,10 +13060,6 @@ PrefabInstance:
       propertyPath: InventoryNameText
       value: 
       objectReference: {fileID: 5805556711171715599}
-    - target: {fileID: 149584695548952894, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
-      propertyPath: UI_Inventory.Inv_Name
-      value: Player Inventory
-      objectReference: {fileID: 0}
     - target: {fileID: 171277369501955908, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -13263,7 +13286,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1530876462335444621, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -125
+      value: -99.999985
       objectReference: {fileID: 0}
     - target: {fileID: 2062041661500393923, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_AnchorMax.y
@@ -13977,6 +14000,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5539785958725904412, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
+      propertyPath: m_Name
+      value: Inventory_L
+      objectReference: {fileID: 0}
     - target: {fileID: 5772231730720238454, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -14219,11 +14246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6593070836541706873, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_Size
-      value: 0.308642
+      value: 0.24691358
       objectReference: {fileID: 0}
     - target: {fileID: 6593070836541706873, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_Value
-      value: 0.50000006
+      value: 0.49999994
       objectReference: {fileID: 0}
     - target: {fileID: 6649898648101223183, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_AnchorMax.y
@@ -14735,7 +14762,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8439209355933848664, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 8439209355933848664, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14771,7 +14798,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8439209355933848664, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8439209355933848664, guid: eabc2740fcff0724b9e3314a2fb70458, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15444,7 +15471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1542365955078657192, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 250
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 1542365955078657192, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15480,7 +15507,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1542365955078657192, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 25
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1542365955078657192, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -15872,7 +15899,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3213538658133240044, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_Name
-      value: Inventory_2
+      value: Inventory_R
       objectReference: {fileID: 0}
     - target: {fileID: 3486520265265441670, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_AnchorMax.y
@@ -16116,11 +16143,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4253306142497165961, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_Size
-      value: 0.308642
+      value: 0.24691358
       objectReference: {fileID: 0}
     - target: {fileID: 4253306142497165961, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_Value
-      value: 0.50000006
+      value: 0.49999994
       objectReference: {fileID: 0}
     - target: {fileID: 4337144622974630911, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_AnchorMax.y
@@ -17000,7 +17027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8450804109732955773, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -125
+      value: -99.999985
       objectReference: {fileID: 0}
     - target: {fileID: 8999417388688476467, guid: 38e11e36af948e144906b33df063db73, type: 3}
       propertyPath: m_AnchorMax.y

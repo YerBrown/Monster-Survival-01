@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 using UnityEngine.Events;
+using static UnityEditor.Progress;
 [Serializable]
 public class Inventory
 {
     public string Inv_Name;
     public List<ItemSlot> Slots = new List<ItemSlot>();
     public int MaxSlots;
+    public bool FlexibleSlots = false;
+    public bool OnlyRemoveItems = false;
     public ItemSlotEventChannelSO OnItemAdded;
     public ItemSlotEventChannelSO OnItemRemoved;
     private ItemSlot CheckItemInInventory(ItemSlot slot)
@@ -24,7 +27,7 @@ public class Inventory
     }
     private int TryAddNewSlot(ItemSlot newItem)
     {
-        if (Slots.Count == MaxSlots)
+        if (!FlexibleSlots && Slots.Count == MaxSlots)
         {
             //Trigger evento fin
             return newItem.Amount;
@@ -34,6 +37,10 @@ public class Inventory
             int newAmount = newItem.Amount;
             ItemSlot addedSlot = new ItemSlot(newItem.ItemInfo, 0);
             Slots.Add(addedSlot);
+            if (Slots.Count != MaxSlots && FlexibleSlots)
+            {
+                MaxSlots = Slots.Count;
+            }
             Slots.Sort(new ItemsRelatedUtilities.CompareItemsByName());
             if (newAmount > addedSlot.ItemInfo.i_StackMax)
             {
@@ -51,8 +58,9 @@ public class Inventory
             }
         }
     }
-    public int AddNewItem(ItemSlot newItem)
+    public int AddNewItem(ItemSlot newItem, bool transfer=true)
     {
+        if (OnlyRemoveItems && transfer) return newItem.Amount;
         ItemSlot inv_slot = CheckItemInInventory(newItem);
         int remainingAmount = 0;
         if (inv_slot != null)
@@ -145,5 +153,17 @@ public class Inventory
             totalWeight += slot.Amount * slot.ItemInfo.i_Weight;
         }
         return totalWeight;
+    }
+    public List<ItemsSO> GetAllItemTypes()
+    {
+        List<ItemsSO> allItemTypes = new List<ItemsSO>();
+        foreach (var item in Slots)
+        {
+            if (!allItemTypes.Contains(item.ItemInfo))
+            {
+                allItemTypes.Add(item.ItemInfo);
+            }
+        }
+        return allItemTypes;
     }
 }

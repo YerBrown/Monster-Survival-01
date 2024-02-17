@@ -21,8 +21,8 @@ public class TransferItemsHUDController : MonoBehaviour
     }
     public void OpenMenu(PairInventories pairInventories)
     {
-        InventoriesManagementController.Inventory1.UI_Inventory = pairInventories.LeftInventory;
-        InventoriesManagementController.Inventory2.UI_Inventory = pairInventories.RightInventory;
+        InventoriesManagementController.Inventory_L.UI_Inventory = pairInventories.LeftInventory;
+        InventoriesManagementController.Inventory_R.UI_Inventory = pairInventories.RightInventory;
         InventoriesManagementController.gameObject.SetActive(true);
         GeneralUIController.Instance.OpenMenu(true);
     }

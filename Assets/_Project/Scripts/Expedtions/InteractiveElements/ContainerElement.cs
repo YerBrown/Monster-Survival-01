@@ -14,18 +14,7 @@ public class ContainerElement : InteractiveElement
         base.Interact();
         if (characterInfo == null) return;
         characterInfo.OpenContainer(ContainerInventory);
-        Renderer.sprite = EmptyContainer;
-    }
-    private void CheckInventoryItems()
-    {
-        if (ContainerInventory == null) return;
-        if (ContainerInventory.Slots.Count > 0)
-        {
-            Renderer.sprite = FullContainer;
-        }
-        else
-        {
+        if (EmptyContainer != null) 
             Renderer.sprite = EmptyContainer;
-        }
     }
 }

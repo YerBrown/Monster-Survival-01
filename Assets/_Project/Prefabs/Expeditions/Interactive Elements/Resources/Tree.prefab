@@ -355,3 +355,4 @@ MonoBehaviour:
   LootText: {fileID: 7803206371427802272}
   AnimY: 25
   AnimDuration: 2
+  DropedItemContainerPrefab: {fileID: 5584396599883920439, guid: f8409188b9d6f934aa26d409fc410c96, type: 3}

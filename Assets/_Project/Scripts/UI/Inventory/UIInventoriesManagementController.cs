@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class UIInventoriesManagementController : MonoBehaviour
 {
     [Header("Inventories")]
-    public UIInventoryController Inventory1;
-    public UIInventoryController Inventory2;
+    public UIInventoryController Inventory_L;
+    public UIInventoryController Inventory_R;
 
     [Header("Current")]
     [SerializeField] private UIInventoryController SelectedInventory;
@@ -26,16 +26,19 @@ public class UIInventoriesManagementController : MonoBehaviour
     public Button TransferPartButton;
     public Button TrashButton;
     public Button CloseButton;
+    public Button TransferAllItemsButton_L;
+    public Button TransferAllItemsButton_R;
 
     public RectTransform ArrowIcon;
 
     [Header("Other")]
     public UISetTransferAmountController TransferPartController;
     public UITrashController TrashController;
+    public VoidEventChannelSO OnClosePopup;
     private void OnEnable()
     {
-        Inventory1.ItemSlotSelected.AddListener(SelectItemSlot);
-        Inventory2.ItemSlotSelected.AddListener(SelectItemSlot);
+        Inventory_L.ItemSlotSelected.AddListener(SelectItemSlot);
+        Inventory_R.ItemSlotSelected.AddListener(SelectItemSlot);
 
         TransferAllButton.onClick.AddListener(TransferAll);
         TransferStackButton.onClick.AddListener(TransferStack);
@@ -48,8 +51,8 @@ public class UIInventoriesManagementController : MonoBehaviour
     }
     private void OnDisable()
     {
-        Inventory1.ItemSlotSelected.RemoveListener(SelectItemSlot);
-        Inventory2.ItemSlotSelected.RemoveListener(SelectItemSlot);
+        Inventory_L.ItemSlotSelected.RemoveListener(SelectItemSlot);
+        Inventory_R.ItemSlotSelected.RemoveListener(SelectItemSlot);
 
         TransferAllButton.onClick.RemoveListener(TransferAll);
         TransferStackButton.onClick.RemoveListener(TransferStack);
@@ -68,16 +71,16 @@ public class UIInventoriesManagementController : MonoBehaviour
         {
             SelectedInventory = uiInventory;
             SelectedItemType = itemType;
-            if (Inventory2 == uiInventory)
+            if (Inventory_R == uiInventory)
             {
-                Inventory2.SetSelectedUI(itemType, true);
-                Inventory1.SetSelectedUI(itemType, false);
+                Inventory_R.SetSelectedUI(itemType, true);
+                Inventory_L.SetSelectedUI(itemType, false);
                 ArrowIcon.rotation = Quaternion.Euler(0f, 0f, 90f);
             }
             else
             {
-                Inventory2.SetSelectedUI(itemType, false);
-                Inventory1.SetSelectedUI(itemType, true);
+                Inventory_R.SetSelectedUI(itemType, false);
+                Inventory_L.SetSelectedUI(itemType, true);
                 ArrowIcon.rotation = Quaternion.Euler(0f, 0f, 270f);
             }
             Debug.Log($"Inventario: {uiInventory.name}, ItemSlot: {itemType.i_Name} {SelectedInventory.UI_Inventory.GetAmountOfType(itemType)}");
@@ -93,14 +96,13 @@ public class UIInventoriesManagementController : MonoBehaviour
 
         from.RemoveItemFromInventory(itemSlot.ItemInfo, itemSlot.Amount - remainingAmount);
 
-        CheckRemainingItemSlot();
+        if (SelectedItemType != null) CheckRemainingItemSlot();
     }
     //Remove items from inventory
     public void RemoveItem(int amountToRemove)
     {
         SelectedInventory.RemoveItemFromInventory(SelectedItemType, amountToRemove);
-
-        CheckRemainingItemSlot();
+        if (SelectedItemType != null) CheckRemainingItemSlot();
     }
     //Update selected item UI
     public void SelectItemToTransfer()
@@ -128,11 +130,21 @@ public class UIInventoriesManagementController : MonoBehaviour
             SelectedItemAmount.text = $"x???";
             SelectedItemAmountStack.text = $"x???";
         }
-        TransferAllButton.interactable = SelectedItemType != null;
-        TransferStackButton.interactable = SelectedItemType != null;
-        TransferPartButton.interactable = SelectedItemType != null;
+        if (((SelectedInventory == Inventory_L) ? Inventory_R : Inventory_L).UI_Inventory.OnlyRemoveItems)
+        {
+            TransferAllButton.interactable = false;
+            TransferStackButton.interactable = false;
+            TransferPartButton.interactable = false;
+            ArrowIcon.gameObject.SetActive(false);
+        }
+        else
+        {
+            TransferAllButton.interactable = SelectedItemType != null;
+            TransferStackButton.interactable = SelectedItemType != null;
+            TransferPartButton.interactable = SelectedItemType != null;
+            ArrowIcon.gameObject.SetActive(SelectedItemType != null);
+        }
         TrashButton.interactable = SelectedItemType != null;
-        ArrowIcon.gameObject.SetActive(SelectedItemType != null);
     }
     //Open transfer part popup
     public void OpenTransferAmountPopup()
@@ -154,14 +166,34 @@ public class UIInventoriesManagementController : MonoBehaviour
         ItemSlot transferedSlot = new ItemSlot(SelectedItemType, SelectedInventory.UI_Inventory.GetAmountOfType(SelectedItemType));
         SelectTransferTargets(transferedSlot);
     }
-    public void TransferAllItems()
+    //Transfer all the items from one inventory to another
+    public void TransferAllItems(bool inventory1)
     {
-        //foreach (var item in collection)
-        //{
+        List<ItemsSO> AllItemTypes = new List<ItemsSO>();
+        if (inventory1)
+        {
+            AllItemTypes = Inventory_L.UI_Inventory.GetAllItemTypes();
+            foreach (var slot in AllItemTypes)
+            {
+                ItemSlot transferedSlot = new ItemSlot(slot, Inventory_L.UI_Inventory.GetAmountOfType(slot));
+                TransferItem(Inventory_L, Inventory_R, transferedSlot);
+            }
 
-        //}
-        //ItemSlot transferedSlot = new ItemSlot(SelectedItemType, SelectedInventory.UI_Inventory.GetAmountOfType(SelectedItemType));
-        //SelectTransferTargets(transferedSlot);
+        }
+        else
+        {
+            AllItemTypes = Inventory_R.UI_Inventory.GetAllItemTypes();
+            foreach (var slot in AllItemTypes)
+            {
+                ItemSlot transferedSlot = new ItemSlot(slot, Inventory_R.UI_Inventory.GetAmountOfType(slot));
+                TransferItem(Inventory_R, Inventory_L, transferedSlot);
+            }
+        }
+        if (SelectedItemType != null)
+        {
+            Inventory_R.SetSelectedUI(SelectedItemType, SelectedInventory == Inventory_R);
+            Inventory_L.SetSelectedUI(SelectedItemType, SelectedInventory == Inventory_L);
+        }
     }
     //Transfer one stack of one type of item
     public void TransferStack()
@@ -188,18 +220,10 @@ public class UIInventoriesManagementController : MonoBehaviour
     //Set the transfer origin and destination
     private void SelectTransferTargets(ItemSlot transferedSlot)
     {
-        if (SelectedInventory == Inventory2)
-        {
-            TransferItem(Inventory2, Inventory1, transferedSlot);
-            Inventory2.SetSelectedUI(transferedSlot.ItemInfo, true);
-            Inventory1.SetSelectedUI(transferedSlot.ItemInfo, false);
-        }
-        else
-        {
-            TransferItem(Inventory1, Inventory2, transferedSlot);
-            Inventory2.SetSelectedUI(transferedSlot.ItemInfo, false);
-            Inventory1.SetSelectedUI(transferedSlot.ItemInfo, true);
-        }
+        TransferItem((SelectedInventory == Inventory_L) ? Inventory_L : Inventory_R, (SelectedInventory == Inventory_L) ? Inventory_R : Inventory_L, transferedSlot);
+
+        Inventory_R.SetSelectedUI(transferedSlot.ItemInfo, SelectedInventory == Inventory_R);
+        Inventory_L.SetSelectedUI(transferedSlot.ItemInfo, SelectedInventory == Inventory_L);
     }
     //After transfer check the amount of the item
     private void CheckRemainingItemSlot()
@@ -216,11 +240,20 @@ public class UIInventoriesManagementController : MonoBehaviour
         SelectedInventory = null;
         SelectedItemType = null;
 
-        Inventory1.SetSelectedUI(null, false);
-        Inventory2.SetSelectedUI(null, false);
+        Inventory_L.SetSelectedUI(null, false);
+        Inventory_R.SetSelectedUI(null, false);
+        if (Inventory_L.UI_Inventory.OnlyRemoveItems)
+        {
+            TransferAllItemsButton_R.interactable = false;
+        }
+        if (Inventory_R.UI_Inventory.OnlyRemoveItems)
+        {
+            TransferAllItemsButton_L.interactable = false;
+        }
     }
     public void CloseMenu()
     {
+        OnClosePopup.RaiseEvent();
         gameObject.SetActive(false);
         GeneralUIController.Instance.OpenMenu(false);
     }
