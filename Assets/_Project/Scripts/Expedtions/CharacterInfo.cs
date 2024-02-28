@@ -21,8 +21,8 @@ public class CharacterInfo : MonoBehaviour
         UpdateAnimator(Animator);
         if (FollowerAnimator != null)
             UpdateAnimator(FollowerAnimator);
-
     }
+
 
     private void UpdateAnimator(Animator animator)
     {
@@ -54,7 +54,33 @@ public class CharacterInfo : MonoBehaviour
             animator.SetFloat("Vertical", -1);
         }
     }
+    public void SetMovementIdle(Vector2 newMovement)
+    {
+        Movement = newMovement;
+        UpdateDirection(Animator);
+        if (FollowerAnimator != null)
+            UpdateDirection(FollowerAnimator);
+    }
+    private void UpdateDirection(Animator animator)
+    {
+        if (Movement.x > 0)
+        {
+            animator.SetFloat("Horizontal", 1);
 
+        }
+        else if (Movement.x < 0)
+        {
+            animator.SetFloat("Horizontal", -1);
+        }
+        if (Movement.y > 0)
+        {
+            animator.SetFloat("Vertical", 1);
+        }
+        else if (Movement.y < 0)
+        {
+            animator.SetFloat("Vertical", -1);
+        }
+    }
     public void OpenContainer(Inventory containerInventory)
     {
         if (containerInventory == null) return;

@@ -58,7 +58,7 @@ public class Inventory
             }
         }
     }
-    public int AddNewItem(ItemSlot newItem, bool transfer=true)
+    public int AddNewItem(ItemSlot newItem, bool transfer = true)
     {
         if (OnlyRemoveItems && transfer) return newItem.Amount;
         ItemSlot inv_slot = CheckItemInInventory(newItem);
@@ -111,7 +111,7 @@ public class Inventory
                 int newAmount = Slots[i].Amount - amountRemoved;
                 if (newAmount <= 0)
                 {
-                    if (OnItemRemoved != null)
+                    if (OnItemRemoved != null && amountRemoved > 0)
                     {
                         OnItemRemoved.RaiseEvent(new ItemSlot(itemType, Slots[i].Amount));
                     }
@@ -123,7 +123,7 @@ public class Inventory
                 }
                 else
                 {
-                    if (OnItemRemoved != null)
+                    if (OnItemRemoved != null && amountRemoved > 0)
                     {
                         OnItemRemoved.RaiseEvent(new ItemSlot(itemType, amountRemoved));
                     }

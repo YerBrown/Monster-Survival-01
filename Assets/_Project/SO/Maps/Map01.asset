@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8372510c8b5bdcb428970ce7c26b5f8f, type: 3}
+  m_Name: Map01
+  m_EditorClassIdentifier: 
+  yFields:
+  - xFields:
+    - {fileID: 263355814444295359, guid: 15aa7588a76a9f140b52e95bf6b6b19c, type: 3}
+    - {fileID: 742651847695208586, guid: a7033526d824f7842bff1cdbd4bd5aa2, type: 3}
+    - {fileID: 6215082406887800552, guid: 96887d3d6dba5e54ab096b226a89f71c, type: 3}
+  - xFields:
+    - {fileID: 638600320976029354, guid: fed5c78aec6e0b2489cf4dffb6953f30, type: 3}
+    - {fileID: 6967421912375672610, guid: 0e5af004f7a235b42b437897ad0db615, type: 3}
+    - {fileID: 7652056203414245404, guid: 024896dc3679c5045b4a8fcb32244b16, type: 3}
+  - xFields:
+    - {fileID: 2335403455493457377, guid: ca7f16ff0d3bebd479db765ef3340cc5, type: 3}
+    - {fileID: 914599306217113424, guid: 8a1080fe1f3fd2d4a8a310d33da7e8d0, type: 3}
+    - {fileID: 988529702524367406, guid: 4c5eb8c7989c5d14cadb238118c18561, type: 3}

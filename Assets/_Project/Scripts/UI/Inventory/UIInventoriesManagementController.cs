@@ -94,7 +94,10 @@ public class UIInventoriesManagementController : MonoBehaviour
     {
         int remainingAmount = to.AddItemToInventory(itemSlot);
 
-        from.RemoveItemFromInventory(itemSlot.ItemInfo, itemSlot.Amount - remainingAmount);
+        if (itemSlot.Amount - remainingAmount > 0)
+        {
+            from.RemoveItemFromInventory(itemSlot.ItemInfo, itemSlot.Amount - remainingAmount);
+        }
 
         if (SelectedItemType != null) CheckRemainingItemSlot();
     }
@@ -242,14 +245,10 @@ public class UIInventoriesManagementController : MonoBehaviour
 
         Inventory_L.SetSelectedUI(null, false);
         Inventory_R.SetSelectedUI(null, false);
-        if (Inventory_L.UI_Inventory.OnlyRemoveItems)
-        {
-            TransferAllItemsButton_R.interactable = false;
-        }
-        if (Inventory_R.UI_Inventory.OnlyRemoveItems)
-        {
-            TransferAllItemsButton_L.interactable = false;
-        }
+
+        TransferAllItemsButton_R.interactable = !Inventory_L.UI_Inventory.OnlyRemoveItems;
+        TransferAllItemsButton_L.interactable = !Inventory_R.UI_Inventory.OnlyRemoveItems;
+
     }
     public void CloseMenu()
     {

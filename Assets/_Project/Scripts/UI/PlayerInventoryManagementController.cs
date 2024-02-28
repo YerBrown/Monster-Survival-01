@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -10,6 +11,7 @@ public class PlayerInventoryManagementController : MonoBehaviour
     [SerializeField] private ItemsSO SelectedItemType;
 
     public GameObject UIParent;
+    public RectTransform ItemPanel;
     [Header("Selected Item UI Window elements")]
     public TMP_Text SelectedItemName;
     public TMP_Text SelectedItemDescription;
@@ -23,6 +25,8 @@ public class PlayerInventoryManagementController : MonoBehaviour
     [Header("Other")]
     public VoidEventChannelSO OnOpenPLayerInventory;
     public UITrashController TrashController;
+
+    private Sequence secuencia; // Referencia a la secuencia de Dotween
     private void OnEnable()
     {
         OnOpenPLayerInventory.OnEventRaised += OpenPopup;
@@ -78,8 +82,17 @@ public class PlayerInventoryManagementController : MonoBehaviour
     public void SelectItemToTransfer()
     {
         int selectedItemAmount = 0;
+        if (secuencia != null)
+        {
+            secuencia.Kill();
+        }
         if (SelectedItemType != null)
         {
+            // Crear una secuencia de tweens encadenados
+            secuencia = DOTween.Sequence();
+            // Agregar tweens para mover el texto y cambiar su color
+            secuencia.Append(ItemPanel.DOAnchorPosX(0, 1f, true).SetEase(Ease.InOutQuad)); // Mover durante 2 segundos           
+
             selectedItemAmount = UIPlayerInventory.UI_Inventory.GetAmountOfType(SelectedItemType);
             SelectedItemName.text = SelectedItemType.i_Name;
             SelectedItemDescription.text = SelectedItemType.i_Description;
@@ -87,9 +100,15 @@ public class PlayerInventoryManagementController : MonoBehaviour
             SelectedItemWeight.text = $"x {SelectedItemType.i_Weight}kg = {SelectedItemType.i_Weight * selectedItemAmount}kg";
             TrashButton.gameObject.SetActive(true);
             WeightIcon.SetActive(true);
+
         }
         else
         {
+            // Crear una secuencia de tweens encadenados
+            secuencia = DOTween.Sequence();
+            // Agregar tweens para mover el texto y cambiar su color
+            secuencia.Append(ItemPanel.DOAnchorPosX(-250, 1f, true).SetEase(Ease.InOutQuad)); // Mover durante 2 segundos
+
             SelectedItemName.text = "";
             SelectedItemDescription.text = "";
             SelectedItemAmount.text = "";
@@ -127,6 +146,11 @@ public class PlayerInventoryManagementController : MonoBehaviour
     }
     public void CloseMenu()
     {
+        if (secuencia != null)
+        {
+            secuencia.Kill();
+        }
+        ItemPanel.anchoredPosition = new Vector2(-250, ItemPanel.anchoredPosition.y);
         UIParent.gameObject.SetActive(false);
         GeneralUIController.Instance.OpenMenu(false);
     }

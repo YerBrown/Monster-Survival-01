@@ -12,7 +12,6 @@ public class MouseController : MonoBehaviour
     public GameObject characterPrefab;
     private CharacterInfo Character;
     public SpriteRenderer CursorRenderer;
-    public CinemachineVirtualCamera PlayerFollowCamera;
     private PathFinder pathFinder;
 
     private List<OverlayTile> path = new List<OverlayTile>();
@@ -50,10 +49,7 @@ public class MouseController : MonoBehaviour
 
                 if (Character == null)
                 {
-                    Character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
-                    MapManager.Instance.Character = Character;
-                    PositionCharacterOnTile(overlayTile);
-                    PlayerFollowCamera.Follow = Character.transform;
+                    SpawnPlayer(overlayTile);
                 }
                 else
                 {
@@ -153,5 +149,12 @@ public class MouseController : MonoBehaviour
             _currentOverlayClicked.I_Element.Interact(Character);
         }
         Character.SetMovement(Vector2.zero);
+    }
+
+    public void SpawnPlayer(OverlayTile spawnTile)
+    {
+        Character = Instantiate(characterPrefab).GetComponent<CharacterInfo>();
+        MapManager.Instance.Character = Character;
+        PositionCharacterOnTile(spawnTile);
     }
 }

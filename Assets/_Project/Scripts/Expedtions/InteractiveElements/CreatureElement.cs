@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -13,6 +14,7 @@ public class CreatureElement : InteractiveElement
     };
     private void Start()
     {
+        ChangeCursorColor("#FF0000");
         SetSprites();
     }
     public override void Interact(CharacterInfo character = null)
@@ -54,4 +56,17 @@ public class CreatureElement : InteractiveElement
         SpriteRenderers[1].transform.localPosition = RenderPositions[CreaturesInWorld - 1].Item2;
         SpriteRenderers[2].transform.localPosition = RenderPositions[CreaturesInWorld - 1].Item3;
     }
+    //public override void UpdateElement(InteractiveElement element)
+    //{
+    //    //Check if the instance is of the same type
+    //    if (element is CreatureElement)
+    //    {
+    //        base.UpdateElement(element);
+    //        CreaturesTeam = ((CreatureElement)element).CreaturesTeam;
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine("cannot update from a different type element.");
+    //    }
+    //}
 }

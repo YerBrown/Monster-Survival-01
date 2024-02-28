@@ -1,24 +1,35 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-
+using static UnityEditor.Progress;
+using Random = UnityEngine.Random;
+[Serializable]
 public class ResourceElement : InteractiveElement
 {
+    [SerializeField]
     public int LP = 10; //Loot points, por cada punto que resta es un loot 
     public List<LootRate> Loot = new List<LootRate>(); //Posible loot chances
     public ResourceSO ResourceInfo;
     public ResourceElementEventChannelSO OnResourceElementInteracted;
+    [SerializeField]
     public bool LootFinished = false;
     public Sprite LootFinishedSprite;
     public TMP_Text LootText;
     public float AnimY = 25;
     public float AnimDuration = 1f;
 
-    public GameObject DropedItemContainerPrefab;
     private Sequence secuencia; // Referencia a la secuencia de Dotween
+    private void Start()
+    {
+        ChangeCursorColor("#FF9600");
+        if (ResourceInfo != null && ResourceInfo.R_EmptySprite != null)
+            LootFinishedSprite = ResourceInfo.R_EmptySprite;
+    }
     public override void Interact(CharacterInfo character = null)
     {
         base.Interact(character);
@@ -26,6 +37,43 @@ public class ResourceElement : InteractiveElement
         {
             if (OnResourceElementInteracted != null)
                 OnResourceElementInteracted.RaiseEvent(this);
+        }
+    }
+    public override void UpdateElement(ExpeditionData.ParentData data)
+    {
+        //Check if the instance is of the same type
+        if (data is ExpeditionData.ResourceData)
+        {
+            base.UpdateElement(data);
+            LP = ((ExpeditionData.ResourceData)data).LP;
+            CheckLP(false);
+        }
+        else
+        {
+            Console.WriteLine("cannot update from a different type element.");
+        }
+    }
+    private void CheckLP(bool duringLoot)
+    {
+        if (LP <= 0)
+        {
+            //Finish resource loot
+            LootFinished = true;
+            BlockMovement = false;
+            if (LootFinishedSprite != null)
+            {
+                GetComponent<SpriteRenderer>().sprite = LootFinishedSprite;
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
+            if (duringLoot)
+            {
+                if (OnResourceElementInteracted != null)
+                    OnResourceElementInteracted.RaiseEvent(this);
+            }
+            this.enabled = false;
         }
     }
     public (ItemSlot, ItemSlot, int) HitResource(int hitPoints, Inventory targetInventory, Transform targetTransform)
@@ -49,15 +97,7 @@ public class ResourceElement : InteractiveElement
             SpawnDropItemsContainer(targetTransform.position, remainingLoot);
         }
 
-        if (LP <= 0)
-        {
-            //Finish resource loot
-            LootFinished = true;
-            BlockMovement = false;
-            GetComponent<SpriteRenderer>().sprite = LootFinishedSprite;
-            if (OnResourceElementInteracted != null)
-                OnResourceElementInteracted.RaiseEvent(this);
-        }
+        CheckLP(true);
         ShowLootText(newLoot);
         return (newLoot, remainingLoot, hitPoints);
     }
@@ -162,7 +202,7 @@ public class ResourceElement : InteractiveElement
             }
             else if (targetPositionOverlay.I_Element == null)
             {
-                dropedContainer = Instantiate(DropedItemContainerPrefab, targetPos, Quaternion.identity).GetComponent<DropedItemsContainerElement>();
+                dropedContainer = MapManager.Instance.AddLootBag(targetPos);
             }
 
             if (dropedContainer == null) return;

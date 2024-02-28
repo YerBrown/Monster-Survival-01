@@ -231,8 +231,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3617164202384551028}
   m_HandleRect: {fileID: 5435060869432645448}
   m_Direction: 2
-  m_Value: 0.5409837
-  m_Size: 0.2469136
+  m_Value: 0.5
+  m_Size: 0.30864197
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -1199,6 +1199,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3136139931463275636, guid: 5b50599dee8794c959680fdd39fe096e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3168348469084132828, guid: 5b50599dee8794c959680fdd39fe096e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1727,6 +1731,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5602776282121522093, guid: 5b50599dee8794c959680fdd39fe096e, type: 3}
+      propertyPath: I_ScrollRect
+      value: 
+      objectReference: {fileID: 1665498933078009779}
     - target: {fileID: 5602776282121522093, guid: 5b50599dee8794c959680fdd39fe096e, type: 3}
       propertyPath: UI_Inventory.Inv_Name
       value: Player Inventory

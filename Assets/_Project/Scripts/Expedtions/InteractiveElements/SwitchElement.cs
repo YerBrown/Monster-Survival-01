@@ -1,7 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+[Serializable]
 public class SwitchElement : InteractiveElement
 {
     public bool SwitchOn = true;
@@ -9,6 +10,10 @@ public class SwitchElement : InteractiveElement
     public SpriteRenderer Renderer;
     public Sprite SwitchOnSprite;
     public Sprite SwitchOffSprite;
+    private void Start()
+    {
+        ChangeCursorColor("#C400FF");
+    }
     public override void Interact(CharacterInfo character = null)
     {
         base.Interact(character);
@@ -25,4 +30,17 @@ public class SwitchElement : InteractiveElement
             }
         }
     }
+    //public override void UpdateElement(InteractiveElement element)
+    //{
+    //    //Check if the instance is of the same type
+    //    if (element is SwitchElement)
+    //    {
+    //        base.UpdateElement(element);
+    //        SwitchOn = ((SwitchElement)element).SwitchOn;
+    //    }
+    //    else
+    //    {
+    //        Console.WriteLine("cannot update from a different type element.");
+    //    }
+    //}
 }

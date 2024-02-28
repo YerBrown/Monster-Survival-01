@@ -110,7 +110,7 @@ Transform:
   m_GameObject: {fileID: 6073456032141489799}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.37, y: -0.79, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -131,6 +131,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2560ca99e9efe05499e896029c620826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ID: 
+  Interactive_Element_ID: '#MUSHROOMS'
   OverlayTileUnder: {fileID: 0}
   BlockMovement: 0
   CursorColor: {r: 0.117028, g: 1, b: 0, a: 1}

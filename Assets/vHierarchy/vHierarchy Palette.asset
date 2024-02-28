@@ -80,6 +80,8 @@ MonoBehaviour:
     customIcons:
     - bf52a5a498031477eb8a50d51280dc70
     - 3ade1d4f8d22745aa871e08a870b87a4
+    - f9b599c249feb4a2cb2efcd166c4a46c
+    - 285d37cb6c60e48cf9e24109be720d33
     enabled: 1
   - builtinIcons: []
     customIcons: []

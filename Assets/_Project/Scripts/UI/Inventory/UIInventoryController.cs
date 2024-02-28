@@ -5,6 +5,7 @@ using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class UIInventoryController : MonoBehaviour
 {
@@ -13,7 +14,7 @@ public class UIInventoryController : MonoBehaviour
     public List<GameObject> ItemsBackground = new List<GameObject>();
     public List<UIItemSlotController> Items = new List<UIItemSlotController>();
     public UnityEvent<UIInventoryController, ItemsSO> ItemSlotSelected;
-
+    public ScrollRect I_ScrollRect;
     private void Awake()
     {
         //Add all the items in the parent to the list "Items"
@@ -49,6 +50,8 @@ public class UIInventoryController : MonoBehaviour
                 //Add select item functionality to each button
                 Items[i].SelectSlotEvent?.AddListener(SelectItem);
             }
+            if (I_ScrollRect != null)
+                I_ScrollRect.verticalNormalizedPosition = 1;
         }
     }
     private void OnDisable()
