@@ -20,7 +20,7 @@
             "Containers": [],
             "Items": [
                 {
-                    "ID": "",
+                    "ID": "#ITEM_00",
                     "Element_ID": "#MEAT",
                     "Pos": {
                         "x": -1.0,
@@ -28,7 +28,7 @@
                         "z": 1.0
                     },
                     "ItemID": "Meat",
-                    "Amount": 0
+                    "Amount": 1
                 }
             ],
             "Resources": [
@@ -70,7 +70,47 @@
                         "y": -0.75,
                         "z": 2.0
                     },
-                    "LP": 0
+                    "LP": 10
+                },
+                {
+                    "ID": "#RESOURCE_04",
+                    "Element_ID": "#TREE",
+                    "Pos": {
+                        "x": 0.5,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "LP": 40
+                },
+                {
+                    "ID": "#RESOURCE_05",
+                    "Element_ID": "#TREE",
+                    "Pos": {
+                        "x": 1.0,
+                        "y": 0.75,
+                        "z": 1.0
+                    },
+                    "LP": 40
+                },
+                {
+                    "ID": "#RESOURCE_06",
+                    "Element_ID": "#TREE",
+                    "Pos": {
+                        "x": 1.0,
+                        "y": 1.25,
+                        "z": 1.0
+                    },
+                    "LP": 40
+                },
+                {
+                    "ID": "#RESOURCE_07",
+                    "Element_ID": "#TREE",
+                    "Pos": {
+                        "x": 1.5,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "LP": 40
                 }
             ],
             "Switchers": []
@@ -89,7 +129,7 @@
                         "y": 1.5,
                         "z": 1.0
                     },
-                    "Blocks": true
+                    "Blocks": false
                 },
                 {
                     "ID": "#BLOCKER_01",
@@ -139,7 +179,7 @@
                         "y": -1.0,
                         "z": 1.0
                     },
-                    "LP": 10
+                    "LP": 6
                 },
                 {
                     "ID": "#RESOURCE_02",
@@ -149,7 +189,7 @@
                         "y": 1.5,
                         "z": 1.0
                     },
-                    "LP": 10
+                    "LP": 0
                 },
                 {
                     "ID": "#RESOURCE_03",
@@ -196,6 +236,28 @@
         },
         {
             "Coordinates": {
+                "x": 2,
+                "y": 1
+            },
+            "Blockers": [],
+            "Containers": [],
+            "Items": [],
+            "Resources": [],
+            "Switchers": []
+        },
+        {
+            "Coordinates": {
+                "x": 1,
+                "y": 1
+            },
+            "Blockers": [],
+            "Containers": [],
+            "Items": [],
+            "Resources": [],
+            "Switchers": []
+        },
+        {
+            "Coordinates": {
                 "x": 0,
                 "y": 0
             },
@@ -213,12 +275,7 @@
                     "MaxSlots": 5,
                     "FlexibleSlots": false,
                     "OnlyRemoveItems": false,
-                    "AllItems": [
-                        {
-                            "ItemID": "Wood",
-                            "Amount": 30
-                        }
-                    ],
+                    "AllItems": [],
                     "Opened": true
                 }
             ],
@@ -243,7 +300,7 @@
                         "z": 0.0
                     },
                     "ItemID": "Mushroom",
-                    "Amount": 0
+                    "Amount": 3
                 }
             ],
             "Resources": [
@@ -285,20 +342,9 @@
                         "y": -1.25,
                         "z": 1.0
                     },
-                    "LP": 0
+                    "LP": 10
                 }
             ],
-            "Switchers": []
-        },
-        {
-            "Coordinates": {
-                "x": 2,
-                "y": 1
-            },
-            "Blockers": [],
-            "Containers": [],
-            "Items": [],
-            "Resources": [],
             "Switchers": []
         }
     ]

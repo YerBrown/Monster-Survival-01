@@ -1,8 +1,6 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
-[Serializable]
 public class ItemElement : InteractiveElement
 {
     public ItemSlot Item;
@@ -13,11 +11,12 @@ public class ItemElement : InteractiveElement
     public override void Interact(CharacterInfo character = null)
     {
         base.Interact(character);
-        if (character == null) return;
+        if (character == null) { return; };
         int remaining = character.PlayerInventory.AddNewItem(Item);
         if (remaining != Item.Amount)
         {
             Debug.Log($"Player has taken {Item.Amount - remaining} {Item.ItemInfo.i_Name}");
+            Notify(transform.position, $"+ {Item.Amount - remaining} {Item.ItemInfo.i_Name}");
         }
         if (remaining > 0)
         {
@@ -36,16 +35,22 @@ public class ItemElement : InteractiveElement
             Item.Amount = 0;
             gameObject.SetActive(false);
         }
-
     }
 
     public override void UpdateElement(ExpeditionData.ParentData data)
     {
-        //Check if the instance is of the same type
+        //Check if the instance is of the same type.
         if (data is ExpeditionData.ItemData)
         {
             base.UpdateElement(data);
-            Item.ItemInfo = ItemInfoWiki.Instance.GetItemByID(((ExpeditionData.ItemData)data).ItemID);
+            if (ItemInfoWiki.Instance != null)
+            {
+                Item.ItemInfo = ItemInfoWiki.Instance.GetItemByID(((ExpeditionData.ItemData)data).ItemID);
+            }
+            else
+            {
+                Debug.LogWarning("Item Info Wiki not found in scene.");
+            }
             Item.Amount = ((ExpeditionData.ItemData)data).Amount;
             if (Item.Amount == 0)
             {
@@ -54,8 +59,7 @@ public class ItemElement : InteractiveElement
         }
         else
         {
-            Console.WriteLine("cannot update from a different type element.");
-
+            Debug.LogWarning("Can not be updated from another type of element.");
         }
     }
 }

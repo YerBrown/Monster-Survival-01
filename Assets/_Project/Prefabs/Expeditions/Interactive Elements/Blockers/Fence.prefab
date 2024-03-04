@@ -100,7 +100,9 @@ MonoBehaviour:
   ID: 
   Interactive_Element_ID: '#FENCE'
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 1
+  IsBlockingMovement: 1
   CursorColor: {r: 1, g: 1, b: 1, a: 1}
-  BlockerRenderer: {fileID: 8795706261095183543}
-  Unblocker: {fileID: 11400000, guid: ea97ed162bfcdc0478aaf76b7edc0d22, type: 2}
+  NotificateEvent: {fileID: 11400000, guid: 6ca9474b20f4c454bbc0f5ad7d90454d, type: 2}
+  _blockerRenderer: {fileID: 8795706261095183543}
+  _unblockerItem: {fileID: 0}
+  _blockerSet: []

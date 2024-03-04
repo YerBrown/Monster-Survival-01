@@ -57,6 +57,14 @@ PrefabInstance:
       value: Chest Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8967323074807937847, guid: f49830efdf07a514babd418cd89fe878, type: 3}
+      propertyPath: FullSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 63e3f0fe32ec1b344a773b61cc972b00, type: 3}
+    - target: {fileID: 8967323074807937847, guid: f49830efdf07a514babd418cd89fe878, type: 3}
+      propertyPath: EmptySprite
+      value: 
+      objectReference: {fileID: 21300000, guid: aeb476114f4184043ba58620c803b1db, type: 3}
+    - target: {fileID: 8967323074807937847, guid: f49830efdf07a514babd418cd89fe878, type: 3}
       propertyPath: FullContainer
       value: 
       objectReference: {fileID: 21300000, guid: 63e3f0fe32ec1b344a773b61cc972b00, type: 3}

@@ -100,8 +100,9 @@ MonoBehaviour:
   ID: 
   Interactive_Element_ID: '#BARREL'
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 1
+  IsBlockingMovement: 1
   CursorColor: {r: 0, g: 0.627451, b: 1, a: 1}
+  NotificateEvent: {fileID: 11400000, guid: 6ca9474b20f4c454bbc0f5ad7d90454d, type: 2}
   ContainerInventory:
     Inv_Name: 'Barrel '
     Slots: []
@@ -110,6 +111,7 @@ MonoBehaviour:
     OnlyRemoveItems: 0
     OnItemAdded: {fileID: 0}
     OnItemRemoved: {fileID: 0}
+  IsOpened: 0
   Renderer: {fileID: 2338504098124038309}
-  FullContainer: {fileID: 21300000, guid: b4881f5e5722d8b418ea29f59019aa5c, type: 3}
-  EmptyContainer: {fileID: 21300000, guid: 0a52c6dbaad6a7f459c955b7ce1a7b6f, type: 3}
+  FullSprite: {fileID: 21300000, guid: b4881f5e5722d8b418ea29f59019aa5c, type: 3}
+  EmptySprite: {fileID: 21300000, guid: b4881f5e5722d8b418ea29f59019aa5c, type: 3}

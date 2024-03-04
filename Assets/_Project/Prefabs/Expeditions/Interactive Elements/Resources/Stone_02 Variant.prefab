@@ -13,6 +13,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4667809779894419283, guid: 086947b973fe6e54cbdfca25be3483b9, type: 3}
+      propertyPath: NotificateEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 6ca9474b20f4c454bbc0f5ad7d90454d, type: 2}
+    - target: {fileID: 4667809779894419283, guid: 086947b973fe6e54cbdfca25be3483b9, type: 3}
       propertyPath: Interactive_Element_ID
       value: '#STONE_02'
       objectReference: {fileID: 0}

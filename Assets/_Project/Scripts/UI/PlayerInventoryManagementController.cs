@@ -98,7 +98,7 @@ public class PlayerInventoryManagementController : MonoBehaviour
             SelectedItemDescription.text = SelectedItemType.i_Description;
             SelectedItemAmount.text = $"x{selectedItemAmount}";
             SelectedItemWeight.text = $"x {SelectedItemType.i_Weight}kg = {SelectedItemType.i_Weight * selectedItemAmount}kg";
-            TrashButton.gameObject.SetActive(true);
+            TrashButton.interactable = true;
             WeightIcon.SetActive(true);
 
         }
@@ -109,12 +109,12 @@ public class PlayerInventoryManagementController : MonoBehaviour
             // Agregar tweens para mover el texto y cambiar su color
             secuencia.Append(ItemPanel.DOAnchorPosX(-250, 1f, true).SetEase(Ease.InOutQuad)); // Mover durante 2 segundos
 
-            SelectedItemName.text = "";
-            SelectedItemDescription.text = "";
-            SelectedItemAmount.text = "";
-            SelectedItemWeight.text = "";
-            TrashButton.gameObject.SetActive(false);
-            WeightIcon.SetActive(false);
+            //SelectedItemName.text = "";
+            //SelectedItemDescription.text = "";
+            //SelectedItemAmount.text = "";
+            //SelectedItemWeight.text = "";
+            TrashButton.interactable = false;
+            //WeightIcon.SetActive(false);
         }
     }
     //Open remove item popup

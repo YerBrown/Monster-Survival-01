@@ -262,8 +262,9 @@ MonoBehaviour:
   ID: 
   Interactive_Element_ID: '#CREATURETEAM'
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 1
+  IsBlockingMovement: 0
   CursorColor: {r: 1, g: 0, b: 0, a: 1}
+  NotificateEvent: {fileID: 11400000, guid: 6ca9474b20f4c454bbc0f5ad7d90454d, type: 2}
   CreaturesTeam:
   - CreatureInfo: {fileID: 11400000, guid: 156a254ea8a6d49b38eb10bba9bd0063, type: 2}
     C_Nickname: Maku_01

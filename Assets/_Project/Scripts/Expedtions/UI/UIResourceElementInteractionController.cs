@@ -39,7 +39,7 @@ public class UIResourceElementInteractionController : MonoBehaviour
     private void OpenResourceMenu(ResourceElement newResource)
     {
         if (newResource == null) return;
-        if (newResource.LP > 0)
+        if (newResource.LootPoints > 0)
         {
             ResourceTarget = newResource;
             PlayerTarget = MapManager.Instance.Character;

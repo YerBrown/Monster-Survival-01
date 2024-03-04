@@ -100,7 +100,9 @@ MonoBehaviour:
   ID: 
   Interactive_Element_ID: '#BONFIRE'
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 1
+  IsBlockingMovement: 1
   CursorColor: {r: 0.15723258, g: 0.15723258, b: 0.15723258, a: 1}
-  BlockerRenderer: {fileID: 6917581051180845258}
-  Unblocker: {fileID: 0}
+  NotificateEvent: {fileID: 11400000, guid: 6ca9474b20f4c454bbc0f5ad7d90454d, type: 2}
+  _blockerRenderer: {fileID: 6917581051180845258}
+  _unblockerItem: {fileID: 0}
+  _blockerSet: []

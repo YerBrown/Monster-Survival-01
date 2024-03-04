@@ -232,10 +232,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
+  Interactive_Element_ID: 
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 0
+  IsBlockingMovement: 0
   CursorColor: {r: 0, g: 1, b: 0.63536406, a: 1}
-  TravelDistance: {x: -1, y: 0}
+  NotificateEvent: {fileID: 0}
+  TravelDirection: {x: -1, y: 0}
+  StartPointSide: 1
 --- !u!1 &1857681527137584754
 GameObject:
   m_ObjectHideFlags: 0
@@ -281,10 +284,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
+  Interactive_Element_ID: 
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 0
+  IsBlockingMovement: 0
   CursorColor: {r: 0, g: 1, b: 0.63536406, a: 1}
-  TravelDistance: {x: 0, y: -1}
+  NotificateEvent: {fileID: 0}
+  TravelDirection: {x: 0, y: -1}
+  StartPointSide: 0
 --- !u!1 &1921561428029170090
 GameObject:
   m_ObjectHideFlags: 0
@@ -423,10 +429,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
+  Interactive_Element_ID: 
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 0
+  IsBlockingMovement: 0
   CursorColor: {r: 0, g: 1, b: 0.63536406, a: 1}
-  TravelDistance: {x: -1, y: 0}
+  NotificateEvent: {fileID: 0}
+  TravelDirection: {x: -1, y: 0}
+  StartPointSide: 0
 --- !u!1 &3656670179439932907
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,10 +512,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
+  Interactive_Element_ID: 
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 0
+  IsBlockingMovement: 0
   CursorColor: {r: 0, g: 1, b: 0.63536406, a: 1}
-  TravelDistance: {x: 0, y: -1}
+  NotificateEvent: {fileID: 0}
+  TravelDirection: {x: 0, y: -1}
+  StartPointSide: 1
 --- !u!1 &5266140132172550544
 GameObject:
   m_ObjectHideFlags: 0
@@ -552,10 +564,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
+  Interactive_Element_ID: 
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 0
+  IsBlockingMovement: 0
   CursorColor: {r: 0, g: 1, b: 0.63536406, a: 1}
-  TravelDistance: {x: 0, y: 1}
+  NotificateEvent: {fileID: 0}
+  TravelDirection: {x: 0, y: 1}
+  StartPointSide: 1
 --- !u!1 &5691532371086436860
 GameObject:
   m_ObjectHideFlags: 0
@@ -632,10 +647,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
+  Interactive_Element_ID: 
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 0
+  IsBlockingMovement: 0
   CursorColor: {r: 0, g: 1, b: 0.63536406, a: 1}
-  TravelDistance: {x: 1, y: 0}
+  NotificateEvent: {fileID: 0}
+  TravelDirection: {x: 1, y: 0}
+  StartPointSide: 0
 --- !u!1 &7492913455565428501
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,10 +730,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
+  Interactive_Element_ID: 
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 0
+  IsBlockingMovement: 0
   CursorColor: {r: 0, g: 1, b: 0.63536406, a: 1}
-  TravelDistance: {x: 1, y: 0}
+  NotificateEvent: {fileID: 0}
+  TravelDirection: {x: 1, y: 0}
+  StartPointSide: 1
 --- !u!1 &7679383597289847266
 GameObject:
   m_ObjectHideFlags: 0
@@ -2997,10 +3018,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36d9f809ac96724db8ec2dba799de8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartPoint_L: {fileID: 2841236606797205651}
-  StartPoint_R: {fileID: 5656082459019792147}
-  StartPoint_U: {fileID: 6104229171990040645}
-  StartPoint_D: {fileID: 6489669954019193164}
+  StartPoints_L:
+  - {fileID: 6077358093942656726}
+  - {fileID: 7600856519771434443}
+  StartPoints_R:
+  - {fileID: 2077477118554189904}
+  - {fileID: 4356682446959314853}
+  StartPoints_U:
+  - {fileID: 8276419230137040496}
+  - {fileID: 8652634933612184931}
+  StartPoints_D:
+  - {fileID: 5727067612094831341}
+  - {fileID: 3129564592699595880}
   EnvironmentParent: {fileID: 6808464157367707569}
   InitialInteractiveElements:
   - {fileID: 7600856519771434443}
@@ -3058,7 +3087,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ID: 
+  Interactive_Element_ID: 
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 0
+  IsBlockingMovement: 0
   CursorColor: {r: 0, g: 1, b: 0.63536406, a: 1}
-  TravelDistance: {x: 0, y: 1}
+  NotificateEvent: {fileID: 0}
+  TravelDirection: {x: 0, y: 1}
+  StartPointSide: 0

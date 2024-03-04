@@ -42,9 +42,9 @@ public class MapManager : MonoBehaviour
     {
         StartCoroutine(InitializeExpedition());
     }
-    public void ChangeField(Vector2Int travelDistance)
+    public void ChangeField(Vector2Int travelDistance, int pathSide)
     {
-        StartCoroutine(TravelToFieldCoroutine(travelDistance));
+        StartCoroutine(TravelToFieldCoroutine(travelDistance, pathSide));
     }
     private void AddAllOverlayTiles(FieldTilemapInfo newField)
     {
@@ -109,22 +109,21 @@ public class MapManager : MonoBehaviour
         }
         CurrentCoordinates = newCoordinates;
         CurrentField = Instantiate(FullMap.GetField(CurrentCoordinates), MainGrid.transform).GetComponent<FieldTilemapInfo>();
-
     }
 
-    private void MovePlayerToInitialPos(Vector2Int travelDistance)
+    private void MovePlayerToInitialPos(Vector2Int travelDistance, int pathSide)
     {
         OverlayTile startPosTile = null;
         if (travelDistance.x > 0 || travelDistance.x < 0)
         {
             if (travelDistance.x == 1)
             {
-                startPosTile = GetOverlayTile(CurrentField.StartPoint_L.position);
+                startPosTile = GetOverlayTile(CurrentField.StartPoints_L[pathSide].transform.position);
                 Character.SetMovementIdle(new Vector2(1, -1));
             }
             else
             {
-                startPosTile = GetOverlayTile(CurrentField.StartPoint_R.position);
+                startPosTile = GetOverlayTile(CurrentField.StartPoints_R[pathSide].transform.position);
                 Character.SetMovementIdle(new Vector2(-1, 1));
             }
         }
@@ -132,12 +131,12 @@ public class MapManager : MonoBehaviour
         {
             if (travelDistance.y == 1)
             {
-                startPosTile = GetOverlayTile(CurrentField.StartPoint_D.position);
+                startPosTile = GetOverlayTile(CurrentField.StartPoints_D[pathSide].transform.position);
                 Character.SetMovementIdle(new Vector2(1, 1));
             }
             else
             {
-                startPosTile = GetOverlayTile(CurrentField.StartPoint_U.position);
+                startPosTile = GetOverlayTile(CurrentField.StartPoints_U[pathSide].transform.position);
                 Character.SetMovementIdle(new Vector2(-1, -1));
             }
         }
@@ -201,7 +200,7 @@ public class MapManager : MonoBehaviour
         GeneralUIController.Instance.EnableBlackBackground(false);
         Debug.Log("Fundido a blanco");
     }
-    IEnumerator TravelToFieldCoroutine(Vector2Int travelDistance)
+    IEnumerator TravelToFieldCoroutine(Vector2Int travelDistance, int pathSide)
     {
         GeneralUIController.Instance.EnableBlackBackground(true);
         Debug.Log("Fundido a negro");
@@ -213,27 +212,26 @@ public class MapManager : MonoBehaviour
         LoadAreaState();
         Debug.Log("Sincronizados todos los elementos interactivos");
         yield return new WaitForSeconds(.2f);
-        MovePlayerToInitialPos(travelDistance);
+        MovePlayerToInitialPos(travelDistance, pathSide);
         Debug.Log("Mover al player");
         yield return new WaitForSeconds(.2f);
         GeneralUIController.Instance.EnableBlackBackground(false);
         Debug.Log("Fundido a blanco");
     }
-
     public DropedItemsContainerElement AddLootBag(Vector3 spawnPos)
     {
         DropedItemsContainerElement newBag = Instantiate(DropedItemContainerPrefab, CurrentField.EnvironmentParent).GetComponent<DropedItemsContainerElement>();
         newBag.transform.position = spawnPos;
-        newBag.InitializeElement();
+        newBag.AddOverlayTileUnderRef();
         return newBag;
     }
     private void LoadAreaState()
     {
         if (CurrentField != null)
         {
-            CurrentField.AsignIds();
             ExpeditionData.FieldData currentFieldData = CurrentFieldData.GetField(CurrentCoordinates);
             CurrentField.AddInteractiveElements();
+            CurrentField.AsignIds();
             if (currentFieldData != null)
             {
                 LoadAllInteractiveElements(currentFieldData);
@@ -246,7 +244,6 @@ public class MapManager : MonoBehaviour
     }
     private void LoadAllInteractiveElements(ExpeditionData.FieldData fieldData)
     {
-
         if (InteractiveElementsWiki.Instance == null) return;
         foreach (var blocker in fieldData.Blockers)
         {
@@ -271,7 +268,8 @@ public class MapManager : MonoBehaviour
             ResourceElement newResource = (ResourceElement)GetElement(resource.ID, resource.Element_ID, resource.Pos);
             newResource.UpdateElement(resource);
         }
-
+        CurrentField.AddInteractiveElements();
+        CurrentField.AsignIds();
         CurrentField.InitializeInteractiveElements();
     }
 
@@ -293,11 +291,13 @@ public class MapManager : MonoBehaviour
         spawnedElement.transform.position = newPos;
         return spawnedElement;
     }
-
     private void SaveAreaState()
     {
         if (CurrentField != null)
         {
+            CurrentField.AddInteractiveElements();
+            CurrentField.AsignIds();
+            CurrentFieldData.GetField(CurrentCoordinates).ClearData();
             foreach (var element in CurrentField.InitialInteractiveElements)
             {
                 CurrentFieldData.GetField(CurrentCoordinates).UpdateData(element);

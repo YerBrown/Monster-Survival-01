@@ -1,74 +1,79 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-[Serializable]
 public class InteractiveElement : MonoBehaviour
 {
-    [SerializeField]
-    public string ID;
-    public string Interactive_Element_ID;
-    public OverlayTile OverlayTileUnder;
-    [SerializeField]
-    public bool BlockMovement = false;
-    public Color CursorColor = Color.white;
-    public virtual void OnEnable()
-    {
-        InitializeElement();
-    }
+    public string ID; // Element identificator for save and load data.
+    public string Interactive_Element_ID; // Type of elemnt identificator.
+    public OverlayTile OverlayTileUnder; // Overlay tile under the interactive element.
+    public bool IsBlockingMovement = false; // If is true, blocks the movement in the overlayTile calculation of the pathfinder.
+    public Color CursorColor = Color.white; // The color of the cursor when interacts with this element.
+    public ScreenPositon_String_EventChannelSO NotificateEvent; // Notification event channel
     public virtual void OnDisable()
     {
-        if (OverlayTileUnder != null)
-        {
-            OverlayTileUnder.I_Element = null;
-            OverlayTileUnder = null;
-        }
+        RemoveOverlayTileUnderRef();
     }
+    // Called when the player interacts with this element.
     public virtual void Interact(CharacterInfo character = null)
     {
         Debug.Log($"Player interacted with {name}");
     }
-
-    private RaycastHit2D? DetectOverlayTile()
+    public void AddOverlayTileUnderRef()
     {
-
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.zero);
-
-        if (hits.Length > 0)
+        OverlayTile overlayTileDetected = DetectOverlayTileUnder();
+        if (overlayTileDetected != null)
         {
-            return hits.OrderByDescending(i => i.collider.transform.position.z).First();
-        }
-        return null;
-    }
-    public void InitializeElement()
-    {
-        var overlayDetected = DetectOverlayTile();
-        if (overlayDetected.HasValue)
-        {
-            OverlayTileUnder = overlayDetected.Value.collider.gameObject.GetComponent<OverlayTile>();
+            OverlayTileUnder = overlayTileDetected;
             OverlayTileUnder.I_Element = this;
+        }
+    }
+    private void RemoveOverlayTileUnderRef()
+    {
+        if (OverlayTileUnder != null)
+        {
+            // Remove reference to this elemnt in the overlay tile.
+            OverlayTileUnder.I_Element = null;
+            OverlayTileUnder = null;
         }
     }
     protected void ChangeCursorColor(string colorHex)
     {
-        // Color resultante
-        Color color;
-        // Intentar convertir el color hexadecimal en un objeto Color
-        if (ColorUtility.TryParseHtmlString(colorHex, out color))
+        // Try parse the hexadecimal color to color.
+        if (ColorUtility.TryParseHtmlString(colorHex, out Color color))
         {
             CursorColor = color;
         }
         else
         {
-            // La conversión falló, el formato del color hexadecimal podría ser incorrecto
-            Debug.LogWarning("No se pudo convertir el color hexadecimal: " + colorHex);
+            // If the value is not parseable trigger a log.
+            Debug.LogWarning("Could not convert hexadecimal color: " + colorHex);
         }
     }
-
+    //Update interactive element properties by loaded data
     public virtual void UpdateElement(ExpeditionData.ParentData data)
     {
-        //DEFAULT
-        ID = data.ID;       
+        ID = data.ID;
+    }
+    private OverlayTile DetectOverlayTileUnder()
+    {
+        // Throw ray in this element position.
+        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.zero);
+
+        if (hits.Length > 0)
+        {
+            // Select first hited object.
+            RaycastHit2D hitTile = hits.OrderByDescending(i => i.collider.transform.position.z).First();
+            if (hitTile.collider.gameObject.TryGetComponent(out OverlayTile overlayTileDetected))
+            {
+                return overlayTileDetected;
+            }
+        }
+        return null;
+    }
+    protected void Notify(Vector3 newPos, string text)
+    {
+        if (NotificateEvent == null) { return; };
+        (Vector3, string) notificationData = (newPos, text);
+        NotificateEvent.RaiseEvent(notificationData);
     }
 }

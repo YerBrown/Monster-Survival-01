@@ -1,106 +1,128 @@
 using DG.Tweening;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System.Linq;
-using TMPro;
 using UnityEngine;
-using static UnityEditor.Progress;
 using Random = UnityEngine.Random;
 [Serializable]
 public class ResourceElement : InteractiveElement
 {
     [SerializeField]
-    public int LP = 10; //Loot points, por cada punto que resta es un loot 
-    public List<LootRate> Loot = new List<LootRate>(); //Posible loot chances
-    public ResourceSO ResourceInfo;
-    public ResourceElementEventChannelSO OnResourceElementInteracted;
-    [SerializeField]
-    public bool LootFinished = false;
-    public Sprite LootFinishedSprite;
-    public TMP_Text LootText;
-    public float AnimY = 25;
-    public float AnimDuration = 1f;
+    public int LootPoints = 10;
+    public List<LootRate> Loot = new(); // Posible loot chances.
+    public ResourceSO ResourceInfo; // Resource information scriptableObject.
+    public List<ResourceElement> ResourcePack = new(); // If the resource is part of a bigger one, this list contains all the resources that make up one.
+    public Sprite LootFinishedSprite; // The sprite for empty resource.
+    public SpriteRenderer ResourceMainRenderer; // The sprite renderer of the resource.
+    public ResourceElementEventChannelSO ResourceElementInteracted; //Event triggered when the player interacts with the resource.
 
-    private Sequence secuencia; // Referencia a la secuencia de Dotween
+    [System.Serializable]
+    public class LootRate
+    {
+        public ItemsSO ItemType;
+        public int Amount;
+        public int ChanceRate = 10;
+    }
+
     private void Start()
     {
+        // Update cursor color for resource elements.
         ChangeCursorColor("#FF9600");
+        // Check with the resource info the empty state sprite.
         if (ResourceInfo != null && ResourceInfo.R_EmptySprite != null)
             LootFinishedSprite = ResourceInfo.R_EmptySprite;
     }
     public override void Interact(CharacterInfo character = null)
     {
         base.Interact(character);
-        if (LP > 0)
+        // Check if the lp is more than 0 to display the ui elemnts of looting.
+        if (LootPoints > 0)
         {
-            if (OnResourceElementInteracted != null)
-                OnResourceElementInteracted.RaiseEvent(this);
+            if (ResourceElementInteracted != null)
+                ResourceElementInteracted.RaiseEvent(this);
         }
     }
     public override void UpdateElement(ExpeditionData.ParentData data)
     {
-        //Check if the instance is of the same type
+        // Check if the instance is of the same type.
         if (data is ExpeditionData.ResourceData)
         {
             base.UpdateElement(data);
-            LP = ((ExpeditionData.ResourceData)data).LP;
-            CheckLP(false);
+            LootPoints = ((ExpeditionData.ResourceData)data).LP;
+            CheckLootPoints(false); //Check the llootpoints 
         }
         else
         {
-            Console.WriteLine("cannot update from a different type element.");
+            Debug.LogWarning("Can not be updated from another type of element.");
         }
     }
-    private void CheckLP(bool duringLoot)
+    // Hit the resource and returns the loot obtained.
+    public (ItemSlot, ItemSlot, int) HitResource(int hitPoints, Inventory targetInventory, Transform targetTransform)
     {
-        if (LP <= 0)
+        if (LootPoints == 0) { return (null, null, 0); };
+        // TODO: Play hit animation
+        // Check if this resource is part from a biger one
+        if (ResourcePack.Count > 0)
         {
-            //Finish resource loot
-            LootFinished = true;
-            BlockMovement = false;
+            foreach (var resource in ResourcePack)
+            {
+                resource.ChangeLP(hitPoints);
+            }
+        }
+        else
+        {
+            ChangeLP(hitPoints);
+        }
+        ItemSlot newLoot = GetLoot(hitPoints);
+        // Loot that is remaining because of space lack in inventory.
+        ItemSlot remainingLoot = new();
+        if (newLoot != null)
+        {
+            remainingLoot = AddLootToInventory(targetInventory, newLoot);
+        }
+        // Remaining loot add to droped container.
+        if (remainingLoot != null && remainingLoot.Amount > 0)
+        {
+            SpawnDropItemsContainer(targetTransform.position, remainingLoot);
+        }
+        ShowLootText(newLoot);
+        CheckLootPoints(true);
+        return (newLoot, remainingLoot, hitPoints);
+    }
+    // Change the lp of the resource.
+    public void ChangeLP(int hitPoints)
+    {
+        if (LootPoints - hitPoints < 0)
+        {
+            hitPoints = LootPoints;
+        }
+        LootPoints -= hitPoints;
+    }
+    // Check the loop points to set the empty sprite 
+    private void CheckLootPoints(bool duringLoot)
+    {
+        // If loot points is 0, disable resource 
+        if (LootPoints <= 0)
+        {
+            IsBlockingMovement = false;
             if (LootFinishedSprite != null)
             {
-                GetComponent<SpriteRenderer>().sprite = LootFinishedSprite;
+                ResourceMainRenderer.sprite = LootFinishedSprite;
             }
             else
             {
                 gameObject.SetActive(false);
             }
+            // Disable ui if player was looting the resource
             if (duringLoot)
             {
-                if (OnResourceElementInteracted != null)
-                    OnResourceElementInteracted.RaiseEvent(this);
+                if (ResourceElementInteracted != null)
+                    ResourceElementInteracted.RaiseEvent(this);
             }
             this.enabled = false;
         }
     }
-    public (ItemSlot, ItemSlot, int) HitResource(int hitPoints, Inventory targetInventory, Transform targetTransform)
-    {
-        if (LootFinished) return (null, null, 0);
-        //Play hit animation
-        if (LP - hitPoints < 0)
-        {
-            hitPoints = LP;
-        }
-        LP -= hitPoints;
-        ItemSlot newLoot = GetLoot(hitPoints);
-        //Loot that is remaining because of space lack in inventory
-        ItemSlot remainingLoot = new();
-        if (newLoot != null)
-            remainingLoot = AddLootToInventory(targetInventory, newLoot);
-
-        //Remaining loot add to droped container
-        if (remainingLoot != null && remainingLoot.Amount > 0)
-        {
-            SpawnDropItemsContainer(targetTransform.position, remainingLoot);
-        }
-
-        CheckLP(true);
-        ShowLootText(newLoot);
-        return (newLoot, remainingLoot, hitPoints);
-    }
+    // Returns the loot by chance of the loots posible list.
     private ItemSlot GetLoot(int lp)
     {
         int maxNumber = 0;
@@ -113,7 +135,6 @@ public class ResourceElement : InteractiveElement
         {
             if (lootNumber < Loot[i].ChanceRate)
             {
-                //lp = loot point done
                 return new ItemSlot(Loot[i].ItemType, Loot[i].Amount * lp);
             }
             else
@@ -124,6 +145,7 @@ public class ResourceElement : InteractiveElement
         }
         return null;
     }
+    // Adds the loot obtained in the inventory target.
     private ItemSlot AddLootToInventory(Inventory inventoryTarget, ItemSlot item)
     {
         if (inventoryTarget == null) return null;
@@ -148,39 +170,8 @@ public class ResourceElement : InteractiveElement
         return null;
     }
 
-    public void ShowLootText(ItemSlot loot)
-    {
-        if (LootText == null) return;
-        // Detener y eliminar la secuencia anterior si existe
-        if (secuencia != null)
-        {
-            secuencia.Kill();
-        }
-        //Set start values to text
-        LootText.transform.localPosition = Vector3.zero;
-        LootText.text = $"+ {loot.Amount} {loot.ItemInfo.i_Name}";
-        LootText.color = Color.white;
-        LootText.gameObject.SetActive(true);
-        // Crear una secuencia de tweens encadenados
-        secuencia = DOTween.Sequence();
-        // Agregar tweens para mover el texto y cambiar su color
-        secuencia.Append(LootText.rectTransform.DOLocalMoveY(AnimY, AnimDuration).SetEase(Ease.InOutQuad)); // Mover durante 2 segundos
-
-        secuencia.Join(LootText.DOColor(Color.clear, AnimDuration).SetEase(Ease.InOutQuint)); // Cambiar el color durante 2 segundos
-
-        // Agregar una función OnComplete para desactivar el GameObject cuando la secuencia termine
-        secuencia.OnComplete(() =>
-        {
-            // Desactivar el GameObject del texto
-            LootText.gameObject.SetActive(false);
-        });
-
-        // Reproducir la secuencia
-        secuencia.Play();
-    }
     private RaycastHit2D? DetectOverlayTile(Vector3 checkPosition)
     {
-
         RaycastHit2D[] hits = Physics2D.RaycastAll(checkPosition, Vector2.zero);
 
         if (hits.Length > 0)
@@ -189,7 +180,7 @@ public class ResourceElement : InteractiveElement
         }
         return null;
     }
-    public void SpawnDropItemsContainer(Vector3 targetPos, ItemSlot dropedSlot)
+    private void SpawnDropItemsContainer(Vector3 targetPos, ItemSlot dropedSlot)
     {
         var overlayDetected = DetectOverlayTile(targetPos);
         if (overlayDetected.HasValue)
@@ -209,12 +200,8 @@ public class ResourceElement : InteractiveElement
             dropedContainer.AddNewItem(dropedSlot);
         }
     }
-
-    [System.Serializable]
-    public class LootRate
+    private void ShowLootText(ItemSlot loot)
     {
-        public ItemsSO ItemType;
-        public int Amount;
-        public int ChanceRate = 10;
+        Notify(transform.position, $"+ {loot.Amount} {loot.ItemInfo.i_Name}");
     }
 }

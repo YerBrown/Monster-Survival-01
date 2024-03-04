@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class CreatureElement : InteractiveElement
 {
-    public Creature[] CreaturesTeam = new Creature[5];
+    public CreaturesTeam FullTeam;
     public SpriteRenderer[] SpriteRenderers = new SpriteRenderer[3];
     private (Vector3, Vector3, Vector3)[] RenderPositions = {
         (new Vector3(0, -0.01f, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)),
@@ -28,14 +28,14 @@ public class CreatureElement : InteractiveElement
         int CreaturesInWorld = 0;
         for (int i = 0; i < SpriteRenderers.Length; i++)
         {
-            if (CreaturesTeam[i].CreatureInfo != null && SpriteRenderers[i] != null)
+            if (FullTeam.Team[i].CreatureInfo != null && SpriteRenderers[i] != null)
             {
                 CreaturesInWorld++;
 
-                SpriteRenderers[i].sprite = CreaturesTeam[i].CreatureInfo.c_Sprite;
-                if (CreaturesTeam[i].CreatureInfo.c_Animator != null)
+                SpriteRenderers[i].sprite = FullTeam.Team[i].CreatureInfo.c_Sprite;
+                if (FullTeam.Team[i].CreatureInfo.c_Animator != null)
                 {
-                    SpriteRenderers[i].GetComponent<Animator>().runtimeAnimatorController = CreaturesTeam[i].CreatureInfo.c_Animator;
+                    SpriteRenderers[i].GetComponent<Animator>().runtimeAnimatorController = FullTeam.Team[i].CreatureInfo.c_Animator;
                     SpriteRenderers[i].GetComponent<Animator>().enabled = true;
                 }
                 else

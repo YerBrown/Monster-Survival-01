@@ -15,12 +15,7 @@ public class CreatureSO : ScriptableObject
     public List<Skills> c_Skills = new();
 }
 [Serializable]
-public class Creature
+public class CreatureFighter : Fighter
 {
     public CreatureSO CreatureInfo;
-    public string C_Nickname;
-    public int C_HP;
-    public int C_Damage;
-    
-
 }

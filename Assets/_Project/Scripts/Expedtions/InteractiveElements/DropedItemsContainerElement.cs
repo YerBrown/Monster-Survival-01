@@ -6,9 +6,8 @@ public class DropedItemsContainerElement : ContainerElement
 {
     public VoidEventChannelSO OnClosePopup;
 
-    public override void OnEnable()
+    public void OnEnable()
     {
-        base.OnEnable();
         OnClosePopup.OnEventRaised += CheckInventoryItems;
     }
     public override void OnDisable()

@@ -100,8 +100,9 @@ MonoBehaviour:
   ID: 
   Interactive_Element_ID: '#MEAT'
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 0
+  IsBlockingMovement: 0
   CursorColor: {r: 0.11764706, g: 1, b: 0, a: 1}
+  NotificateEvent: {fileID: 11400000, guid: 6ca9474b20f4c454bbc0f5ad7d90454d, type: 2}
   Item:
     _ItemInfo: {fileID: 11400000, guid: 1b265bffbb770e64c8e864aba08db2e5, type: 2}
     _Amount: 1

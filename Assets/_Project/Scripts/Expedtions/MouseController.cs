@@ -64,7 +64,7 @@ public class MouseController : MonoBehaviour
                         path = newPath;
                         if (overlayTile.I_Element != null)
                         {
-                            if (overlayTile.I_Element.BlockMovement)
+                            if (overlayTile.I_Element.IsBlockingMovement)
                             {
                                 path.RemoveAt(path.Count - 1);
                             }

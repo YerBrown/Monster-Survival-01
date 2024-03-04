@@ -8,7 +8,8 @@ using static UnityEditor.Rendering.FilterWindow;
 [Serializable]
 public class ExpeditionData
 {
-    public List<FieldData> Fields = new List<FieldData>();
+    public List<FieldData> Fields = new List<FieldData>(); //All fields in expedition
+    //Return the field data by the coordinates in the map
     public FieldData GetField(Vector2Int coordinates)
     {
         foreach (var field in Fields)
@@ -18,43 +19,57 @@ public class ExpeditionData
                 return field;
             }
         }
+        //If the coordinates aren't in the current data, we have to add a new field with the coordinates
         FieldData newFieldData = new FieldData(coordinates);
         Fields.Add(newFieldData);
         return newFieldData;
     }
+    
     [Serializable]
     public class FieldData
     {
-        public Vector2Int Coordinates;
-        public List<BlockerData> Blockers = new List<BlockerData>();
-        public List<ContainerData> Containers = new List<ContainerData>();
-        //public List<ResourceData> Creatures = new List<ResourceData>();
-        public List<ItemData> Items = new List<ItemData>();
-        public List<ResourceData> Resources = new List<ResourceData>();
-        public List<SwitcherData> Switchers = new List<SwitcherData>();
+        public Vector2Int Coordinates;                                      //Cordinates of the field in the expedition
+        public List<BlockerData> Blockers = new List<BlockerData>();        //All blockers element in the field
+        public List<ContainerData> Containers = new List<ContainerData>();  //All containers element in the field
+        //public List<ResourceData> Creatures = new List<ResourceData>();   //All creatures element in the field
+        public List<ItemData> Items = new List<ItemData>();                 //All items element in the field
+        public List<ResourceData> Resources = new List<ResourceData>();     //All resources element in the field
+        public List<SwitcherData> Switchers = new List<SwitcherData>();     //All switchers element in the field
         public FieldData(Vector2Int coordinates)
         {
             Coordinates = coordinates;
         }
-
+        public void ClearData()
+        {
+            Blockers.Clear(); 
+            Containers.Clear(); 
+            Items.Clear(); 
+            Resources.Clear(); 
+            Switchers.Clear();
+        }
+        //Updates an interactive elements 
         public void UpdateData(InteractiveElement updatedElement)
         {
             switch (updatedElement)
             {
                 case BlockerElement blocker_e:
-                    BlockerData newBlocker = new BlockerData(blocker_e.ID, blocker_e.Interactive_Element_ID, (Vector3)blocker_e.transform.position, blocker_e.BlockMovement);
+                    //Create new data
+                    BlockerData newBlocker = new BlockerData(blocker_e.ID, blocker_e.Interactive_Element_ID, (Vector3)blocker_e.transform.position, blocker_e.IsBlockingMovement);
+                    //Check if already have a data for that element
                     for (int i = 0; i < Blockers.Count; i++)
                     {
                         if (blocker_e.ID == Blockers[i].ID)
                         {
+                            //Replace with new data
                             Blockers[i] = newBlocker;
                             return;
                         }
                     }
+                    //If is a new element add a new element
                     Blockers.Add(newBlocker);
                     break;
                 case ContainerElement container_e:
-                    ContainerData newContainer = new ContainerData(container_e.ID, container_e.Interactive_Element_ID, container_e.transform.position, container_e.ContainerInventory, container_e.Opened);
+                    ContainerData newContainer = new ContainerData(container_e.ID, container_e.Interactive_Element_ID, container_e.transform.position, container_e.ContainerInventory, container_e.IsOpened);
                     for (int i = 0; i < Containers.Count; i++)
                     {
                         if (container_e.ID == Containers[i].ID)
@@ -80,7 +95,7 @@ public class ExpeditionData
                     Items.Add(newItem);
                     break;
                 case ResourceElement resource_e:
-                    ResourceData newResource = new ResourceData(resource_e.ID, resource_e.Interactive_Element_ID, resource_e.transform.position, resource_e.LP);
+                    ResourceData newResource = new ResourceData(resource_e.ID, resource_e.Interactive_Element_ID, resource_e.transform.position, resource_e.LootPoints);
                     for (int i = 0; i < Resources.Count; i++)
                     {
                         if (resource_e.ID == Resources[i].ID)
@@ -108,6 +123,7 @@ public class ExpeditionData
             }
         }
     }
+    //Main data for all elemnts in field
     [Serializable]
     public class ParentData
     {

@@ -25,6 +25,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7736753840755649174, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
+      propertyPath: ResourceMainRenderer
+      value: 
+      objectReference: {fileID: 6832509298933350469}
+    - target: {fileID: 7736753840755649174, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
       propertyPath: Interactive_Element_ID
       value: '#BUSH'
       objectReference: {fileID: 0}
@@ -93,3 +97,8 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
+--- !u!212 &6832509298933350469 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4647038601484392794, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
+  m_PrefabInstance: {fileID: 2210260253591247135}
+  m_PrefabAsset: {fileID: 0}

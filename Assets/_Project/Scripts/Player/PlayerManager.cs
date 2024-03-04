@@ -7,9 +7,10 @@ public class PlayerManager : MonoBehaviour
     private static PlayerManager _instance;
     public static PlayerManager Instance { get { return _instance; } }
 
-    public string P_Name;
+    public string Nickname;
+    public HumanFighter P_Fighter;
     public Inventory P_Inventory;
-    public Creature[] P_Team = new Creature[5];
+    public CreaturesTeam Team;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -22,4 +23,8 @@ public class PlayerManager : MonoBehaviour
             DontDestroyOnLoad(gameObject);
         }
     }
+}
+public class HumanFighter : Fighter
+{
+
 }

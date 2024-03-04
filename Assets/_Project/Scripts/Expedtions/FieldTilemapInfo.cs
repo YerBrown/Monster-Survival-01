@@ -6,7 +6,10 @@ using UnityEngine.Tilemaps;
 
 public class FieldTilemapInfo : MonoBehaviour
 {
-    public Transform StartPoint_L, StartPoint_R, StartPoint_U, StartPoint_D;
+    public TravelNextZoneElement[] StartPoints_L = new TravelNextZoneElement[2];
+    public TravelNextZoneElement[] StartPoints_R = new TravelNextZoneElement[2];
+    public TravelNextZoneElement[] StartPoints_U = new TravelNextZoneElement[2];
+    public TravelNextZoneElement[] StartPoints_D = new TravelNextZoneElement[2];
     public Transform EnvironmentParent;
 
     public List<InteractiveElement> InitialInteractiveElements = new List<InteractiveElement>();
@@ -16,7 +19,10 @@ public class FieldTilemapInfo : MonoBehaviour
     {
         foreach (InteractiveElement element in InitialInteractiveElements)
         {
-            element.ID = SetID(element);
+            if (string.IsNullOrEmpty(element.ID))
+            {
+                element.ID = SetID(element);
+            }
         }
     }
 
@@ -49,7 +55,15 @@ public class FieldTilemapInfo : MonoBehaviour
         {
             if (initElement is T && !string.IsNullOrEmpty(initElement.ID))
             {
-                amount++;
+                string[] partes = initElement.ID.Split("_");
+                string numeroString = partes[1];
+                if (int.TryParse(numeroString, out int numero))
+                {
+                    if (numero >= amount)
+                    {
+                        amount = numero + 1;
+                    }
+                }
             }
         }
         return amount;
@@ -59,7 +73,7 @@ public class FieldTilemapInfo : MonoBehaviour
     {
         foreach (var element in InitialInteractiveElements)
         {
-            element.InitializeElement();
+            element.AddOverlayTileUnderRef();
         }
     }
     public void AddInteractiveElements()

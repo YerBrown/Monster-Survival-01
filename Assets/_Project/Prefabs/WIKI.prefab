@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2260182616762538399}
   - component: {fileID: 2666214061848250386}
   - component: {fileID: 5940794763523433132}
+  - component: {fileID: 1661177667737033235}
   m_Layer: 0
   m_Name: WIKI
   m_TagString: Untagged
@@ -85,3 +86,20 @@ MonoBehaviour:
   - {fileID: 8636917157321565943, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
   Switchers:
   - {fileID: 2767663642868264179, guid: ede25882f209c7c44b10e69945fe85c3, type: 3}
+--- !u!114 &1661177667737033235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620891282300136510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 317c17f96c4a4d54f93ce43adb35b4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllFighters:
+  - ID: MAKUHITA
+    Prefab: {fileID: 2148422875654226134, guid: e4d67a30f17afaa499cb5c29fa3cc749, type: 3}
+  - ID: BIDOOF
+    Prefab: {fileID: 3537566619977670546, guid: 370b83cc2c9797343843b72433057dbf, type: 3}

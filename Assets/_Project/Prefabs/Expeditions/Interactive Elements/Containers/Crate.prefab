@@ -100,8 +100,9 @@ MonoBehaviour:
   ID: 
   Interactive_Element_ID: '#CRATE'
   OverlayTileUnder: {fileID: 0}
-  BlockMovement: 1
+  IsBlockingMovement: 1
   CursorColor: {r: 0, g: 0.6264715, b: 1, a: 1}
+  NotificateEvent: {fileID: 11400000, guid: 6ca9474b20f4c454bbc0f5ad7d90454d, type: 2}
   ContainerInventory:
     Inv_Name: Crate
     Slots:
@@ -112,6 +113,7 @@ MonoBehaviour:
     OnlyRemoveItems: 0
     OnItemAdded: {fileID: 0}
     OnItemRemoved: {fileID: 0}
+  IsOpened: 0
   Renderer: {fileID: 7276381585884581062}
-  FullContainer: {fileID: 21300000, guid: b8e0b4707e3ccda48982ac0f4f855b97, type: 3}
-  EmptyContainer: {fileID: 21300000, guid: 6caaded0384cccf448e8d6f71d2c138a, type: 3}
+  FullSprite: {fileID: 21300000, guid: b8e0b4707e3ccda48982ac0f4f855b97, type: 3}
+  EmptySprite: {fileID: 21300000, guid: 6caaded0384cccf448e8d6f71d2c138a, type: 3}
