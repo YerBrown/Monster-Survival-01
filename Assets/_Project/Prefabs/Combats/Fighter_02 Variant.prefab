@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Center.y
       value: 0.45
       objectReference: {fileID: 0}
+    - target: {fileID: 1731333685300597163, guid: e4d67a30f17afaa499cb5c29fa3cc749, type: 3}
+      propertyPath: AvatarSprite
+      value: 
+      objectReference: {fileID: 727465193, guid: 81146138fe8ed495d9a3710f235f5d53, type: 3}
     - target: {fileID: 2148422875654226134, guid: e4d67a30f17afaa499cb5c29fa3cc749, type: 3}
       propertyPath: m_Name
       value: Fighter_02 Variant

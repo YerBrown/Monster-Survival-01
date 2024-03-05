@@ -179,7 +179,7 @@
                         "y": -1.0,
                         "z": 1.0
                     },
-                    "LP": 6
+                    "LP": 9
                 },
                 {
                     "ID": "#RESOURCE_02",
@@ -189,7 +189,7 @@
                         "y": 1.5,
                         "z": 1.0
                     },
-                    "LP": 0
+                    "LP": 10
                 },
                 {
                     "ID": "#RESOURCE_03",
@@ -243,108 +243,6 @@
             "Containers": [],
             "Items": [],
             "Resources": [],
-            "Switchers": []
-        },
-        {
-            "Coordinates": {
-                "x": 1,
-                "y": 1
-            },
-            "Blockers": [],
-            "Containers": [],
-            "Items": [],
-            "Resources": [],
-            "Switchers": []
-        },
-        {
-            "Coordinates": {
-                "x": 0,
-                "y": 0
-            },
-            "Blockers": [],
-            "Containers": [
-                {
-                    "ID": "#CONTAINER_00",
-                    "Element_ID": "#CRATE",
-                    "Pos": {
-                        "x": -2.0,
-                        "y": 0.625,
-                        "z": 3.0
-                    },
-                    "Inv_Name": "Crate",
-                    "MaxSlots": 5,
-                    "FlexibleSlots": false,
-                    "OnlyRemoveItems": false,
-                    "AllItems": [],
-                    "Opened": true
-                }
-            ],
-            "Items": [
-                {
-                    "ID": "#ITEM_00",
-                    "Element_ID": "#MUSHROOMS",
-                    "Pos": {
-                        "x": 0.125,
-                        "y": 2.3125,
-                        "z": 0.0
-                    },
-                    "ItemID": "Mushroom",
-                    "Amount": 3
-                },
-                {
-                    "ID": "#ITEM_01",
-                    "Element_ID": "#MUSHROOMS",
-                    "Pos": {
-                        "x": -1.875,
-                        "y": -1.6875,
-                        "z": 0.0
-                    },
-                    "ItemID": "Mushroom",
-                    "Amount": 3
-                }
-            ],
-            "Resources": [
-                {
-                    "ID": "#RESOURCE_00",
-                    "Element_ID": "#BUSH",
-                    "Pos": {
-                        "x": 3.5,
-                        "y": -0.5,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_01",
-                    "Element_ID": "#BUSH",
-                    "Pos": {
-                        "x": -2.5,
-                        "y": 1.5,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_02",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": 5.5,
-                        "y": 0.5,
-                        "z": 3.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_03",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": 1.0,
-                        "y": -1.25,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                }
-            ],
             "Switchers": []
         }
     ]
