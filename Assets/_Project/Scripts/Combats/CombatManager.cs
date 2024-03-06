@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,12 +17,14 @@ public class CombatManager : MonoBehaviour
     [SerializeField] private List<Fighter> _CurrentTurnOrder = new();
     [SerializeField] private List<Fighter> _NextTurnOrder = new();
     public int CurrentTurn = 1;
-    public Fighter CurrentFighterTurn;
+    public Fighter CurrentTurnFighter;
     public Fighter TargetActionFighter;
 
     public Transform CurrentFighterPointer;
     public Transform NextFighterPointer;
     public float PointerYOffset = 1f;
+    public Action OnFinishedSelectAction;
+    public CombatState CurrentCombatState = CombatState.WAITING_ACTION;
 
     public UICombatManager UIManager;
     public VoidEventChannelSO FinishCurrentFighterAction;
@@ -30,6 +34,14 @@ public class CombatManager : MonoBehaviour
         public FighterData[] Fighters = new FighterData[6];
         public Fighter[] FightersInField = new Fighter[3];
         public Transform[] FightersPos = new Transform[3];
+    }
+
+    public enum CombatState
+    {
+        WAITING_ACTION,
+        SELECTING_TARGET,
+        DURING_ACTION,
+        ACTION_FINISHED
     }
     private void Awake()
     {
@@ -47,7 +59,6 @@ public class CombatManager : MonoBehaviour
         SpawnFighters();
         _CurrentTurnOrder = CalculateTurnOrder();
         _NextTurnOrder = CalculateTurnOrder();
-        SelectNextFighter();
         if (UIManager != null)
         {
             for (int i = 0; i < PlayerTeam.FightersInField.Length; i++)
@@ -55,6 +66,7 @@ public class CombatManager : MonoBehaviour
                 UIManager.AsignFighter(PlayerTeam.FightersInField[i], i);
             }
         }
+        SelectNextFighter();
     }
     public void SpawnFighters()
     {
@@ -63,9 +75,41 @@ public class CombatManager : MonoBehaviour
     }
     public void FisicalAttack()
     {
-        int calculatedDamage = CurrentFighterTurn.Stats.HitPower - TargetActionFighter.Stats.Defense / 2;
-        TargetActionFighter.ReceiveDamage(calculatedDamage);
-        FinishFighterMove();
+        if (CurrentTurnFighter != null && TargetActionFighter != null)
+        {
+            int calculatedDamage = TargetActionFighter.ReceiveDamage(CurrentTurnFighter.Stats.HitPower);
+            Invoke(nameof(FinishFighterMove), 2f);
+            Debug.Log($"{CurrentTurnFighter.Nickname} attacked fisicaly to {TargetActionFighter.Nickname} dealing {calculatedDamage} hp");
+        }
+    }
+    public void RangeAttack()
+    {
+        if (CurrentTurnFighter != null && TargetActionFighter != null)
+        {
+            int calculatedDamage = TargetActionFighter.ReceiveDamage(CurrentTurnFighter.Stats.RangePower);
+            Invoke(nameof(FinishFighterMove), 2f);
+            Debug.Log($"{CurrentTurnFighter.Nickname} attacked in raange to {TargetActionFighter.Nickname} dealing {calculatedDamage} hp");
+        }
+    }
+    public void SetDefenseMode()
+    {
+        if (CurrentTurnFighter != null && TargetActionFighter != null)
+        {
+            TargetActionFighter.SetDefenseMode();
+            Invoke(nameof(FinishFighterMove), 2f);
+            Debug.Log($"{TargetActionFighter.Nickname} set to defense mode");
+        }
+    }
+    public void SetSelectedAction(Action newAction)
+    {
+        OnFinishedSelectAction = newAction;
+    }
+    public void SelectTargetFighter(Fighter fighter)
+    {
+        TargetActionFighter = fighter;
+
+        OnFinishedSelectAction.Invoke();
+        UIManager.EnableAction(false);
     }
     public void ChangeFighter(Fighter fighterChanged, FighterData newFighterData, CombatTeam team)
     {
@@ -78,7 +122,7 @@ public class CombatManager : MonoBehaviour
                 SpawnFighterInTeam(i, newFighterData, team);
                 // Calculate the order for the nex turn
                 _NextTurnOrder = CalculateTurnOrder();
-                FinishFighterMove();
+                Invoke(nameof(FinishFighterMove), 2f);
             }
         }
     }
@@ -153,7 +197,27 @@ public class CombatManager : MonoBehaviour
                 allFighterInField.Add(fighterInField);
             }
         }
-        List<Fighter> fightersOrderBySpeed = allFighterInField.OrderByDescending(fighter => fighter.Stats.Speed).ToList();
+        List<Fighter> fightersOrderBySpeed = new();
+        var groupedBySpeed = allFighterInField.GroupBy(fighter => fighter.Stats.Speed);
+        groupedBySpeed = groupedBySpeed.OrderByDescending(fighter => fighter.Key);
+        foreach (var groupSpeed in groupedBySpeed)
+        {
+            if (groupSpeed.Count() > 1)
+            {
+                // If there are more than one fighter with the same speed, calculate the initiative of each fighter and reorder the group
+                var fightersWithRandomNumbers = groupSpeed.Select(fighter => new
+                {
+                    Fighter = fighter,
+                    Initiative = fighter.Stats.Speed + new System.Random().NextDouble() // Generate the intuitive number randomly 
+                });
+                fightersOrderBySpeed.AddRange(fightersWithRandomNumbers.OrderBy(f => f.Initiative).Select(f => f.Fighter));
+
+            }
+            else
+            {
+                fightersOrderBySpeed.Add(groupSpeed.First());
+            }
+        }
         return fightersOrderBySpeed;
     }
     public void FinishFighterMove()
@@ -172,21 +236,118 @@ public class CombatManager : MonoBehaviour
     {
         CurrentTurn++;
         _CurrentTurnOrder = new List<Fighter>(_NextTurnOrder);
+        _NextTurnOrder = CalculateTurnOrder();
         SelectNextFighter();
     }
-
+    public void UpdateFighterData(Fighter fighter)
+    {
+        FighterData fighterToUpdate = GetFighterDataByFighter(fighter);
+        fighterToUpdate.HealthPoints = fighter.HealthPoints;
+        fighterToUpdate.EnergyPoints = fighter.EnergyPoints;
+    }
+    private FighterData GetFighterDataByFighter(Fighter fighter)
+    {
+        if (IsPlayerTeamFighter(fighter))
+        {
+            foreach (var fighterData in PlayerTeam.Fighters)
+            {
+                if (fighterData.ID == fighter.ID)
+                {
+                    return fighterData;
+                }
+            }
+            return null;
+        }
+        else
+        {
+            foreach (var fighterData in EnemyTeam.Fighters)
+            {
+                if (fighterData.ID == fighter.ID)
+                {
+                    return fighterData;
+                }
+            }
+            return null;
+        }
+    }
     private void SelectNextFighter()
     {
-        CurrentFighterTurn = _CurrentTurnOrder.First();
+        CurrentTurnFighter = _CurrentTurnOrder.First();
         if (CurrentFighterPointer != null)
         {
-            CurrentFighterPointer.transform.position = Camera.main.WorldToScreenPoint(CurrentFighterTurn.transform.position + Vector3.up * PointerYOffset);
+            CurrentFighterPointer.transform.position = Camera.main.WorldToScreenPoint(CurrentTurnFighter.transform.position + Vector3.up * PointerYOffset);
         }
         if (NextFighterPointer != null)
         {
             NextFighterPointer.transform.position = Camera.main.WorldToScreenPoint(GetCurrentAndNextTurn()[1].transform.position + Vector3.up * PointerYOffset);
         }
         FinishCurrentFighterAction.RaiseEvent();
+        UIManager.HiglightFighter(CurrentTurnFighter);
+        if (IsPlayerTeamFighter(CurrentTurnFighter))
+        {
+            UIManager.EnableAction(true);
+        }
+        else
+        {
+            SetNextEnemyAction();
+        }
+    }
+    public void OnFighterDied(Fighter diedFighter)
+    {
+        if (diedFighter == null) { return; }
+        CombatTeam fighterTeam = GetCombatTeamOfFighter(diedFighter);
+        if (fighterTeam == PlayerTeam)
+        {
+            if (IsTeamWithMoreFightersAliveThanInTheField(PlayerTeam))
+            {
+                // TODO: Open change menu in case of more fighters alive
+
+            }
+            else
+            {
+                if (PlayerTeam.FightersInField.Count(fighter => fighter != null) > 1)
+                {
+
+                }
+                else
+                {
+                    // TODO: Player Losed all fighters
+                }
+            }
+        }
+        else
+        {
+            if (IsTeamWithMoreFightersAliveThanInTheField(EnemyTeam))
+            {
+                // TODO: Change fighter with another one alive
+            }
+            else
+            {
+                if (EnemyTeam.FightersInField.Count(fighter => fighter != null) > 1)
+                {
+
+                }
+                else
+                {
+                    // TODO: Enemy Losed all fighters
+                }
+            }
+        }
+    }
+    private bool IsTeamWithMoreFightersAliveThanInTheField(CombatTeam team)
+    {
+        foreach (var fighterData in team.Fighters)
+        {
+            if (fighterData.HealthPoints > 0)
+            {
+                bool currentlyInField = team.FightersInField.Any(fighter => fighter.ID == fighterData.ID);
+                if (!currentlyInField)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
     public List<Fighter> GetCurrentAndNextTurn()
     {
@@ -211,5 +372,54 @@ public class CombatManager : MonoBehaviour
         int playerTeamFighter = PlayerTeam.FightersInField.Count(fighter => fighter != null); ;
         int enemyTeamFighter = EnemyTeam.FightersInField.Count(fighter => fighter != null); ;
         return playerTeamFighter + enemyTeamFighter;
+    }
+    private CombatTeam GetCombatTeamOfFighter(Fighter fighter)
+    {
+        if (IsPlayerTeamFighter(fighter))
+        {
+            return PlayerTeam;
+        }
+        else
+        {
+            return EnemyTeam;
+        }
+    }
+    public int GetFighterInFieldNum(Fighter fighter)
+    {
+        CombatTeam team = GetCombatTeamOfFighter(fighter);
+        for (int i = 0; i < team.FightersInField.Length; i++)
+        {
+            if (fighter == team.FightersInField[i])
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
+    public Fighter GetRandonFighterOfTeam(CombatTeam team)
+    {
+        List<Fighter> activeFighters = team.FightersInField.Where(fighter => fighter != null).ToList();
+        return activeFighters[UnityEngine.Random.Range(0, activeFighters.Count)];
+    }
+    private void SetNextEnemyAction()
+    {
+        int randomAction = UnityEngine.Random.Range(0, 3);
+        switch (randomAction)
+        {
+            case 0:
+                SetSelectedAction(FisicalAttack);
+                SelectTargetFighter(GetRandonFighterOfTeam(PlayerTeam));
+                break;
+            case 1:
+                SetSelectedAction(RangeAttack);
+                SelectTargetFighter(GetRandonFighterOfTeam(PlayerTeam));
+                break;
+            case 2:
+                SetSelectedAction(SetDefenseMode);
+                SelectTargetFighter(CurrentTurnFighter);
+                break;
+            default:
+                break;
+        }
     }
 }

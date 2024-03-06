@@ -8,10 +8,13 @@ using UnityEngine.UI;
 public class UICombatManager : MonoBehaviour
 {
     public List<PlayerFighterPanel> PlayerFighters = new();
+    public UIActionsController ActionsController;
     [Serializable]
     public class PlayerFighterPanel
     {
         public Fighter FighterAsigned;
+        public TMP_Text NicknameText;
+        public GameObject SelectedFrame;
         public Image FighterIcon;
         public Slider HealthPointsSlider;
         public TMP_Text HealthPointsText;
@@ -36,6 +39,7 @@ public class UICombatManager : MonoBehaviour
         {
             if (fighterPanel.FighterAsigned == updateFighter)
             {
+                fighterPanel.NicknameText.text = updateFighter.Nickname;
                 fighterPanel.FighterIcon.sprite = updateFighter.AvatarSprite;
                 fighterPanel.FighterIcon.enabled = true;
                 fighterPanel.HealthPointsSlider.value = (float)updateFighter.HealthPoints / updateFighter.Stats.MaxHealtPoints;
@@ -49,11 +53,33 @@ public class UICombatManager : MonoBehaviour
     private void DisablePanel(int id)
     {
         PlayerFighters[id].FighterAsigned = null;
+        PlayerFighters[id].NicknameText.text = "";
         PlayerFighters[id].FighterIcon.sprite = null;
         PlayerFighters[id].FighterIcon.enabled = false;
         PlayerFighters[id].HealthPointsSlider.value = 0;
         PlayerFighters[id].HealthPointsText.text = $"??/??";
         PlayerFighters[id].EnergyPointsSlider.value = 0;
         PlayerFighters[id].EnergyPointsText.text = $"??/??";
+    }
+    public void HiglightFighter(Fighter currentFighter)
+    {
+        foreach (var panel in PlayerFighters)
+        {
+            if (panel.FighterAsigned == currentFighter)
+            {
+                panel.SelectedFrame.SetActive(true);
+            }
+            else
+            {
+                panel.SelectedFrame.SetActive(false);
+            }
+        }
+    }
+    public void EnableAction(bool enable)
+    {
+        if (ActionsController != null)
+        {
+            ActionsController.EnableAction(enable);
+        }
     }
 }

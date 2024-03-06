@@ -12,6 +12,8 @@ public class Fighter : MonoBehaviour
     public BasicStats Stats = new();
     public int HealthPoints;
     public int EnergyPoints;
+    public bool IsInDefenseMode = false;
+    public Animator Anim;
     public UIFighterController UIController;
     private void OnEnable()
     {
@@ -37,15 +39,50 @@ public class Fighter : MonoBehaviour
         UIController.UpdateGeneralUI();
     }
 
-    public void ReceiveDamage(int damagePoints)
+    public int ReceiveDamage(int damagePoints)
     {
+        if (IsInDefenseMode)
+        {
+            damagePoints -= Stats.Defense / 2;
+            IsInDefenseMode = false;
+            // TODO: disable defense mode animation
+            Anim.SetTrigger("Disable Shield");
+            UIController.EnableDefenseIcon(false);
+        }
+        if (damagePoints <= 0)
+        {
+            damagePoints = 1;
+        }
         HealthPoints -= damagePoints;
         UIController.UpdateGeneralUI();
+        CombatManager.Instance.UpdateFighterData(this);
+        CombatManager.Instance.UIManager.UpdatePlayerFighterPanel(this);
+        // TODO: Hit animation
+        Anim.SetTrigger("GetHit");
         if (HealthPoints == 0)
         {
-
+            // TODO: Die animation
+            CombatManager.Instance.OnFighterDied(this);
         }
+        return damagePoints;
+    }
 
+    public void SetDefenseMode()
+    {
+        IsInDefenseMode = true;
+        // TODO: Defense mode animation
+        Anim.SetTrigger("Enable Shield");
+        UIController.EnableDefenseIcon(true);
+    }
+    public void Heal(int healedPoints)
+    {
+        if (healedPoints + HealthPoints > Stats.MaxHealtPoints)
+        {
+            healedPoints = Stats.MaxHealtPoints - HealthPoints;
+        }
+        HealthPoints += healedPoints;
+        CombatManager.Instance.UpdateFighterData(this);
+        // TODO: Heal animation
     }
 }
 [Serializable]
