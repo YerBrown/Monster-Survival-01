@@ -72,13 +72,12 @@ MonoBehaviour:
   Containers:
   - {fileID: 4644142238241052996, guid: f49830efdf07a514babd418cd89fe878, type: 3}
   - {fileID: 2884450089180324004, guid: 2b6dcb0caa1a3864eab1897820802592, type: 3}
-  - {fileID: 6683094159290111077, guid: 2385382ed550324478503a733bb5ef9e, type: 3}
   - {fileID: 5584396599883920439, guid: f8409188b9d6f934aa26d409fc410c96, type: 3}
   Creatures:
   - {fileID: 7447078779647596427, guid: b080cc2977280dd4988700e019155916, type: 3}
   Items:
-  - {fileID: 2773190008860038262, guid: c22f5b4849c03114ab457d070e6d7b4f, type: 3}
-  - {fileID: 6073456032141489799, guid: 78d3626f0c1fb4d40a74788b5ef209ad, type: 3}
+  - {fileID: 3922847215806167809, guid: 4eec8b32740f88d48a1e25cb3391b71e, type: 3}
+  - {fileID: 1827791714403491424, guid: 285783d51a56e7c45b9cb07b3bed20b5, type: 3}
   Resources:
   - {fileID: 7597596320678313960, guid: 62f5dd95b2d2fe447ad11f23d2501353, type: 3}
   - {fileID: 6648828760700400434, guid: 086947b973fe6e54cbdfca25be3483b9, type: 3}
@@ -99,7 +98,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AllFighters:
-  - ID: MAKUHITA
-    Prefab: {fileID: 2148422875654226134, guid: e4d67a30f17afaa499cb5c29fa3cc749, type: 3}
-  - ID: BIDOOF
-    Prefab: {fileID: 3537566619977670546, guid: 370b83cc2c9797343843b72433057dbf, type: 3}
+  - {fileID: 11400000, guid: 9be8a1477dee54d1caa1710e53a8aa3b, type: 2}
+  - {fileID: 11400000, guid: 156a254ea8a6d49b38eb10bba9bd0063, type: 2}

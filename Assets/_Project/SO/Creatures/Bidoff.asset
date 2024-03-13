@@ -15,4 +15,6 @@ MonoBehaviour:
   c_Name: Bidoof
   c_Description: Un castor de mierda :(
   c_Sprite: {fileID: 727465193, guid: 81146138fe8ed495d9a3710f235f5d53, type: 3}
+  c_Animator: {fileID: 0}
   c_Skills: 00000000
+  CombatFighterPrefab: {fileID: 3537566619977670546, guid: 370b83cc2c9797343843b72433057dbf, type: 3}

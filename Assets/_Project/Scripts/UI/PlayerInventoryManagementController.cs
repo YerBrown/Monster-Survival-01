@@ -8,60 +8,74 @@ using UnityEngine.UI;
 public class PlayerInventoryManagementController : MonoBehaviour
 {
     public UIInventoryController UIPlayerInventory;
-    [SerializeField] private ItemsSO SelectedItemType;
+    [SerializeField] protected ItemsSO SelectedItemType;
 
     public GameObject UIParent;
     public RectTransform ItemPanel;
     [Header("Selected Item UI Window elements")]
+    public Image SelectedItemImage;
     public TMP_Text SelectedItemName;
     public TMP_Text SelectedItemDescription;
     public TMP_Text SelectedItemAmount;
-    public TMP_Text SelectedItemWeight;
-    public GameObject WeightIcon;
-    public TMP_Text TotalWeightText;
 
     public Button TrashButton;
     public Button CloseButton;
+    public Sprite DefaultItemSprite;
     [Header("Other")]
-    public VoidEventChannelSO OnOpenPLayerInventory;
+    public bool ResetOnSameType = false;
+    public VoidEventChannelSO OnOpenPlayerInventory;
     public UITrashController TrashController;
 
     private Sequence secuencia; // Referencia a la secuencia de Dotween
     private void OnEnable()
     {
-        OnOpenPLayerInventory.OnEventRaised += OpenPopup;
+        OnOpenPlayerInventory.OnEventRaised += OpenPopup;
         UIPlayerInventory.ItemSlotSelected.AddListener(SelectItemSlot);
 
-        TrashButton.onClick.AddListener(OpenTrashPopup);
+        if (TrashButton != null)
+        {
+            TrashButton.onClick.AddListener(OpenTrashPopup);
+        }
         CloseButton.onClick.AddListener(CloseMenu);
 
     }
     private void OnDisable()
     {
-        OnOpenPLayerInventory.OnEventRaised -= OpenPopup;
+        OnOpenPlayerInventory.OnEventRaised -= OpenPopup;
         UIPlayerInventory.ItemSlotSelected.RemoveListener(SelectItemSlot);
-
-        TrashButton.onClick.RemoveListener(OpenTrashPopup);
+        if (TrashButton != null)
+        {
+            TrashButton.onClick.RemoveListener(OpenTrashPopup);
+        }
         CloseButton.onClick.RemoveListener(CloseMenu);
     }
-    public void OpenPopup()
+    public virtual void OpenPopup()
     {
         if (PlayerManager.Instance != null) UIPlayerInventory.UI_Inventory = PlayerManager.Instance.P_Inventory;
         //reset selected item
-        ResetSelected();
-        SelectItemToTransfer();
-        CalculateTotalWeight();
         UIParent.gameObject.SetActive(true);
-        GeneralUIController.Instance.OpenMenu(true);
+        if (UIPlayerInventory.UI_Inventory.Slots.Count > 0)
+        {
+            SelectItemSlot(UIPlayerInventory, UIPlayerInventory.UI_Inventory.Slots[0].ItemInfo);
+        }
+        else
+        {
+            ResetSelected();
+            SelectItemToTransfer();
+        }
+        if (GeneralUIController.Instance != null)
+        {
+            GeneralUIController.Instance.OpenMenu(true);
+        }
     }
     //Select item and inventory 
-    private void SelectItemSlot(UIInventoryController uiInventory, ItemsSO itemType)
+    protected void SelectItemSlot(UIInventoryController uiInventory, ItemsSO itemType)
     {
-        if (itemType == SelectedItemType)
+        if (itemType == SelectedItemType && ResetOnSameType)
         {
             ResetSelected();
         }
-        else
+        else if (itemType != SelectedItemType)
         {
             SelectedItemType = itemType;
 
@@ -79,7 +93,7 @@ public class PlayerInventoryManagementController : MonoBehaviour
         CheckRemainingItemSlot();
     }
     //Update selected item UI
-    public void SelectItemToTransfer()
+    public virtual void SelectItemToTransfer()
     {
         int selectedItemAmount = 0;
         if (secuencia != null)
@@ -94,12 +108,14 @@ public class PlayerInventoryManagementController : MonoBehaviour
             secuencia.Append(ItemPanel.DOAnchorPosX(0, 1f, true).SetEase(Ease.InOutQuad)); // Mover durante 2 segundos           
 
             selectedItemAmount = UIPlayerInventory.UI_Inventory.GetAmountOfType(SelectedItemType);
+            if (SelectedItemImage != null)
+            {
+                SelectedItemImage.sprite = SelectedItemType.i_Sprite;
+            }
             SelectedItemName.text = SelectedItemType.i_Name;
             SelectedItemDescription.text = SelectedItemType.i_Description;
             SelectedItemAmount.text = $"x{selectedItemAmount}";
-            SelectedItemWeight.text = $"x {SelectedItemType.i_Weight}kg = {SelectedItemType.i_Weight * selectedItemAmount}kg";
             TrashButton.interactable = true;
-            WeightIcon.SetActive(true);
 
         }
         else
@@ -131,11 +147,6 @@ public class PlayerInventoryManagementController : MonoBehaviour
             ResetSelected();
         }
         SelectItemToTransfer();
-        CalculateTotalWeight();
-    }
-    private void CalculateTotalWeight()
-    {
-        TotalWeightText.text = $"{UIPlayerInventory.UI_Inventory.GetTotalWeight().ToString("00.00")} kg";
     }
     //Reset current inventory and item values
     private void ResetSelected()
@@ -144,7 +155,7 @@ public class PlayerInventoryManagementController : MonoBehaviour
 
         UIPlayerInventory.SetSelectedUI(null, false);
     }
-    public void CloseMenu()
+    public virtual void CloseMenu()
     {
         if (secuencia != null)
         {
@@ -152,7 +163,10 @@ public class PlayerInventoryManagementController : MonoBehaviour
         }
         ItemPanel.anchoredPosition = new Vector2(-250, ItemPanel.anchoredPosition.y);
         UIParent.gameObject.SetActive(false);
-        GeneralUIController.Instance.OpenMenu(false);
+        if (GeneralUIController.Instance != null)
+        {
+            GeneralUIController.Instance.OpenMenu(false);
+        }
     }
 }
 

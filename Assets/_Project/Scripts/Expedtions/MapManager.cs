@@ -222,7 +222,7 @@ public class MapManager : MonoBehaviour
     {
         DropedItemsContainerElement newBag = Instantiate(DropedItemContainerPrefab, CurrentField.EnvironmentParent).GetComponent<DropedItemsContainerElement>();
         newBag.transform.position = spawnPos;
-        newBag.AddOverlayTileUnderRef();
+        newBag.AddOverlayTileUnderLink();
         return newBag;
     }
     private void LoadAreaState()

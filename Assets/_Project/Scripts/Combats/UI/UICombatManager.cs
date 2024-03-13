@@ -9,6 +9,8 @@ public class UICombatManager : MonoBehaviour
 {
     public List<PlayerFighterPanel> PlayerFighters = new();
     public UIActionsController ActionsController;
+    public UIFighterChangeController ChangeFighterController;
+    public UIWinAnimationController WinAnimationController;
     [Serializable]
     public class PlayerFighterPanel
     {
@@ -81,5 +83,13 @@ public class UICombatManager : MonoBehaviour
         {
             ActionsController.EnableAction(enable);
         }
+    }
+    public void PlayPlayerWinAnim()
+    {
+        WinAnimationController.PlayPlayerWin();
+    }
+    public void PlayEnemyWinAnim()
+    {
+        WinAnimationController.PlayEnemyWin();
     }
 }

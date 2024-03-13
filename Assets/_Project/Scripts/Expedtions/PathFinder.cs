@@ -35,7 +35,7 @@ public class PathFinder
                 {
                     continue;
                 }
-                
+
                 neighbour.G = GetManhattenDistance(start, neighbour);
                 neighbour.H = GetManhattenDistance(end, neighbour);
 
@@ -71,7 +71,19 @@ public class PathFinder
 
     private List<OverlayTile> GetNeighbourTiles(OverlayTile currentOverlayTile)
     {
-        var map = MapManager.Instance.map;
+        var map = new Dictionary<Vector2Int, OverlayTile>();
+        if (MapManager.Instance != null)
+        {
+            map = MapManager.Instance.map;
+        }
+        else if (CombatManager.Instance != null)
+        {
+            map = CombatManager.Instance.Map;
+        }
+        else
+        {
+            return null;
+        }
 
         List<OverlayTile> neighbours = new List<OverlayTile>();
 

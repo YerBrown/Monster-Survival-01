@@ -8,13 +8,9 @@ public class FightersInfoWiki : MonoBehaviour
     private static FightersInfoWiki _instance;
     public static FightersInfoWiki Instance { get { return _instance; } }
 
-    public List<FighterInfo> AllFighters = new();
-    [Serializable]
-    public class FighterInfo
-    {
-        public string ID;
-        public GameObject Prefab;
-    }
+    public List<CreatureSO> AllFighters = new();
+    public Dictionary<string, CreatureSO> FightersDictionary = new();
+
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -25,17 +21,33 @@ public class FightersInfoWiki : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
-        }
-    }
-    public GameObject GetFighterPrefab(string id)
-    {
-        foreach (var fighter in AllFighters)
-        {
-            if (fighter.ID == id)
+
+            foreach (var fighter in AllFighters)
             {
-                return fighter.Prefab;
+                FightersDictionary.Add(fighter.c_Name, fighter);
             }
         }
-        return null;
+    }
+
+    public bool GetCreatureInfo(string id, out CreatureSO creature)
+    {
+        creature = null;
+        if (FightersDictionary.Count > 0)
+        {
+            creature = FightersDictionary[id];
+            return true;
+        }
+        else
+        {
+            foreach (var fighter in AllFighters)
+            {
+                if (fighter.c_Name == id)
+                {
+                    creature = fighter;
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 }

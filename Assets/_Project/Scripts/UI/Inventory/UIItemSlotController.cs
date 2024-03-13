@@ -28,6 +28,7 @@ public class UIItemSlotController : MonoBehaviour, IPointerClickHandler
     public Image ItemImage;
     public TMP_Text AmountText;
     public Image ItemBack;
+    public Image SelectedFrame;
     public void SelectItemSlot()
     {
         SelectSlotEvent?.Invoke(this);
@@ -44,11 +45,11 @@ public class UIItemSlotController : MonoBehaviour, IPointerClickHandler
     {
         if (enable)
         {
-            ItemBack.color = Color.white;
+            SelectedFrame.color = Color.white;
         }
         else
         {
-            ItemBack.color = Color.clear;
+            SelectedFrame.color = Color.clear;
         }
     }
 

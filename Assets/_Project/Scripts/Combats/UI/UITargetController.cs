@@ -31,14 +31,14 @@ public class UITargetController : MonoBehaviour
     }
     public void EnableEnemyTarget(int id, bool enable)
     {
-        if (CombatManager.Instance != null && CombatManager.Instance.EnemyTeam.FightersInField[id] != null)
+        if (CombatManager.Instance != null && CombatManager.Instance.TeamsController.EnemyTeam.FightersInField[id] != null)
         {
             EnemyTargets[id].SetActive(enable);
         }
     }
     public void EnablePlayerTarget(int id, bool enable)
     {
-        if (CombatManager.Instance != null && CombatManager.Instance.PlayerTeam.FightersInField[id] != null)
+        if (CombatManager.Instance != null && CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id] != null)
         {
             PlayerTargets[id].SetActive(enable);
         }
@@ -47,7 +47,7 @@ public class UITargetController : MonoBehaviour
     {
         if (CombatManager.Instance != null)
         {
-            CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.EnemyTeam.FightersInField[id]);
+            CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.EnemyTeam.FightersInField[id]);
             EnableAllTarget(false);
         }
     }
@@ -55,7 +55,7 @@ public class UITargetController : MonoBehaviour
     {
         if (CombatManager.Instance != null)
         {
-            CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.PlayerTeam.FightersInField[id]);
+            CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id]);
             EnableAllTarget(false);
         }
     }

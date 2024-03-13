@@ -7,7 +7,7 @@ public class UIFighterOrderController : MonoBehaviour
 {
     public List<GameObject> FighterAvatars;
     public List<Fighter> CompleteOrderLine = new();
-
+    public GameObject TurnFinishImage;
     [SerializeField] private Color PlayerTeamColor;
     [SerializeField] private Color EnemyTeamColor;
 
@@ -45,7 +45,7 @@ public class UIFighterOrderController : MonoBehaviour
         {
             if (CompleteOrderLine.Count > i)
             {
-                FighterAvatars[i].GetComponent<Image>().color = (CombatManager.Instance.IsPlayerTeamFighter(CompleteOrderLine[i])) ? PlayerTeamColor : EnemyTeamColor;
+                FighterAvatars[i].GetComponent<Image>().color = (CombatManager.Instance.TeamsController.IsPlayerTeamFighter(CompleteOrderLine[i])) ? PlayerTeamColor : EnemyTeamColor;
                 //FighterAvatars[i].GetComponent<Image>().sprite = CompleteOrderLine[i].AvatarSprite;
                 FighterAvatars[i].transform.GetChild(0).GetComponent<Image>().sprite = CompleteOrderLine[i].AvatarSprite;
                 FighterAvatars[i].SetActive(true);
@@ -55,5 +55,6 @@ public class UIFighterOrderController : MonoBehaviour
                 FighterAvatars[i].SetActive(false);
             }
         }
+        TurnFinishImage.transform.SetSiblingIndex(CombatManager.Instance.CurrentTurnOrder.Count);
     }
 }

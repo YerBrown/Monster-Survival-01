@@ -12,6 +12,14 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ddbc1aeaaf368c143862b2f4676d7c9e, type: 3}
+    - target: {fileID: 6145292005823079482, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6145292005823079482, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7736753840755649174, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
       propertyPath: ResourceInfo
       value: 
@@ -57,6 +65,14 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8180264470095262558, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180264470095262558, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8180264470095262558, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -100,6 +116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stone_01 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 9205452477678369494, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ddbc1aeaaf368c143862b2f4676d7c9e, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

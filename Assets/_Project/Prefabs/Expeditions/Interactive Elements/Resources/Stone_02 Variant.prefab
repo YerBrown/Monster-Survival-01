@@ -28,6 +28,10 @@ PrefabInstance:
       propertyPath: Loot.Array.data[1].Amount
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6077971234066296595, guid: 086947b973fe6e54cbdfca25be3483b9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 52624e68deba11a4687ea8c688620cd4, type: 3}
     - target: {fileID: 6493979362584733339, guid: 086947b973fe6e54cbdfca25be3483b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

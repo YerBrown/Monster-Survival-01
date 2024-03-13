@@ -11,7 +11,6 @@ public class ResourceElement : InteractiveElement
     public int LootPoints = 10;
     public List<LootRate> Loot = new(); // Posible loot chances.
     public ResourceSO ResourceInfo; // Resource information scriptableObject.
-    public List<ResourceElement> ResourcePack = new(); // If the resource is part of a bigger one, this list contains all the resources that make up one.
     public Sprite LootFinishedSprite; // The sprite for empty resource.
     public SpriteRenderer ResourceMainRenderer; // The sprite renderer of the resource.
     public ResourceElementEventChannelSO ResourceElementInteracted; //Event triggered when the player interacts with the resource.
@@ -60,19 +59,8 @@ public class ResourceElement : InteractiveElement
     public (ItemSlot, ItemSlot, int) HitResource(int hitPoints, Inventory targetInventory, Transform targetTransform)
     {
         if (LootPoints == 0) { return (null, null, 0); };
-        // TODO: Play hit animation
-        // Check if this resource is part from a biger one
-        if (ResourcePack.Count > 0)
-        {
-            foreach (var resource in ResourcePack)
-            {
-                resource.ChangeLP(hitPoints);
-            }
-        }
-        else
-        {
-            ChangeLP(hitPoints);
-        }
+        // TODO: Play hit animation        
+        ChangeLP(hitPoints);
         ItemSlot newLoot = GetLoot(hitPoints);
         // Loot that is remaining because of space lack in inventory.
         ItemSlot remainingLoot = new();

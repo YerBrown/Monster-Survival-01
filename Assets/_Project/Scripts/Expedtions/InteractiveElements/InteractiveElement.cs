@@ -1,40 +1,46 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 public class InteractiveElement : MonoBehaviour
 {
     public string ID; // Element identificator for save and load data.
     public string Interactive_Element_ID; // Type of elemnt identificator.
-    public OverlayTile OverlayTileUnder; // Overlay tile under the interactive element.
+    public List<InteractiveElementChild> ElementChilds = new();
     public bool IsBlockingMovement = false; // If is true, blocks the movement in the overlayTile calculation of the pathfinder.
     public Color CursorColor = Color.white; // The color of the cursor when interacts with this element.
     public ScreenPositon_String_EventChannelSO NotificateEvent; // Notification event channel
     public virtual void OnDisable()
     {
-        RemoveOverlayTileUnderRef();
+        RemoveOverlayTileUnderLink();
     }
+    public void AddOverlayTileUnderLink()
+    {
+        if (ElementChilds.Count <= 0)
+        {
+            ElementChilds = GetComponentsInChildren<InteractiveElementChild>().ToList();
+        }
+        foreach (var child in ElementChilds)
+        {
+            child.AddOverlayTileUnderRef();
+        }
+    }
+    public void RemoveOverlayTileUnderLink()
+    {
+        if (ElementChilds.Count <= 0)
+        {
+            ElementChilds = GetComponentsInChildren<InteractiveElementChild>().ToList();
+        }
+        foreach (var child in ElementChilds)
+        {
+            child.RemoveOverlayTileUnderRef();
+        }
+    }
+
     // Called when the player interacts with this element.
     public virtual void Interact(CharacterInfo character = null)
     {
         Debug.Log($"Player interacted with {name}");
-    }
-    public void AddOverlayTileUnderRef()
-    {
-        OverlayTile overlayTileDetected = DetectOverlayTileUnder();
-        if (overlayTileDetected != null)
-        {
-            OverlayTileUnder = overlayTileDetected;
-            OverlayTileUnder.I_Element = this;
-        }
-    }
-    private void RemoveOverlayTileUnderRef()
-    {
-        if (OverlayTileUnder != null)
-        {
-            // Remove reference to this elemnt in the overlay tile.
-            OverlayTileUnder.I_Element = null;
-            OverlayTileUnder = null;
-        }
     }
     protected void ChangeCursorColor(string colorHex)
     {
@@ -54,22 +60,7 @@ public class InteractiveElement : MonoBehaviour
     {
         ID = data.ID;
     }
-    private OverlayTile DetectOverlayTileUnder()
-    {
-        // Throw ray in this element position.
-        RaycastHit2D[] hits = Physics2D.RaycastAll(transform.position, Vector2.zero);
 
-        if (hits.Length > 0)
-        {
-            // Select first hited object.
-            RaycastHit2D hitTile = hits.OrderByDescending(i => i.collider.transform.position.z).First();
-            if (hitTile.collider.gameObject.TryGetComponent(out OverlayTile overlayTileDetected))
-            {
-                return overlayTileDetected;
-            }
-        }
-        return null;
-    }
     protected void Notify(Vector3 newPos, string text)
     {
         if (NotificateEvent == null) { return; };

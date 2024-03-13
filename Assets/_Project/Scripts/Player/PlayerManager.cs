@@ -10,7 +10,7 @@ public class PlayerManager : MonoBehaviour
     public string Nickname;
     public HumanFighter P_Fighter;
     public Inventory P_Inventory;
-    public CreaturesTeam Team;
+    public FighterData[] Team= new FighterData[6];
     private void Awake()
     {
         if (_instance != null && _instance != this)

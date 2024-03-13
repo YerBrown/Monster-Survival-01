@@ -13,6 +13,7 @@ public class CreatureSO : ScriptableObject
     public Sprite c_Sprite;
     public AnimatorOverrideController c_Animator;
     public List<Skills> c_Skills = new();
+    public GameObject CombatFighterPrefab;
 }
 [Serializable]
 public class CreatureFighter : Fighter

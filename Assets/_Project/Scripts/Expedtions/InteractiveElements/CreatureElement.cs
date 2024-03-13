@@ -2,16 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class CreatureElement : InteractiveElement
 {
-    public CreaturesTeam FullTeam;
+    public FighterData[] FullTeam = new FighterData[6];
     public SpriteRenderer[] SpriteRenderers = new SpriteRenderer[3];
-    private (Vector3, Vector3, Vector3)[] RenderPositions = {
-        (new Vector3(0, -0.01f, 0), new Vector3(0, 0, 0), new Vector3(0, 0, 0)),
-        (new Vector3(-0.25f, -0.01f, 0), new Vector3(0.25f, -0.01f, 0), new Vector3(0, 0, 0)),
-        (new Vector3(0, -0.25f, 0), new Vector3(-0.25f, -0.01f, 0), new Vector3(0.25f, -0.01f, 0))
-    };
     private void Start()
     {
         ChangeCursorColor("#FF0000");
@@ -24,49 +20,65 @@ public class CreatureElement : InteractiveElement
     }
     private void SetSprites()
     {
-
         int CreaturesInWorld = 0;
         for (int i = 0; i < SpriteRenderers.Length; i++)
         {
-            if (FullTeam.Team[i].CreatureInfo != null && SpriteRenderers[i] != null)
+            if (FightersInfoWiki.Instance != null && FightersInfoWiki.Instance.FightersDictionary.TryGetValue(FullTeam[i].TypeID, out CreatureSO creatureInfo))
             {
-                CreaturesInWorld++;
-
-                SpriteRenderers[i].sprite = FullTeam.Team[i].CreatureInfo.c_Sprite;
-                if (FullTeam.Team[i].CreatureInfo.c_Animator != null)
+                if (creatureInfo != null && SpriteRenderers[i] != null)
                 {
-                    SpriteRenderers[i].GetComponent<Animator>().runtimeAnimatorController = FullTeam.Team[i].CreatureInfo.c_Animator;
-                    SpriteRenderers[i].GetComponent<Animator>().enabled = true;
+                    CreaturesInWorld++;
+
+                    SpriteRenderers[i].sprite = creatureInfo.c_Sprite;
+                    if (creatureInfo.c_Animator != null)
+                    {
+                        SpriteRenderers[i].GetComponent<Animator>().runtimeAnimatorController = creatureInfo.c_Animator;
+                        SpriteRenderers[i].GetComponent<Animator>().enabled = true;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("CreaturesTeam[i].CreatureInfo.c_Animator missing");
+                    }
+                    SpriteRenderers[i].enabled = true;
                 }
                 else
                 {
-                    Debug.LogWarning("CreaturesTeam[i].CreatureInfo.c_Animator missing");
-                }
-                SpriteRenderers[i].enabled = true;
-            }
-            else
-            {
-                SpriteRenderers[i].GetComponent<Animator>().enabled = false;
+                    SpriteRenderers[i].GetComponent<Animator>().enabled = false;
 
-                SpriteRenderers[i].enabled = false;
+                    SpriteRenderers[i].enabled = false;
+                }
+            }
+
+        }
+    }
+    public override void UpdateElement(ExpeditionData.ParentData data)
+    {
+        //Check if the instance is of the same type.
+        if (data is ExpeditionData.CreatureData)
+        {
+            base.UpdateElement(data);
+            FullTeam = ((ExpeditionData.CreatureData)data).Fighters;
+            if (IsAllTeamDefeated())
+            {
+                // TODO: Disable element
+                Debug.Log("Creatures defeated");
             }
         }
-
-        SpriteRenderers[0].transform.localPosition = RenderPositions[CreaturesInWorld - 1].Item1;
-        SpriteRenderers[1].transform.localPosition = RenderPositions[CreaturesInWorld - 1].Item2;
-        SpriteRenderers[2].transform.localPosition = RenderPositions[CreaturesInWorld - 1].Item3;
+        else
+        {
+            Debug.LogWarning("Can not be updated from another type of element.");
+        }
     }
-    //public override void UpdateElement(InteractiveElement element)
-    //{
-    //    //Check if the instance is of the same type
-    //    if (element is CreatureElement)
-    //    {
-    //        base.UpdateElement(element);
-    //        CreaturesTeam = ((CreatureElement)element).CreaturesTeam;
-    //    }
-    //    else
-    //    {
-    //        Console.WriteLine("cannot update from a different type element.");
-    //    }
-    //}
+
+    private bool IsAllTeamDefeated()
+    {
+        foreach (var fighter in FullTeam)
+        {
+            if (fighter.ID != "" && fighter.HealthPoints > 0)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 }

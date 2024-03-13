@@ -189,13 +189,13 @@ public class ExpeditionData
     [Serializable]
     public class CreatureData : ParentData
     {
-        public int LP;
-        public CreatureData(string id, string element_id, Vector3 pos, int lp)
+        public FighterData[] Fighters;
+        public CreatureData(string id, string element_id, Vector3 pos, FighterData[] allfighters)
         {
             ID = id;
             Element_ID = element_id;
             Pos = pos;
-            LP = lp;
+            Fighters = allfighters;
         }
     }
     [Serializable]

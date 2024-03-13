@@ -8,6 +8,8 @@ public class UIActionsController : MonoBehaviour
     public Transform ActionsParent;
     public UITargetController TargetController;
     public Button CancelButton;
+
+    public VoidEventChannelSO OpenPlayerInventory;
     public void EnableAction(bool enable)
     {    
         ActionsParent.gameObject.SetActive(enable);
@@ -27,7 +29,7 @@ public class UIActionsController : MonoBehaviour
         {
             EnableAction(false);
             EnableCancelButton(true);
-            CombatManager.Instance.SetSelectedAction(CombatManager.Instance.FisicalAttack);
+            CombatManager.Instance.SetSelectedAction(CombatManager.Instance.ActionsFlowManager.FisicalAttack);
             TargetController.EnableEnemyTargets(true);
         }
     }
@@ -37,7 +39,7 @@ public class UIActionsController : MonoBehaviour
         {
             EnableAction(false);
             EnableCancelButton(true);
-            CombatManager.Instance.SetSelectedAction(CombatManager.Instance.RangeAttack);
+            CombatManager.Instance.SetSelectedAction(CombatManager.Instance.ActionsFlowManager.RangeAttack);
             TargetController.EnableEnemyTargets(true);
         }
     }
@@ -48,9 +50,24 @@ public class UIActionsController : MonoBehaviour
         {
             EnableAction(false);
             EnableCancelButton(true);
-            CombatManager.Instance.SetSelectedAction(CombatManager.Instance.SetDefenseMode);
-            TargetController.EnablePlayerTarget(CombatManager.Instance.GetFighterInFieldNum(CombatManager.Instance.CurrentTurnFighter), true);
+            CombatManager.Instance.SetSelectedAction(CombatManager.Instance.ActionsFlowManager.SetDefenseMode);
+            TargetController.EnablePlayerTarget(CombatManager.Instance.TeamsController.GetFighterInFieldNum(CombatManager.Instance.CurrentTurnFighter), true);
         }
+    }
+    public void OnSpecialMovement()
+    {
+        if (CombatManager.Instance != null)
+        {
+            EnableAction(false);
+            EnableCancelButton(true);
+            CombatManager.Instance.SetSelectedAction(CombatManager.Instance.ActionsFlowManager.MultipleTargetAttack);
+            TargetController.EnableEnemyTargets(true);
+        }
+    }
+    public void OnChange()
+    {
+        EnableAction(false);
+        CombatManager.Instance.OpenChangeMenu();
     }
     public void OnTryToCapture()
     {
@@ -62,6 +79,6 @@ public class UIActionsController : MonoBehaviour
     }
     public void OnUseItem()
     {
-
+        OpenPlayerInventory.RaiseEvent();
     }
 }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
@@ -19,7 +20,7 @@ public class UIInventoryController : MonoBehaviour
     {
         //Add all the items in the parent to the list "Items"
         UIItemSlotController[] allItems = GetComponentsInChildren<UIItemSlotController>();
-        Items.AddRange(allItems);
+        Items = allItems.ToList();
 
         for (int i = 0; i < transform.childCount; i++)
         {

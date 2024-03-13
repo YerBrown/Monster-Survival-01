@@ -21,7 +21,7 @@
             "Items": [
                 {
                     "ID": "#ITEM_00",
-                    "Element_ID": "#MEAT",
+                    "Element_ID": "#RAWMEAT",
                     "Pos": {
                         "x": -1.0,
                         "y": 0.25,
@@ -34,6 +34,16 @@
             "Resources": [
                 {
                     "ID": "#RESOURCE_00",
+                    "Element_ID": "#BIGTREE",
+                    "Pos": {
+                        "x": 1.0,
+                        "y": 1.0,
+                        "z": 1.0
+                    },
+                    "LP": 10
+                },
+                {
+                    "ID": "#RESOURCE_01",
                     "Element_ID": "#BUSH",
                     "Pos": {
                         "x": 4.0,
@@ -43,7 +53,7 @@
                     "LP": 10
                 },
                 {
-                    "ID": "#RESOURCE_01",
+                    "ID": "#RESOURCE_02",
                     "Element_ID": "#BUSH",
                     "Pos": {
                         "x": -1.5,
@@ -53,7 +63,7 @@
                     "LP": 10
                 },
                 {
-                    "ID": "#RESOURCE_02",
+                    "ID": "#RESOURCE_03",
                     "Element_ID": "#BUSH",
                     "Pos": {
                         "x": -2.5,
@@ -63,7 +73,7 @@
                     "LP": 10
                 },
                 {
-                    "ID": "#RESOURCE_03",
+                    "ID": "#RESOURCE_04",
                     "Element_ID": "#BUSH",
                     "Pos": {
                         "x": 1.0,
@@ -71,178 +81,8 @@
                         "z": 2.0
                     },
                     "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_04",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": 0.5,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "LP": 40
-                },
-                {
-                    "ID": "#RESOURCE_05",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": 1.0,
-                        "y": 0.75,
-                        "z": 1.0
-                    },
-                    "LP": 40
-                },
-                {
-                    "ID": "#RESOURCE_06",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": 1.0,
-                        "y": 1.25,
-                        "z": 1.0
-                    },
-                    "LP": 40
-                },
-                {
-                    "ID": "#RESOURCE_07",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": 1.5,
-                        "y": 1.0,
-                        "z": 1.0
-                    },
-                    "LP": 40
                 }
             ],
-            "Switchers": []
-        },
-        {
-            "Coordinates": {
-                "x": 2,
-                "y": 0
-            },
-            "Blockers": [
-                {
-                    "ID": "#BLOCKER_00",
-                    "Element_ID": "#FENCE",
-                    "Pos": {
-                        "x": 3.5,
-                        "y": 1.5,
-                        "z": 1.0
-                    },
-                    "Blocks": false
-                },
-                {
-                    "ID": "#BLOCKER_01",
-                    "Element_ID": "#FENCE",
-                    "Pos": {
-                        "x": 3.0,
-                        "y": 1.75,
-                        "z": 1.0
-                    },
-                    "Blocks": false
-                }
-            ],
-            "Containers": [
-                {
-                    "ID": "#CONTAINER_00",
-                    "Element_ID": "#CHEST",
-                    "Pos": {
-                        "x": 2.0,
-                        "y": -2.0,
-                        "z": 0.0
-                    },
-                    "Inv_Name": "Barrel ",
-                    "MaxSlots": 5,
-                    "FlexibleSlots": false,
-                    "OnlyRemoveItems": false,
-                    "AllItems": [],
-                    "Opened": true
-                }
-            ],
-            "Items": [],
-            "Resources": [
-                {
-                    "ID": "#RESOURCE_00",
-                    "Element_ID": "#STONE_02",
-                    "Pos": {
-                        "x": -0.5,
-                        "y": -1.5,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_01",
-                    "Element_ID": "#STONE_02",
-                    "Pos": {
-                        "x": 4.5,
-                        "y": -1.0,
-                        "z": 1.0
-                    },
-                    "LP": 9
-                },
-                {
-                    "ID": "#RESOURCE_02",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": 1.5,
-                        "y": 1.5,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_03",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": 5.5,
-                        "y": 0.5,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_04",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": -2.5,
-                        "y": 0.5,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_05",
-                    "Element_ID": "#BUSH",
-                    "Pos": {
-                        "x": -0.5,
-                        "y": 2.0,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_06",
-                    "Element_ID": "#BUSH",
-                    "Pos": {
-                        "x": 1.5,
-                        "y": 0.0,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                }
-            ],
-            "Switchers": []
-        },
-        {
-            "Coordinates": {
-                "x": 2,
-                "y": 1
-            },
-            "Blockers": [],
-            "Containers": [],
-            "Items": [],
-            "Resources": [],
             "Switchers": []
         }
     ]
