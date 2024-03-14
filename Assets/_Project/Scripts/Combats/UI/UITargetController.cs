@@ -17,16 +17,24 @@ public class UITargetController : MonoBehaviour
 
     public void EnableEnemyTargets(bool enable)
     {
+        List<int> posibleTargets = CombatManager.Instance.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
         for (int i = 0; i < EnemyTargets.Count; i++)
         {
-            EnableEnemyTarget(i, enable);
+            if (posibleTargets.Contains(i))
+            {
+                EnableEnemyTarget(i, enable);
+            }
         }
     }
     public void EnablePlayerTargets(bool enable)
     {
+        List<int> posibleTargets = CombatManager.Instance.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
         for (int i = 0; i < PlayerTargets.Count; i++)
         {
-            EnablePlayerTarget(i, enable);
+            if (posibleTargets.Contains(i))
+            {
+                EnablePlayerTarget(i, enable);
+            }
         }
     }
     public void EnableEnemyTarget(int id, bool enable)

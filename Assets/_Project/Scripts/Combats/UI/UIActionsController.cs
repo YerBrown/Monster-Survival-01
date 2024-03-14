@@ -6,13 +6,16 @@ using UnityEngine.UI;
 public class UIActionsController : MonoBehaviour
 {
     public Transform ActionsParent;
-    public UITargetController TargetController;
+    public Button SpecialMoveButton;
     public Button CancelButton;
 
+    public UITargetController TargetController;
     public VoidEventChannelSO OpenPlayerInventory;
     public void EnableAction(bool enable)
     {    
         ActionsParent.gameObject.SetActive(enable);
+        Fighter currentFighter = CombatManager.Instance.CurrentTurnFighter;
+        SpecialMoveButton.interactable = currentFighter.EnergyPoints >= currentFighter.Stats.MaxEnergyPoints / 2;
     }
     public void EnableCancelButton(bool enable)
     {

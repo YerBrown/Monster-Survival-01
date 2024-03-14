@@ -2,25 +2,32 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIFighterChangeController : MonoBehaviour
 {
-    public GameObject ParentPopup;
-    public List<FighterSlotPanel> FighterSlots = new();
-    public FighterData CurrentFighterData;
-    public List<Fighter> FightersSelectedToChange;
-    public List<FighterData> NewFighterToAdd;
-    private int CurrentChangeTurn;
-    public bool IsChangeMandatory = false;
-    public Button CloseButton;
-    public Button InfoButton;
-    public Button SwipeButton;
-    public Color InFieldColor;
-    public Color OutOfFieldColor;
-    public Color DeadColor;
+    [Header("UI")]
+    [SerializeField] private GameObject ParentPopup; // Popup parent.
+    [SerializeField] private GameObject ParentSelectSwipe; // Popup parent.
+    [SerializeField] private List<FighterSlotPanel> FighterSlots = new(); // All the slots for the player team fighters in popup.
+    [SerializeField] private List<Button> SelectFighterButtons = new(); // All buttons of fighter to be changed selection.
+    [SerializeField] private Button CloseButton;
+    [SerializeField] private Button InfoButton;
+    [SerializeField] private Button SwipeButton;
+    [Header("Change Data")]
+    private int CurrentChangeTurn; // Current fighter change turn.
+    private List<int> ChangesNums = new(); // All changes selected nums.
+    private bool IsChangeMandatory = false; // If is a change by dead fighters, is mandatory to select all change posibles.
+    private FighterData CurrentFighterData; // Selected fighter data to replace other fighter.
+    private Dictionary<int, Fighter> FightersSelectedToChange = new Dictionary<int, Fighter>(); // Dictionary of all fighters selected to replace in the field.
+    private Dictionary<int, FighterData> NewFighterToAdd = new Dictionary<int, FighterData>(); // Dictionary of the replacements for the selected fighters in field.
+    [Header("Slot Panel Type Colors")]
+    [SerializeField] private Color InFieldColor;
+    [SerializeField] private Color OutOfFieldColor;
+    [SerializeField] private Color DeadColor;
     [Serializable]
     public class FighterSlotPanel
     {
@@ -73,20 +80,29 @@ public class UIFighterChangeController : MonoBehaviour
         }
 
     }
-
+    // Enables the popup and passes the changes needed and if the changes are mandatory.
     public void OpenPopup(List<Fighter> fightersToChange, bool mandatory)
     {
         CurrentChangeTurn = 0;
-        FightersSelectedToChange = fightersToChange;
         NewFighterToAdd.Clear();
+        ChangesNums.Clear();
+        FightersSelectedToChange.Clear();
         IsChangeMandatory = mandatory;
+        for (int i = 0; i < fightersToChange.Count; i++)
+        {
+            int num = CombatManager.Instance.TeamsController.GetFighterInFieldNum(fightersToChange[i]);
+            FightersSelectedToChange.Add(num, fightersToChange[i]);
+        }
+        // Update the popup.
         CheckCurrentChangeTurn();
         ParentPopup.SetActive(true);
     }
+    // Disable teh popup.
     public void ClosePopup()
     {
         ParentPopup.SetActive(false);
     }
+    // Update the UI with the current turn change needed.
     public void UpdateUI()
     {
         for (int i = 0; i < FighterSlots.Count; i++)
@@ -94,15 +110,22 @@ public class UIFighterChangeController : MonoBehaviour
             FighterData newFighter = CombatManager.Instance.TeamsController.PlayerTeam.Fighters[i];
             if (newFighter != null)
             {
+                // Update the slot panel with fighter data.
                 FighterSlots[i].UpdateSlot(newFighter);
-                FighterSlots[i].ChangeThisFrame.gameObject.SetActive(FightersSelectedToChange[CurrentChangeTurn].ID == newFighter.ID);
+                // Check if the current slot is the fighter that we want to replace.
+
+                FighterSlots[i].ChangeThisFrame.gameObject.SetActive(CheckIfFighterDataIsFighterSelectedToReplace(newFighter) && !IsRaplacementAlreadySelectedForFighter(newFighter));
+
+                // Change the color of the panels acording to the needs.
+                // Check if the fiighter is dead.
                 if (!string.IsNullOrEmpty(newFighter.ID) && newFighter.IsDead())
                 {
                     FighterSlots[i].MainButton.GetComponent<Image>().color = DeadColor;
                 }
                 else if (!string.IsNullOrEmpty(newFighter.ID))
                 {
-                    if (CombatManager.Instance.TeamsController.GetFighterInFieldByID(newFighter.ID) != null)
+                    // Check if the fighter is on field or is already selected to be a replacement.
+                    if (CombatManager.Instance.TeamsController.GetFighterInFieldByID(newFighter.ID) != null || NewFighterToAdd.ContainsValue(newFighter))
                     {
                         FighterSlots[i].MainButton.GetComponent<Image>().color = InFieldColor;
                     }
@@ -114,6 +137,31 @@ public class UIFighterChangeController : MonoBehaviour
             }
         }
     }
+    private bool CheckIfFighterDataIsFighterSelectedToReplace(FighterData fighterData)
+    {
+        foreach (var fighter in FightersSelectedToChange)
+        {
+            if (fighter.Value.ID == fighterData.ID)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private bool IsRaplacementAlreadySelectedForFighter(FighterData fighterData)
+    {
+        foreach (var fighter in FightersSelectedToChange)
+        {
+            if (fighterData.ID == fighter.Value.ID)
+            {
+                int key = fighter.Key;
+                return NewFighterToAdd.ContainsKey(key);
+            }
+        }
+        return false;
+    }
+    // Select the slot to be a replacement or whatch her data/info. 
     public void SelectFighter(Button fighterSLot)
     {
         if (fighterSLot == null)
@@ -121,6 +169,7 @@ public class UIFighterChangeController : MonoBehaviour
             CurrentFighterData = null;
             return;
         }
+        // Update slected frame to all slots
         foreach (var slot in FighterSlots)
         {
             if (slot.MainButton == fighterSLot)
@@ -133,7 +182,8 @@ public class UIFighterChangeController : MonoBehaviour
                 slot.SlotSelectedFrame.gameObject.SetActive(false);
             }
         }
-        if (CombatManager.Instance.TeamsController.GetFighterInFieldByID(CurrentFighterData.ID) == null && !NewFighterToAdd.Contains(CurrentFighterData) && CurrentFighterData.HealthPoints > 0)
+        // Check if the fighter selected can be a replacement, it's not possible if they are currently on the battlefield, nor if they are dead, and if they are already a replacment, then as well.
+        if (CombatManager.Instance.TeamsController.GetFighterInFieldByID(CurrentFighterData.ID) == null && !NewFighterToAdd.ContainsValue(CurrentFighterData) && CurrentFighterData.HealthPoints > 0)
         {
             SwipeButton.interactable = true;
         }
@@ -143,41 +193,58 @@ public class UIFighterChangeController : MonoBehaviour
         }
         InfoButton.interactable = true;
     }
+    // Confirm the selected fighter change.
     public void ConfirmSwipe()
     {
-        if (IsChangeMandatory)
+        CurrentChangeTurn++;
+        CheckIfChangeIsComplete();
+    }
+    private void CheckIfChangeIsComplete()
+    {
+        // Check if the replacements list has all the replacements needed or if there arent more replacements posibles.
+        if (CurrentChangeTurn >= FightersSelectedToChange.Count || CombatManager.Instance.TeamsController.PlayerTeam.GetFightersNotInField(FightersSelectedToChange.Count).Count == CurrentChangeTurn)
         {
-            NewFighterToAdd.Add(CurrentFighterData);
-            CurrentChangeTurn++;
-            if (CurrentChangeTurn >= FightersSelectedToChange.Count || CombatManager.Instance.TeamsController.PlayerTeam.GetFightersNotInField(FightersSelectedToChange.Count).Count == CurrentChangeTurn)
+            // Start change fighters flow.
+            if (IsChangeMandatory)
             {
                 ChangeVariousFighters();
+
             }
             else
             {
-                CheckCurrentChangeTurn();
+                ChangeFighter();
             }
         }
         else
         {
-            ChangeFighter();
+
+            ParentPopup.SetActive(true);
+            // Pass to next replacemnt selection.
+            CheckCurrentChangeTurn();
         }
     }
+    // The logic behind the back/close button.
     public void GoBack()
     {
+        // Check if the current state is a multiple change mandatory or single change optional
         if (IsChangeMandatory)
         {
+            // Go back to previous replacemnt selection.
             CurrentChangeTurn--;
-            NewFighterToAdd.RemoveAt(NewFighterToAdd.Count - 1);
+            NewFighterToAdd.Remove(ChangesNums[ChangesNums.Count - 1]);
+            ChangesNums.RemoveAt(ChangesNums.Count - 1);
             CheckCurrentChangeTurn();
         }
         else
         {
+            // Close the popup because the change is optional.
             ClosePopup();
         }
     }
+    // Update the ui depending of the needs of replacemnt selection.
     private void CheckCurrentChangeTurn()
     {
+        // Update the ui
         if (CombatManager.Instance != null)
         {
             UpdateUI();
@@ -185,6 +252,7 @@ public class UIFighterChangeController : MonoBehaviour
         }
         if (IsChangeMandatory)
         {
+            // If is a mandatory change, enable the go back button if the current change turn isn't the first one.
             if (CurrentChangeTurn == 0)
             {
                 CloseButton.gameObject.SetActive(false);
@@ -196,17 +264,59 @@ public class UIFighterChangeController : MonoBehaviour
         }
         else
         {
+            // Enable the close button is is optional change.
             CloseButton.gameObject.SetActive(true);
         }
     }
+    public void OpenSelectFighterToBeChanged()
+    {
+        // Disable all select actions.
+        foreach (var button in SelectFighterButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+        // Enable needed select buttons.
+        foreach (var fighter in FightersSelectedToChange)
+        {
+            if (!NewFighterToAdd.ContainsKey(fighter.Key))
+            {
+                SelectFighterButtons[fighter.Key].gameObject.SetActive(true);
+            }
+        }
+        ParentPopup.SetActive(false);
+        ParentSelectSwipe.SetActive(true);
+    }
+    public void CancelSelect()
+    {
+        ParentPopup.SetActive(true);
+        ParentSelectSwipe.SetActive(false);
+    }
+    public void SelectReplacementFighter(int num)
+    {
+        NewFighterToAdd[num] = CurrentFighterData;
+        ChangesNums.Add(num);
+        ParentSelectSwipe.SetActive(false);
+        ConfirmSwipe();
+    }
+    public void OnSwipe()
+    {
+        OpenSelectFighterToBeChanged();
+    }
+    // Start flow of optional and single change.
     public void ChangeFighter()
     {
         CombatManager.Instance.ChangePlayerFighter(CurrentFighterData);
         ClosePopup();
     }
+    // Start flow of multiple mandatory change.
     public void ChangeVariousFighters()
     {
-        CombatManager.Instance.ChangePlayerDeadFighters(NewFighterToAdd);
+        List<FighterData> newFighters = new() { new FighterData(), new FighterData(), new FighterData() };
+        foreach (var fighter in NewFighterToAdd)
+        {
+            newFighters[fighter.Key] = fighter.Value;
+        }
+        CombatManager.Instance.ChangePlayerDeadFighters(newFighters);
         ClosePopup();
     }
 }

@@ -2,6 +2,7 @@ using JetBrains.Annotations;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -148,19 +149,20 @@ public class CombatActionsFlowManager : MonoBehaviour
                 new CombatAction((() =>
                 {
                     CombatTeam targetTeam = CombatManager.Instance.TeamsController.GetCombatTeamOfFighter(targetFighter);
-                    int calculatedMinDamage=0;
-                    foreach ( var fighterInField in targetTeam.FightersInField)
+                    int calculatedMinDamage = 0;
+                    List<int> posibleTargets = CombatManager.Instance.GetFightersNumInRange(targetFighter);
+                    for (int i = 0; i < targetTeam.FightersInField.Length; i++)
                     {
-                        if (fighterInField!=null)
+                        if (targetTeam.FightersInField[i]!=null && posibleTargets.Contains(i))
                         {
-                            int calculatedDamage = fighterInField.ReceiveDamage(currentTurnFighter.Stats.RangePower);
+                            int calculatedDamage = targetTeam.FightersInField[i].ReceiveDamage(currentTurnFighter.Stats.RangePower);
                             if(calculatedDamage<calculatedMinDamage)
                             {
                                 calculatedMinDamage=calculatedDamage;
                             }
                         }
                     }
-                    currentTurnFighter.AddEnergyPoints(calculatedMinDamage / 2, true);
+                    currentTurnFighter.AddEnergyPoints(-(currentTurnFighter.Stats.MaxEnergyPoints/2), true);
                     Debug.Log($"{currentTurnFighter.Nickname} attacked to all opposing fighters");
                 }),1f, false),
                 new CombatAction((() =>
@@ -237,16 +239,6 @@ public class CombatActionsFlowManager : MonoBehaviour
     }
     public void ChangeDiedFighters(List<Fighter> diedPlayerFighters, List<Fighter> diedEnemyFighters, List<FighterData> fightersPlayerToChange, List<FighterData> fightersEnemyToChange)
     {
-        List<int> playerFightersNum = new();
-        for (int i = 0; i < diedPlayerFighters.Count; i++)
-        {
-            playerFightersNum.Add(CombatManager.Instance.TeamsController.GetFighterInFieldNum(diedPlayerFighters[i]));
-        }
-        List<int> enemyFightersNum = new();
-        for (int i = 0; i < diedEnemyFighters.Count; i++)
-        {
-            enemyFightersNum.Add(CombatManager.Instance.TeamsController.GetFighterInFieldNum(diedEnemyFighters[i]));
-        }
         CombatTeam playerTeam = CombatManager.Instance.TeamsController.PlayerTeam;
         CombatTeam enemyTeam = CombatManager.Instance.TeamsController.EnemyTeam;
 
@@ -277,16 +269,22 @@ public class CombatActionsFlowManager : MonoBehaviour
                     {
                         for (int i = 0; i < fightersPlayerToChange.Count; i++)
                         {
-                            CombatManager.Instance.TeamsController.SpawnFighterInTeam(playerFightersNum[i], fightersPlayerToChange[i], playerTeam);
+                            if (fightersPlayerToChange[i]!=null && !string.IsNullOrEmpty(fightersPlayerToChange[i].ID))
+                            {
+                                    CombatManager.Instance.TeamsController.SpawnFighterInTeam(i, fightersPlayerToChange[i], playerTeam);
+                            }
                         }
                     }
                     if (fightersEnemyToChange.Count>0)
-                    { 
+                    {
                         for (int i = 0; i < fightersEnemyToChange.Count; i++)
                         {
-                        CombatManager.Instance.TeamsController.SpawnFighterInTeam(enemyFightersNum[i], fightersEnemyToChange[i], enemyTeam);
+                            if (fightersEnemyToChange[i]!=null && !string.IsNullOrEmpty(fightersEnemyToChange[i].ID))
+                            {
+                             CombatManager.Instance.TeamsController.SpawnFighterInTeam(i, fightersEnemyToChange[i], enemyTeam);
+                            }
                         }
-                    
+
                     }
 
                     Debug.Log("Spawned new fighters");

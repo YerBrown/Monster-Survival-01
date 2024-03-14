@@ -41,6 +41,7 @@ public class CombatManager : MonoBehaviour
     public CombatTeamsController TeamsController;
     public CombatActionsFlowManager ActionsFlowManager;
     public UICombatManager UIManager;
+    public EnemyActionsManager EnemyManager;
     public VoidEventChannelSO FinishCurrentFighterAction;
     private void Awake()
     {
@@ -129,7 +130,7 @@ public class CombatManager : MonoBehaviour
         }
         else
         {
-            SetNextEnemyAction();
+            EnemyManager.SelectNextAction();
         }
     }
     private List<Fighter> CalculateTurnOrder()
@@ -180,7 +181,9 @@ public class CombatManager : MonoBehaviour
             (List<Fighter>, List<Fighter>) deadFighters = TeamsController.GetDiedFightersInField();
             _PlayerDeadFighters = deadFighters.Item1;
             _EnemyDeadFighters = deadFighters.Item2;
-            _EnemyNewFighters = TeamsController.EnemyTeam.GetFightersNotInField(_EnemyDeadFighters.Count);
+            _EnemyNewFighters = EnemyManager.GetNewFighters(_EnemyDeadFighters);
+
+
             if (TeamsController.IsTeamWithMoreFightersAliveThanInTheField(TeamsController.PlayerTeam) && _PlayerDeadFighters.Count > 0)
             {
                 OpenChangeMenuOnPlayerFightersDied(_PlayerDeadFighters);
@@ -195,12 +198,14 @@ public class CombatManager : MonoBehaviour
         if (TeamsController.PlayerTeam.IsAllTeamDefeated())
         {
             // TODO: Enemy won
-
+            UIManager.PlayEnemyWinAnim();
+            return;
         }
         else if (TeamsController.EnemyTeam.IsAllTeamDefeated())
         {
             // TODO: Player won
-
+            UIManager.PlayPlayerWinAnim();
+            return;
         }
         CurrentTurnOrder.RemoveAt(0);
         if (CurrentTurnOrder.Count == 0)
@@ -227,31 +232,7 @@ public class CombatManager : MonoBehaviour
         return currentNextTurns;
     }
 
-    private void SetNextEnemyAction()
-    {
-        int randomAction = UnityEngine.Random.Range(0, 100);
-        switch (randomAction)
-        {
-            case < 20:
-                SetSelectedAction(ActionsFlowManager.FisicalAttack);
-                SelectTargetFighter(TeamsController.GetRandonFighterOfTeam(TeamsController.PlayerTeam));
-                break;
-            case < 40:
-                SetSelectedAction(ActionsFlowManager.RangeAttack);
-                SelectTargetFighter(TeamsController.GetRandonFighterOfTeam(TeamsController.PlayerTeam));
-                break;
-            case < 50:
-                SetSelectedAction(ActionsFlowManager.SetDefenseMode);
-                SelectTargetFighter(CurrentTurnFighter);
-                break;
-            case < 100:
-                SetSelectedAction(ActionsFlowManager.MultipleTargetAttack);
-                SelectTargetFighter(TeamsController.GetRandonFighterOfTeam(TeamsController.PlayerTeam));
-                break;
-            default:
-                break;
-        }
-    }
+
 
     public void SetFighterMoveTarget(bool range)
     {
@@ -333,5 +314,21 @@ public class CombatManager : MonoBehaviour
     {
         UIManager.ChangeFighterController.OpenPopup(selectedFightersToChange, true);
     }
+    public List<int> GetFightersNumInRange(Fighter selectedFighter)
+    {
+        int currentFighterNum = TeamsController.GetFighterInFieldNum(selectedFighter);
 
+        List<int> fightersInRangeNum = new();
+        fightersInRangeNum.Add(currentFighterNum);
+        if (currentFighterNum - 1 >= 0)
+        {
+            fightersInRangeNum.Add(currentFighterNum - 1);
+        }
+        if (currentFighterNum + 1 <= 2)
+        {
+            fightersInRangeNum.Add(currentFighterNum + 1);
+        }
+
+        return fightersInRangeNum;
+    }
 }
