@@ -11,6 +11,7 @@ public class CombatTeamsController : MonoBehaviour
     [Header("Teams")]
     public CombatTeam PlayerTeam;
     public CombatTeam EnemyTeam;
+    public GameObject FighterPrefab;
     #region StartingCombat
     // Spawns the starting fighters of both teams
     public void SpawnStartingFighters()
@@ -27,12 +28,12 @@ public class CombatTeamsController : MonoBehaviour
             FighterData nextFighterData = GetNextFighter(team);
             if (team.FightersInField[i] == null && nextFighterData != null)
             {
-                SpawnFighterInTeam(i, nextFighterData, team);
+                SpawnFighterInTeam(i, nextFighterData, team, true);
             }
         }
     }
     // Spawn a fighter in the field of the provided team and using the fighter data
-    public void SpawnFighterInTeam(int fighterNum, FighterData fighterData, CombatTeam team)
+    public void SpawnFighterInTeam(int fighterNum, FighterData fighterData, CombatTeam team, bool animDelay = false)
     {
         GameObject fighterPrefab = null;
         if (FightersInfoWiki.Instance != null && FightersInfoWiki.Instance.GetCreatureInfo(fighterData.TypeID, out CreatureSO fighter))
@@ -45,10 +46,10 @@ public class CombatTeamsController : MonoBehaviour
         }
         if (fighterPrefab != null)
         {
-            Fighter newFighter = Instantiate(fighterPrefab, team.FightersPos[fighterNum]).GetComponent<Fighter>();
+            Fighter newFighter = Instantiate(FighterPrefab, team.FightersPos[fighterNum]).GetComponent<Fighter>();
             newFighter.gameObject.name = fighterData.Nickname;
             newFighter.transform.position = team.FightersPos[fighterNum].position + Vector3.forward;
-            newFighter.UpdateFighter(fighterData);
+            newFighter.UpdateFighter(fighterData, animDelay);
             newFighter.PositionCharacterOnTile(CombatManager.Instance.GetTile(newFighter.transform.position));
             team.FightersInField[fighterNum] = newFighter;
             Vector2Int fighterForward;
@@ -71,7 +72,7 @@ public class CombatTeamsController : MonoBehaviour
     #endregion
     #region Get Fighter Info
     // Returns the fighter data associated with the provided fighter.
-    private FighterData GetFighterDataByFighter(Fighter fighter)
+    public FighterData GetFighterDataByFighter(Fighter fighter)
     {
         if (IsPlayerTeamFighter(fighter))
         {
@@ -211,6 +212,26 @@ public class CombatTeamsController : MonoBehaviour
         }
         return null;
     }
+    // Returns the fighters index in range of ha selectedfighter
+    public List<int> GetFightersNumInRange(Fighter selectedFighter)
+    {
+        int currentFighterNum = GetFighterInFieldNum(selectedFighter);
+
+        List<int> fightersInRangeIndex = new()
+        {
+            currentFighterNum
+        };
+        if (currentFighterNum - 1 >= 0)
+        {
+            fightersInRangeIndex.Add(currentFighterNum - 1);
+        }
+        if (currentFighterNum + 1 <= 2)
+        {
+            fightersInRangeIndex.Add(currentFighterNum + 1);
+        }
+
+        return fightersInRangeIndex;
+    }
     // Returns a random fighter on the field by passing the team.
     public Fighter GetRandonFighterOfTeam(CombatTeam team)
     {
@@ -339,7 +360,24 @@ public class CombatTeam
     public FighterData[] Fighters = new FighterData[6];
     public Fighter[] FightersInField = new Fighter[3];
     public Transform[] FightersPos = new Transform[3];
-
+    public void SwipeFightersOrder(int index1, int index2)
+    {
+        FighterData fighter1 = Fighters[index1];
+        FighterData fighter2 = Fighters[index2];
+        Fighters[index1] = fighter2;
+        Fighters[index2] = fighter1;
+    }
+    public int GetFighterDataIndex(string fighterId)
+    {
+        for (int i = 0; i < Fighters.Length; i++)
+        {
+            if (Fighters[i].ID == fighterId)
+            {
+                return i;
+            }
+        }
+        return -1;
+    }
     public List<FighterData> GetFightersNotInField(int amountNeeded)
     {
         List<FighterData> fightersNotInField = new();

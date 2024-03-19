@@ -50,7 +50,7 @@ public class UIFighterChangeController : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(fighterData.ID))
             {
-                FighterImage.sprite = FightersInfoWiki.Instance.FightersDictionary[fighterData.TypeID].c_Sprite;
+                FighterImage.sprite = FightersInfoWiki.Instance.FightersDictionary[fighterData.TypeID].c_AvatarSprite;
                 HealthSlider.value = (float)fighterData.HealthPoints / fighterData.MaxHealtPoints;
                 HealthText.text = $"{fighterData.HealthPoints} / {fighterData.MaxHealtPoints}";
                 EnergySlider.value = (float)fighterData.EnergyPoints / fighterData.MaxEnergyPoints;
@@ -239,6 +239,7 @@ public class UIFighterChangeController : MonoBehaviour
         {
             // Close the popup because the change is optional.
             ClosePopup();
+            CombatManager.Instance.UIManager.ActionsController.EnableAction(true);
         }
     }
     // Update the ui depending of the needs of replacemnt selection.

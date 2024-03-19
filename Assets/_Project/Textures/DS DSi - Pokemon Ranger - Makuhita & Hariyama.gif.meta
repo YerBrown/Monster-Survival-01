@@ -1,0 +1,911 @@
+fileFormatVersion: 2
+guid: 40438a8255b3a95488378656a384ba6a
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_0
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 166
+        width: 21
+        height: 31
+      alignment: 9
+      pivot: {x: 0.3809524, y: 0.16129032}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e1d4a65bf3d5fa94093d0ea820857fc0
+      internalID: 720966771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_1
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 166
+        width: 20
+        height: 30
+      alignment: 9
+      pivot: {x: 0.45000002, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c442c61ee5b9774fba19ca99feb4a66
+      internalID: -1627398769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_2
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 166
+        width: 20
+        height: 29
+      alignment: 9
+      pivot: {x: 0.5, y: 0.1724138}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f01171daea37a7459a55059d9f75004
+      internalID: 1427715270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_3
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 167
+        width: 18
+        height: 30
+      alignment: 9
+      pivot: {x: 0.5, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 145a1ad3aeb590c4e9273b40bb187b50
+      internalID: -1682386278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_4
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 167
+        width: 18
+        height: 29
+      alignment: 9
+      pivot: {x: 0.5555556, y: 0.1724138}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e523895e42c63cc4eab5181e4d1f9f46
+      internalID: -840064240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_5
+      rect:
+        serializedVersion: 2
+        x: 172
+        y: 167
+        width: 19
+        height: 28
+      alignment: 9
+      pivot: {x: 0.57894737, y: 0.17857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 722c5183ec3ef3744afcb60ea5d03dbb
+      internalID: -1695341621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_6
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 167
+        width: 22
+        height: 30
+      alignment: 9
+      pivot: {x: 0.45454547, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b352553780892e34a8b4793a898ab279
+      internalID: -2055982059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_7
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 167
+        width: 20
+        height: 30
+      alignment: 9
+      pivot: {x: 0.45000002, y: 0.16666667}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b29be0759734c4f44990186ad6550ae9
+      internalID: 147162543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_8
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 167
+        width: 23
+        height: 28
+      alignment: 9
+      pivot: {x: 0.47826087, y: 0.17857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cad54f73468834429f815f3abdda8a8
+      internalID: 326716270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_9
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 167
+        width: 18
+        height: 29
+      alignment: 9
+      pivot: {x: 0.5555556, y: 0.1724138}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fabbe3e691f95f442b5bf015cbee06c4
+      internalID: 908281660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_10
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 167
+        width: 18
+        height: 29
+      alignment: 9
+      pivot: {x: 0.5555556, y: 0.1724138}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e48d1d0b304accc4da84f37c35046f14
+      internalID: -931374593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_11
+      rect:
+        serializedVersion: 2
+        x: 371
+        y: 168
+        width: 18
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5555556, y: 0.15384616}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2f5ad2766cce4e4aa1123684db13dab
+      internalID: -1090704186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_12
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 166
+        width: 21
+        height: 29
+      alignment: 9
+      pivot: {x: 0.52380955, y: 0.1724138}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83499d338c0fd10468f062c8cb29e66e
+      internalID: -1587927838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_13
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 166
+        width: 23
+        height: 30
+      alignment: 9
+      pivot: {x: 0.47826087, y: 0.10000001}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f54e778ef44f0014ab01cd98a7a75c0e
+      internalID: 411791268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_14
+      rect:
+        serializedVersion: 2
+        x: 468
+        y: 166
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a276fa2aac95c7240a4e87ac00e81fdc
+      internalID: 317707080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_15
+      rect:
+        serializedVersion: 2
+        x: 500
+        y: 167
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba9c9e3ae1934b64b85b9203db583df3
+      internalID: -874338237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_16
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 134
+        width: 22
+        height: 28
+      alignment: 9
+      pivot: {x: 0.6363636, y: 0.17857143}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed956d81627de46489fbff9fcc345c8d
+      internalID: -53277484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_17
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 132
+        width: 23
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5652174, y: 0.11111111}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd61ae7f6c67fc5468f6f395f5f2cb79
+      internalID: 845570680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_18
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 134
+        width: 23
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2493ea687c7818429d8058926f358b4
+      internalID: 674585548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_19
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 134
+        width: 29
+        height: 25
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de5b1a78e63e928478013268d0413cb7
+      internalID: 1397147777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_20
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 135
+        width: 24
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5, y: 0.19999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21de9f2d052d9b8499c66e8a0aecfffd
+      internalID: -57476913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_21
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 133
+        width: 21
+        height: 27
+      alignment: 9
+      pivot: {x: 0.52380955, y: 0.22222222}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09eac5b53dd62b44181a5637bc7fddf6
+      internalID: 1570704549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_22
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 134
+        width: 24
+        height: 26
+      alignment: 9
+      pivot: {x: 0.5, y: 0.23076925}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49c949e58be21864baf5107d336b0c34
+      internalID: -540445752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_23
+      rect:
+        serializedVersion: 2
+        x: 234
+        y: 133
+        width: 21
+        height: 27
+      alignment: 9
+      pivot: {x: 0.47619048, y: 0.25925925}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cae56688ef37474f902de18a5a48f40
+      internalID: 703702262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_24
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 134
+        width: 23
+        height: 27
+      alignment: 9
+      pivot: {x: 0.5217391, y: 0.22222222}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 129000d0b50dd064ca2d41277a1eea6a
+      internalID: -632255859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_25
+      rect:
+        serializedVersion: 2
+        x: 301
+        y: 135
+        width: 22
+        height: 25
+      alignment: 9
+      pivot: {x: 0.5, y: 0.19999999}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 438958fdc0d3d224296d9282600a4826
+      internalID: 68587348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_26
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 133
+        width: 18
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa834f3ca075b4e48badf25c8a62a82b
+      internalID: -1894109480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_27
+      rect:
+        serializedVersion: 2
+        x: 368
+        y: 133
+        width: 23
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fed419cd2afb9b4fa30d7705c459551
+      internalID: 1438711107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_28
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 133
+        width: 18
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6118b0236234a0b45b8a2d34da8f8b4e
+      internalID: -1937824860
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_29
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 133
+        width: 21
+        height: 26
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee1dbcd28f9753b4693f4b1b6be9bf8d
+      internalID: 1582831414
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_30
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 133
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ad866a6fd1bbaa4580ce5023d03b6c1
+      internalID: 1847127213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger - Makuhita & Hariyama_31
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 132
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3c8ae37465b89d49b656366d6350753
+      internalID: 553338637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_0: 720966771
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_1: -1627398769
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_10: -931374593
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_100: 1337270833
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_101: -1533104027
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_102: 472451813
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_103: 1484477736
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_104: 983053991
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_105: -941508663
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_106: -604442180
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_107: -703125779
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_108: 791007534
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_109: 524252215
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_11: -1090704186
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_110: -1889920025
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_111: 950505416
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_12: -1587927838
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_13: 411791268
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_14: 317707080
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_15: -874338237
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_16: -53277484
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_17: 845570680
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_18: 674585548
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_19: 1397147777
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_2: 1427715270
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_20: -57476913
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_21: 1570704549
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_22: -540445752
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_23: 703702262
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_24: -632255859
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_25: 68587348
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_26: -1894109480
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_27: 1438711107
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_28: -1937824860
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_29: 1582831414
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_3: -1682386278
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_30: 1847127213
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_31: 553338637
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_32: -700420694
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_33: -498091092
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_34: -1693925350
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_35: -1491072664
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_36: 299977297
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_37: -1200943419
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_38: 295747357
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_39: -447911918
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_4: -840064240
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_40: 642164751
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_41: 1390933661
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_42: 907644449
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_43: 1544476060
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_44: 1999856066
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_45: 401844950
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_46: -1681028345
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_47: 612609221
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_48: -1224754946
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_49: 1278987423
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_5: -1695341621
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_50: 741619974
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_51: 1297702304
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_52: 2030267958
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_53: 838827788
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_54: 848150006
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_55: -1776734469
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_56: -1470868758
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_57: -1607666851
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_58: 1827788803
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_59: 2079206911
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_6: -2055982059
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_60: -1688249834
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_61: 858868673
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_62: 24131083
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_63: -20182060
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_64: -2062660331
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_65: 1374160849
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_66: 677565402
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_67: 781488670
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_68: 784376553
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_69: 354839944
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_7: 147162543
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_70: 239171916
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_71: -58374447
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_72: 790321469
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_73: 1471450000
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_74: -1121838428
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_75: -1367065321
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_76: 1551113220
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_77: -1271712392
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_78: 447073699
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_79: -1685860946
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_8: 326716270
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_80: -1797712400
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_81: -1386292654
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_82: 1705152442
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_83: -1432752212
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_84: 765141268
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_85: -1331595330
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_86: 705362742
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_87: -2082725506
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_88: -1330495675
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_89: -580799354
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_9: 908281660
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_90: 213531666
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_91: 2129306763
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_92: -219070116
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_93: 1832497873
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_94: 2075246202
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_95: 1024969408
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_96: -1439356322
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_97: 2006576805
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_98: -380792389
+      DS DSi - Pokemon Ranger - Makuhita & Hariyama_99: -957402681
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -11,6 +11,7 @@ public class UICombatManager : MonoBehaviour
     public UIActionsController ActionsController;
     public UIFighterChangeController ChangeFighterController;
     public UIWinAnimationController WinAnimationController;
+    public UINotificationsController NotificationController;
     [Serializable]
     public class PlayerFighterPanel
     {

@@ -7,12 +7,13 @@ using UnityEngine.UI;
 
 public class UIWinAnimationController : MonoBehaviour
 {
-    public Color PlayerColor;
-    public Color EnemyColor;
-
+    [Header("UI")]
     public Image WinFrame1;
     public Image WinFrame2;
     public TMP_Text WinText;
+
+    public Color PlayerColor;
+    public Color EnemyColor;
 
     Sequence _MySequence;
     public void PlayPlayerWin()

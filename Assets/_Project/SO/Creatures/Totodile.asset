@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350015f3d686a4aa09543ddb31b6cbbc, type: 3}
+  m_Name: Totodile
+  m_EditorClassIdentifier: 
+  c_Name: Totodile
+  c_Description: The crocodile
+  c_Sprite: {fileID: 2110005525, guid: b5ae1b46d41ed8b4d88a6cbed4255aa5, type: 3}
+  c_AvatarSprite: {fileID: 354958816, guid: bd0a1dab58456dd49b2bf3ce5dd02477, type: 3}
+  c_Animator: {fileID: 22100000, guid: 6a25cff0bed25a54a8744a9e98f2804a, type: 2}
+  c_Skills: 02000000
+  CombatFighterPrefab: {fileID: 2148422875654226134, guid: e4d67a30f17afaa499cb5c29fa3cc749, type: 3}

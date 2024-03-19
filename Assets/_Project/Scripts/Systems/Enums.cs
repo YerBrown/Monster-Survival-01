@@ -3,5 +3,7 @@ public enum Skills
     CUT_DOWN,
     MININNG,
     SWIMMING,
-    CLIMBING
+    CLIMBING,
+    CAPTURE,
+    USE_ITEMS,
 }

@@ -11,6 +11,7 @@ public class CreatureSO : ScriptableObject
     public string c_Name;
     public string c_Description;
     public Sprite c_Sprite;
+    public Sprite c_AvatarSprite;
     public AnimatorOverrideController c_Animator;
     public List<Skills> c_Skills = new();
     public GameObject CombatFighterPrefab;

@@ -7,6 +7,7 @@ using UnityEngine;
 public class EnemyActionsManager : MonoBehaviour
 {
     private CombatManager _CombatManager;
+    private (Fighter, int) _Target;
     private void Start()
     {
         _CombatManager = CombatManager.Instance;
@@ -17,7 +18,7 @@ public class EnemyActionsManager : MonoBehaviour
 
         int randomAction = 0;
         // Check if are posible targets in range.
-        if (GetTarget(_CombatManager.TeamsController.PlayerTeam) != null)
+        if (GetOppositeRandomTarget().Item1 != null)
         {
             if (currentFighter.EnergyPoints >= currentFighter.Stats.MaxEnergyPoints / 2)
             {
@@ -25,54 +26,89 @@ public class EnemyActionsManager : MonoBehaviour
             }
             else
             {
-                randomAction = Random.Range(0, 8);
+                randomAction = Random.Range(0, 18);
             }
         }
         else
         {
             // If there aren't targets posible, use defense mode.
-            randomAction = 7;
+            randomAction = Random.Range(0, 6);
         }
 
         switch (randomAction)
         {
-            case < 5:
-                _CombatManager.SetSelectedAction(_CombatManager.ActionsFlowManager.FisicalAttack);
-                _CombatManager.SelectTargetFighter(GetTarget(_CombatManager.TeamsController.PlayerTeam));
+            case < 3:
+                _CombatManager.SetSelectedAction(_CombatManager.ActionsFlowManager.SwipePositions);
+
+                _Target = GetRandomPartnerTarget();
+                _CombatManager.SelectTargetFighter(_Target.Item1, _Target.Item2);
                 break;
-            case < 7:
-                _CombatManager.SetSelectedAction(_CombatManager.ActionsFlowManager.RangeAttack);
-                _CombatManager.SelectTargetFighter(GetTarget(_CombatManager.TeamsController.PlayerTeam));
-                break;
-            case < 8:
+            case < 6:
                 _CombatManager.SetSelectedAction(_CombatManager.ActionsFlowManager.SetDefenseMode);
-                _CombatManager.SelectTargetFighter(_CombatManager.CurrentTurnFighter);
+
+                _Target = GetCurrentFighter();
+                _CombatManager.SelectTargetFighter(_Target.Item1, _Target.Item2);
+                break;
+            case < 12:
+                _CombatManager.SetSelectedAction(_CombatManager.ActionsFlowManager.FisicalAttack);
+
+                _Target = GetOppositeRandomTarget();
+                _CombatManager.SelectTargetFighter(_Target.Item1, _Target.Item2);
+                break;
+            case < 18:
+                _CombatManager.SetSelectedAction(_CombatManager.ActionsFlowManager.RangeAttack);
+
+                _Target = GetOppositeRandomTarget();
+                _CombatManager.SelectTargetFighter(_Target.Item1, _Target.Item2);
                 break;
             case < 100:
                 _CombatManager.SetSelectedAction(_CombatManager.ActionsFlowManager.MultipleTargetAttack);
-                _CombatManager.SelectTargetFighter(GetTarget(_CombatManager.TeamsController.PlayerTeam));
+
+                _Target = GetOppositeRandomTarget();
+                _CombatManager.SelectTargetFighter(_Target.Item1, _Target.Item2);
                 break;
             default:
                 break;
         }
     }
-
-    public Fighter GetTarget(CombatTeam team)
+    public (Fighter, int) GetCurrentFighter()
     {
-        List<int> posibleTargets = _CombatManager.GetFightersNumInRange(_CombatManager.CurrentTurnFighter);
+        Fighter currentFighter = _CombatManager.CurrentTurnFighter;
+        int index = _CombatManager.TeamsController.GetFighterInFieldNum(currentFighter);
+
+        return new(currentFighter, index);
+    }
+    public (Fighter, int) GetOppositeRandomTarget()
+    {
+        List<int> posibleTargets = _CombatManager.TeamsController.GetFightersNumInRange(_CombatManager.CurrentTurnFighter);
         List<Fighter> posibleFighterTargets = new();
+        CombatTeam playerTeam = _CombatManager.TeamsController.PlayerTeam;
         for (int i = 0; i < posibleTargets.Count; i++)
         {
-            if (team.FightersInField[posibleTargets[i]] != null)
+            if (playerTeam.FightersInField[posibleTargets[i]] != null)
             {
-                posibleFighterTargets.Add(team.FightersInField[posibleTargets[i]]);
+                posibleFighterTargets.Add(playerTeam.FightersInField[posibleTargets[i]]);
             }
         }
 
         int randomNum = Random.Range(0, posibleFighterTargets.Count);
-        return posibleFighterTargets[randomNum];
+        return new(posibleFighterTargets[randomNum], randomNum);
     }
 
+    public (Fighter, int) GetRandomPartnerTarget()
+    {
+        List<int> posibleTargets = new();
+        CombatTeam enemyTeam = _CombatManager.TeamsController.EnemyTeam;
+        for (int i = 0; i < enemyTeam.FightersInField.Length; i++)
+        {
+            if (enemyTeam.FightersInField[i] != _CombatManager.CurrentTurnFighter)
+            {
+                posibleTargets.Add(i);
+            }
+        }
+        int randomNum = Random.Range(0, posibleTargets.Count);
+        return new(enemyTeam.FightersInField[posibleTargets[randomNum]], posibleTargets[randomNum]);
+    }
     public List<FighterData> GetNewFighters(List<Fighter> deadFighters)
     {
         Dictionary<int, Fighter> deadFightersDictionary = new Dictionary<int, Fighter>();

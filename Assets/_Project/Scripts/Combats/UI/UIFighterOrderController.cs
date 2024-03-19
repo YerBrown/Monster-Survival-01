@@ -2,35 +2,37 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class UIFighterOrderController : MonoBehaviour
 {
-    public List<GameObject> FighterAvatars;
-    public List<Fighter> CompleteOrderLine = new();
-    public GameObject TurnFinishImage;
-    [SerializeField] private Color PlayerTeamColor;
-    [SerializeField] private Color EnemyTeamColor;
+    [Header("UI")]
+    [SerializeField] private List<GameObject> _FighterAvatars;
+    [SerializeField] private GameObject _TurnFinishImage;
+    [SerializeField] private Color _PlayerTeamColor;
+    [SerializeField] private Color _EnemyTeamColor;
 
-    public VoidEventChannelSO FinishCurrentFighterAction;
+    private List<Fighter> _CompleteOrderLine = new();
+    [Header("Events")]
+    [SerializeField] private VoidEventChannelSO _FinishCurrentFighterAction;
     private void OnEnable()
     {
-        FinishCurrentFighterAction.OnEventRaised += CheckOrder;
+        _FinishCurrentFighterAction.OnEventRaised += CheckOrder;
     }
     private void OnDisable()
     {
-        FinishCurrentFighterAction.OnEventRaised -= CheckOrder;
+        _FinishCurrentFighterAction.OnEventRaised -= CheckOrder;
     }
-
+    // Gets order and updates UI
     public void CheckOrder()
     {
-        CompleteOrderLine = GetCompleteOrder();
+        _CompleteOrderLine = GetCompleteOrder();
         UpdateAvatarsLine();
     }
+    // Get required order
     private List<Fighter> GetCompleteOrder()
     {
         if (CombatManager.Instance == null) { return null; }
         //int fightersCount = CombatManager.Instance.GetAmountOfFighterInField(); 
-        int fightersCount = 6; 
+        int fightersCount = _FighterAvatars.Count; 
         List<Fighter> currentAndNextTurn = new();
         currentAndNextTurn = CombatManager.Instance.GetCurrentAndNextTurn();
         if (currentAndNextTurn.Count > fightersCount)
@@ -39,22 +41,22 @@ public class UIFighterOrderController : MonoBehaviour
         }
         return currentAndNextTurn;
     }
+    // Update yhe turn order line UI 
     private void UpdateAvatarsLine()
     {
-        for (int i = 0; i < FighterAvatars.Count; i++)
+        for (int i = 0; i < _FighterAvatars.Count; i++)
         {
-            if (CompleteOrderLine.Count > i)
+            if (_CompleteOrderLine.Count > i)
             {
-                FighterAvatars[i].GetComponent<Image>().color = (CombatManager.Instance.TeamsController.IsPlayerTeamFighter(CompleteOrderLine[i])) ? PlayerTeamColor : EnemyTeamColor;
-                //FighterAvatars[i].GetComponent<Image>().sprite = CompleteOrderLine[i].AvatarSprite;
-                FighterAvatars[i].transform.GetChild(0).GetComponent<Image>().sprite = CompleteOrderLine[i].AvatarSprite;
-                FighterAvatars[i].SetActive(true);
+                _FighterAvatars[i].transform.GetChild(1).GetComponent<Image>().color = (CombatManager.Instance.TeamsController.IsPlayerTeamFighter(_CompleteOrderLine[i])) ? _PlayerTeamColor : _EnemyTeamColor;
+                _FighterAvatars[i].transform.GetChild(0).transform.GetChild(0).GetComponent<Image>().sprite = _CompleteOrderLine[i].AvatarSprite;
+                _FighterAvatars[i].SetActive(true);
             }
             else
             {
-                FighterAvatars[i].SetActive(false);
+                _FighterAvatars[i].SetActive(false);
             }
         }
-        TurnFinishImage.transform.SetSiblingIndex(CombatManager.Instance.CurrentTurnOrder.Count);
+        _TurnFinishImage.transform.SetSiblingIndex(CombatManager.Instance.CurrentTurnOrder.Count);
     }
 }

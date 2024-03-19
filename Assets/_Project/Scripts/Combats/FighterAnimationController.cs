@@ -5,7 +5,20 @@ using UnityEngine;
 public class FighterAnimationController : MonoBehaviour
 {
     public Animator Anim;
-
+    public void StartDelayAnim(bool animDelay)
+    {
+        if (animDelay)
+        {
+            Anim.enabled = false;
+            StartCoroutine(EnableAnimWithRandomDelay());
+        }
+    }
+    IEnumerator EnableAnimWithRandomDelay()
+    {
+        float delay = Random.Range(0f, 0.2f);
+        yield return new WaitForSeconds(delay);
+        Anim.enabled = true;
+    }
     public void SetMovement(Vector2 newMovement)
     {
         UpdateAnimator(newMovement);
@@ -70,5 +83,9 @@ public class FighterAnimationController : MonoBehaviour
     public void PlayReceiveHeal()
     {
         Anim.SetTrigger("Get Heal");
+    }
+    public void PlayDieAnimation()
+    {
+        Anim.SetTrigger("Die");
     }
 }

@@ -2,20 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
 public class UIActionsController : MonoBehaviour
 {
+    [Header("UI")]
     public Transform ActionsParent;
     public Button SpecialMoveButton;
+    public Button CaptureButton;
+    public Button UseItemsButton;
     public Button CancelButton;
-
-    public UITargetController TargetController;
+    [Header("Events")]
     public VoidEventChannelSO OpenPlayerInventory;
+    [Header("Other")]
+    public UITargetController TargetController;
     public void EnableAction(bool enable)
-    {    
+    {
+
         ActionsParent.gameObject.SetActive(enable);
         Fighter currentFighter = CombatManager.Instance.CurrentTurnFighter;
-        SpecialMoveButton.interactable = currentFighter.EnergyPoints >= currentFighter.Stats.MaxEnergyPoints / 2;
+        FighterData currentData = CombatManager.Instance.TeamsController.GetFighterDataByFighter(currentFighter);
+        SpecialMoveButton.interactable = currentFighter.EnergyPoints >= GeneralValues.StaticCombatGeneralValues.Fighter_EnergyNeededFor_SpecialMovement;
+        if (currentData != null)
+        {
+            if (FightersInfoWiki.Instance.GetCreatureInfo(currentData.TypeID, out CreatureSO creatureInfo))
+            {
+                CaptureButton.interactable = creatureInfo.c_Skills.Contains(Skills.CAPTURE);
+                UseItemsButton.interactable = creatureInfo.c_Skills.Contains(Skills.USE_ITEMS);
+            }
+        }
     }
     public void EnableCancelButton(bool enable)
     {
@@ -70,7 +83,16 @@ public class UIActionsController : MonoBehaviour
     public void OnChange()
     {
         EnableAction(false);
-        CombatManager.Instance.OpenChangeMenu();
+        List<Fighter> changedFighters = new List<Fighter>() { CombatManager.Instance.CurrentTurnFighter };
+        CombatManager.Instance.UIManager.ChangeFighterController.OpenPopup(changedFighters, false);
+    }
+    public void OnSwipePositions()
+    {
+        EnableAction(false);
+        EnableCancelButton(true);
+        CombatManager.Instance.SetSelectedAction(CombatManager.Instance.ActionsFlowManager.SwipePositions);
+        Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;
+        TargetController.EnablePlayerFighterParnersTargets(true, CombatManager.Instance.TeamsController.GetFighterInFieldNum(currentTurnFighter));
     }
     public void OnTryToCapture()
     {

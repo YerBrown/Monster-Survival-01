@@ -58,4 +58,70 @@ MonoBehaviour:
     OnlyRemoveItems: 0
     OnItemAdded: {fileID: 11400000, guid: 0fa4b647cf118e5458a07d47f21a999a, type: 2}
     OnItemRemoved: {fileID: 11400000, guid: c544d32cb1a56584da032f5127b3ad50, type: 2}
-  Team: {fileID: 0}
+  Team:
+  - ID: '#MAKUHITA_01'
+    TypeID: Makuhita
+    Nickname: Blas
+    MaxHealtPoints: 10
+    MaxEnergyPoints: 10
+    FisicalPower: 6
+    RangePower: 3
+    Defense: 2
+    Speed: 5
+    HealthPoints: 2
+    EnergyPoints: 0
+  - ID: '#PLAYER'
+    TypeID: Hunter
+    Nickname: Yeray
+    MaxHealtPoints: 20
+    MaxEnergyPoints: 20
+    FisicalPower: 5
+    RangePower: 5
+    Defense: 3
+    Speed: 10
+    HealthPoints: 20
+    EnergyPoints: 0
+  - ID: '#TOTODILE_03'
+    TypeID: Totodile
+    Nickname: Pepe
+    MaxHealtPoints: 10
+    MaxEnergyPoints: 10
+    FisicalPower: 2
+    RangePower: 10
+    Defense: 4
+    Speed: 8
+    HealthPoints: 13
+    EnergyPoints: 0
+  - ID: '#BULBASUR_04'
+    TypeID: Bulbasur
+    Nickname: Derric
+    MaxHealtPoints: 15
+    MaxEnergyPoints: 10
+    FisicalPower: 5
+    RangePower: 8
+    Defense: 8
+    Speed: 4
+    HealthPoints: 15
+    EnergyPoints: 0
+  - ID: '#ELECTABUZZ_05'
+    TypeID: Electabuzz
+    Nickname: Alfonso
+    MaxHealtPoints: 12
+    MaxEnergyPoints: 10
+    FisicalPower: 4
+    RangePower: 10
+    Defense: 4
+    Speed: 6
+    HealthPoints: 12
+    EnergyPoints: 0
+  - ID: '#MAKUHITA_06'
+    TypeID: Makuhita
+    Nickname: Gozoi
+    MaxHealtPoints: 10
+    MaxEnergyPoints: 10
+    FisicalPower: 8
+    RangePower: 2
+    Defense: 4
+    Speed: 8
+    HealthPoints: 5
+    EnergyPoints: 0

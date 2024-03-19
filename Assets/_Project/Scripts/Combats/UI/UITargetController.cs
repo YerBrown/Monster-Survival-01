@@ -17,7 +17,7 @@ public class UITargetController : MonoBehaviour
 
     public void EnableEnemyTargets(bool enable)
     {
-        List<int> posibleTargets = CombatManager.Instance.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
+        List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
         for (int i = 0; i < EnemyTargets.Count; i++)
         {
             if (posibleTargets.Contains(i))
@@ -26,14 +26,34 @@ public class UITargetController : MonoBehaviour
             }
         }
     }
+    public void EnableEnemyFighterParnersTargets(bool enable, int fighterNum)
+    {
+        for (int i = 0; i < EnemyTargets.Count; i++)
+        {
+            if (i != fighterNum)
+            {
+                EnemyTargets[i].SetActive(enable);
+            }
+        }
+    }
     public void EnablePlayerTargets(bool enable)
     {
-        List<int> posibleTargets = CombatManager.Instance.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
+        List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
         for (int i = 0; i < PlayerTargets.Count; i++)
         {
             if (posibleTargets.Contains(i))
             {
                 EnablePlayerTarget(i, enable);
+            }
+        }
+    }
+    public void EnablePlayerFighterParnersTargets(bool enable, int fighterNum)
+    {
+        for (int i = 0; i < PlayerTargets.Count; i++)
+        {
+            if (i != fighterNum)
+            {
+                PlayerTargets[i].SetActive(enable);
             }
         }
     }
@@ -55,7 +75,7 @@ public class UITargetController : MonoBehaviour
     {
         if (CombatManager.Instance != null)
         {
-            CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.EnemyTeam.FightersInField[id]);
+            CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.EnemyTeam.FightersInField[id], id);
             EnableAllTarget(false);
         }
     }
@@ -63,7 +83,7 @@ public class UITargetController : MonoBehaviour
     {
         if (CombatManager.Instance != null)
         {
-            CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id]);
+            CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id], id);
             EnableAllTarget(false);
         }
     }
