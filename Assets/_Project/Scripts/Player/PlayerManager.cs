@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -10,7 +11,7 @@ public class PlayerManager : MonoBehaviour
     public string Nickname;
     public HumanFighter P_Fighter;
     public Inventory P_Inventory;
-    public FighterData[] Team= new FighterData[6];
+    public FighterData[] Team = new FighterData[6];
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -22,6 +23,15 @@ public class PlayerManager : MonoBehaviour
             _instance = this;
             DontDestroyOnLoad(gameObject);
         }
+    }
+
+    public void LoadCombatScene()
+    {
+        SceneManager.LoadScene("Combat Field");
+    }
+    public void LoadExpeditionScene()
+    {
+        SceneManager.LoadScene("Expedition");
     }
 }
 public class HumanFighter : Fighter
