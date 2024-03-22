@@ -105,5 +105,6 @@ public class UIActionsController : MonoBehaviour
     public void OnUseItem()
     {
         OpenPlayerInventory.RaiseEvent();
+        EnableAction(false);
     }
 }

@@ -21098,6 +21098,74 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[2]._Amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[3]._Amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[4]._Amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[5]._Amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[6]._Amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[7]._Amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[8]._Amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[9]._Amount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[2]._ItemInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b265bffbb770e64c8e864aba08db2e5, type: 2}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[3]._ItemInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b265bffbb770e64c8e864aba08db2e5, type: 2}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[4]._ItemInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b265bffbb770e64c8e864aba08db2e5, type: 2}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[5]._ItemInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b265bffbb770e64c8e864aba08db2e5, type: 2}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[6]._ItemInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b265bffbb770e64c8e864aba08db2e5, type: 2}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[7]._ItemInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b265bffbb770e64c8e864aba08db2e5, type: 2}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[8]._ItemInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b265bffbb770e64c8e864aba08db2e5, type: 2}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: P_Inventory.Slots.Array.data[9]._ItemInfo
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b265bffbb770e64c8e864aba08db2e5, type: 2}
     - target: {fileID: 6622500623218617866, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

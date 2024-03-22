@@ -55,6 +55,7 @@ public class BlockerElement : InteractiveElement
         {
             base.UpdateElement(data);
             SetActive(((ExpeditionData.BlockerData)data).Blocks);
+            EnableElement(true);
         }
         else
         {

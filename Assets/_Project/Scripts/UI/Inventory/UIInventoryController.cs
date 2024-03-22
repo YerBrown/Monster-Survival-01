@@ -16,6 +16,9 @@ public class UIInventoryController : MonoBehaviour
     public List<UIItemSlotController> Items = new List<UIItemSlotController>();
     public UnityEvent<UIInventoryController, ItemsSO> ItemSlotSelected;
     public ScrollRect I_ScrollRect;
+    public bool IsFilterEnabled = false;
+    public ItemType ItemMainFilter;
+    public CombatItemType CombatFilter;
     private void Awake()
     {
         //Add all the items in the parent to the list "Items"
@@ -89,6 +92,26 @@ public class UIInventoryController : MonoBehaviour
                 {
                     Items[i].Slot = UI_Inventory.Slots[i];
                     Items[i].UpdateUI();
+                    if (IsFilterEnabled)
+                    {
+                        ItemsSO currentItem = UI_Inventory.Slots[i].ItemInfo;
+                        bool activateFilter = currentItem.i_ItemType != ItemMainFilter;
+                        if (ItemMainFilter == ItemType.COMBAT)
+                        {
+                            if (CombatFilter != CombatItemType.GENERAL)
+                            {
+                                if (currentItem.i_CombatType != CombatFilter)
+                                {
+                                    activateFilter = true;
+                                }
+                            }
+                        }
+                        Items[i].EnableFilter(activateFilter);
+                    }
+                    else
+                    {
+                        Items[i].EnableFilter(false);
+                    }
                     Items[i].gameObject.SetActive(true);
                 }
                 else
@@ -124,6 +147,14 @@ public class UIInventoryController : MonoBehaviour
     public void RemoveItemFromInventory(ItemsSO itemInfo, int amount)
     {
         UI_Inventory.RemoveItemOfType(itemInfo, amount);
+        UpdateFullInventory();
+    }
+    // Add filter to inventory.
+    public void SetFilter(bool enableFilter, ItemType itemType, CombatItemType combatType = CombatItemType.GENERAL)
+    {
+        IsFilterEnabled = enableFilter;
+        ItemMainFilter = itemType;
+        CombatFilter = combatType;
         UpdateFullInventory();
     }
 }

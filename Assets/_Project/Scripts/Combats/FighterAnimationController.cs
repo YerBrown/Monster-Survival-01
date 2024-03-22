@@ -5,6 +5,7 @@ using UnityEngine;
 public class FighterAnimationController : MonoBehaviour
 {
     public Animator Anim;
+    public Animator AttackAnim;
     public void StartDelayAnim(bool animDelay)
     {
         if (animDelay)
@@ -88,4 +89,20 @@ public class FighterAnimationController : MonoBehaviour
     {
         Anim.SetTrigger("Die");
     }
+
+
+    #region Attack Animations
+    public void PlaySpawnOut() 
+    {
+        Anim.SetTrigger("Remove");
+    }
+    public void PlayAttack(string attackId)
+    {
+        AttackAnim.Play(attackId);
+    }
+    public void PlayParalized()
+    {
+        AttackAnim.Play("Paralized");
+    }
+    #endregion
 }

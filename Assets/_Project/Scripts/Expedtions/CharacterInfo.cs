@@ -81,6 +81,10 @@ public class CharacterInfo : MonoBehaviour
             animator.SetFloat("Vertical", -1);
         }
     }
+    public void PlayFisicalAttackAnim()
+    {
+        Animator.SetTrigger("Hit Resource");
+    }
     public void OpenContainer(Inventory containerInventory)
     {
         if (containerInventory == null) return;

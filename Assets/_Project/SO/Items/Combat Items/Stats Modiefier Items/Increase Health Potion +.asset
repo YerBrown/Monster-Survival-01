@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76eeba3a5ab63064cb2b77f02a52392c, type: 3}
+  m_Name: Increase Health Potion +
+  m_EditorClassIdentifier: 
+  i_Name: Increase Health Potion +
+  i_Description: Increase the max healt in +10
+  i_Sprite: {fileID: 21300000, guid: 275fd8fea1d0249baa3f3941e12ee883, type: 3}
+  i_StackMax: 5
+  i_ItemType: 2
+  i_CombatType: 3
+  i_TargetType: 0
+  ModifierStats:
+    MaxHealthPoints: 10
+    MaxEnergyPoints: 0
+    HitPower: 0
+    RangePower: 0
+    Defense: 0
+    Speed: 0
+  TurnsDuration: 1
+  HealAmount: 0

@@ -29,6 +29,7 @@ public class UIItemSlotController : MonoBehaviour, IPointerClickHandler
     public TMP_Text AmountText;
     public Image ItemBack;
     public Image SelectedFrame;
+    public Image FilterBackground;
     public void SelectItemSlot()
     {
         SelectSlotEvent?.Invoke(this);
@@ -40,6 +41,10 @@ public class UIItemSlotController : MonoBehaviour, IPointerClickHandler
             ItemImage.sprite = ItemsRelatedUtilities.CheckItemIcon(Slot.ItemInfo);
             AmountText.text = $"x{Slot.Amount}";
         }
+    }
+    public void EnableFilter(bool enable)
+    {
+        FilterBackground.gameObject.SetActive(enable);
     }
     public void EnableBack(bool enable)
     {
@@ -55,7 +60,10 @@ public class UIItemSlotController : MonoBehaviour, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        SelectItemSlot();
+        if (!FilterBackground.gameObject.activeSelf)
+        {
+            SelectItemSlot();
+        }
     }
 }
 

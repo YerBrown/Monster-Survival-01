@@ -28,6 +28,7 @@ public class ContainerElement : InteractiveElement
             ContainerInventory = GetInventoryByData((ExpeditionData.ContainerData)data);
             bool isOpened = ((ExpeditionData.ContainerData)data).Opened;
             ChangeOpenedState(isOpened);
+            EnableElement(true);
         }
         else
         {

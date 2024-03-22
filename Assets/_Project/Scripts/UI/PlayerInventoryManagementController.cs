@@ -1,4 +1,6 @@
 using DG.Tweening;
+using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -18,10 +20,15 @@ public class PlayerInventoryManagementController : MonoBehaviour
     public TMP_Text SelectedItemDescription;
     public TMP_Text SelectedItemAmount;
 
+
+
     public Button TrashButton;
     public Button CloseButton;
     public Sprite DefaultItemSprite;
     [Header("Other")]
+    public bool IsFilterEnabled;
+    public ItemType MainFilter;
+
     public bool ResetOnSameType = false;
     public VoidEventChannelSO OnOpenPlayerInventory;
     public UITrashController TrashController;
@@ -54,6 +61,7 @@ public class PlayerInventoryManagementController : MonoBehaviour
         if (PlayerManager.Instance != null) UIPlayerInventory.UI_Inventory = PlayerManager.Instance.P_Inventory;
         //reset selected item
         UIParent.gameObject.SetActive(true);
+
         if (UIPlayerInventory.UI_Inventory.Slots.Count > 0)
         {
             SelectItemSlot(UIPlayerInventory, UIPlayerInventory.UI_Inventory.Slots[0].ItemInfo);
@@ -63,6 +71,7 @@ public class PlayerInventoryManagementController : MonoBehaviour
             ResetSelected();
             SelectItemToTransfer();
         }
+        DisableFilter();
         if (GeneralUIController.Instance != null)
         {
             GeneralUIController.Instance.OpenMenu(true);
@@ -71,7 +80,7 @@ public class PlayerInventoryManagementController : MonoBehaviour
     //Select item and inventory 
     protected void SelectItemSlot(UIInventoryController uiInventory, ItemsSO itemType)
     {
-        if (itemType == SelectedItemType && ResetOnSameType)
+        if (itemType == SelectedItemType && ResetOnSameType || itemType == null)
         {
             ResetSelected();
         }
@@ -154,6 +163,24 @@ public class PlayerInventoryManagementController : MonoBehaviour
         SelectedItemType = null;
 
         UIPlayerInventory.SetSelectedUI(null, false);
+    }
+    // Disable current filter
+    public virtual void DisableFilter()
+    {
+        IsFilterEnabled = false;
+        EnableFilter();
+    }
+    // Enable a type of filter
+    public void SetMainFilter(int itemFilter)
+    {
+        MainFilter = (ItemType)Enum.Parse(typeof(ItemType), itemFilter.ToString()); ;
+        IsFilterEnabled = true;
+        EnableFilter();
+    }
+    // Manage filters
+    public virtual void EnableFilter()
+    {
+        UIPlayerInventory.SetFilter(IsFilterEnabled, MainFilter);
     }
     public virtual void CloseMenu()
     {

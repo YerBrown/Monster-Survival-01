@@ -18,4 +18,4 @@ MonoBehaviour:
   c_AvatarSprite: {fileID: -218218948, guid: bd0a1dab58456dd49b2bf3ce5dd02477, type: 3}
   c_Animator: {fileID: 22100000, guid: 9abf2bdfae3383644a486fc1cf9afa6c, type: 2}
   c_Skills: 01000000
-  CombatFighterPrefab: {fileID: 2148422875654226134, guid: e4d67a30f17afaa499cb5c29fa3cc749, type: 3}
+  CombatFighterPrefab: {fileID: 6695769892259404275, guid: d4ee356fa22f8dd48a80ff1ba8a78943, type: 3}

@@ -1,3 +1,5 @@
+using DG.Tweening;
+using GeneralValues;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,15 +9,19 @@ public class Fighter : MonoBehaviour
     public string ID; // Fighter identification.
     public string Nickname;
     public Sprite AvatarSprite;
-    public BasicStats Stats = new();
+    public BasicStats BaseStats = new();
+    public BasicStats CurrentStats = new();
     public int HealthPoints;
     public int EnergyPoints;
     [SerializeField] private bool _IsInDefenseMode = false;
+    [Header("Fighter Combat Status")]
+    public List<(BasicStats, int)> StatsModifiers = new();
+    public StatusProblemType CurrentStatusProblem = StatusProblemType.NONE;
+    public int CurrentStatusProblemActiveTurns = 0;
     [Header("Movement")]
     public Vector2Int ForwardDirection; // The forward direction, depending of the team side in the field.
     public OverlayTile FighterStartTile; // Start position tile, for knowing where to come back if fighter moved from there.
     private OverlayTile _ActiveTile; // Current tile behind the fighter.
-    [SerializeField] private float _MoveSpeed = GeneralValues.StaticCombatGeneralValues.Fighter_MoveSpeed;
     private List<OverlayTile> _Path = new List<OverlayTile>(); // Current path for the movement of the fighter.
     private PathFinder _PathFinder;
     private Action _OnPathFinishedAction; // Action to be invoked when the fighter reached the finish of the path.
@@ -23,6 +29,7 @@ public class Fighter : MonoBehaviour
     public UIFighterController UIController;
     public FighterAnimationController AnimationController;
     [Header("Other")]
+    public GameObject ThrowItemObject;
     public GameObject CurrentTurnPointer; // Circle image that represents that the current action turn belongs to this fighter.
     private void Start()
     {
@@ -45,18 +52,19 @@ public class Fighter : MonoBehaviour
         Nickname = data.Nickname;
         AvatarSprite = FightersInfoWiki.Instance.FightersDictionary[data.TypeID].c_AvatarSprite;
         AnimationController.Anim.runtimeAnimatorController = FightersInfoWiki.Instance.FightersDictionary[data.TypeID].c_Animator;
-        Stats.MaxHealtPoints = data.MaxHealtPoints;
-        Stats.MaxEnergyPoints = data.MaxEnergyPoints;
-        Stats.HitPower = data.FisicalPower;
-        Stats.RangePower = data.RangePower;
-        Stats.Defense = data.Defense;
-        Stats.Speed = data.Speed;
+        BaseStats.MaxHealthPoints = data.MaxHealtPoints;
+        BaseStats.MaxEnergyPoints = data.MaxEnergyPoints;
+        BaseStats.HitPower = data.FisicalPower;
+        BaseStats.RangePower = data.RangePower;
+        BaseStats.Defense = data.Defense;
+        BaseStats.Speed = data.Speed;
+        CalculateCurrentStats();
 
         HealthPoints = data.HealthPoints;
         EnergyPoints = data.EnergyPoints;
 
         // Enable animator with delay.
-        AnimationController.StartDelayAnim(animDelay);
+        AnimationController.StartDelayAnim(false);
 
         if (UIController == null) { return; }
         UIController.UpdateGeneralUI(false);
@@ -68,13 +76,13 @@ public class Fighter : MonoBehaviour
         if (_IsInDefenseMode)
         {
             _IsInDefenseMode = false;
-            damagePoints -= Stats.Defense / GeneralValues.StaticCombatGeneralValues.Fighter_DefenseSplitter_InDefenseMode;
+            damagePoints -= CurrentStats.Defense / GeneralValues.StaticCombatGeneralValues.Fighter_DefenseSplitter_InDefenseMode;
             AnimationController.PlayRemoveDefense();
             UIController.EnableDefenseIcon(false);
         }
         else
         {
-            damagePoints -= Stats.Defense / GeneralValues.StaticCombatGeneralValues.Fighter_DefenseSplitter_WithoutDefenseMode;
+            damagePoints -= CurrentStats.Defense / GeneralValues.StaticCombatGeneralValues.Fighter_DefenseSplitter_WithoutDefenseMode;
         }
         // Never do 0 damage.
         if (damagePoints <= 0)
@@ -88,7 +96,7 @@ public class Fighter : MonoBehaviour
         }
         HealthPoints -= damagePoints;
         // Add energy points based on the damage 
-        AddEnergyPoints(damagePoints / GeneralValues.StaticCombatGeneralValues.Fighter_EnergySplitter_OnReceiveDamage, false);
+        AddEnergyPoints(damagePoints / GeneralValues.StaticCombatGeneralValues.Fighter_EnergySplitter_OnReceiveDamage, true);
 
         UIController.UpdateGeneralUI();
         UIController.HealthPointsChanged(-damagePoints);
@@ -98,36 +106,41 @@ public class Fighter : MonoBehaviour
 
         AnimationController.PlayReceiveHit();
 
-        // Check if fighter died
+        // Check if fighter died        
+        return damagePoints;
+    }
+    // Check if the fighter died
+    public void CheckIfDied()
+    {
         if (HealthPoints == 0)
         {
             AnimationController.PlayDieAnimation();
         }
-        return damagePoints;
     }
     // Heal the fighter
     public void Heal(int healedPoints)
     {
         // Limit heal to missing health points
-        if (healedPoints + HealthPoints > Stats.MaxHealtPoints)
+        if (healedPoints + HealthPoints > CurrentStats.MaxHealthPoints)
         {
-            healedPoints = Stats.MaxHealtPoints - HealthPoints;
+            healedPoints = CurrentStats.MaxHealthPoints - HealthPoints;
         }
         HealthPoints += healedPoints;
         // Update the data of this fighter
         CombatManager.Instance.TeamsController.UpdateFighterData(this);
 
-        AnimationController.PlayReceiveHeal();
+        UIController.UpdateGeneralUI();
         UIController.HealthPointsChanged(healedPoints);
+        AnimationController.PlayReceiveHeal();
     }
     // Add energy points to this fighter.
     public void AddEnergyPoints(int energyAdded, bool updateUI)
     {
         EnergyPoints += energyAdded;
         // Limit the energy points to max energy .
-        if (EnergyPoints > Stats.MaxEnergyPoints)
+        if (EnergyPoints > CurrentStats.MaxEnergyPoints)
         {
-            EnergyPoints = Stats.MaxEnergyPoints;
+            EnergyPoints = CurrentStats.MaxEnergyPoints;
         }
         if (updateUI)
         {
@@ -141,6 +154,7 @@ public class Fighter : MonoBehaviour
 
         UIController.EnableDefenseIcon(true);
         AnimationController.PlayDefenseMode();
+        AddEnergyPoints(StaticCombatGeneralValues.Fighter_DefenseSplitter_InDefenseMode, true);
     }
     // Play fisical attack animation.
     public void FisicalAttack()
@@ -179,7 +193,7 @@ public class Fighter : MonoBehaviour
     // Calculate the movement with the current path.
     private void MoveAlongPath()
     {
-        var step = _MoveSpeed * Time.deltaTime;
+        var step = GeneralValues.StaticCombatGeneralValues.Fighter_MoveSpeed * Time.deltaTime;
         var zIndex = _Path[0].transform.position.z;
 
         transform.position = Vector2.MoveTowards(transform.position, _Path[0].transform.position, step);
@@ -247,6 +261,110 @@ public class Fighter : MonoBehaviour
     public void FinishAnimationTrigger()
     {
         CombatManager.Instance.TriggerTurnFlowInput();
+        Debug.Log("Input triggered");
+    }
+    // Throws an item to a target fighter
+    public void ThrowItem(Fighter targetFighter, CombatItemSO combatItem)
+    {
+        if (targetFighter == this)
+        {
+            // TODO: If traget fighter is the same fighter, not throw just consume
+            combatItem.Use(this);
+            Invoke(nameof(FinishAnimationTrigger), .5f);
+            FinishAnimationTrigger();
+        }
+        else
+        {
+            // TODO: Throw anim
+            ThrowItemObject.transform.position = transform.position;
+            ThrowItemObject.GetComponent<SpriteRenderer>().sprite = combatItem.i_Sprite;
+            ThrowItemObject.SetActive(true);
+            ThrowItemObject.transform.DOMove(targetFighter.transform.position, GeneralValues.StaticCombatGeneralValues.Fighter_ThrowAnimDuration).SetEase(Ease.OutQuad).OnComplete(() =>
+            {
+                combatItem.Use(targetFighter);
+                FinishAnimationTrigger();
+                ThrowItemObject.SetActive(false);
+            });
+        }
+    }
+    // Adds a new stat modifier
+    public void AddStatModifier(BasicStats newStats, int turns)
+    {
+        StatsModifiers.Add((newStats, turns));
+        CalculateCurrentStats();
+    }
+    // Manage the fighter things that happen when the turn finished
+    public void NextTurn()
+    {
+        EnergyPoints += StaticCombatGeneralValues.Fighter_Energy_ObtainedOnTurn;
+        for (int i = 0; i < StatsModifiers.Count; i++)
+        {
+            StatsModifiers[i] = (StatsModifiers[i].Item1, StatsModifiers[i].Item2 - 1);
+        }
+        StatsModifiers.RemoveAll(modifier => modifier.Item2 <= 0);
+        CalculateCurrentStats();
+        ManageStatusOnFinishTurn();
+    }
+    private void ManageStatusOnFinishTurn()
+    {
+        if (CurrentStatusProblem == StatusProblemType.BURNED)
+        {
+            ReceiveDamage(CurrentStats.MaxHealthPoints / 10);
+            CurrentStatusProblemActiveTurns++;
+            if (CurrentStatusProblemActiveTurns >= StaticCombatGeneralValues.Fighter_StatusProblem_BurnedMaxTurns || UnityEngine.Random.Range(0, 10) < 2)
+            {
+                ClearStateProblem();
+            }
+            else
+            {
+                UIController.UpdateGeneralUI();
+            }
+        }
+        else if (CurrentStatusProblem == StatusProblemType.POISONED)
+        {
+            ReceiveDamage(CurrentStats.MaxHealthPoints / 10);
+            CurrentStatusProblemActiveTurns++;
+        }
+    }
+    public void AddStatusProblem(StatusProblemType newStatusProblem)
+    {
+        if (CurrentStatusProblem == StatusProblemType.NONE)
+        {
+            CurrentStatusProblemActiveTurns = 0;
+            CurrentStatusProblem = newStatusProblem;
+            UIController.UpdateGeneralUI();
+        }
+    }
+    public void ClearStateProblem()
+    {
+        CurrentStatusProblem = StatusProblemType.NONE;
+        CurrentStatusProblemActiveTurns = 0;
+        UIController.UpdateGeneralUI();
+    }
+    public bool IsParalized()
+    {
+        if (CurrentStatusProblem == StatusProblemType.PARALIZED)
+        {
+            int chance = UnityEngine.Random.Range(0, 100);
+            return chance < StaticCombatGeneralValues.Fighter_StatusProblem_ParalizedNotMoveRate;
+        }
+        return false;
+    }
+    // Calculate the current stats of the fighter adding the basic stats and the modifier stats
+    private void CalculateCurrentStats()
+    {
+        BasicStats newStats = new();
+        foreach (var modifier in StatsModifiers)
+        {
+            newStats.AddStats(modifier.Item1);
+        }
+        newStats.AddStats(BaseStats);
+        CurrentStats = newStats;
+        if (HealthPoints > CurrentStats.MaxHealthPoints)
+        {
+            HealthPoints = CurrentStats.MaxHealthPoints;
+        }
+        UIController.UpdateGeneralUI();
     }
 }
 [Serializable]
@@ -272,14 +390,41 @@ public class FighterData
     {
         return HealthPoints <= 0;
     }
+    public void Heal(int healPoints)
+    {
+        HealthPoints += healPoints;
+        if (HealthPoints > MaxHealtPoints)
+        {
+            HealthPoints = MaxHealtPoints;
+        }
+    }
 }
 [Serializable]
 public class BasicStats
 {
-    public int MaxHealtPoints;
+    public int MaxHealthPoints;
     public int MaxEnergyPoints;
     public int HitPower;
     public int RangePower;
     public int Defense;
     public int Speed;
+
+    public void AddStats(BasicStats addedStats)
+    {
+        MaxHealthPoints += addedStats.MaxHealthPoints;
+        MaxEnergyPoints += addedStats.MaxEnergyPoints;
+        HitPower += addedStats.HitPower;
+        RangePower += addedStats.RangePower;
+        Defense += addedStats.Defense;
+        Speed += addedStats.Speed;
+    }
+    public void RemoveStats(BasicStats removedStats)
+    {
+        MaxHealthPoints -= removedStats.MaxHealthPoints;
+        MaxEnergyPoints -= removedStats.MaxEnergyPoints;
+        HitPower -= removedStats.HitPower;
+        RangePower -= removedStats.RangePower;
+        Defense -= removedStats.Defense;
+        Speed -= removedStats.Speed;
+    }
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 public class ItemElement : InteractiveElement
 {
     public ItemSlot Item;
+    public SpriteRenderer ItemRenderer;
     private void Start()
     {
         ChangeCursorColor("#1EFF00");
@@ -33,10 +34,21 @@ public class ItemElement : InteractiveElement
         else
         {
             Item.Amount = 0;
-            gameObject.SetActive(false);
+        }
+        CheckItemAmount();
+    }
+    private void CheckItemAmount()
+    {
+        if (Item.Amount <= 0)
+        {
+            ItemRenderer.enabled = false;
+            EnableElement(false);
+        }
+        else
+        {
+            EnableElement(true);
         }
     }
-
     public override void UpdateElement(ExpeditionData.ParentData data)
     {
         //Check if the instance is of the same type.
@@ -52,10 +64,7 @@ public class ItemElement : InteractiveElement
                 Debug.LogWarning("Item Info Wiki not found in scene.");
             }
             Item.Amount = ((ExpeditionData.ItemData)data).Amount;
-            if (Item.Amount == 0)
-            {
-                gameObject.SetActive(false);
-            }
+            CheckItemAmount();
         }
         else
         {

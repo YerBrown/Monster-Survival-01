@@ -55,6 +55,7 @@ public class UIResourceElementInteractionController : MonoBehaviour
     public void HitResourceByPlayer()
     {
         if (ResourceTarget == null || PlayerTarget == null) return;
+        //PlayerTarget.PlayFisicalAttackAnim();
         (ItemSlot, ItemSlot, int) hitResourceAnswer = ResourceTarget.HitResource(PlayerTarget.ResourcesHitPower, PlayerTarget.PlayerInventory, PlayerTarget.transform);
         LootButton.interactable = false;
         StartCoroutine(UpdateHitCooldown());

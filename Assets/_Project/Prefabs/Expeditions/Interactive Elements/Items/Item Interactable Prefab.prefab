@@ -53,9 +53,11 @@ MonoBehaviour:
   IsBlockingMovement: 0
   CursorColor: {r: 0.11764706, g: 1, b: 0, a: 1}
   NotificateEvent: {fileID: 11400000, guid: 6ca9474b20f4c454bbc0f5ad7d90454d, type: 2}
+  IsActiveElement: 0
   Item:
     _ItemInfo: {fileID: 0}
     _Amount: 0
+  ItemRenderer: {fileID: 7338866133876238996}
 --- !u!1 &4982328823709545919
 GameObject:
   m_ObjectHideFlags: 0

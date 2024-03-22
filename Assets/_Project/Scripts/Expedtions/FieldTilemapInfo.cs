@@ -73,7 +73,7 @@ public class FieldTilemapInfo : MonoBehaviour
     {
         foreach (var element in InitialInteractiveElements)
         {
-            element.AddOverlayTileUnderLink();
+            element.EnableElement(true);
         }
     }
     public void AddInteractiveElements()

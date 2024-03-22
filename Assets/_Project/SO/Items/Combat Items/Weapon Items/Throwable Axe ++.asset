@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15933ccabd2923b40bd288964d50902c, type: 3}
+  m_Name: Throwable Axe ++
+  m_EditorClassIdentifier: 
+  i_Name: Throwable Axe ++
+  i_Description: An axe than can be thowrn to the target with a fisical power of
+    20
+  i_Sprite: {fileID: 21300000, guid: 7cbb92d1e63774ac9b0494bdce6ba46f, type: 3}
+  i_StackMax: 5
+  i_ItemType: 2
+  i_CombatType: 2
+  i_TargetType: 0
+  DamagePower: 20

@@ -1,0 +1,4527 @@
+fileFormatVersion: 2
+guid: cea134b07b9c33f4ba1fdbf9dd6b0ecc
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 656
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32010ee1936e86a4285d52365490b389
+      internalID: 273798865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 658
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca951d635731da146812bae7bf963149
+      internalID: 692355308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_2
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 657
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0857bbc035c01dd48ab6b2ab733c73eb
+      internalID: 136051876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_3
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 656
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c24ccfb3091f144c9e20543ff39d5e3
+      internalID: -1276992745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_4
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 656
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cec5dd917042a64db5bcc75438220f1
+      internalID: -1979215769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_5
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 656
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92c806f5b22753e4c82f1581e46a87c5
+      internalID: 1004720236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_6
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 655
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a22b4fa8bd7ee294ba3ca010d1bc3acb
+      internalID: -104137173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_7
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 657
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 224bee7e9e53d70499eee926d69fa0d8
+      internalID: 1964112699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_8
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 655
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8af3f1072c9a79448934a94ddd7149c8
+      internalID: -264725169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_9
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 656
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 718f919d0d3f174479657d7bda144217
+      internalID: -90837083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_10
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 656
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e069e95f286acf747a83d968df1d5c15
+      internalID: 1069439066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_11
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 656
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 871908f8b912d2e4a8e05b2162d3e90a
+      internalID: -553919889
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_12
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 656
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e1eea35cec05704a8eed14c55cbb9d1
+      internalID: 1481947790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_13
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 656
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 473be03d806b8c945be1c6cf790305e9
+      internalID: 1134353570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_14
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 622
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c38d9028a7bfeb94cbb024881dd69221
+      internalID: 1413655691
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_15
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 624
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b08b90296580db47b7b1c14c44e795b
+      internalID: -1471709979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_16
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 623
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34e63b576eacaa043a5559565eb9137a
+      internalID: -789211213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_17
+      rect:
+        serializedVersion: 2
+        x: 83
+        y: 622
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77f311555470110489b6a31b33ce0907
+      internalID: -165090011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_18
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 622
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b5548ceb8940c34b99bad476de6c18a
+      internalID: -787994774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_19
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 623
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e77523b9f87ca904c9b51e2962c624ef
+      internalID: -486165357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_20
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 622
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a410bd34874ba16449f78d33e46fca36
+      internalID: -681458976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_21
+      rect:
+        serializedVersion: 2
+        x: 190
+        y: 622
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 654edbaba6d84084d9ba223b7d33b976
+      internalID: 1441560754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_22
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 622
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84ee1cafee1e1c94cbc859453546ba57
+      internalID: 140152281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_23
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 622
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1c24b5808db42e42bcf330efe369f3c
+      internalID: 1300780270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_24
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 622
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08052dd5961034e43a40759113c3a7bb
+      internalID: -18468529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_25
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 622
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94db0570b716d5548a968bab32aad2f4
+      internalID: 257256933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_26
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 621
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dddc8f433f76dad4f9e394026eb1bf32
+      internalID: -119844897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_27
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 621
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29bd048405a77f24b961aa71d969c244
+      internalID: -1805234616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_28
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 589
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a2ff515ea292c5469a645ff3ac2e8f3
+      internalID: -143030665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_29
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 591
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b784eedb6449b3e45a829afac4778773
+      internalID: 1044524492
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_30
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 590
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bffc9d4a9b30a6c44a08d6a9d3696bc6
+      internalID: 1669495903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_31
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 589
+        width: 16
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e5061b7813bf734da9ad5060b5cc43c
+      internalID: -340157032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_32
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 589
+        width: 15
+        height: 23
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a96d163d31583fe4abe85a0f4a3ddf5e
+      internalID: 1823622831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_33
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 590
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 529348c7849c2a74fa97186a28675fa0
+      internalID: 358114928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_34
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 589
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdf4e2096a09ce24184ed39735443f61
+      internalID: 274782580
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_35
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 589
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2eac95a5e246a445b07fcae902e511e
+      internalID: 1936448380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_36
+      rect:
+        serializedVersion: 2
+        x: 218
+        y: 589
+        width: 14
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f605e2f502c15b24aa8e4a73e941842e
+      internalID: 1705993399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_37
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 589
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b5570ec9ec3fc34b91c4b1a098be538
+      internalID: 2017963862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_38
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 589
+        width: 14
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c4e7a7b52111e45bde98cdbbdba411
+      internalID: -331232869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_39
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 589
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5f7c4003eac1064da18a9a38fbc48f3
+      internalID: 2137686165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_40
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 588
+        width: 15
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c82ca51215315f64fa1f3003aa761531
+      internalID: -288029020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_41
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 588
+        width: 18
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce723257fc65e9b4893ded998d2e78f5
+      internalID: -768726757
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_42
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 557
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df64d62a685c71e41a992bc37a93a46c
+      internalID: 866819181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_43
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 559
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c3e55641cadf7646b3c8c78169cbf9f
+      internalID: 1965293493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_44
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 558
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13c0d565f061ce84aa2ded242eba7471
+      internalID: 1801822850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_45
+      rect:
+        serializedVersion: 2
+        x: 82
+        y: 557
+        width: 16
+        height: 21
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51a13adba4a18ad448b8c0368ebf127d
+      internalID: -2068577737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_46
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 557
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e50ce7845409374b82046016897128a
+      internalID: -1015251767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_47
+      rect:
+        serializedVersion: 2
+        x: 141
+        y: 557
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3b34a0a794157a40bb03c556ad8dd86
+      internalID: 1035953842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_48
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 556
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da703d5bbf7f6c148a210a8aa82e6f15
+      internalID: 1047632816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_49
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 558
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a3eef55041597d45889acb6c536031d
+      internalID: 1513682368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_50
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 556
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec8f215932898ea4b8d9c703db3fbfb6
+      internalID: -1748166353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_51
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 557
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b50c3b0dcd09f104f9618fa5304069f8
+      internalID: 1485715867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_52
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 557
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d077e8b14a75384dbe14324edb88bbc
+      internalID: 650428217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_53
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 557
+        width: 19
+        height: 22
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9968e8b86bb6e03488fc2db395301771
+      internalID: -2065027830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_54
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 556
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b858147746a34b44ba12653b64ad6d4
+      internalID: 1992644476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_55
+      rect:
+        serializedVersion: 2
+        x: 358
+        y: 556
+        width: 17
+        height: 19
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b21936a1031c114ba05e804592368f6
+      internalID: -1748368602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_56
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 531
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19111528ad10bf64782743d2524aa778
+      internalID: 825296521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_57
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 528
+        width: 45
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3129dcfdf0cd304ab45a56c25579147
+      internalID: -1818029426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_58
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 528
+        width: 45
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ec6f991578e8af4296f9fd51af80135
+      internalID: -1810020993
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_59
+      rect:
+        serializedVersion: 2
+        x: 511
+        y: 529
+        width: 45
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf1ccf1e15b16824a8b54d538e50545a
+      internalID: -1713586881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_60
+      rect:
+        serializedVersion: 2
+        x: 562
+        y: 531
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f693490d3e00664890bfbd0d16de1b9
+      internalID: 1961383008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_61
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 516
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51c725e8bb6fe1540a033b8f73535b51
+      internalID: 119678381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_62
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 516
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c06a540f1c90ab94e9677f74426b96f9
+      internalID: -978522145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_63
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 516
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 885b0baf2027df34883081f2c8c03f50
+      internalID: 1449948398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_64
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 516
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fbc4514ad96e7942a3dd6760d71e23a
+      internalID: -826199531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_65
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 517
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a9acda7f1348d049bdf293e03ff6a9c
+      internalID: -2002883929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_66
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 517
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06797ba7d265eb14da258bbc1e75cc79
+      internalID: -1514439019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_67
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 516
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d23db5d36a23ff74d98ff1eafae0d112
+      internalID: -1608206839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_68
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 515
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 446737eddb65ad44d82f598e7c369ca9
+      internalID: 1429079839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_69
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 519
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c800475859493a4e8d1766f72f313cb
+      internalID: 752299060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_70
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 518
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5c7ba3eb04c1644bbf28e3c548f384b
+      internalID: 1785105270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_71
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 519
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b7754387b8ce245bbca473fff5c15c
+      internalID: 572909699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_72
+      rect:
+        serializedVersion: 2
+        x: 408
+        y: 489
+        width: 43
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b2a92f6e2ae40f4e8c8ec28a34c01af
+      internalID: 970233439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_73
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 489
+        width: 45
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2175a11b6d46e44a942a89609ee5a13
+      internalID: 663114669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_74
+      rect:
+        serializedVersion: 2
+        x: 514
+        y: 490
+        width: 41
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c474c3dc2eddf14c97448256668df1e
+      internalID: 797612685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_75
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 483
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54e75000be0495d469acdec59937efea
+      internalID: 1160195965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_76
+      rect:
+        serializedVersion: 2
+        x: 47
+        y: 483
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2f6cafe94d926c4a9eae22183f9bdda
+      internalID: 698007127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_77
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 482
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40d9a315a24c71d45a421cc02ef7f496
+      internalID: -753380187
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_78
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 483
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a63e53bb0fbafe4bbc6fe0ef12da64a
+      internalID: -195587804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_79
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 483
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 143de333b2674424b93090412ac00cb4
+      internalID: -993172333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_80
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 483
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7358f4a06000cd4aa27c270bb54e172
+      internalID: -36219362
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_81
+      rect:
+        serializedVersion: 2
+        x: 219
+        y: 483
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f6bcf7e4a15fa94d8da4570146bf14f
+      internalID: -1689792994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_82
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 483
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ae6b86a58fb6ea4ebbf3687523f283d
+      internalID: 1167530011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_83
+      rect:
+        serializedVersion: 2
+        x: 290
+        y: 485
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f17037721bb58547922ff1b9465896a
+      internalID: -420866535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_84
+      rect:
+        serializedVersion: 2
+        x: 318
+        y: 483
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0b89ea824233b740b72ed05b407afe5
+      internalID: -560731950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_85
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 481
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 322b36f657701484680eccb4a7de0bb7
+      internalID: -1524754458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_86
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 486
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01e9b66c515367647b185ae24ce4b417
+      internalID: 1471516282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_87
+      rect:
+        serializedVersion: 2
+        x: 564
+        y: 490
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e18cd07869c40a440bf12f081fb04f7a
+      internalID: -1585508847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_88
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 450
+        width: 25
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46cdaf7b67bb12b4c993d00b2438edbe
+      internalID: 1271346028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_89
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 450
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce446de806b5b834e9d0153348afd9dc
+      internalID: 430816334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_90
+      rect:
+        serializedVersion: 2
+        x: 79
+        y: 449
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54e90b15180f77941b67cd3d1b367c31
+      internalID: 1221676876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_91
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 450
+        width: 20
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed4b608fbada1f64f96af5e80e7b495d
+      internalID: -743377922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_92
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 450
+        width: 30
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17aaca6c41711e14bb867b146c60bfa7
+      internalID: -1798754672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_93
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 450
+        width: 26
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8edf5f6beb6fc6c43abb3f1822573442
+      internalID: -1592924645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_94
+      rect:
+        serializedVersion: 2
+        x: 217
+        y: 450
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d0a21cc8d6e6bb428c862cb66b731c1
+      internalID: 1221505133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_95
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 450
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ceb2998f8ce4da34ea777aee13864fce
+      internalID: -292794189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_96
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 452
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 569e780e0324d9f44ace132045833043
+      internalID: 1141908209
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_97
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 450
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4baf8c92247c689469596ddd5bf333d0
+      internalID: -932096531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_98
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 448
+        width: 17
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71c24779b24b2de4fb9a3bd5b106a285
+      internalID: -427545176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_99
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 446
+        width: 18
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 356fa0652a7212c4da5ff289e3135977
+      internalID: -638297038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_100
+      rect:
+        serializedVersion: 2
+        x: 411
+        y: 450
+        width: 43
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c1c2f2a24354b2542b8071f43152a951
+      internalID: -1155801519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_101
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 450
+        width: 45
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a590db8878939ff4a93a98ac724b5a5c
+      internalID: -698823896
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_102
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 451
+        width: 41
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 260220ab98fb0ae498e41c66ab1e8053
+      internalID: -1828127236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_103
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 447
+        width: 29
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a8be5c745a09fe4d9b9dc955efecb0f
+      internalID: 418772376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_104
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 417
+        width: 24
+        height: 30
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 660d218366bb670449aefb83949758d0
+      internalID: -150157755
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_105
+      rect:
+        serializedVersion: 2
+        x: 46
+        y: 417
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88082ccf76c7a014f9f3070748b71b61
+      internalID: 1902072104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_106
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 417
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a47759551d660f64080aaae389e7eeda
+      internalID: -1272457837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_107
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 417
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59dc7e2d5510a5f4da3652e4cc0cc1fc
+      internalID: 1764143433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_108
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 418
+        width: 21
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fbbdc8ce3542994d8a873b4b973d1a5
+      internalID: -1067531165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_109
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 418
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57833be699fc148448bad4e6ad61a667
+      internalID: -1617575674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_110
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 417
+        width: 28
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ba1d50c66b0d1847927421a68b1bcc4
+      internalID: -2066516955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_111
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 416
+        width: 26
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28769b621e4176c40ab2da54f9458bc2
+      internalID: 2029831564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_112
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 417
+        width: 20
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1fcd16e9a4139ee49b8a1dde15249916
+      internalID: -1437692581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_113
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 416
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2722dc8eb48909647b652e36d2cfbe9f
+      internalID: 632121439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_114
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 417
+        width: 18
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a22de345d27834c83d07d28a8dc752
+      internalID: -1952827618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_115
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 414
+        width: 19
+        height: 29
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ae29be9b34e9f2439ab5ea38a1e0c37
+      internalID: 499471220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_116
+      rect:
+        serializedVersion: 2
+        x: 410
+        y: 412
+        width: 45
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7bfb46a41a828994fa3bb52fa8930603
+      internalID: 218862435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_117
+      rect:
+        serializedVersion: 2
+        x: 460
+        y: 412
+        width: 45
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b67a67c23f5f3f4fb0f12d19bf46f3b
+      internalID: 1154043416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_118
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 413
+        width: 45
+        height: 33
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc8ff710eaf4e03448230d83806fa14f
+      internalID: 1338307677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_119
+      rect:
+        serializedVersion: 2
+        x: 561
+        y: 411
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 914b3bcfdb391a24f8ac4876aa86db31
+      internalID: 2129769345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_120
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 364
+        width: 30
+        height: 45
+      alignment: 9
+      pivot: {x: 0.40000004, y: 0.13333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cb4e19381814e5428d838a49bc2bcea
+      internalID: 1859440095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_121
+      rect:
+        serializedVersion: 2
+        x: 43
+        y: 364
+        width: 27
+        height: 44
+      alignment: 9
+      pivot: {x: 0.3703704, y: 0.13636364}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e64231000a8286f45a598f97369ee4c4
+      internalID: 1902187708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_122
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 364
+        width: 27
+        height: 45
+      alignment: 9
+      pivot: {x: 0.3703704, y: 0.13333334}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34a6424fe33cfa8488704d900d888cb7
+      internalID: 862318073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_123
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 364
+        width: 28
+        height: 46
+      alignment: 9
+      pivot: {x: 0.39285716, y: 0.13043478}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9392c5a34cfa43b4cb1860887844faa6
+      internalID: 1644069082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_124
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 364
+        width: 28
+        height: 46
+      alignment: 9
+      pivot: {x: 0.39285716, y: 0.13043478}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b404ac707b4cb0b49a00378a4dbf3346
+      internalID: 1459306537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_125
+      rect:
+        serializedVersion: 2
+        x: 187
+        y: 364
+        width: 34
+        height: 46
+      alignment: 9
+      pivot: {x: 0.4117647, y: 0.108695656}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b022aca69f9b2a49ab4bf1afe67cf89
+      internalID: -547063031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_126
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 365
+        width: 27
+        height: 46
+      alignment: 9
+      pivot: {x: 0.3703704, y: 0.13043478}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 888a31690b19e134490bc75590248a70
+      internalID: 1882516213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_127
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 365
+        width: 26
+        height: 44
+      alignment: 9
+      pivot: {x: 0.42307693, y: 0.06818182}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae4207f73c259104e85cbee40040d938
+      internalID: -1406379321
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_128
+      rect:
+        serializedVersion: 2
+        x: 302
+        y: 362
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6006211f8ef0f4a4a8efa002a592f87a
+      internalID: 306829262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_129
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 366
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 63892900f69e1a04592067f253562cdc
+      internalID: -1185793059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_130
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 365
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efaeb41150496db4c8bd1d3046331a04
+      internalID: 622857451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_131
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 317
+        width: 27
+        height: 42
+      alignment: 9
+      pivot: {x: 0.4814815, y: 0.11904762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cecf9f39f16fdd4b8e69b8b5bc88474
+      internalID: 1691547445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_132
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 317
+        width: 31
+        height: 41
+      alignment: 9
+      pivot: {x: 0.516129, y: 0.121951215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0390aa5dfa520cd48864e34375787164
+      internalID: -1346596536
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_133
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 317
+        width: 28
+        height: 40
+      alignment: 9
+      pivot: {x: 0.5, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dcf44e624ad12aa4c8e9421c8e1e043b
+      internalID: 1619253449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_134
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 317
+        width: 25
+        height: 41
+      alignment: 9
+      pivot: {x: 0.48, y: 0.121951215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d37a40c824d2c4444965c063d736fda2
+      internalID: -1133437582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_135
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 316
+        width: 26
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5, y: 0.11904762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fed7fed21db0d84298ade151fedac5c
+      internalID: 1713558547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_136
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 314
+        width: 23
+        height: 44
+      alignment: 9
+      pivot: {x: 0.5217391, y: 0.13636364}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 973b0fa7477283b4ab0330defa98e157
+      internalID: -1929590188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_137
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 317
+        width: 26
+        height: 42
+      alignment: 9
+      pivot: {x: 0.5, y: 0.11904762}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc014aee60c72884db44471f499aab2d
+      internalID: 447844983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_138
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 314
+        width: 31
+        height: 43
+      alignment: 9
+      pivot: {x: 0.516129, y: 0.116279066}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2a6ed19732e5af4d9f5b8f3828bbedb
+      internalID: 92691992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_139
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 314
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3190585fb3a1d748ba6c6cefdcfb6bc
+      internalID: 649844747
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_140
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 316
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4ade118665c3f241b471ffb1be4a6ec
+      internalID: -1349216799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_141
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 315
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f541a2eb545a74fa0ef3c1844e95e0
+      internalID: -1439747073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_142
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 268
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0398d7e4214f1a4ba8b4eda0dd7a01e
+      internalID: -674223097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_143
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 268
+        width: 31
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1782c8a8804c45647807d2831710c3e0
+      internalID: 963550799
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_144
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 268
+        width: 28
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0cb3beb47cea5c448885b7d0b2ae7fe
+      internalID: -1169676170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_145
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 268
+        width: 25
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f233b2db2d423e1429f46c9091b24ec9
+      internalID: 1563788858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_146
+      rect:
+        serializedVersion: 2
+        x: 153
+        y: 267
+        width: 26
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fed894cb4d4bb24d9d0b782f01d2bd8
+      internalID: -879051092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_147
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 265
+        width: 23
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f9b8296ed1c90b46aa00066e0880a3c
+      internalID: -547364935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_148
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 268
+        width: 26
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75efc5b63a500df4e8b1388e816239cf
+      internalID: 598649846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_149
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 265
+        width: 31
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f26df9de58ba5e64a9b26986d683bc6c
+      internalID: 1259121481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_150
+      rect:
+        serializedVersion: 2
+        x: 305
+        y: 265
+        width: 27
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c66ede542f39b54cb10c59633885f69
+      internalID: 555437627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_151
+      rect:
+        serializedVersion: 2
+        x: 342
+        y: 267
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 363f5d7dd7f36e14aadcfcb20ddab035
+      internalID: -1630643736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_152
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 266
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f685dc5bc6913749b8b209f22e3e436
+      internalID: 1313525619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_153
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 217
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dacbfe2c3545a9644b581588b8f3683e
+      internalID: -598684123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_154
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 217
+        width: 30
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50c808abbdf31dd4c8450cf5273d869e
+      internalID: -116733132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_155
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 217
+        width: 27
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 51e431048d13a55478ce1f38b6910c29
+      internalID: 1176767841
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_156
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 217
+        width: 27
+        height: 45
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37d40fdf301e4204694865ace5483719
+      internalID: 585347572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_157
+      rect:
+        serializedVersion: 2
+        x: 151
+        y: 215
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70ec11fbe3d04de4795f1a6de628ade7
+      internalID: -700531376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_158
+      rect:
+        serializedVersion: 2
+        x: 186
+        y: 215
+        width: 34
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 243eb68eb83b9074f9a7e6bc4f0fdee7
+      internalID: 84150638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_159
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 216
+        width: 27
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5662d47c85dfa9c4bb4fb803d2e387e8
+      internalID: 1258955819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_160
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 216
+        width: 26
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 052f85027dabe64478a676dd75bbd479
+      internalID: 885896763
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_161
+      rect:
+        serializedVersion: 2
+        x: 306
+        y: 213
+        width: 28
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 413f843f0f5fd1a4f82c47ff0263742f
+      internalID: 982992207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_162
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 217
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2637451dd8f6fe458afff802d156320
+      internalID: -670675489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_163
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 216
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59bc76d33f8915a4daf746ccf6c53fef
+      internalID: 625229828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_164
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 164
+        width: 39
+        height: 46
+      alignment: 9
+      pivot: {x: 0.4871795, y: 0.108695656}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9640cd5b628211246acdd7aaf55373ce
+      internalID: 1897561186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_165
+      rect:
+        serializedVersion: 2
+        x: 53
+        y: 159
+        width: 48
+        height: 40
+      alignment: 9
+      pivot: {x: 0.6041667, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 491b4bee71adbd242b8e7503834b94cd
+      internalID: -872868295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_166
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 160
+        width: 48
+        height: 40
+      alignment: 9
+      pivot: {x: 0.6041667, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ed362737dd5984a8ef17dfea6a1397
+      internalID: 1267775881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_167
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 160
+        width: 34
+        height: 40
+      alignment: 9
+      pivot: {x: 0.44117647, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b969773f4cc95984e99d39c7bf536bb7
+      internalID: -127801418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_168
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 159
+        width: 43
+        height: 41
+      alignment: 9
+      pivot: {x: 0.6976744, y: 0.14634146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e1eb6db13ef5a4458b8fae6f0ba6256
+      internalID: 507929456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_169
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 159
+        width: 42
+        height: 41
+      alignment: 9
+      pivot: {x: 0.71428573, y: 0.14634146}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 157d4c29249330d40a6ae1d193e31f85
+      internalID: 430013550
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_170
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 160
+        width: 35
+        height: 38
+      alignment: 9
+      pivot: {x: 0.6571429, y: 0.078947365}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f563469e81093c4f9abe050e6328e3f
+      internalID: 1910582455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_171
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 152
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6e315a93b5096341bfdb9bc8179e05f
+      internalID: 1377041141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_172
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 143
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdb1179807ab7804f828ff556de5374c
+      internalID: -1169923350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_173
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 107
+        width: 39
+        height: 41
+      alignment: 9
+      pivot: {x: 0.51282054, y: 0.09756097}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 222af9319671ead4fb2655ffcb2c0624
+      internalID: -1632449964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_174
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 111
+        width: 40
+        height: 43
+      alignment: 9
+      pivot: {x: 0.675, y: 0.116279066}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 695b5c140a90e3148b59b256824290f3
+      internalID: -629444050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_175
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 112
+        width: 39
+        height: 43
+      alignment: 9
+      pivot: {x: 0.6923077, y: 0.116279066}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3531c9f80284dbd429641a016f474845
+      internalID: -636597997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_176
+      rect:
+        serializedVersion: 2
+        x: 174
+        y: 112
+        width: 30
+        height: 40
+      alignment: 9
+      pivot: {x: 0.6, y: 0.125}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e01ec46c4309ac741b6e0bd4f438f71f
+      internalID: 1739788512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_177
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 111
+        width: 52
+        height: 42
+      alignment: 9
+      pivot: {x: 0.55769235, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 297e2d86e4864e643bb276220e5a30b9
+      internalID: 941319003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_178
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 111
+        width: 51
+        height: 42
+      alignment: 9
+      pivot: {x: 0.54901963, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c4c5ccf708b3c764aa0b296fd83e7693
+      internalID: 1504639683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_179
+      rect:
+        serializedVersion: 2
+        x: 333
+        y: 109
+        width: 37
+        height: 42
+      alignment: 9
+      pivot: {x: 0.3783784, y: 0.14285715}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fddfc7baf581ce459d498dbc328d9c1
+      internalID: -1725363439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_180
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 104
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb3af39bae7264a44ae07dd8367d54b3
+      internalID: -120861614
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_181
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 102
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2f978beea93394498ab333da75b51b8
+      internalID: -1768874214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_182
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 58
+        width: 39
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39b428da40a12da4dbf3f8b1de429776
+      internalID: -1630866545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_183
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 62
+        width: 40
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3b6fca69e120074589d69e107a78633
+      internalID: -943270620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_184
+      rect:
+        serializedVersion: 2
+        x: 118
+        y: 63
+        width: 39
+        height: 43
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0625ae10007de054f915f705b18eb3c8
+      internalID: -1563160472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_185
+      rect:
+        serializedVersion: 2
+        x: 171
+        y: 63
+        width: 30
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eef7b902168ade44dbb70fb463169455
+      internalID: 468981640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_186
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 62
+        width: 52
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5d9d9d2910a76b4c8bd2d69f3e84575
+      internalID: -332527450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_187
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 62
+        width: 51
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c568bb0968ccea4b8451eab7c82aeae
+      internalID: -657926262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_188
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 60
+        width: 37
+        height: 42
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c68b0364b62891e42aa756250b26572b
+      internalID: -1424311995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_189
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 56
+        width: 34
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a9d6cf28db05f340a202b15e8b19d66
+      internalID: 935268222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_190
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 58
+        width: 39
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b05ce995ef550a4a83af81f43479ff9
+      internalID: 1055813099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_191
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 7
+        width: 39
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 993672c4b2b7a9946a16b9e2f32b8827
+      internalID: -1104227249
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_192
+      rect:
+        serializedVersion: 2
+        x: 59
+        y: 7
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90c191bda24545243bae0cced20181bd
+      internalID: -464671539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_193
+      rect:
+        serializedVersion: 2
+        x: 113
+        y: 8
+        width: 48
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90f17d6682ec3ee45972234ef0daa5cf
+      internalID: 2039889459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_194
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 8
+        width: 34
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 837e91d1dc34dea4fba58bbd4baaa526
+      internalID: 1729379810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_195
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 7
+        width: 43
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca2ebc2e44ef76a40bc51685cc414259
+      internalID: 301940932
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_196
+      rect:
+        serializedVersion: 2
+        x: 278
+        y: 7
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afd110d39db45c440a3e8307d07a7c3a
+      internalID: -746367346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_197
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 8
+        width: 35
+        height: 38
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca3cb22a2837a8f4e969285fe2d57424
+      internalID: 364332150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_198
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 8
+        width: 31
+        height: 44
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60c56f9742823f940b0a12a9e3b174f2
+      internalID: 2129872276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_199
+      rect:
+        serializedVersion: 2
+        x: 441
+        y: 3
+        width: 37
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 78e1f5fd71918a34a87390daf8532d22
+      internalID: 120259793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_0: 273798865
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_1: 692355308
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_10: 1069439066
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_100: -1155801519
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_101: -698823896
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_102: -1828127236
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_103: 418772376
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_104: -150157755
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_105: 1902072104
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_106: -1272457837
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_107: 1764143433
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_108: -1067531165
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_109: -1617575674
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_11: -553919889
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_110: -2066516955
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_111: 2029831564
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_112: -1437692581
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_113: 632121439
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_114: -1952827618
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_115: 499471220
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_116: 218862435
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_117: 1154043416
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_118: 1338307677
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_119: 2129769345
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_12: 1481947790
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_120: 1859440095
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_121: 1902187708
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_122: 862318073
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_123: 1644069082
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_124: 1459306537
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_125: -547063031
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_126: 1882516213
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_127: -1406379321
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_128: 306829262
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_129: -1185793059
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_13: 1134353570
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_130: 622857451
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_131: 1691547445
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_132: -1346596536
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_133: 1619253449
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_134: -1133437582
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_135: 1713558547
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_136: -1929590188
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_137: 447844983
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_138: 92691992
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_139: 649844747
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_14: 1413655691
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_140: -1349216799
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_141: -1439747073
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_142: -674223097
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_143: 963550799
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_144: -1169676170
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_145: 1563788858
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_146: -879051092
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_147: -547364935
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_148: 598649846
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_149: 1259121481
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_15: -1471709979
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_150: 555437627
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_151: -1630643736
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_152: 1313525619
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_153: -598684123
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_154: -116733132
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_155: 1176767841
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_156: 585347572
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_157: -700531376
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_158: 84150638
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_159: 1258955819
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_16: -789211213
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_160: 885896763
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_161: 982992207
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_162: -670675489
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_163: 625229828
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_164: 1897561186
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_165: -872868295
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_166: 1267775881
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_167: -127801418
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_168: 507929456
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_169: 430013550
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_17: -165090011
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_170: 1910582455
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_171: 1377041141
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_172: -1169923350
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_173: -1632449964
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_174: -629444050
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_175: -636597997
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_176: 1739788512
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_177: 941319003
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_178: 1504639683
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_179: -1725363439
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_18: -787994774
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_180: -120861614
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_181: -1768874214
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_182: -1630866545
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_183: -943270620
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_184: -1563160472
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_185: 468981640
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_186: -332527450
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_187: -657926262
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_188: -1424311995
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_189: 935268222
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_19: -486165357
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_190: 1055813099
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_191: -1104227249
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_192: -464671539
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_193: 2039889459
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_194: 1729379810
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_195: 301940932
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_196: -746367346
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_197: 364332150
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_198: 2129872276
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_199: 120259793
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_2: 136051876
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_20: -681458976
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_21: 1441560754
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_22: 140152281
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_23: 1300780270
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_24: -18468529
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_25: 257256933
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_26: -119844897
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_27: -1805234616
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_28: -143030665
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_29: 1044524492
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_3: -1276992745
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_30: 1669495903
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_31: -340157032
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_32: 1823622831
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_33: 358114928
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_34: 274782580
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_35: 1936448380
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_36: 1705993399
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_37: 2017963862
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_38: -331232869
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_39: 2137686165
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_4: -1979215769
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_40: -288029020
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_41: -768726757
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_42: 866819181
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_43: 1965293493
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_44: 1801822850
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_45: -2068577737
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_46: -1015251767
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_47: 1035953842
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_48: 1047632816
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_49: 1513682368
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_5: 1004720236
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_50: -1748166353
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_51: 1485715867
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_52: 650428217
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_53: -2065027830
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_54: 1992644476
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_55: -1748368602
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_56: 825296521
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_57: -1818029426
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_58: -1810020993
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_59: -1713586881
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_6: -104137173
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_60: 1961383008
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_61: 119678381
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_62: -978522145
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_63: 1449948398
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_64: -826199531
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_65: -2002883929
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_66: -1514439019
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_67: -1608206839
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_68: 1429079839
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_69: 752299060
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_7: 1964112699
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_70: 1785105270
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_71: 572909699
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_72: 970233439
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_73: 663114669
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_74: 797612685
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_75: 1160195965
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_76: 698007127
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_77: -753380187
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_78: -195587804
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_79: -993172333
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_8: -264725169
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_80: -36219362
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_81: -1689792994
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_82: 1167530011
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_83: -420866535
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_84: -560731950
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_85: -1524754458
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_86: 1471516282
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_87: -1585508847
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_88: 1271346028
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_89: 430816334
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_9: -90837083
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_90: 1221676876
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_91: -743377922
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_92: -1798754672
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_93: -1592924645
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_94: 1221505133
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_95: -292794189
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_96: 1141908209
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_97: -932096531
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_98: -427545176
+      DS DSi - Pokemon Ranger 3 Guardian Signs - Piplup Prinplup & Emploeon_99: -638297038
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

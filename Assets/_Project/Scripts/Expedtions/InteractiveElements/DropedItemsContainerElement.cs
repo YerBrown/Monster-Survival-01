@@ -10,9 +10,8 @@ public class DropedItemsContainerElement : ContainerElement
     {
         OnClosePopup.OnEventRaised += CheckInventoryItems;
     }
-    public override void OnDisable()
+    public  void OnDisable()
     {
-        base.OnDisable();
         OnClosePopup.OnEventRaised -= CheckInventoryItems;
     }
 
@@ -25,7 +24,7 @@ public class DropedItemsContainerElement : ContainerElement
         }
         else
         {
-            gameObject.SetActive(false);
+            EnableElement(false);
         }
     }
 

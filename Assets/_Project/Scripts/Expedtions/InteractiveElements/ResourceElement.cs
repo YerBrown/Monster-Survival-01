@@ -14,7 +14,7 @@ public class ResourceElement : InteractiveElement
     public Sprite LootFinishedSprite; // The sprite for empty resource.
     public SpriteRenderer ResourceMainRenderer; // The sprite renderer of the resource.
     public ResourceElementEventChannelSO ResourceElementInteracted; //Event triggered when the player interacts with the resource.
-
+    public Animator Anim;
     [System.Serializable]
     public class LootRate
     {
@@ -59,6 +59,7 @@ public class ResourceElement : InteractiveElement
     public (ItemSlot, ItemSlot, int) HitResource(int hitPoints, Inventory targetInventory, Transform targetTransform)
     {
         if (LootPoints == 0) { return (null, null, 0); };
+        Anim.SetTrigger("Hit");
         // TODO: Play hit animation        
         ChangeLP(hitPoints);
         ItemSlot newLoot = GetLoot(hitPoints);
@@ -99,7 +100,8 @@ public class ResourceElement : InteractiveElement
             }
             else
             {
-                gameObject.SetActive(false);
+                ResourceMainRenderer.enabled = false;
+                EnableElement(false);
             }
             // Disable ui if player was looting the resource
             if (duringLoot)
@@ -107,7 +109,10 @@ public class ResourceElement : InteractiveElement
                 if (ResourceElementInteracted != null)
                     ResourceElementInteracted.RaiseEvent(this);
             }
-            this.enabled = false;
+        }
+        else
+        {
+            EnableElement(true);
         }
     }
     // Returns the loot by chance of the loots posible list.

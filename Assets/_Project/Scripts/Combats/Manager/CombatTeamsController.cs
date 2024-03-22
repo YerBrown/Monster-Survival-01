@@ -11,7 +11,6 @@ public class CombatTeamsController : MonoBehaviour
     [Header("Teams")]
     public CombatTeam PlayerTeam;
     public CombatTeam EnemyTeam;
-    public GameObject FighterPrefab;
     #region StartingCombat
     // Spawns the starting fighters of both teams
     public void SpawnStartingFighters()
@@ -46,10 +45,11 @@ public class CombatTeamsController : MonoBehaviour
         }
         if (fighterPrefab != null)
         {
-            Fighter newFighter = Instantiate(FighterPrefab, team.FightersPos[fighterNum]).GetComponent<Fighter>();
+            Fighter newFighter = Instantiate(fighterPrefab, team.FightersPos[fighterNum]).GetComponent<Fighter>();
             newFighter.gameObject.name = fighterData.Nickname;
             newFighter.transform.position = team.FightersPos[fighterNum].position + Vector3.forward;
             newFighter.UpdateFighter(fighterData, animDelay);
+            newFighter.UIController.MoveStatsInfoToCorrectPosition(team == PlayerTeam);
             newFighter.PositionCharacterOnTile(CombatManager.Instance.GetTile(newFighter.transform.position));
             team.FightersInField[fighterNum] = newFighter;
             Vector2Int fighterForward;
@@ -347,7 +347,6 @@ public class CombatTeamsController : MonoBehaviour
         {
             if (team.FightersInField[i] == fighter)
             {
-                CombatManager.Instance.RemoveFighterFromCurrentOrder(fighter);
                 Destroy(team.FightersInField[i].gameObject);
                 team.FightersInField[i] = null;
             }

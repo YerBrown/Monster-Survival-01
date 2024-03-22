@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 350015f3d686a4aa09543ddb31b6cbbc, type: 3}
+  m_Name: Empoleon
+  m_EditorClassIdentifier: 
+  c_Name: Empoleon
+  c_Description: A big emperor pinguin
+  c_Sprite: {fileID: 1859440095, guid: cea134b07b9c33f4ba1fdbf9dd6b0ecc, type: 3}
+  c_AvatarSprite: {fileID: 1308309036, guid: bd0a1dab58456dd49b2bf3ce5dd02477, type: 3}
+  c_Animator: {fileID: 22100000, guid: a23bd8aec3913e94b907d288511c5153, type: 2}
+  c_Skills: 02000000
+  CombatFighterPrefab: {fileID: 8929229542470826614, guid: 86a22cd1f27612e4e9457800a46517b3, type: 3}

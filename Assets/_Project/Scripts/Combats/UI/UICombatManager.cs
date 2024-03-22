@@ -45,10 +45,10 @@ public class UICombatManager : MonoBehaviour
                 fighterPanel.NicknameText.text = updateFighter.Nickname;
                 fighterPanel.FighterIcon.sprite = updateFighter.AvatarSprite;
                 fighterPanel.FighterIcon.enabled = true;
-                fighterPanel.HealthPointsSlider.value = (float)updateFighter.HealthPoints / updateFighter.Stats.MaxHealtPoints;
-                fighterPanel.HealthPointsText.text = $"{updateFighter.HealthPoints}/{updateFighter.Stats.MaxHealtPoints}";
-                fighterPanel.EnergyPointsSlider.value = (float)updateFighter.EnergyPoints / updateFighter.Stats.MaxEnergyPoints;
-                fighterPanel.EnergyPointsText.text = $"{updateFighter.EnergyPoints}/{updateFighter.Stats.MaxEnergyPoints}";
+                fighterPanel.HealthPointsSlider.value = (float)updateFighter.HealthPoints / updateFighter.CurrentStats.MaxHealthPoints;
+                fighterPanel.HealthPointsText.text = $"{updateFighter.HealthPoints}/{updateFighter.CurrentStats.MaxHealthPoints}";
+                fighterPanel.EnergyPointsSlider.value = (float)updateFighter.EnergyPoints / updateFighter.CurrentStats.MaxEnergyPoints;
+                fighterPanel.EnergyPointsText.text = $"{updateFighter.EnergyPoints}/{updateFighter.CurrentStats.MaxEnergyPoints}";
                 return;
             }
         }

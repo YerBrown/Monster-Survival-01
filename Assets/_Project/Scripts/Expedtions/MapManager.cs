@@ -222,7 +222,7 @@ public class MapManager : MonoBehaviour
     {
         DropedItemsContainerElement newBag = Instantiate(DropedItemContainerPrefab, CurrentField.EnvironmentParent).GetComponent<DropedItemsContainerElement>();
         newBag.transform.position = spawnPos;
-        newBag.AddOverlayTileUnderLink();
+        newBag.EnableElement(true);
         return newBag;
     }
     private void LoadAreaState()
@@ -232,14 +232,12 @@ public class MapManager : MonoBehaviour
             ExpeditionData.FieldData currentFieldData = CurrentFieldData.GetField(CurrentCoordinates);
             CurrentField.AddInteractiveElements();
             CurrentField.AsignIds();
+            CurrentField.InitializeInteractiveElements();
             if (currentFieldData != null)
             {
                 LoadAllInteractiveElements(currentFieldData);
             }
-            else
-            {
-                CurrentField.InitializeInteractiveElements();
-            }
+
         }
     }
     private void LoadAllInteractiveElements(ExpeditionData.FieldData fieldData)
@@ -268,9 +266,6 @@ public class MapManager : MonoBehaviour
             ResourceElement newResource = (ResourceElement)GetElement(resource.ID, resource.Element_ID, resource.Pos);
             newResource.UpdateElement(resource);
         }
-        CurrentField.AddInteractiveElements();
-        CurrentField.AsignIds();
-        CurrentField.InitializeInteractiveElements();
     }
 
     private InteractiveElement GetElement(string id, string element_id, Vector3 newPos)
@@ -304,7 +299,6 @@ public class MapManager : MonoBehaviour
             }
 
             string fieldDataJson = JsonUtility.ToJson(CurrentFieldData, true);
-            Debug.Log(fieldDataJson);
             File.WriteAllText(Application.dataPath + "/ExpeditionData.json", fieldDataJson);
         }
     }

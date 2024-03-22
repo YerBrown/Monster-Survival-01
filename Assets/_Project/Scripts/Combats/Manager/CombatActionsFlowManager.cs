@@ -70,33 +70,23 @@ public class CombatActionsFlowManager : MonoBehaviour
             IsWaitingForInput = false;
         }
     }
-
-    public void FisicalAttack()
+    public void FighterParalized()
     {
         Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;
-        Fighter targetFighter = CombatManager.Instance.TargetActionFighter;
-        if (currentTurnFighter != null && targetFighter != null)
+        if (currentTurnFighter != null)
         {
             List<CombatAction> allActions = new List<CombatAction>
             {
                 new CombatAction((() =>
                 {
-                    CombatManager.Instance.SetFighterMoveTarget(false);
-                }),0f, true),
+                    // TODO: Play paralized animation
+                    currentTurnFighter.AnimationController.PlayParalized();
+                    Debug.Log($"{currentTurnFighter.Nickname} didn't move because is paralized.");
+                }),0.7f, false),
                 new CombatAction((() =>
                 {
-                    currentTurnFighter.FisicalAttack();
-                }),0f, true),
-                new CombatAction((() =>
-                {
-                    int calculatedDamage = targetFighter.ReceiveDamage(currentTurnFighter.Stats.HitPower);
-                    currentTurnFighter.AddEnergyPoints(calculatedDamage / 2, true);
-                    Debug.Log($"{currentTurnFighter.Nickname} attacked fisicaly to {targetFighter.Nickname} dealing {calculatedDamage} hp");
-                }),1f, true),
-                new CombatAction((() =>
-                {
-                    currentTurnFighter.ReturnToFighterPos();
-                }),0f, true),
+                   currentTurnFighter.NextTurn();
+                }),0.5f,false),
                  new CombatAction((() =>
                 {
                     CombatManager.Instance.FinishFighterMove();
@@ -104,166 +94,271 @@ public class CombatActionsFlowManager : MonoBehaviour
             };
 
             StartFlow(allActions);
+        }
+    }
+    public void FisicalAttack()
+    {
+        Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;
+        Fighter targetFighter = CombatManager.Instance.TargetActionFighter;
+        if (currentTurnFighter.IsParalized())
+        {
+            FighterParalized();
+        }
+        else
+        {
+            if (currentTurnFighter != null && targetFighter != null)
+            {
+                List<CombatAction> allActions = new List<CombatAction>
+                {
+                    new CombatAction((() =>
+                    {
+                        CombatManager.Instance.SetFighterMoveTarget(false);
+                    }),0f, true),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.FisicalAttack();
+                    }),0f, true),
+                    new CombatAction((() =>
+                    {
+                        if (AttacksInfoWiki.Instance!=null)
+                        {
+                            targetFighter.AnimationController.PlayAttack("Fisical Attack");
+                        }
+                        int calculatedDamage = targetFighter.ReceiveDamage(currentTurnFighter.CurrentStats.HitPower);
+                        currentTurnFighter.AddEnergyPoints(calculatedDamage / 2, true);
+                        Debug.Log($"{currentTurnFighter.Nickname} attacked fisicaly to {targetFighter.Nickname} dealing {calculatedDamage} hp");
+                    }),1f, true),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.ReturnToFighterPos();
+                    }),0f, true),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.NextTurn();
+                    }),0.5f,false),
+                     new CombatAction((() =>
+                    {
+                        CombatManager.Instance.FinishFighterMove();
+                    }),0f, false),
+                };
+
+                StartFlow(allActions);
+            }
         }
     }
     public void RangeAttack()
     {
         Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;
         Fighter targetFighter = CombatManager.Instance.TargetActionFighter;
-        if (currentTurnFighter != null && targetFighter != null)
+        if (currentTurnFighter.IsParalized())
         {
-            List<CombatAction> allActions = new List<CombatAction>
+            FighterParalized();
+        }
+        else
+        {
+            if (currentTurnFighter != null && targetFighter != null)
             {
-                new CombatAction((() =>
+                List<CombatAction> allActions = new List<CombatAction>
                 {
-                    CombatManager.Instance.SetFighterMoveTarget(true);
-                }),0f, true),
-                new CombatAction((() =>
-                {
-                    currentTurnFighter.RangeAttack();
-                }),0f, true),
-                new CombatAction((() =>
-                {
-                    int calculatedDamage = targetFighter.ReceiveDamage(currentTurnFighter.Stats.RangePower);
-                    currentTurnFighter.AddEnergyPoints(calculatedDamage / 2, true);
-                    Debug.Log($"{currentTurnFighter.Nickname} attacked in raange to {targetFighter.Nickname} dealing {calculatedDamage} hp");
-                }),1f, true),
-                new CombatAction((() =>
-                {
-                    currentTurnFighter.ReturnToFighterPos();
-                }),0f, true),
-                 new CombatAction((() =>
-                {
-                    CombatManager.Instance.FinishFighterMove();
-                }),0f, false),
-            };
+                    new CombatAction((() =>
+                    {
+                        CombatManager.Instance.SetFighterMoveTarget(true);
+                    }),0f, true),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.RangeAttack();
+                    }),0f, true),
+                    new CombatAction((() =>
+                    {
+                        if (AttacksInfoWiki.Instance!=null)
+                        {
+                            targetFighter.AnimationController.PlayAttack("Range Attack");
+                        }
+                        int calculatedDamage = targetFighter.ReceiveDamage(currentTurnFighter.CurrentStats.RangePower);
+                        currentTurnFighter.AddEnergyPoints(calculatedDamage / 2, true);
+                        Debug.Log($"{currentTurnFighter.Nickname} attacked in raange to {targetFighter.Nickname} dealing {calculatedDamage} hp");
+                    }),1f, true),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.ReturnToFighterPos();
+                    }), 0f, true),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.NextTurn();
+                    }),0.5f,false),
+                     new CombatAction((() =>
+                    {
+                        CombatManager.Instance.FinishFighterMove();
+                    }), 0f, false),
+                };
 
-            StartFlow(allActions);
+                StartFlow(allActions);
 
+            }
         }
     }
     public void MultipleTargetAttack()
     {
         Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;
         Fighter targetFighter = CombatManager.Instance.TargetActionFighter;
-        if (currentTurnFighter != null && targetFighter != null)
+        if (currentTurnFighter.IsParalized())
         {
-            List<CombatAction> allActions = new List<CombatAction>
+            FighterParalized();
+        }
+        else
+        {
+            if (currentTurnFighter != null && targetFighter != null)
             {
-                new CombatAction((() =>
+                List<CombatAction> allActions = new List<CombatAction>
                 {
-                    CombatManager.Instance.SetFighterMoveTarget(true);
-                }),0f, true),
-                new CombatAction((() =>
-                {
-                    currentTurnFighter.RangeAttack();
-                }),0f, true),
-                new CombatAction((() =>
-                {
-                    CombatTeam targetTeam = CombatManager.Instance.TeamsController.GetCombatTeamOfFighter(targetFighter);
-                    int calculatedMinDamage = 0;
-                    List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(targetFighter);
-                    for (int i = 0; i < targetTeam.FightersInField.Length; i++)
+                    new CombatAction((() =>
                     {
-                        if (targetTeam.FightersInField[i]!=null && posibleTargets.Contains(i))
+                        CombatManager.Instance.SetFighterMoveTarget(true);
+                    }),0f, true),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.RangeAttack();
+                    }),0f, true),
+                    new CombatAction((() =>
+                    {
+                        CombatTeam targetTeam = CombatManager.Instance.TeamsController.GetCombatTeamOfFighter(targetFighter);
+                        int calculatedMinDamage = 0;
+                        List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(targetFighter);
+                        for (int i = 0; i < targetTeam.FightersInField.Length; i++)
                         {
-                            int calculatedDamage = targetTeam.FightersInField[i].ReceiveDamage(currentTurnFighter.Stats.RangePower/2);
-                            if(calculatedDamage<calculatedMinDamage)
+                            if (targetTeam.FightersInField[i]!=null && posibleTargets.Contains(i))
                             {
-                                calculatedMinDamage=calculatedDamage;
+                                if (AttacksInfoWiki.Instance!=null)
+                                {
+                                    targetTeam.FightersInField[i].AnimationController.PlayAttack("Range Attack");
+                                }
+                                int calculatedDamage = targetTeam.FightersInField[i].ReceiveDamage(currentTurnFighter.CurrentStats.RangePower/2);
+                                if(calculatedDamage<calculatedMinDamage)
+                                {
+                                    calculatedMinDamage=calculatedDamage;
+                                }
                             }
                         }
-                    }
-                    currentTurnFighter.AddEnergyPoints(-(GeneralValues.StaticCombatGeneralValues.Fighter_EnergyNeededFor_SpecialMovement), true);
-                    Debug.Log($"{currentTurnFighter.Nickname} attacked to all opposing fighters");
-                }),1f, true),
-                new CombatAction((() =>
-                {
-                    currentTurnFighter.ReturnToFighterPos();
-                }),0f, true),
-                 new CombatAction((() =>
-                {
-                    CombatManager.Instance.FinishFighterMove();
-                }),0f, false),
-            };
+                        currentTurnFighter.AddEnergyPoints(-(GeneralValues.StaticCombatGeneralValues.Fighter_EnergyNeededFor_SpecialMovement), true);
+                        Debug.Log($"{currentTurnFighter.Nickname} attacked to all opposing fighters");
+                    }),1f, true),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.ReturnToFighterPos();
+                    }),0f, true),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.NextTurn();
+                    }),0.5f,false),
+                     new CombatAction((() =>
+                    {
+                        CombatManager.Instance.FinishFighterMove();
+                    }),0f, false),
+                };
 
-            StartFlow(allActions);
+                StartFlow(allActions);
 
+            }
         }
     }
     public void SetDefenseMode()
     {
         Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;
-        if (currentTurnFighter != null)
+        if (currentTurnFighter.IsParalized())
         {
-            List<CombatAction> allActions = new List<CombatAction>
+            FighterParalized();
+        }
+        else
+        {
+            if (currentTurnFighter != null)
             {
-                new CombatAction((() =>
+                List<CombatAction> allActions = new List<CombatAction>
                 {
-                    currentTurnFighter.SetDefenseMode();
-                    currentTurnFighter.AddEnergyPoints(5, true);
-                    Debug.Log($"{currentTurnFighter.Nickname} set to defense mode");
-                }),1f, false),
-                 new CombatAction((() =>
-                {
-                    CombatManager.Instance.FinishFighterMove();
-                }),0f, false),
-            };
+                    new CombatAction((() =>
+                    {
+                        if (AttacksInfoWiki.Instance!=null)
+                        {
+                            currentTurnFighter.AnimationController.PlayAttack("Enable Defense");
+                        }
+                        currentTurnFighter.SetDefenseMode();
+                        Debug.Log($"{currentTurnFighter.Nickname} set to defense mode");
+                    }),1f, false),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.NextTurn();
+                    }),0.5f,false),
+                     new CombatAction((() =>
+                    {
+                        CombatManager.Instance.FinishFighterMove();
+                    }),0f, false),
+                };
 
-            StartFlow(allActions);
+                StartFlow(allActions);
+            }
         }
     }
     public void SwipePositions()
     {
         Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;
         Fighter targetFighter = CombatManager.Instance.TargetActionFighter;
-        if (currentTurnFighter != null)
+        if (currentTurnFighter.IsParalized())
         {
-            List<CombatAction> allActions = new List<CombatAction>
+            FighterParalized();
+        }
+        else
+        {
+            if (currentTurnFighter != null)
             {
-                new CombatAction((() =>
+                List<CombatAction> allActions = new List<CombatAction>
                 {
-                    if (currentTurnFighter != null && targetFighter!=null)
+                    new CombatAction((() =>
                     {
-                        CombatTeam currentTeam = CombatManager.Instance.TeamsController.GetCombatTeamOfFighter(currentTurnFighter);
-                        if (currentTeam==CombatManager.Instance.TeamsController.PlayerTeam)
+                        if (currentTurnFighter != null && targetFighter!=null)
                         {
-                            CombatManager.Instance.SwipeFightersInPlayerData(currentTurnFighter, targetFighter);
+                            CombatTeam currentTeam = CombatManager.Instance.TeamsController.GetCombatTeamOfFighter(currentTurnFighter);
+                            if (currentTeam==CombatManager.Instance.TeamsController.PlayerTeam)
+                            {
+                                CombatManager.Instance.SwipeFightersInPlayerData(currentTurnFighter, targetFighter);
+                            }
+
+                            OverlayTile currentFighterTile =  currentTurnFighter.FighterStartTile;
+                            OverlayTile targetFighterTile = targetFighter.FighterStartTile;
+                            currentTurnFighter.ChangeStartTile(targetFighterTile);
+                            targetFighter.ChangeStartTile(currentFighterTile);
+                            currentTurnFighter.ReturnToFighterPos();
+                            targetFighter.ReturnToFighterPos();
+
+                            int currentNum = CombatManager.Instance.TeamsController.GetFighterInFieldNum(currentTurnFighter);
+                            int targetNum = CombatManager.Instance.TeamsController.GetFighterInFieldNum(targetFighter);
+                            currentTeam.FightersInField[currentNum] = targetFighter;
+                            currentTeam.FightersInField[targetNum] = currentTurnFighter;
+                            Debug.Log($"{currentTurnFighter.Nickname} has switched places with {targetFighter.Nickname}");
                         }
-
-                        OverlayTile currentFighterTile =  currentTurnFighter.FighterStartTile;
-                        OverlayTile targetFighterTile = targetFighter.FighterStartTile;
-                        currentTurnFighter.ChangeStartTile(targetFighterTile);
-                        targetFighter.ChangeStartTile(currentFighterTile);
-                        currentTurnFighter.ReturnToFighterPos();
-                        targetFighter.ReturnToFighterPos();
-
-                        int currentNum = CombatManager.Instance.TeamsController.GetFighterInFieldNum(currentTurnFighter);
-                        int targetNum = CombatManager.Instance.TeamsController.GetFighterInFieldNum(targetFighter);
-                        currentTeam.FightersInField[currentNum] = targetFighter;
-                        currentTeam.FightersInField[targetNum] = currentTurnFighter;
-                        Debug.Log($"{currentTurnFighter.Nickname} has switched places with {targetFighter.Nickname}");
-                    }
-                    else
+                        else
+                        {
+                            CombatTeam currentTeam = CombatManager.Instance.TeamsController.GetCombatTeamOfFighter(currentTurnFighter);
+                            int currentNum = CombatManager.Instance.TeamsController.GetFighterInFieldNum(currentTurnFighter);
+                            int targetNum = CombatManager.Instance.TargetIndex;
+                            CombatManager.Instance.SwipeFightersInPlayerData(currentTurnFighter, currentTeam.Fighters[targetNum]);
+                            currentTurnFighter.ChangeStartTile(CombatManager.Instance.GetTile(currentTeam.FightersPos[targetNum].transform.position));
+                            currentTurnFighter.ReturnToFighterPos();
+                            currentTeam.FightersInField[currentNum] = null;
+                            currentTeam.FightersInField[targetNum] = currentTurnFighter;
+                            Debug.Log($"{currentTurnFighter.Nickname} moved to another place");
+                        }
+                    }),2f, false),
+                    new CombatAction((() =>
                     {
-                        CombatTeam currentTeam = CombatManager.Instance.TeamsController.GetCombatTeamOfFighter(currentTurnFighter);
-                        int currentNum = CombatManager.Instance.TeamsController.GetFighterInFieldNum(currentTurnFighter);
-                        int targetNum = CombatManager.Instance.TargetIndex;
-                        CombatManager.Instance.SwipeFightersInPlayerData(currentTurnFighter, currentTeam.Fighters[targetNum]);
-                        currentTurnFighter.ChangeStartTile(CombatManager.Instance.GetTile(currentTeam.FightersPos[targetNum].transform.position));
-                        currentTurnFighter.ReturnToFighterPos();
-                        currentTeam.FightersInField[currentNum] = null;
-                        currentTeam.FightersInField[targetNum] = currentTurnFighter;
-                        Debug.Log($"{currentTurnFighter.Nickname} moved to another place");
-                    }
-                }),2f, false),
-                 new CombatAction((() =>
-                {
-                    CombatManager.Instance.FinishFighterMove();
-                }),0f, false),
-            };
+                        currentTurnFighter.NextTurn();
+                    }),0.5f,false),
+                     new CombatAction((() =>
+                    {
+                        CombatManager.Instance.FinishFighterMove();
+                    }),0f, false),
+                };
 
-            StartFlow(allActions);
+                StartFlow(allActions);
+            }
         }
     }
     public void ChangeFighter(Fighter fighterChanged, FighterData newFighterData, CombatTeam team)
@@ -275,9 +370,9 @@ public class CombatActionsFlowManager : MonoBehaviour
             {
                 new CombatAction((() =>
                 {
-                    // TODO : Change animation
+                    fighterChanged.AnimationController.PlaySpawnOut();
                     Debug.Log("Change animation started");
-                }),0.5f, false),
+                }),1.1f,false),
                 new CombatAction((() =>
                 {
                     CombatManager.Instance.TeamsController.RemoveFighterFromField(fighterChanged, team);
@@ -313,9 +408,16 @@ public class CombatActionsFlowManager : MonoBehaviour
             {
                 new CombatAction((() =>
                 {
-                    // TODO : Change animation
+                     for (int i = 0; i < diedPlayerFighters.Count; i++)
+                    {
+                        diedPlayerFighters[i].AnimationController.PlaySpawnOut();
+                    }
+                    for (int i = 0; i < diedEnemyFighters.Count; i++)
+                    {
+                         diedEnemyFighters[i].AnimationController.PlaySpawnOut();
+                    }
                     Debug.Log("Change animation started");
-                }),0.25f, false),
+                }),1.1f, false),
                 new CombatAction((() =>
                 {
                     for (int i = 0; i < diedPlayerFighters.Count; i++)
@@ -374,9 +476,16 @@ public class CombatActionsFlowManager : MonoBehaviour
             {
                 new CombatAction((() =>
                 {
-                    // TODO : Change animation
+                     for (int i = 0; i < diedPlayerFighters.Count; i++)
+                    {
+                        diedPlayerFighters[i].AnimationController.PlaySpawnOut();
+                    }
+                    for (int i = 0; i < diedEnemyFighters.Count; i++)
+                    {
+                         diedEnemyFighters[i].AnimationController.PlaySpawnOut();
+                    }
                     Debug.Log("Change animation started");
-                }),1f, false),
+                }),1.1f, false),
                 new CombatAction((() =>
                 {
                     for (int i = 0; i < diedPlayerFighters.Count; i++)
@@ -404,5 +513,42 @@ public class CombatActionsFlowManager : MonoBehaviour
             StartFlow(allActions);
         }
     }
+    public void UseItemInFieldFighter(CombatItemSO usedItem)
+    {
+        Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;
+        Fighter targetFighter = CombatManager.Instance.TargetActionFighter;
+        if (currentTurnFighter.IsParalized())
+        {
+            FighterParalized();
+        }
+        else
+        {
+            if (currentTurnFighter != null && targetFighter != null && usedItem != null)
+            {
+                List<CombatAction> allActions = new List<CombatAction>
+                {
+                    new CombatAction((() =>
+                    {
+                        PlayerManager.Instance.P_Inventory.RemoveItemOfType(usedItem, 1);
+                        currentTurnFighter.ThrowItem(targetFighter, usedItem);
+                        Debug.Log("Item throwed");
+                    }),0f, true),
+                    new CombatAction((() =>
+                    {
+                        Debug.Log("Waiting");
+                    }),1f, false),
+                    new CombatAction((() =>
+                    {
+                        currentTurnFighter.NextTurn();
+                    }),0.5f,false),
+                     new CombatAction((() =>
+                    {
+                        CombatManager.Instance.FinishFighterMove();
+                    }),0f, false),
+                };
 
+                StartFlow(allActions);
+            }
+        }
+    }
 }

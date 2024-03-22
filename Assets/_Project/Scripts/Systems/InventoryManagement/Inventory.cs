@@ -145,15 +145,6 @@ public class Inventory
         }
         return amount;
     }
-    public float GetTotalWeight()
-    {
-        float totalWeight = 0;
-        foreach (ItemSlot slot in Slots)
-        {
-            totalWeight += slot.Amount * slot.ItemInfo.i_Weight;
-        }
-        return totalWeight;
-    }
     public List<ItemsSO> GetAllItemTypes()
     {
         List<ItemsSO> allItemTypes = new List<ItemsSO>();

@@ -20,6 +20,7 @@ public class UITargetController : MonoBehaviour
         List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
         for (int i = 0; i < EnemyTargets.Count; i++)
         {
+            EnemyTargets[i].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.EnemyTeam.FightersPos[i].transform.position + Vector3.up * 0.15f);
             if (posibleTargets.Contains(i))
             {
                 EnableEnemyTarget(i, enable);
@@ -30,6 +31,7 @@ public class UITargetController : MonoBehaviour
     {
         for (int i = 0; i < EnemyTargets.Count; i++)
         {
+            EnemyTargets[i].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.EnemyTeam.FightersPos[i].transform.position + Vector3.up * 0.15f);
             if (i != fighterNum)
             {
                 EnemyTargets[i].SetActive(enable);
@@ -41,6 +43,7 @@ public class UITargetController : MonoBehaviour
         List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
         for (int i = 0; i < PlayerTargets.Count; i++)
         {
+            PlayerTargets[i].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.PlayerTeam.FightersPos[i].transform.position + Vector3.up * 0.15f);
             if (posibleTargets.Contains(i))
             {
                 EnablePlayerTarget(i, enable);
@@ -51,6 +54,7 @@ public class UITargetController : MonoBehaviour
     {
         for (int i = 0; i < PlayerTargets.Count; i++)
         {
+            PlayerTargets[i].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.PlayerTeam.FightersPos[i].transform.position + Vector3.up * 0.15f);
             if (i != fighterNum)
             {
                 PlayerTargets[i].SetActive(enable);
@@ -59,6 +63,7 @@ public class UITargetController : MonoBehaviour
     }
     public void EnableEnemyTarget(int id, bool enable)
     {
+        EnemyTargets[id].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.EnemyTeam.FightersPos[id].transform.position + Vector3.up * 0.15f);
         if (CombatManager.Instance != null && CombatManager.Instance.TeamsController.EnemyTeam.FightersInField[id] != null)
         {
             EnemyTargets[id].SetActive(enable);
@@ -66,6 +71,7 @@ public class UITargetController : MonoBehaviour
     }
     public void EnablePlayerTarget(int id, bool enable)
     {
+        PlayerTargets[id].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.PlayerTeam.FightersPos[id].transform.position + Vector3.up * 0.15f);
         if (CombatManager.Instance != null && CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id] != null)
         {
             PlayerTargets[id].SetActive(enable);

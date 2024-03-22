@@ -7,7 +7,9 @@ public class ItemsSO : ScriptableObject
     public string i_Description;
     public Sprite i_Sprite;
     public int i_StackMax;
-    public float i_Weight;
+    public ItemType i_ItemType;
+    public CombatItemType i_CombatType;
+    public TargetSelectType i_TargetType;
 }
 [Serializable]
 public class ItemSlot

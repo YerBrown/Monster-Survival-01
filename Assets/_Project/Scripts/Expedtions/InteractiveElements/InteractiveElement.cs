@@ -10,10 +10,7 @@ public class InteractiveElement : MonoBehaviour
     public bool IsBlockingMovement = false; // If is true, blocks the movement in the overlayTile calculation of the pathfinder.
     public Color CursorColor = Color.white; // The color of the cursor when interacts with this element.
     public ScreenPositon_String_EventChannelSO NotificateEvent; // Notification event channel
-    public virtual void OnDisable()
-    {
-        RemoveOverlayTileUnderLink();
-    }
+    public bool IsActiveElement;
     public void AddOverlayTileUnderLink()
     {
         if (ElementChilds.Count <= 0)
@@ -24,6 +21,7 @@ public class InteractiveElement : MonoBehaviour
         {
             child.AddOverlayTileUnderRef();
         }
+        IsActiveElement = true;
     }
     public void RemoveOverlayTileUnderLink()
     {
@@ -35,6 +33,7 @@ public class InteractiveElement : MonoBehaviour
         {
             child.RemoveOverlayTileUnderRef();
         }
+        IsActiveElement = false;
     }
 
     // Called when the player interacts with this element.
@@ -60,7 +59,18 @@ public class InteractiveElement : MonoBehaviour
     {
         ID = data.ID;
     }
-
+    // Enable interactive element following the needs
+    public void EnableElement(bool enable)
+    {
+        if (enable && !IsActiveElement)
+        {
+            AddOverlayTileUnderLink();
+        }
+        else if (!enable && IsActiveElement)
+        {
+            RemoveOverlayTileUnderLink();
+        }
+    }
     protected void Notify(Vector3 newPos, string text)
     {
         if (NotificateEvent == null) { return; };

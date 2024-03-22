@@ -62,6 +62,11 @@ public class CreatureElement : InteractiveElement
             {
                 // TODO: Disable element
                 Debug.Log("Creatures defeated");
+                EnableElement(false);
+            }
+            else
+            {
+                EnableElement(true);
             }
         }
         else

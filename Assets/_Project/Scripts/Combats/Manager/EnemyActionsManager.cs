@@ -20,7 +20,7 @@ public class EnemyActionsManager : MonoBehaviour
         // Check if are posible targets in range.
         if (GetOppositeRandomTarget().Item1 != null)
         {
-            if (currentFighter.EnergyPoints >= currentFighter.Stats.MaxEnergyPoints / 2)
+            if (currentFighter.EnergyPoints >= currentFighter.CurrentStats.MaxEnergyPoints / 2)
             {
                 randomAction = Random.Range(0, 100);
             }

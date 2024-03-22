@@ -123,7 +123,7 @@ public class CombatManager : MonoBehaviour
             }
         }
         List<Fighter> fightersOrderBySpeed = new();
-        var groupedBySpeed = allFighterInField.GroupBy(fighter => fighter.Stats.Speed);
+        var groupedBySpeed = allFighterInField.GroupBy(fighter => fighter.CurrentStats.Speed);
         groupedBySpeed = groupedBySpeed.OrderByDescending(fighter => fighter.Key);
         foreach (var groupSpeed in groupedBySpeed)
         {
@@ -133,7 +133,7 @@ public class CombatManager : MonoBehaviour
                 var fightersWithRandomNumbers = groupSpeed.Select(fighter => new
                 {
                     Fighter = fighter,
-                    Initiative = fighter.Stats.Speed + new System.Random().NextDouble() // Generate the intuitive number randomly 
+                    Initiative = fighter.CurrentStats.Speed + new System.Random().NextDouble() // Generate the intuitive number randomly 
                 });
                 fightersOrderBySpeed.AddRange(fightersWithRandomNumbers.OrderBy(f => f.Initiative).Select(f => f.Fighter));
 
@@ -162,7 +162,12 @@ public class CombatManager : MonoBehaviour
     // Calculate the order for the next turn when some fighters have been changed.
     public void CalculateTurnOrderOnFighterChanged()
     {
+        bool firstNull = CurrentTurnOrder[0] == null;
         CurrentTurnOrder.RemoveAll(fighter => fighter == null);
+        if (firstNull)
+        {
+            CurrentTurnOrder.Insert(0, null);
+        }
         _NextTurnOrder = CalculateTurnOrder();
     }
     // Set up the current turn fighter to the next one in order list.
@@ -259,6 +264,11 @@ public class CombatManager : MonoBehaviour
     // When all the actions from current turn are done, this triggers the pass to the next turn.
     private void FinishTurn()
     {
+        // TODO: Flow when the turn finished for fighters, apply damage from states, remove boost, check if some one died,  etc.
+        //foreach (var fighter in _NextTurnOrder)
+        //{
+        //    fighter.NextTurn();
+        //}
         CurrentTurn++;
         CurrentTurnOrder = new List<Fighter>(_NextTurnOrder);
         _NextTurnOrder = CalculateTurnOrder();
@@ -317,6 +327,10 @@ public class CombatManager : MonoBehaviour
         int newFighterIndex = TeamsController.PlayerTeam.GetFighterDataIndex(activeFighter.ID);
         int currentFighterIndex = TeamsController.PlayerTeam.GetFighterDataIndex(addedFighter.ID);
         TeamsController.PlayerTeam.SwipeFightersOrder(currentFighterIndex, newFighterIndex);
+    }
+    public void ThrowItem(CombatItemSO item)
+    {
+        ActionsFlowManager.UseItemInFieldFighter(item);
     }
     // Return the tile of the position given.
     public OverlayTile GetTile(Vector2 tilePos)
