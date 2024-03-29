@@ -83,6 +83,7 @@ public class UITargetController : MonoBehaviour
         {
             CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.EnemyTeam.FightersInField[id], id);
             EnableAllTarget(false);
+            CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
         }
     }
     public void SelectPlayerTarget(int id)
@@ -91,6 +92,7 @@ public class UITargetController : MonoBehaviour
         {
             CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id], id);
             EnableAllTarget(false);
+            CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
         }
     }
 }

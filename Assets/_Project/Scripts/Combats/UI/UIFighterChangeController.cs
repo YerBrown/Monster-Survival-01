@@ -17,17 +17,26 @@ public class UIFighterChangeController : MonoBehaviour
     [SerializeField] private Button CloseButton;
     [SerializeField] private Button InfoButton;
     [SerializeField] private Button SwipeButton;
+    [SerializeField] private Button ItemUseButton;
     [Header("Change Data")]
-    private int CurrentChangeTurn; // Current fighter change turn.
-    private List<int> ChangesNums = new(); // All changes selected nums.
-    private bool IsChangeMandatory = false; // If is a change by dead fighters, is mandatory to select all change posibles.
-    private FighterData CurrentFighterData; // Selected fighter data to replace other fighter.
+    [SerializeField] private int CurrentChangeTurn; // Current fighter change turn.
+    [SerializeField] private List<int> ChangesNums = new(); // All changes selected nums.
+    [SerializeField] private bool IsChangeMandatory = false; // If is a change by dead fighters, is mandatory to select all change posibles.
+    [SerializeField] private FighterData CurrentFighterData; // Selected fighter data to replace other fighter.
     private Dictionary<int, Fighter> FightersSelectedToChange = new Dictionary<int, Fighter>(); // Dictionary of all fighters selected to replace in the field.
     private Dictionary<int, FighterData> NewFighterToAdd = new Dictionary<int, FighterData>(); // Dictionary of the replacements for the selected fighters in field.
     [Header("Slot Panel Type Colors")]
     [SerializeField] private Color InFieldColor;
     [SerializeField] private Color OutOfFieldColor;
     [SerializeField] private Color DeadColor;
+    [Header("Other")]
+    [SerializeField] private UIPlayerInventoryInCombatController _PlayerInventoryController;
+    private SelectFighterMode _SelectMode;
+    public enum SelectFighterMode
+    {
+        CHANGE,
+        SELECT_ITEM_TARGET,
+    }
     [Serializable]
     public class FighterSlotPanel
     {
@@ -51,8 +60,8 @@ public class UIFighterChangeController : MonoBehaviour
             if (!string.IsNullOrEmpty(fighterData.ID))
             {
                 FighterImage.sprite = FightersInfoWiki.Instance.FightersDictionary[fighterData.TypeID].c_AvatarSprite;
-                HealthSlider.value = (float)fighterData.HealthPoints / fighterData.MaxHealtPoints;
-                HealthText.text = $"{fighterData.HealthPoints} / {fighterData.MaxHealtPoints}";
+                HealthSlider.value = (float)fighterData.HealthPoints / fighterData.MaxHealthPoints;
+                HealthText.text = $"{fighterData.HealthPoints} / {fighterData.MaxHealthPoints}";
                 EnergySlider.value = (float)fighterData.EnergyPoints / fighterData.MaxEnergyPoints;
                 EnergyText.text = $"{fighterData.EnergyPoints} / {fighterData.MaxEnergyPoints}";
                 FisicalPower.text = fighterData.FisicalPower.ToString();
@@ -88,13 +97,30 @@ public class UIFighterChangeController : MonoBehaviour
         ChangesNums.Clear();
         FightersSelectedToChange.Clear();
         IsChangeMandatory = mandatory;
+        _SelectMode = SelectFighterMode.CHANGE;
         for (int i = 0; i < fightersToChange.Count; i++)
         {
             int num = CombatManager.Instance.TeamsController.GetFighterInFieldNum(fightersToChange[i]);
             FightersSelectedToChange.Add(num, fightersToChange[i]);
         }
+        SwipeButton.gameObject.SetActive(true);
+        ItemUseButton.gameObject.SetActive(false);
         // Update the popup.
         CheckCurrentChangeTurn();
+        ParentPopup.SetActive(true);
+    }
+    public void OpenPopupToSetItemTarget()
+    {
+        CurrentChangeTurn = 0;
+        NewFighterToAdd.Clear();
+        ChangesNums.Clear();
+        FightersSelectedToChange.Clear();
+        IsChangeMandatory = false;
+        _SelectMode = SelectFighterMode.SELECT_ITEM_TARGET;
+        // Update the popup.
+        CheckCurrentChangeTurn();
+        SwipeButton.gameObject.SetActive(false);
+        ItemUseButton.gameObject.SetActive(true);
         ParentPopup.SetActive(true);
     }
     // Disable teh popup.
@@ -239,7 +265,14 @@ public class UIFighterChangeController : MonoBehaviour
         {
             // Close the popup because the change is optional.
             ClosePopup();
-            CombatManager.Instance.UIManager.ActionsController.EnableAction(true);
+            if (_SelectMode == SelectFighterMode.CHANGE)
+            {
+                CombatManager.Instance.UIManager.ActionsController.EnableAction(true);
+            }
+            else
+            {
+                _PlayerInventoryController.OpenSelectTargets();
+            }
         }
     }
     // Update the ui depending of the needs of replacemnt selection.
@@ -281,6 +314,7 @@ public class UIFighterChangeController : MonoBehaviour
         {
             if (!NewFighterToAdd.ContainsKey(fighter.Key))
             {
+                SelectFighterButtons[fighter.Key].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.PlayerTeam.FightersPos[fighter.Key].transform.position + Vector3.up * 0.15f);
                 SelectFighterButtons[fighter.Key].gameObject.SetActive(true);
             }
         }
@@ -302,6 +336,16 @@ public class UIFighterChangeController : MonoBehaviour
     public void OnSwipe()
     {
         OpenSelectFighterToBeChanged();
+    }
+    public void OnInfo()
+    {
+
+    }
+    public void OnSelectItemTarget()
+    {
+        _PlayerInventoryController.SelectFighterDataTarget(CurrentFighterData);
+        ClosePopup();
+        CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
     }
     // Start flow of optional and single change.
     public void ChangeFighter()

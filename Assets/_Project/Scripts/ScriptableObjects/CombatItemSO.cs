@@ -4,6 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "CombatItemSO", menuName = "ScriptableObjects/Item/Combat Item")]
 public class CombatItemSO : ItemsSO
 {
+    public bool IsUsableInTeamFighters;
     public virtual void Use(Fighter targetFighter)
     {
 

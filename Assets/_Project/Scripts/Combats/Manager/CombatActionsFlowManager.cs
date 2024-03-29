@@ -70,6 +70,30 @@ public class CombatActionsFlowManager : MonoBehaviour
             IsWaitingForInput = false;
         }
     }
+    public void UpdatePlayerFighterDataByItem(FighterData targetFighterData, CombatItemSO combatItem)
+    {
+        Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;
+        int currentFighterHP = targetFighterData.HealthPoints;
+        int currentEnergy = targetFighterData.EnergyPoints;
+        List<CombatAction> allActions = new List<CombatAction>
+            {
+                new CombatAction((() =>
+                {
+                    combatItem.Use(targetFighterData);
+                    CombatManager.Instance.UIManager.NotificationController.EnableActionInFighterData(targetFighterData, currentFighterHP, targetFighterData.HealthPoints, currentEnergy, targetFighterData.EnergyPoints);
+                }),3f, false),
+                new CombatAction((() =>
+                {
+                   currentTurnFighter.NextTurn();
+                }),0.5f,false),
+                 new CombatAction((() =>
+                {
+                    CombatManager.Instance.FinishFighterMove();
+                }),0f, false),
+            };
+
+        StartFlow(allActions);
+    }
     public void FighterParalized()
     {
         Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;

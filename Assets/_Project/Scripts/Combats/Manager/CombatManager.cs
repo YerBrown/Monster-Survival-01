@@ -206,7 +206,6 @@ public class CombatManager : MonoBehaviour
         }
         GetCurrentAndNextTurn()[1].UIController.NextText.gameObject.SetActive(true);
         FinishCurrentFighterAction.RaiseEvent();
-        UIManager.HiglightFighter(CurrentTurnFighter);
         if (TeamsController.IsPlayerTeamFighter(CurrentTurnFighter))
         {
             UIManager.EnableAction(true);
@@ -242,13 +241,13 @@ public class CombatManager : MonoBehaviour
         if (TeamsController.PlayerTeam.IsAllTeamDefeated())
         {
             // TODO: Enemy won
-            UIManager.PlayEnemyWinAnim();
+            UIManager.NotificationController.EnemyWin();
             return;
         }
         else if (TeamsController.EnemyTeam.IsAllTeamDefeated())
         {
             // TODO: Player won
-            UIManager.PlayPlayerWinAnim();
+            UIManager.NotificationController.PlayerWin();
             return;
         }
         CurrentTurnOrder.RemoveAt(0);
@@ -331,6 +330,10 @@ public class CombatManager : MonoBehaviour
     public void ThrowItem(CombatItemSO item)
     {
         ActionsFlowManager.UseItemInFieldFighter(item);
+    }
+    public void UseItemInFighterData(FighterData fighterData, CombatItemSO item)
+    {
+        ActionsFlowManager.UpdatePlayerFighterDataByItem(fighterData, item);
     }
     // Return the tile of the position given.
     public OverlayTile GetTile(Vector2 tilePos)

@@ -17,36 +17,7 @@
                     "Blocks": true
                 }
             ],
-            "Containers": [
-                {
-                    "ID": "#CONTAINER_00",
-                    "Element_ID": "#ITEMSDROPEDBAG",
-                    "Pos": {
-                        "x": -1.0,
-                        "y": 1.250100016593933,
-                        "z": 1.0
-                    },
-                    "Inv_Name": "Droped Items",
-                    "MaxSlots": 10,
-                    "FlexibleSlots": false,
-                    "OnlyRemoveItems": true,
-                    "AllItems": [
-                        {
-                            "ItemID": "Strawberry",
-                            "Amount": 50
-                        },
-                        {
-                            "ItemID": "Strawberry",
-                            "Amount": 50
-                        },
-                        {
-                            "ItemID": "Strawberry",
-                            "Amount": 20
-                        }
-                    ],
-                    "Opened": true
-                }
-            ],
+            "Containers": [],
             "Items": [
                 {
                     "ID": "#ITEM_00",
@@ -57,7 +28,7 @@
                         "z": 1.0
                     },
                     "ItemID": "Meat",
-                    "Amount": 0
+                    "Amount": 1
                 }
             ],
             "Resources": [
@@ -89,7 +60,7 @@
                         "y": 1.5,
                         "z": 2.0
                     },
-                    "LP": 0
+                    "LP": 10
                 },
                 {
                     "ID": "#RESOURCE_03",
@@ -116,81 +87,6 @@
         },
         {
             "Coordinates": {
-                "x": 0,
-                "y": 0
-            },
-            "Blockers": [],
-            "Containers": [],
-            "Items": [
-                {
-                    "ID": "#ITEM_00",
-                    "Element_ID": "#MUSHROOM",
-                    "Pos": {
-                        "x": 0.125,
-                        "y": 2.1875,
-                        "z": 1.0
-                    },
-                    "ItemID": "Mushroom",
-                    "Amount": 3
-                },
-                {
-                    "ID": "#ITEM_01",
-                    "Element_ID": "#MUSHROOM",
-                    "Pos": {
-                        "x": -3.0,
-                        "y": -1.25,
-                        "z": 1.0
-                    },
-                    "ItemID": "Mushroom",
-                    "Amount": 3
-                }
-            ],
-            "Resources": [
-                {
-                    "ID": "#RESOURCE_00",
-                    "Element_ID": "#BUSH",
-                    "Pos": {
-                        "x": 3.5,
-                        "y": -0.5,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_01",
-                    "Element_ID": "#BUSH",
-                    "Pos": {
-                        "x": -2.5,
-                        "y": 1.5,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_02",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": 5.5,
-                        "y": 0.5,
-                        "z": 3.0
-                    },
-                    "LP": 10
-                },
-                {
-                    "ID": "#RESOURCE_03",
-                    "Element_ID": "#TREE",
-                    "Pos": {
-                        "x": 1.0,
-                        "y": -1.25,
-                        "z": 1.0
-                    },
-                    "LP": 10
-                }
-            ],
-            "Switchers": []
-        },
-        {
-            "Coordinates": {
                 "x": 2,
                 "y": 0
             },
@@ -203,7 +99,7 @@
                         "y": 1.5,
                         "z": 1.0
                     },
-                    "Blocks": false
+                    "Blocks": true
                 },
                 {
                     "ID": "#BLOCKER_01",
@@ -213,7 +109,7 @@
                         "y": 1.75,
                         "z": 1.0
                     },
-                    "Blocks": false
+                    "Blocks": true
                 }
             ],
             "Containers": [
@@ -229,8 +125,13 @@
                     "MaxSlots": 5,
                     "FlexibleSlots": false,
                     "OnlyRemoveItems": false,
-                    "AllItems": [],
-                    "Opened": true
+                    "AllItems": [
+                        {
+                            "ItemID": "Key",
+                            "Amount": 1
+                        }
+                    ],
+                    "Opened": false
                 }
             ],
             "Items": [],
@@ -306,50 +207,6 @@
                     "LP": 10
                 }
             ],
-            "Switchers": []
-        },
-        {
-            "Coordinates": {
-                "x": 2,
-                "y": 1
-            },
-            "Blockers": [],
-            "Containers": [],
-            "Items": [],
-            "Resources": [],
-            "Switchers": []
-        },
-        {
-            "Coordinates": {
-                "x": 1,
-                "y": 1
-            },
-            "Blockers": [],
-            "Containers": [],
-            "Items": [],
-            "Resources": [],
-            "Switchers": []
-        },
-        {
-            "Coordinates": {
-                "x": 0,
-                "y": 1
-            },
-            "Blockers": [],
-            "Containers": [],
-            "Items": [],
-            "Resources": [],
-            "Switchers": []
-        },
-        {
-            "Coordinates": {
-                "x": 0,
-                "y": 2
-            },
-            "Blockers": [],
-            "Containers": [],
-            "Items": [],
-            "Resources": [],
             "Switchers": []
         }
     ]

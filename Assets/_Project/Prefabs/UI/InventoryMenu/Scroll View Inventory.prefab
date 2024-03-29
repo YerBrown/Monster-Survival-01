@@ -53,7 +53,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &457149882112888344
 RectTransform:
   m_ObjectHideFlags: 0
@@ -306,8 +306,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3617164202384551028}
   m_HandleRect: {fileID: 5435060869432645448}
   m_Direction: 2
-  m_Value: 0.5
-  m_Size: 0.41095886
+  m_Value: 1
+  m_Size: 0.30403894
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -594,7 +594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -149.99994}
+  m_AnchoredPosition: {x: 0, y: -440.00003}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &3498998506435008083
@@ -648,11 +648,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 20
-    m_Right: 20
-    m_Top: 20
-    m_Bottom: 20
-  m_ChildAlignment: 0
+    m_Left: 15
+    m_Right: 15
+    m_Top: 15
+    m_Bottom: 15
+  m_ChildAlignment: 1
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 60, y: 60}
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
+  m_HorizontalFit: 0
   m_VerticalFit: 1
 --- !u!114 &149584695548952894
 MonoBehaviour:
@@ -730,6 +730,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   I_ScrollRect: {fileID: 1665498933078009779}
+  IsFilterEnabled: 0
+  ItemMainFilter: 0
+  CombatFilter: 0
 --- !u!1001 &435848314898912224
 PrefabInstance:
   m_ObjectHideFlags: 0

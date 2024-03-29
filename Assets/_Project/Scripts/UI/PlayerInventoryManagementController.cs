@@ -30,6 +30,7 @@ public class PlayerInventoryManagementController : MonoBehaviour
     public ItemType MainFilter;
 
     public bool ResetOnSameType = false;
+    public bool SelectFirstOnOpen = false;
     public VoidEventChannelSO OnOpenPlayerInventory;
     public UITrashController TrashController;
 
@@ -64,7 +65,10 @@ public class PlayerInventoryManagementController : MonoBehaviour
 
         if (UIPlayerInventory.UI_Inventory.Slots.Count > 0)
         {
-            SelectItemSlot(UIPlayerInventory, UIPlayerInventory.UI_Inventory.Slots[0].ItemInfo);
+            if (SelectFirstOnOpen)
+            {
+                SelectItemSlot(UIPlayerInventory, UIPlayerInventory.UI_Inventory.Slots[0].ItemInfo);
+            }            
         }
         else
         {

@@ -123,7 +123,28 @@ public class MouseController : MonoBehaviour
 
     public RaycastHit2D? GetFocusedTile()
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mousePos = new Vector3(3000000,300000000);
+        if (Application.platform == RuntimePlatform.Android || Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            if (Input.touchCount > 0)
+            {
+                // Obtener el primer toque
+                Touch touch = Input.GetTouch(0);
+
+                // Verificar si el toque está en fase de "comienzo"
+                if (touch.phase == TouchPhase.Began)
+                {
+                    // Convertir la posición del toque a coordenadas del mundo
+                    Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                    
+                }
+            }
+        }
+        else
+        {
+            mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        }
+            
         Vector2 mousePos2d = new Vector2(mousePos.x, mousePos.y);
 
         RaycastHit2D[] hits = Physics2D.RaycastAll(mousePos2d, Vector2.zero);

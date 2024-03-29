@@ -377,6 +377,16 @@ public class CombatTeam
         }
         return -1;
     }
+    public Fighter GetFighterInField(string fighterId)
+    {
+        Fighter fighterInField = FightersInField.FirstOrDefault(fighter => fighter.ID == fighterId);
+        return fighterInField;
+    }
+    public FighterData GetFighterDataInTeam(string fighterId)
+    {
+        FighterData fighterInTeam = Fighters.FirstOrDefault(fighter => fighter.ID == fighterId);
+        return fighterInTeam;
+    }
     public List<FighterData> GetFightersNotInField(int amountNeeded)
     {
         List<FighterData> fightersNotInField = new();

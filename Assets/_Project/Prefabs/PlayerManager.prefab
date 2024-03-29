@@ -701,13 +701,11 @@ MonoBehaviour:
       _Amount: 5
     - _ItemInfo: {fileID: 11400000, guid: c31d3b35ddfddc14192aadf74d73d11a, type: 2}
       _Amount: 5
-    - _ItemInfo: {fileID: 11400000, guid: b9f1492d239d92044a15f5870d615a16, type: 2}
-      _Amount: 5
     - _ItemInfo: {fileID: 11400000, guid: dca93ff5691062a4e93c205de823a0c3, type: 2}
       _Amount: 5
     - _ItemInfo: {fileID: 11400000, guid: 330920d23b52d4047910951f54ab0f67, type: 2}
       _Amount: 5
-    MaxSlots: 10
+    MaxSlots: 15
     FlexibleSlots: 0
     OnlyRemoveItems: 0
     OnItemAdded: {fileID: 11400000, guid: 0fa4b647cf118e5458a07d47f21a999a, type: 2}
@@ -716,7 +714,7 @@ MonoBehaviour:
   - ID: '#EMPOLEON_01'
     TypeID: Empoleon
     Nickname: Blas
-    MaxHealtPoints: 20
+    MaxHealthPoints: 20
     MaxEnergyPoints: 20
     FisicalPower: 12
     RangePower: 3
@@ -727,7 +725,7 @@ MonoBehaviour:
   - ID: '#PLAYER'
     TypeID: Hunter
     Nickname: Yeray
-    MaxHealtPoints: 20
+    MaxHealthPoints: 20
     MaxEnergyPoints: 20
     FisicalPower: 5
     RangePower: 5
@@ -738,7 +736,7 @@ MonoBehaviour:
   - ID: '#TOTODILE_03'
     TypeID: Totodile
     Nickname: Pepe
-    MaxHealtPoints: 10
+    MaxHealthPoints: 10
     MaxEnergyPoints: 10
     FisicalPower: 2
     RangePower: 10
@@ -749,7 +747,7 @@ MonoBehaviour:
   - ID: '#BULBASUR_04'
     TypeID: Bulbasur
     Nickname: Derric
-    MaxHealtPoints: 15
+    MaxHealthPoints: 15
     MaxEnergyPoints: 10
     FisicalPower: 5
     RangePower: 8
@@ -760,7 +758,7 @@ MonoBehaviour:
   - ID: '#ELECTABUZZ_05'
     TypeID: Electabuzz
     Nickname: Alfonso
-    MaxHealtPoints: 12
+    MaxHealthPoints: 15
     MaxEnergyPoints: 10
     FisicalPower: 4
     RangePower: 10
@@ -771,7 +769,7 @@ MonoBehaviour:
   - ID: '#MAKUHITA_06'
     TypeID: Makuhita
     Nickname: Gozoi
-    MaxHealtPoints: 10
+    MaxHealthPoints: 10
     MaxEnergyPoints: 10
     FisicalPower: 8
     RangePower: 2

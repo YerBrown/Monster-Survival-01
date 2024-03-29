@@ -52,7 +52,7 @@ public class Fighter : MonoBehaviour
         Nickname = data.Nickname;
         AvatarSprite = FightersInfoWiki.Instance.FightersDictionary[data.TypeID].c_AvatarSprite;
         AnimationController.Anim.runtimeAnimatorController = FightersInfoWiki.Instance.FightersDictionary[data.TypeID].c_Animator;
-        BaseStats.MaxHealthPoints = data.MaxHealtPoints;
+        BaseStats.MaxHealthPoints = data.MaxHealthPoints;
         BaseStats.MaxEnergyPoints = data.MaxEnergyPoints;
         BaseStats.HitPower = data.FisicalPower;
         BaseStats.RangePower = data.RangePower;
@@ -376,7 +376,7 @@ public class FighterData
     public string TypeID;
     public string Nickname;
 
-    public int MaxHealtPoints;
+    public int MaxHealthPoints;
     public int MaxEnergyPoints;
     public int FisicalPower;
     public int RangePower;
@@ -393,9 +393,9 @@ public class FighterData
     public void Heal(int healPoints)
     {
         HealthPoints += healPoints;
-        if (HealthPoints > MaxHealtPoints)
+        if (HealthPoints > MaxHealthPoints)
         {
-            HealthPoints = MaxHealtPoints;
+            HealthPoints = MaxHealthPoints;
         }
     }
 }

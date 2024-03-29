@@ -12,15 +12,24 @@ public class UIPlayerInventoryInCombatController : PlayerInventoryManagementCont
 
     public List<Button> FilterButtons = new();
     public Button CancelButton;
+    public Button TeamButton;
     public CombatItemType CombatFilter;
     public UITargetController TargetController;
     public UIActionsController ActionsController;
+    public UIFighterChangeController FighterChangeController;
     public override void OpenPopup()
     {
         base.OpenPopup();
         CancelButton.gameObject.SetActive(false);
-
-        SelectItemSlot(UIPlayerInventory, GetFirstCombatItem());
+        TeamButton.gameObject.SetActive(false);
+        if (SelectedItemType != null && SelectedItemType.i_ItemType == ItemType.COMBAT && UIPlayerInventory.UI_Inventory.GetAmountOfType(SelectedItemType) > 0)
+        {
+            SelectItemSlot(UIPlayerInventory, SelectedItemType);
+        }
+        else
+        {
+            SelectItemSlot(UIPlayerInventory, GetFirstCombatItem());
+        }
     }
     private ItemsSO GetFirstCombatItem()
     {
@@ -61,7 +70,31 @@ public class UIPlayerInventoryInCombatController : PlayerInventoryManagementCont
             SelectedItemAmount.text = $"";
         }
     }
+    public void SelectFighterDataTarget(FighterData fighterData)
+    {
+        Fighter fighterInField = CombatManager.Instance.TeamsController.PlayerTeam.GetFighterInField(fighterData.ID);
+        if (fighterInField != null)
+        {
+            int fighterIndex = CombatManager.Instance.TeamsController.PlayerTeam.GetFighterDataIndex(fighterData.ID);
+            CombatManager.Instance.SelectTargetFighter(fighterInField, fighterIndex);
+        }
+        else
+        {
+            UseSelectedItemInTeam(fighterData);
+        }
+    }
     public void UseSelectedItem()
+    {
+        CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(SelectedItemType.i_Sprite, SelectedItemType.i_Name, "Item", SelectedItemType.i_Description);
+        OpenSelectTargets();
+        CombatManager.Instance.SetSelectedAction(() =>
+        {
+            CancelButton.gameObject.SetActive(false);
+            TeamButton.gameObject.SetActive(false);
+            CombatManager.Instance.ThrowItem((CombatItemSO)SelectedItemType);
+        });
+    }
+    public void OpenSelectTargets()
     {
         switch (SelectedItemType.i_TargetType)
         {
@@ -79,16 +112,32 @@ public class UIPlayerInventoryInCombatController : PlayerInventoryManagementCont
         }
         UIParent.gameObject.SetActive(false);
         CancelButton.gameObject.SetActive(true);
-        CombatManager.Instance.SetSelectedAction(() =>
-        {
-            CancelButton.gameObject.SetActive(false);
-            CombatManager.Instance.ThrowItem((CombatItemSO)SelectedItemType);
-        });
+        TeamButton.gameObject.SetActive(((CombatItemSO)SelectedItemType).IsUsableInTeamFighters);
+    }
+    public void UseSelectedItemInTeam(FighterData fighterTarget)
+    {
+        UIParent.gameObject.SetActive(false);
+        CombatManager.Instance.UseItemInFighterData(fighterTarget, (CombatItemSO)SelectedItemType);
+        CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
+    }
+    public void UseSelectedItemInField(Fighter fighter)
+    {
+        int fighterIndex = CombatManager.Instance.TeamsController.PlayerTeam.GetFighterDataIndex(fighter.ID);
+        CombatManager.Instance.SelectTargetFighter(fighter, fighterIndex);
+        CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
+    }
+    public void OpenTeam()
+    {
+        FighterChangeController.OpenPopupToSetItemTarget();
+        TargetController.EnableAllTarget(false);
+        CancelButton.gameObject.SetActive(false);
+        TeamButton.gameObject.SetActive(false);
     }
     public void CancelTarget()
     {
         OpenPopup();
         TargetController.EnableAllTarget(false);
+        CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
     }
     public override void CloseMenu()
     {

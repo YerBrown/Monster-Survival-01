@@ -19,4 +19,5 @@ MonoBehaviour:
   i_ItemType: 2
   i_CombatType: 1
   i_TargetType: 0
+  IsUsableInTeamFighters: 1
   HealPoints: 5
