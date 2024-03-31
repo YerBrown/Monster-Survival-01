@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEditor.Animations;
 using UnityEngine;
 /// <summary>
 /// A Scriptable Object with the basic info of a Creature race

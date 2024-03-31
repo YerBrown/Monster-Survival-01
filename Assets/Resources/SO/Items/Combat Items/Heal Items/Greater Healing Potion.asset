@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35852a29e57af8a4fa2553682dac1440, type: 3}
   m_Name: Greater Healing Potion
   m_EditorClassIdentifier: 
-  i_Name: Smal Heal Potion
-  i_Description: This potion, heals 5 HP.
+  i_Name: Greater Healing Potion
+  i_Description: This potion, heals 10 HP.
   i_Sprite: {fileID: 21300000, guid: 08ebdcac62ae14e05876c9cac7251b3b, type: 3}
   i_StackMax: 10
   i_ItemType: 2
   i_CombatType: 1
   i_TargetType: 0
   IsUsableInTeamFighters: 1
-  HealPoints: 5
+  HealPoints: 10

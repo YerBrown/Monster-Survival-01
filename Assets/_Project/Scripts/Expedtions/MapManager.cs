@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -189,7 +189,7 @@ public class MapManager : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         GoNextField(Vector2Int.zero);
         AddAllOverlayTiles(CurrentField);
-        Debug.Log("Añadidas todas las overlay tiles");
+        Debug.Log("Aï¿½adidas todas las overlay tiles");
         yield return new WaitForSeconds(.2f);
         LoadAreaState();
         Debug.Log("Sincronizados todos los elementos interactivos");
@@ -207,7 +207,7 @@ public class MapManager : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         GoNextField(travelDistance);
         AddAllOverlayTiles(CurrentField);
-        Debug.Log("Añadidas todas las overlay tiles");
+        Debug.Log("Aï¿½adidas todas las overlay tiles");
         yield return new WaitForSeconds(.2f);
         LoadAreaState();
         Debug.Log("Sincronizados todos los elementos interactivos");
@@ -229,6 +229,14 @@ public class MapManager : MonoBehaviour
     {
         if (CurrentField != null)
         {
+            string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+            string fileName = "map_data.json";
+            string completeRute = Path.Combine(folderPath, fileName);
+            if (!Directory.Exists(completeRute))
+            {
+                string json = File.ReadAllText(completeRute);
+                CurrentFieldData = JsonUtility.FromJson<ExpeditionData>(json);
+            }
             ExpeditionData.FieldData currentFieldData = CurrentFieldData.GetField(CurrentCoordinates);
             CurrentField.AddInteractiveElements();
             CurrentField.AsignIds();
@@ -299,7 +307,15 @@ public class MapManager : MonoBehaviour
             }
 
             string fieldDataJson = JsonUtility.ToJson(CurrentFieldData, true);
-            File.WriteAllText(Application.dataPath + "/ExpeditionData.json", fieldDataJson);
+
+            string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            string fileName = "map_data.json";
+            string completeRute = Path.Combine(folderPath, fileName);
+            File.WriteAllText(completeRute, fieldDataJson);
         }
     }
 }

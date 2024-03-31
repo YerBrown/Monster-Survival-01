@@ -47,14 +47,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9003080e16635fc4487113198bcb17bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemsLibrary:
-  - {fileID: 11400000, guid: cefc62add4cb62d48b02ef55e6965431, type: 2}
-  - {fileID: 11400000, guid: ea97ed162bfcdc0478aaf76b7edc0d22, type: 2}
-  - {fileID: 11400000, guid: 1b265bffbb770e64c8e864aba08db2e5, type: 2}
-  - {fileID: 11400000, guid: 85c6f03ac12c9ea47beb05cc5cf8b464, type: 2}
-  - {fileID: 11400000, guid: 7d58db3e81fd804488f9798341481cf1, type: 2}
-  - {fileID: 11400000, guid: 826ba8efb87eb3f49bba5017b824e8b7, type: 2}
-  - {fileID: 11400000, guid: 8a473a0dc201af1409344b7520b7a084, type: 2}
+  ItemsLibrary: []
 --- !u!114 &5940794763523433132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -80,10 +73,11 @@ MonoBehaviour:
   - {fileID: 3922847215806167809, guid: 4eec8b32740f88d48a1e25cb3391b71e, type: 3}
   - {fileID: 1827791714403491424, guid: 285783d51a56e7c45b9cb07b3bed20b5, type: 3}
   Resources:
+  - {fileID: 8636917157321565943, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
+  - {fileID: 6355812448355735981, guid: 6d2044f5c483a634b98fbd1326b5e45a, type: 3}
   - {fileID: 7597596320678313960, guid: 62f5dd95b2d2fe447ad11f23d2501353, type: 3}
   - {fileID: 6648828760700400434, guid: 086947b973fe6e54cbdfca25be3483b9, type: 3}
   - {fileID: 1054497053680962263, guid: d5364fa5eaddd444c96617a7fd9d6d4a, type: 3}
-  - {fileID: 8636917157321565943, guid: 03aae52ceeb022e4c9cbc68bc0624e48, type: 3}
   Switchers:
   - {fileID: 2767663642868264179, guid: ede25882f209c7c44b10e69945fe85c3, type: 3}
 --- !u!114 &1661177667737033235

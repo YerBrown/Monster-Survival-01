@@ -1,9 +1,6 @@
 using System;
 using System.Collections.Generic;
-using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
-using UnityEngine.Events;
-using static UnityEditor.Progress;
 [Serializable]
 public class Inventory
 {

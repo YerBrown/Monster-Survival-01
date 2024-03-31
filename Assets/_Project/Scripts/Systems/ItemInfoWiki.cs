@@ -1,5 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using JetBrains.Annotations;
+using Mono.Cecil;
 using UnityEngine;
 
 public class ItemInfoWiki : MonoBehaviour
@@ -25,12 +28,22 @@ public class ItemInfoWiki : MonoBehaviour
 
     private void Start()
     {
+        SearchItemsInFolder();
+    }
+
+    private void SearchItemsInFolder()
+    {
+        ItemsSO[] allItemsSO = Resources.LoadAll<ItemsSO>("SO/Items");
+        ItemsLibrary.Clear();
+        foreach (var item in allItemsSO)
+        {
+            ItemsLibrary.Add(item);
+        }
         foreach (var item in ItemsLibrary)
         {
             ItemsDictionary.Add(item.i_Name, item);
         }
     }
-
     public ItemsSO GetItemByID(string id)
     {
         return ItemsDictionary[id];

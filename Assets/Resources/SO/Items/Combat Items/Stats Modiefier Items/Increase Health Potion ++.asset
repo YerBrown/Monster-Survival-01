@@ -9,21 +9,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56ab5b98d04eb3f499df2a3a7d7b244d, type: 3}
-  m_Name: Increase Power Potion +
+  m_Script: {fileID: 11500000, guid: 76eeba3a5ab63064cb2b77f02a52392c, type: 3}
+  m_Name: Increase Health Potion ++
   m_EditorClassIdentifier: 
-  i_Name: Increase Damage Potion +
-  i_Description: Increase the fisical power and the range power in +10
-  i_Sprite: {fileID: 21300000, guid: 4ad4e228042f54181826db89c996ef3f, type: 3}
+  i_Name: Increase Health Potion ++
+  i_Description: Increase the max healt in +20
+  i_Sprite: {fileID: 21300000, guid: 275fd8fea1d0249baa3f3941e12ee883, type: 3}
   i_StackMax: 5
   i_ItemType: 2
   i_CombatType: 3
   i_TargetType: 0
+  IsUsableInTeamFighters: 0
   ModifierStats:
-    MaxHealthPoints: 0
+    MaxHealthPoints: 20
     MaxEnergyPoints: 0
-    HitPower: 10
-    RangePower: 10
+    HitPower: 0
+    RangePower: 0
     Defense: 0
     Speed: 0
-  TurnsDuration: 2
+  TurnsDuration: 1
+  HealAmount: 0

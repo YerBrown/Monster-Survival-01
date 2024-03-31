@@ -2,11 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
-using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using UnityEngine.UIElements;
 
 public class UIInventoryController : MonoBehaviour
 {

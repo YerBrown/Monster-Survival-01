@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 35852a29e57af8a4fa2553682dac1440, type: 3}
-  m_Name: Healing Potion
+  m_Name: Small Healing Potion
   m_EditorClassIdentifier: 
-  i_Name: Smal Heal Potion
+  i_Name: Small Heal Potion
   i_Description: This potion, heals 5 HP.
   i_Sprite: {fileID: 21300000, guid: da071679a3b1a4fe1b1dea0bae510a73, type: 3}
   i_StackMax: 10

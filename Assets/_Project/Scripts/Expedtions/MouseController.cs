@@ -131,11 +131,11 @@ public class MouseController : MonoBehaviour
                 // Obtener el primer toque
                 Touch touch = Input.GetTouch(0);
 
-                // Verificar si el toque está en fase de "comienzo"
+                // Verificar si el toque estï¿½ en fase de "comienzo"
                 if (touch.phase == TouchPhase.Began)
                 {
-                    // Convertir la posición del toque a coordenadas del mundo
-                    Vector3 touchPos = Camera.main.ScreenToWorldPoint(touch.position);
+                    // Convertir la posiciï¿½n del toque a coordenadas del mundo
+                    mousePos = Camera.main.ScreenToWorldPoint(touch.position);
                     
                 }
             }
