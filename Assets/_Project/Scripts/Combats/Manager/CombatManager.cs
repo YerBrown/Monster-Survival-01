@@ -37,6 +37,7 @@ public class CombatManager : MonoBehaviour
     public CombatActionsFlowManager ActionsFlowManager;  // Actions in combat manager.
     public UICombatManager UIManager; // General combat UI controller. 
     public EnemyActionsManager EnemyManager; // Decides the actions of the enemy team.
+    public CaptureAnimationController CaptureController; // Capture animation controller.
     [Header("Actions")]
     public VoidEventChannelSO FinishCurrentFighterAction; // Event when the currect fighter action finished and the next fighter turn is selected.
     private Action _OnFinishedSelectAction; // Action played when the action is selected by any team.

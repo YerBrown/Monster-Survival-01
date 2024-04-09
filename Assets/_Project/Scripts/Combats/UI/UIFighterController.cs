@@ -15,6 +15,11 @@ public class UIFighterController : MonoBehaviour
     public Fighter CurrentFighter;
     public GameObject DefenseIcon;
     public TMP_Text HealthChangeText;
+    public TMP_Text EffectivnessText;
+    public Image FrienshipPointsFillImage;
+    public CanvasGroup FriendshipPointsParent;
+    public Image EffectiveAddedFriendshipPointsIcon;
+    public CanvasGroup HealthChangeCanvasGroup;
     public TMP_Text NextText;
     public RectTransform PlayerStatsPos;
     public RectTransform EnemyStatsPos;
@@ -24,6 +29,7 @@ public class UIFighterController : MonoBehaviour
     private int _Current, _Target;
     Sequence _SequenceGeneral;
     Sequence _SequenceHP;
+    Sequence _SequenceFriendPoints;
     private void Start()
     {
         CurrentFighter = GetComponentInParent<Fighter>();
@@ -107,7 +113,7 @@ public class UIFighterController : MonoBehaviour
             }
         }
     }
-    public void HealthPointsChanged(int amount)
+    public void HealthPointsChanged(int amount, Effectiveness effectiveness)
     {
         if (_SequenceHP != null)
         {
@@ -116,17 +122,65 @@ public class UIFighterController : MonoBehaviour
         if (amount > 0)
         {
             HealthChangeText.color = Color.green;
+            EffectivnessText.color = Color.green;
+        }
+        else if (amount < 0)
+        {
+            HealthChangeText.color = Color.red;
+            EffectivnessText.color = Color.red;
         }
         else
         {
-            HealthChangeText.color = Color.red;
+            return;
+        }
+        switch (effectiveness)
+        {
+            case Effectiveness.NORMAL:
+                EffectivnessText.text = "";
+                break;
+            case Effectiveness.VERY_EFFECTIVE:
+                EffectivnessText.text = "Very Effective";
+                break;
+            case Effectiveness.LESS_EFFECTIVE:
+                EffectivnessText.text = "Not Very Effective";
+                break;
+            default:
+                break;
         }
         HealthChangeText.rectTransform.localScale = new Vector2(0.1f, 0.1f);
         HealthChangeText.text = amount.ToString();
         _SequenceHP = DOTween.Sequence();
         _SequenceHP.Append(HealthChangeText.rectTransform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutElastic));
-        _SequenceHP.Join(HealthChangeText.DOFade(1, 0.25f));
-        _SequenceHP.Append(HealthChangeText.DOFade(0, 1f));
+        _SequenceHP.Join(HealthChangeCanvasGroup.DOFade(1, 0.25f));
+        _SequenceHP.AppendInterval(1f);
+        _SequenceHP.Append(HealthChangeCanvasGroup.DOFade(0, 2f));
+    }
+    public void FrienshipPointsChanged(bool effectiveAdded)
+    {
+        if (_SequenceFriendPoints != null)
+        {
+            _SequenceFriendPoints.Kill();
+        }
+        CreatureSO creatureInfo = CurrentFighter.GetCreatureInfo();
+        _SequenceFriendPoints = DOTween.Sequence();
+        if (!FriendshipPointsParent.gameObject.activeSelf)
+        {
+            FriendshipPointsParent.alpha = 0;
+            FriendshipPointsParent.gameObject.SetActive(true);
+            _SequenceFriendPoints.Append(FriendshipPointsParent.DOFade(1, 0.25f));
+        }
+        if (creatureInfo != null)
+        {
+            _SequenceFriendPoints.Append(FrienshipPointsFillImage.DOFillAmount((float)CurrentFighter.CurrentFriendshipPoints / creatureInfo.c_MaxFrindshipPoints, 1f));
+        }
+        if (effectiveAdded)
+        {
+            EffectiveAddedFriendshipPointsIcon.rectTransform.anchoredPosition = new Vector2(EffectiveAddedFriendshipPointsIcon.rectTransform.anchoredPosition.x, 65);
+            _SequenceFriendPoints.Join(EffectiveAddedFriendshipPointsIcon.rectTransform.DOAnchorPosY(75, 0.5f).SetEase(Ease.OutElastic));
+            _SequenceFriendPoints.Join(EffectiveAddedFriendshipPointsIcon.DOFade(1f, 0.25F));
+            _SequenceFriendPoints.AppendInterval(1f);
+            _SequenceFriendPoints.Append(EffectiveAddedFriendshipPointsIcon.DOFade(0, 0.25F));
+        }
     }
     public void EnableDefenseIcon(bool enable)
     {

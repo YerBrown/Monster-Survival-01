@@ -5,7 +5,7 @@ public class DamageItem : CombatItemSO
     public int DamagePower = 5;
     public override void Use(Fighter targetFighter)
     {
-        targetFighter.ReceiveDamage(DamagePower);
+        targetFighter.ReceiveDamage(DamagePower, ElementType.NO_TYPE);
         targetFighter.AnimationController.PlayAttack("Fisical Attack");
     }
     public override void Use(FighterData targetFighter)

@@ -10,7 +10,8 @@ public class FightersInfoWiki : MonoBehaviour
 
     public List<CreatureSO> AllFighters = new();
     public Dictionary<string, CreatureSO> FightersDictionary = new();
-
+    public List<Sprite> ElementSprites = new();
+    public Dictionary<ElementType, Sprite> ElementSpritesDictionary = new();
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -21,18 +22,38 @@ public class FightersInfoWiki : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
-
-            foreach (var fighter in AllFighters)
-            {
-                FightersDictionary.Add(fighter.c_Name, fighter);
-            }
+            SearchCreaturesInFolder();
+            AddElementSprites();
         }
     }
-
+    // Reset element sprite info
+    private void AddElementSprites()
+    {
+        for (int i = 0; i < ElementSprites.Count; i++)
+        {
+            ElementType element = (ElementType)i;
+            ElementSpritesDictionary.Add(element, ElementSprites[i]);
+        }
+    }
+    // Reset all creatures SO info
+    private void SearchCreaturesInFolder()
+    {
+        CreatureSO[] allCreaturesSO = Resources.LoadAll<CreatureSO>("SO/Creatures");
+        AllFighters.Clear();
+        foreach (var creature in allCreaturesSO)
+        {
+            AllFighters.Add(creature);
+        }
+        foreach (var creature in AllFighters)
+        {
+            FightersDictionary.Add(creature.c_Name, creature);
+        }
+    }
+    // Return a creature SO by creature race id
     public bool GetCreatureInfo(string id, out CreatureSO creature)
     {
         creature = null;
-        if (FightersDictionary.Count > 0)
+        if (FightersDictionary.Count > 0 && FightersDictionary.ContainsKey(id))
         {
             creature = FightersDictionary[id];
             return true;
@@ -48,6 +69,7 @@ public class FightersInfoWiki : MonoBehaviour
                 }
             }
         }
+        Debug.LogWarning($"Fighter type {id} not found in fighters wiki");
         return false;
     }
 }

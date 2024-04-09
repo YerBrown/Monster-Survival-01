@@ -35,3 +35,18 @@ public enum StatusProblemType
     FROZEN,
     TRAPED,
 }
+public enum ElementType
+{
+    NO_TYPE,
+    WOOD,
+    FIRE,
+    EARTH,
+    ORE,
+    WATER,
+}
+public enum Effectiveness
+{
+    NORMAL,
+    VERY_EFFECTIVE,
+    LESS_EFFECTIVE,
+}

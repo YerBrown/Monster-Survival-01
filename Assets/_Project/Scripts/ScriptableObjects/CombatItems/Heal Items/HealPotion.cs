@@ -3,12 +3,13 @@ using UnityEngine;
 public class HealPotion : CombatItemSO
 {
     public int HealPoints;
+    public ElementType HealElement = ElementType.NO_TYPE;
     public override void Use(Fighter targetFighter)
     {
-        targetFighter.Heal(HealPoints);
+        targetFighter.Heal(HealPoints, HealElement);
     }
     public override void Use(FighterData targetFighter)
     {
-        targetFighter.Heal(HealPoints);
+        targetFighter.Heal(HealPoints, HealElement);
     }
 }

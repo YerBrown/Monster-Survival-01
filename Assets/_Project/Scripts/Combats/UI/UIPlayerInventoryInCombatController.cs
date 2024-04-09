@@ -85,7 +85,7 @@ public class UIPlayerInventoryInCombatController : PlayerInventoryManagementCont
     }
     public void UseSelectedItem()
     {
-        CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(SelectedItemType.i_Sprite, SelectedItemType.i_Name, "Item", SelectedItemType.i_Description);
+        CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(SelectedItemType.i_Sprite, SelectedItemType.i_Name, "Item", ElementType.NO_TYPE, SelectedItemType.i_Description);
         OpenSelectTargets();
         CombatManager.Instance.SetSelectedAction(() =>
         {
@@ -142,7 +142,7 @@ public class UIPlayerInventoryInCombatController : PlayerInventoryManagementCont
     public override void CloseMenu()
     {
         UIParent.gameObject.SetActive(false);
-        ActionsController.EnableAction(true);
+        ActionsController.OnCancelAction();
     }
     // Enable combat type filter
     public void SelectCombatFilter(int filterIndex)

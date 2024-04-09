@@ -6,6 +6,6 @@ public class HealthModifierItem : ModifyStatsItem
     public override void Use(Fighter targetFighter)
     {
         base.Use(targetFighter);
-        targetFighter.Heal(HealAmount);
+        targetFighter.Heal(HealAmount, ElementType.NO_TYPE);
     }
 }

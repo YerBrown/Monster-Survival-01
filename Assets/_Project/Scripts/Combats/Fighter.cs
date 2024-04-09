@@ -3,11 +3,14 @@ using GeneralValues;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Rendering.FilterWindow;
 public class Fighter : MonoBehaviour
 {
     [Header("Fighter Info")]
     public string ID; // Fighter identification.
+    public string TypeID; // Fighter identification.
     public string Nickname;
+    public ElementType Element;
     public Sprite AvatarSprite;
     public BasicStats BaseStats = new();
     public BasicStats CurrentStats = new();
@@ -18,6 +21,7 @@ public class Fighter : MonoBehaviour
     public List<(BasicStats, int)> StatsModifiers = new();
     public StatusProblemType CurrentStatusProblem = StatusProblemType.NONE;
     public int CurrentStatusProblemActiveTurns = 0;
+    public int CurrentFriendshipPoints = 0;
     [Header("Movement")]
     public Vector2Int ForwardDirection; // The forward direction, depending of the team side in the field.
     public OverlayTile FighterStartTile; // Start position tile, for knowing where to come back if fighter moved from there.
@@ -49,9 +53,21 @@ public class Fighter : MonoBehaviour
     {
         if (data == null) { return; }
         ID = data.ID;
+        TypeID = data.TypeID;
         Nickname = data.Nickname;
-        AvatarSprite = FightersInfoWiki.Instance.FightersDictionary[data.TypeID].c_AvatarSprite;
-        AnimationController.Anim.runtimeAnimatorController = FightersInfoWiki.Instance.FightersDictionary[data.TypeID].c_Animator;
+        CreatureSO fighterInfo = data.GetCreatureInfo();
+        if (fighterInfo != null)
+        {
+            Element = fighterInfo.c_Element;
+            AvatarSprite = fighterInfo.c_AvatarSprite;
+            AnimationController.Anim.runtimeAnimatorController = fighterInfo.c_Animator;
+        }
+        else
+        {
+            AvatarSprite = null;
+            AnimationController.Anim.runtimeAnimatorController = null;
+        }
+
         BaseStats.MaxHealthPoints = data.MaxHealthPoints;
         BaseStats.MaxEnergyPoints = data.MaxEnergyPoints;
         BaseStats.HitPower = data.FisicalPower;
@@ -70,8 +86,23 @@ public class Fighter : MonoBehaviour
         UIController.UpdateGeneralUI(false);
     }
     // Trigger receive damage by damage points parameter .
-    public int ReceiveDamage(int damagePoints)
+    public int ReceiveDamage(int damagePoints, ElementType attackElement)
     {
+        Effectiveness damageEffectiveness = StaticCombatGeneralValues.GetDamageMultiplier(attackElement, Element);
+        float multiplier = 1;
+        switch (damageEffectiveness)
+        {
+            case Effectiveness.NORMAL:
+                break;
+            case Effectiveness.VERY_EFFECTIVE:
+                multiplier += 0.5f;
+                break;
+            case Effectiveness.LESS_EFFECTIVE:
+                multiplier -= 0.5f;
+                break;
+        }
+        float realDamage = damagePoints * multiplier;
+        damagePoints = (int)Math.Round(realDamage);
         // Check if the fighter is in defense mode to receive less damage.
         if (_IsInDefenseMode)
         {
@@ -94,12 +125,13 @@ public class Fighter : MonoBehaviour
         {
             damagePoints = HealthPoints;
         }
+
         HealthPoints -= damagePoints;
         // Add energy points based on the damage 
         AddEnergyPoints(damagePoints / GeneralValues.StaticCombatGeneralValues.Fighter_EnergySplitter_OnReceiveDamage, true);
 
         UIController.UpdateGeneralUI();
-        UIController.HealthPointsChanged(-damagePoints);
+        UIController.HealthPointsChanged(-damagePoints, damageEffectiveness);
         // Update the data of this fighter
         CombatManager.Instance.TeamsController.UpdateFighterData(this);
         //CombatManager.Instance.UIManager.UpdatePlayerFighterPanel(this);
@@ -118,8 +150,23 @@ public class Fighter : MonoBehaviour
         }
     }
     // Heal the fighter
-    public void Heal(int healedPoints)
+    public void Heal(int healedPoints, ElementType healType)
     {
+        Effectiveness healEffectiveness = StaticCombatGeneralValues.GetHealMultiplier(healType, Element);
+        float multiplier = 1;
+        switch (healEffectiveness)
+        {
+            case Effectiveness.NORMAL:
+                break;
+            case Effectiveness.VERY_EFFECTIVE:
+                multiplier += 0.5f;
+                break;
+            case Effectiveness.LESS_EFFECTIVE:
+                multiplier -= 0.5f;
+                break;
+        }
+        float realHeal = healedPoints * multiplier;
+        healedPoints = (int)Math.Round(realHeal);
         // Limit heal to missing health points
         if (healedPoints + HealthPoints > CurrentStats.MaxHealthPoints)
         {
@@ -130,7 +177,7 @@ public class Fighter : MonoBehaviour
         CombatManager.Instance.TeamsController.UpdateFighterData(this);
 
         UIController.UpdateGeneralUI();
-        UIController.HealthPointsChanged(healedPoints);
+        UIController.HealthPointsChanged(healedPoints, healEffectiveness);
         AnimationController.PlayReceiveHeal();
     }
     // Add energy points to this fighter.
@@ -146,6 +193,39 @@ public class Fighter : MonoBehaviour
         {
             UIController.UpdateGeneralUI();
         }
+        // Update the data of this fighter
+        CombatManager.Instance.TeamsController.UpdateFighterData(this);
+    }
+    // Add friendship points to this fighter.
+    public void AddFriendshipPoints(CombatItemSO foodItem, int addedFriendshipPoints)
+    {
+        if (CombatManager.Instance.TeamsController.IsPlayerTeamFighter(this))
+        {
+            return;
+        }
+        CreatureSO creatureInfo = GetCreatureInfo();
+        if (creatureInfo != null)
+        {
+            if (creatureInfo.c_FavouriteFood.Contains(foodItem))
+            {
+                addedFriendshipPoints *= 2;
+                CurrentFriendshipPoints += addedFriendshipPoints;
+                if (CurrentFriendshipPoints > creatureInfo.c_MaxFrindshipPoints)
+                {
+                    CurrentFriendshipPoints = creatureInfo.c_MaxFrindshipPoints;
+                }
+                UIController.FrienshipPointsChanged(true);
+            }
+            else
+            {
+                CurrentFriendshipPoints += addedFriendshipPoints;
+                if (CurrentFriendshipPoints > creatureInfo.c_MaxFrindshipPoints)
+                {
+                    CurrentFriendshipPoints = creatureInfo.c_MaxFrindshipPoints;
+                }
+                UIController.FrienshipPointsChanged(false);
+            }
+        }
     }
     // Enable the defense mode in fighter
     public void SetDefenseMode()
@@ -154,7 +234,8 @@ public class Fighter : MonoBehaviour
 
         UIController.EnableDefenseIcon(true);
         AnimationController.PlayDefenseMode();
-        AddEnergyPoints(StaticCombatGeneralValues.Fighter_DefenseSplitter_InDefenseMode, true);
+        // Update the data of this fighter
+        CombatManager.Instance.TeamsController.UpdateFighterData(this);
     }
     // Play fisical attack animation.
     public void FisicalAttack()
@@ -268,7 +349,6 @@ public class Fighter : MonoBehaviour
     {
         if (targetFighter == this)
         {
-            // TODO: If traget fighter is the same fighter, not throw just consume
             combatItem.Use(this);
             Invoke(nameof(FinishAnimationTrigger), .5f);
             FinishAnimationTrigger();
@@ -305,11 +385,12 @@ public class Fighter : MonoBehaviour
         CalculateCurrentStats();
         ManageStatusOnFinishTurn();
     }
+    // Manage the problem status when the fighter turn finished
     private void ManageStatusOnFinishTurn()
     {
         if (CurrentStatusProblem == StatusProblemType.BURNED)
         {
-            ReceiveDamage(CurrentStats.MaxHealthPoints / 10);
+            ReceiveDamage(CurrentStats.MaxHealthPoints / 10, ElementType.NO_TYPE);
             CurrentStatusProblemActiveTurns++;
             if (CurrentStatusProblemActiveTurns >= StaticCombatGeneralValues.Fighter_StatusProblem_BurnedMaxTurns || UnityEngine.Random.Range(0, 10) < 2)
             {
@@ -322,10 +403,11 @@ public class Fighter : MonoBehaviour
         }
         else if (CurrentStatusProblem == StatusProblemType.POISONED)
         {
-            ReceiveDamage(CurrentStats.MaxHealthPoints / 10);
+            ReceiveDamage(CurrentStats.MaxHealthPoints / 10, ElementType.NO_TYPE);
             CurrentStatusProblemActiveTurns++;
         }
     }
+    // Adds a new problem status if there isn't currently affected by another one.
     public void AddStatusProblem(StatusProblemType newStatusProblem)
     {
         if (CurrentStatusProblem == StatusProblemType.NONE)
@@ -333,14 +415,20 @@ public class Fighter : MonoBehaviour
             CurrentStatusProblemActiveTurns = 0;
             CurrentStatusProblem = newStatusProblem;
             UIController.UpdateGeneralUI();
+            if (newStatusProblem == StatusProblemType.FROZEN)
+            {
+                //AddStatModifier()
+            }
         }
     }
+    // Remove the current problem status
     public void ClearStateProblem()
     {
         CurrentStatusProblem = StatusProblemType.NONE;
         CurrentStatusProblemActiveTurns = 0;
         UIController.UpdateGeneralUI();
     }
+    // Check if the player can do any action if is paralized
     public bool IsParalized()
     {
         if (CurrentStatusProblem == StatusProblemType.PARALIZED)
@@ -366,6 +454,58 @@ public class Fighter : MonoBehaviour
         }
         UIController.UpdateGeneralUI();
     }
+    // Return the resolution of tried to catch this fighter
+    public bool TryCatchFighter(int captureIntensity)
+    {
+        int randomNumber = UnityEngine.Random.Range(0, 100);
+        int capturePercetage = GetCaptureRate(captureIntensity);
+        if (randomNumber < capturePercetage)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    //Returns capture rate
+    public int GetCaptureRate(int captureIntensity)
+    {
+        CreatureSO creatureInfo = GetCreatureInfo();
+        int intensityRate = StaticCombatGeneralValues.Capture_CaptureIntensity_CaptureRate[captureIntensity];
+        float creatureCaptureRate = creatureInfo.c_CaptureRate;
+
+        float healthPointsModifier = ((float)(CurrentStats.MaxHealthPoints - HealthPoints) / CurrentStats.MaxHealthPoints) * (creatureCaptureRate / 100 * StaticCombatGeneralValues.Capture_Modifier_HealthPoints);
+        float frienshipPointsModifier = ((float)CurrentFriendshipPoints / creatureInfo.c_MaxFrindshipPoints) * (creatureCaptureRate / 100 * StaticCombatGeneralValues.Capture_Modifier_FriendshipPoints);
+        float statusPoblemModifier = 0;
+        // Check status problems
+        if (CurrentStatusProblem == StatusProblemType.PARALIZED)
+        {
+            statusPoblemModifier = (creatureCaptureRate / 100 * StaticCombatGeneralValues.Capture_Modifier_Paralized);
+        }
+        else if (CurrentStatusProblem == StatusProblemType.FROZEN)
+        {
+            statusPoblemModifier = (creatureCaptureRate / 100 * StaticCombatGeneralValues.Capture_Modifier_Frozen);
+        }
+        float captureWithModifierPosibility = (creatureCaptureRate + healthPointsModifier + frienshipPointsModifier + statusPoblemModifier) / intensityRate * 100;
+        if (captureWithModifierPosibility > 100)
+        {
+            captureWithModifierPosibility = 100;
+        }
+        return UnityEngine.Mathf.RoundToInt(captureWithModifierPosibility);
+    }
+    // Get creature info of this fighter.
+    public CreatureSO GetCreatureInfo()
+    {
+        if (FightersInfoWiki.Instance.GetCreatureInfo(TypeID, out CreatureSO fighterInfo))
+        {
+            return fighterInfo;
+        }
+        else
+        {
+            return null;
+        }
+    }
 }
 [Serializable]
 public class FighterData
@@ -376,6 +516,7 @@ public class FighterData
     public string TypeID;
     public string Nickname;
 
+    public int Lvl;
     public int MaxHealthPoints;
     public int MaxEnergyPoints;
     public int FisicalPower;
@@ -390,12 +531,44 @@ public class FighterData
     {
         return HealthPoints <= 0;
     }
-    public void Heal(int healPoints)
+    public void Heal(int healPoints, ElementType healElement)
     {
-        HealthPoints += healPoints;
-        if (HealthPoints > MaxHealthPoints)
+        CreatureSO creatureInfo = GetCreatureInfo();
+        if (creatureInfo != null)
         {
-            HealthPoints = MaxHealthPoints;
+            Effectiveness healEffectiveness = StaticCombatGeneralValues.GetHealMultiplier(healElement, creatureInfo.c_Element);
+            float multiplier = 1;
+            switch (healEffectiveness)
+            {
+                case Effectiveness.NORMAL:
+                    break;
+                case Effectiveness.VERY_EFFECTIVE:
+                    multiplier += 0.5f;
+                    break;
+                case Effectiveness.LESS_EFFECTIVE:
+                    multiplier -= 0.5f;
+                    break;
+            }
+            float realHeal = healPoints * multiplier;
+            healPoints = (int)Math.Round(realHeal);
+            HealthPoints += healPoints;
+            if (HealthPoints > MaxHealthPoints)
+            {
+                HealthPoints = MaxHealthPoints;
+            }
+
+        }
+
+    }
+    public CreatureSO GetCreatureInfo()
+    {
+        if (FightersInfoWiki.Instance.GetCreatureInfo(TypeID, out CreatureSO fighterInfo))
+        {
+            return fighterInfo;
+        }
+        else
+        {
+            return null;
         }
     }
 }

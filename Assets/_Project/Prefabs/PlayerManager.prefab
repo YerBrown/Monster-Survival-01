@@ -683,7 +683,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Nickname: 
-  P_Fighter: {fileID: 0}
+  P_Fighter:
+    ID: 
+    TypeID: 
+    Nickname: 
+    MaxHealthPoints: 0
+    MaxEnergyPoints: 0
+    FisicalPower: 0
+    RangePower: 0
+    Defense: 0
+    Speed: 0
+    HealthPoints: 0
+    EnergyPoints: 0
   P_Inventory:
     Inv_Name: Your Inventory
     Slots:
@@ -777,3 +788,28 @@ MonoBehaviour:
     Speed: 8
     HealthPoints: 5
     EnergyPoints: 0
+  Captures:
+    CaptureSlots:
+    - ID: 
+      TypeID: 
+      Nickname: 
+      MaxHealthPoints: 0
+      MaxEnergyPoints: 0
+      FisicalPower: 0
+      RangePower: 0
+      Defense: 0
+      Speed: 0
+      HealthPoints: 0
+      EnergyPoints: 0
+    - ID: 
+      TypeID: 
+      Nickname: 
+      MaxHealthPoints: 0
+      MaxEnergyPoints: 0
+      FisicalPower: 0
+      RangePower: 0
+      Defense: 0
+      Speed: 0
+      HealthPoints: 0
+      EnergyPoints: 0
+    CurrentMaxIntensity: 1

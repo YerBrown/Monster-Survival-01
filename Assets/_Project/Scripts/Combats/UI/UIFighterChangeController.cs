@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -48,7 +50,7 @@ public class UIFighterChangeController : MonoBehaviour
         public TMP_Text FisicalPower;
         public TMP_Text RangePower;
         public TMP_Text Defense;
-        public Image ElementType;
+        public Image ElementImage;
         public Image SlotSelectedFrame;
         public Image ChangeThisFrame;
         public FighterData FighterInSlot;
@@ -57,17 +59,21 @@ public class UIFighterChangeController : MonoBehaviour
         {
             if (!string.IsNullOrEmpty(fighterData.ID))
             {
-                FighterImage.sprite = FightersInfoWiki.Instance.FightersDictionary[fighterData.TypeID].c_AvatarSprite;
-                HealthSlider.value = (float)fighterData.HealthPoints / fighterData.MaxHealthPoints;
-                HealthText.text = $"{fighterData.HealthPoints} / {fighterData.MaxHealthPoints}";
-                EnergySlider.value = (float)fighterData.EnergyPoints / fighterData.MaxEnergyPoints;
-                EnergyText.text = $"{fighterData.EnergyPoints} / {fighterData.MaxEnergyPoints}";
-                FisicalPower.text = fighterData.FisicalPower.ToString();
-                RangePower.text = fighterData.RangePower.ToString();
-                Defense.text = fighterData.Defense.ToString();
-                // TODO: Set elemnt sprite
-                Parent.alpha = 1;
-                FighterInSlot = fighterData;
+                CreatureSO creature = fighterData.GetCreatureInfo();
+                if (creature != null)
+                {
+                    FighterImage.sprite = creature.c_AvatarSprite;
+                    HealthSlider.value = (float)fighterData.HealthPoints / fighterData.MaxHealthPoints;
+                    HealthText.text = $"{fighterData.HealthPoints} / {fighterData.MaxHealthPoints}";
+                    EnergySlider.value = (float)fighterData.EnergyPoints / fighterData.MaxEnergyPoints;
+                    EnergyText.text = $"{fighterData.EnergyPoints} / {fighterData.MaxEnergyPoints}";
+                    FisicalPower.text = fighterData.FisicalPower.ToString();
+                    RangePower.text = fighterData.RangePower.ToString();
+                    Defense.text = fighterData.Defense.ToString();
+                    ElementImage.sprite = FightersInfoWiki.Instance.ElementSpritesDictionary[creature.c_Element];
+                    Parent.alpha = 1;
+                    FighterInSlot = fighterData;
+                }
             }
             else
             {
@@ -337,7 +343,9 @@ public class UIFighterChangeController : MonoBehaviour
     }
     public void OnInfo()
     {
-
+        List<FighterData> allPlayerFighters = CombatManager.Instance.TeamsController.PlayerTeam.Fighters.ToList();
+        int currentFighterIndex = CombatManager.Instance.TeamsController.PlayerTeam.GetFighterDataIndex(CurrentFighterData.ID);
+        CombatManager.Instance.UIManager.FighterDataInfoController.OpenPopup(allPlayerFighters, currentFighterIndex);
     }
     public void OnSelectItemTarget()
     {

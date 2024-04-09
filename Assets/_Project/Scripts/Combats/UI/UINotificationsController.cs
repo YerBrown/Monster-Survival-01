@@ -15,9 +15,9 @@ public class UINotificationsController : MonoBehaviour
     {
         WinController.PlayEnemyWin();
     }
-    public void EnableActionInfoPopup(Sprite actionImage, string actionName, string actionType, string actionDescription)
+    public void EnableActionInfoPopup(Sprite actionImage, string actionName, string actionType, ElementType element, string actionDescription)
     {
-        ActionInfoController.OpenInfoPanel(actionImage, actionName, actionType, actionDescription);
+        ActionInfoController.OpenInfoPanel(actionImage, actionName, actionType, element, actionDescription);
     }
     public void DisableActionInfoPopup()
     {

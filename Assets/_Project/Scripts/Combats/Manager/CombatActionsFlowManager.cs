@@ -148,7 +148,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                         {
                             targetFighter.AnimationController.PlayAttack("Fisical Attack");
                         }
-                        int calculatedDamage = targetFighter.ReceiveDamage(currentTurnFighter.CurrentStats.HitPower);
+                        int calculatedDamage = targetFighter.ReceiveDamage(currentTurnFighter.CurrentStats.HitPower, currentTurnFighter.Element);
                         currentTurnFighter.AddEnergyPoints(calculatedDamage / 2, true);
                         Debug.Log($"{currentTurnFighter.Nickname} attacked fisicaly to {targetFighter.Nickname} dealing {calculatedDamage} hp");
                     }),1f, true),
@@ -198,7 +198,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                         {
                             targetFighter.AnimationController.PlayAttack("Range Attack");
                         }
-                        int calculatedDamage = targetFighter.ReceiveDamage(currentTurnFighter.CurrentStats.RangePower);
+                        int calculatedDamage = targetFighter.ReceiveDamage(currentTurnFighter.CurrentStats.RangePower, currentTurnFighter.Element);
                         currentTurnFighter.AddEnergyPoints(calculatedDamage / 2, true);
                         Debug.Log($"{currentTurnFighter.Nickname} attacked in raange to {targetFighter.Nickname} dealing {calculatedDamage} hp");
                     }),1f, true),
@@ -256,7 +256,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                                 {
                                     targetTeam.FightersInField[i].AnimationController.PlayAttack("Range Attack");
                                 }
-                                int calculatedDamage = targetTeam.FightersInField[i].ReceiveDamage(currentTurnFighter.CurrentStats.RangePower/2);
+                                int calculatedDamage = targetTeam.FightersInField[i].ReceiveDamage(currentTurnFighter.CurrentStats.RangePower/2, currentTurnFighter.Element);
                                 if(calculatedDamage<calculatedMinDamage)
                                 {
                                     calculatedMinDamage=calculatedDamage;
@@ -573,6 +573,45 @@ public class CombatActionsFlowManager : MonoBehaviour
 
                 StartFlow(allActions);
             }
+        }
+    }
+    public void TryCaptureFighter()
+    {
+        Fighter playerFighter = CombatManager.Instance.CurrentTurnFighter;
+        Fighter targetFighter = CombatManager.Instance.TargetActionFighter;
+        int captureIntensity = CombatManager.Instance.UIManager.CaptureController.CurrentIntensity;
+        if (targetFighter != null)
+        {
+            bool isCaptured = targetFighter.TryCatchFighter(captureIntensity);
+            List<CombatAction> allActions = new List<CombatAction>
+            {
+                new CombatAction((() =>
+                {
+                    PlayerManager.Instance.Captures.TryAddNewCreature(CombatManager.Instance.TeamsController.EnemyTeam.GetFighterDataInTeam(targetFighter.ID));
+                    playerFighter.AddEnergyPoints(-(GeneralValues.StaticCombatGeneralValues.Capture_CaptureIntensity_EnergyCosts[captureIntensity]), true);
+                    CombatManager.Instance.CaptureController.PlayCaptureRay(playerFighter, targetFighter, isCaptured);
+                    Debug.Log("Try capture animation started");
+                }),1f,true),
+                new CombatAction((() =>
+                {
+                    if (isCaptured)
+                    {
+                        targetFighter.HealthPoints = 0;
+                        Debug.Log("Eliminate Target Fighter");
+                    }
+                }),0.10f, false),
+                new CombatAction((() =>
+                {
+                    playerFighter.NextTurn();
+                }),0.5f,false),
+                 new CombatAction((() =>
+                {
+                    CombatManager.Instance.FinishFighterMove();
+                }),0f, false),
+            };
+
+
+            StartFlow(allActions);
         }
     }
 }

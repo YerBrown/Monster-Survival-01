@@ -99,6 +99,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b60e34e9035711b419e5da2f445b0a13, type: 2}
   - {fileID: 11400000, guid: 2907c6755d99dfd43a094664faef36fb, type: 2}
   - {fileID: 11400000, guid: 4dbda56b2ddb0f749a18be880680e2a4, type: 2}
+  ElementSprites:
+  - {fileID: 21300000, guid: e1931668be174432d8086250f9509c74, type: 3}
+  - {fileID: 21300000, guid: 7e77f493420924d2088f5f1387fa6b18, type: 3}
+  - {fileID: 21300000, guid: 5e9d1fb5074084a03bbe34aac2ebe3b3, type: 3}
+  - {fileID: 21300000, guid: 86daed334fff94dfa9f72f3b253b47e8, type: 3}
+  - {fileID: 21300000, guid: d0ca0b28d1230438abece49a95b18b38, type: 3}
+  - {fileID: 21300000, guid: 9aaa7ffc8e74e4b99819ba1536f81aa4, type: 3}
 --- !u!114 &2360502248028736522
 MonoBehaviour:
   m_ObjectHideFlags: 0

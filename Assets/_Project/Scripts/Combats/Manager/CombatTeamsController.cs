@@ -35,13 +35,10 @@ public class CombatTeamsController : MonoBehaviour
     public void SpawnFighterInTeam(int fighterNum, FighterData fighterData, CombatTeam team, bool animDelay = false)
     {
         GameObject fighterPrefab = null;
-        if (FightersInfoWiki.Instance != null && FightersInfoWiki.Instance.GetCreatureInfo(fighterData.TypeID, out CreatureSO fighter))
+        CreatureSO fighter = fighterData.GetCreatureInfo();
+        if (fighter != null)
         {
             fighterPrefab = fighter.CombatFighterPrefab;
-        }
-        else
-        {
-            Debug.Log($"Fighter with ID:{fighterData.TypeID} not found in wiki");
         }
         if (fighterPrefab != null)
         {

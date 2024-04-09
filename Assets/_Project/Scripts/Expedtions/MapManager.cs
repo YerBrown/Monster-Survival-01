@@ -232,7 +232,7 @@ public class MapManager : MonoBehaviour
             string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
             string fileName = "map_data.json";
             string completeRute = Path.Combine(folderPath, fileName);
-            if (!Directory.Exists(completeRute))
+            if (Directory.Exists(completeRute))
             {
                 string json = File.ReadAllText(completeRute);
                 CurrentFieldData = JsonUtility.FromJson<ExpeditionData>(json);

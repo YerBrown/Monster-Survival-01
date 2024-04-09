@@ -14,8 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   c_Name: Empoleon
   c_Description: A big emperor pinguin
+  c_Element: 5
   c_Sprite: {fileID: 1859440095, guid: cea134b07b9c33f4ba1fdbf9dd6b0ecc, type: 3}
   c_AvatarSprite: {fileID: 1308309036, guid: bd0a1dab58456dd49b2bf3ce5dd02477, type: 3}
   c_Animator: {fileID: 22100000, guid: a23bd8aec3913e94b907d288511c5153, type: 2}
   c_Skills: 02000000
+  c_LvlBaseStats: []
+  c_FavouriteFood:
+  - {fileID: 11400000, guid: 1f713d6c32c5fe74cb34a5335a8e2e00, type: 2}
+  c_MaxFrindshipPoints: 10
+  c_CaptureRate: 200
   CombatFighterPrefab: {fileID: 8929229542470826614, guid: 86a22cd1f27612e4e9457800a46517b3, type: 3}

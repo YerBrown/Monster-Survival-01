@@ -14,20 +14,23 @@ public class UIActionsController : MonoBehaviour
     public Sprite RangeAttackIcon;
     public Sprite DefenseIcon;
     public Sprite MoveIcon;
+    public Sprite CaptureIcon;
     [Header("Events")]
     public VoidEventChannelSO OpenPlayerInventory;
     [Header("Other")]
     public UITargetController TargetController;
+    public ElementType CurrentFighterElement;
     public void EnableAction(bool enable)
     {
-
         ActionsParent.gameObject.SetActive(enable);
         Fighter currentFighter = CombatManager.Instance.CurrentTurnFighter;
         FighterData currentData = CombatManager.Instance.TeamsController.GetFighterDataByFighter(currentFighter);
+        CurrentFighterElement = FightersInfoWiki.Instance.FightersDictionary[currentData.TypeID].c_Element;
         SpecialMoveButton.interactable = currentFighter.EnergyPoints >= GeneralValues.StaticCombatGeneralValues.Fighter_EnergyNeededFor_SpecialMovement;
         if (currentData != null)
         {
-            if (FightersInfoWiki.Instance.GetCreatureInfo(currentData.TypeID, out CreatureSO creatureInfo))
+            CreatureSO creatureInfo = currentData.GetCreatureInfo();
+            if (creatureInfo != null)
             {
                 CaptureButton.interactable = creatureInfo.c_Skills.Contains(Skills.CAPTURE);
                 UseItemsButton.interactable = creatureInfo.c_Skills.Contains(Skills.USE_ITEMS);
@@ -52,7 +55,7 @@ public class UIActionsController : MonoBehaviour
             EnableCancelButton(true);
             CombatManager.Instance.SetSelectedAction(CombatManager.Instance.ActionsFlowManager.FisicalAttack);
             TargetController.EnableEnemyTargets(true);
-            CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(FisicalAttackIcon, "Fisical Attack", "Attack", "This attack makes direct contact with the target.");
+            CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(FisicalAttackIcon, "Fisical Attack", "Attack", CurrentFighterElement, "This attack makes direct contact with the target.");
         }
     }
     public void OnRangeAttack()
@@ -63,7 +66,7 @@ public class UIActionsController : MonoBehaviour
             EnableCancelButton(true);
             CombatManager.Instance.SetSelectedAction(CombatManager.Instance.ActionsFlowManager.RangeAttack);
             TargetController.EnableEnemyTargets(true);
-            CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(RangeAttackIcon, "Range Attack", "Attack", "This attack hits the target from distance.");
+            CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(RangeAttackIcon, "Range Attack", "Attack", CurrentFighterElement, "This attack hits the target from distance.");
         }
     }
 
@@ -75,7 +78,7 @@ public class UIActionsController : MonoBehaviour
             EnableCancelButton(true);
             CombatManager.Instance.SetSelectedAction(CombatManager.Instance.ActionsFlowManager.SetDefenseMode);
             TargetController.EnablePlayerTarget(CombatManager.Instance.TeamsController.GetFighterInFieldNum(CombatManager.Instance.CurrentTurnFighter), true);
-            CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(DefenseIcon, "Enable Shield", "Defense", "Activates a shield that causes the fighter to take half damage the next time he is hattacked.");
+            CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(DefenseIcon, "Enable Shield", "Defense", ElementType.NO_TYPE, "Activates a shield that causes the fighter to take half damage the next time he is hattacked.");
         }
     }
     public void OnSpecialMovement()
@@ -86,7 +89,7 @@ public class UIActionsController : MonoBehaviour
             EnableCancelButton(true);
             CombatManager.Instance.SetSelectedAction(CombatManager.Instance.ActionsFlowManager.MultipleTargetAttack);
             TargetController.EnableEnemyTargets(true);
-            CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(RangeAttackIcon, "Multiple Attack", "Attack", "This attack hits the target and adjacent fighters.");
+            CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(RangeAttackIcon, "Multiple Attack", "Attack", ElementType.NO_TYPE, "This attack hits the target and adjacent fighters.");
         }
     }
     public void OnChange()
@@ -102,11 +105,18 @@ public class UIActionsController : MonoBehaviour
         CombatManager.Instance.SetSelectedAction(CombatManager.Instance.ActionsFlowManager.SwipePositions);
         Fighter currentTurnFighter = CombatManager.Instance.CurrentTurnFighter;
         TargetController.EnablePlayerFighterParnersTargets(true, CombatManager.Instance.TeamsController.GetFighterInFieldNum(currentTurnFighter));
-        CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(MoveIcon, "Swipe Position", "Action", "Swipe the position with another team member.");
+        CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(MoveIcon, "Swipe Position", "Action", ElementType.NO_TYPE, "Swipe the position with another team member.");
     }
     public void OnTryToCapture()
     {
-
+        EnableAction(false);
+        CombatManager.Instance.UIManager.CaptureController.OpenPopup();
+        CombatManager.Instance.SetSelectedAction(() =>
+        {
+            CombatManager.Instance.UIManager.CaptureController.ClosePopup();
+            CombatManager.Instance.ActionsFlowManager.TryCaptureFighter();
+        });
+        CombatManager.Instance.UIManager.NotificationController.EnableActionInfoPopup(CaptureIcon, "Capture Creature", "Action", ElementType.NO_TYPE, "Try to capture the target creature.");
     }
     public void OnTryQuit()
     {

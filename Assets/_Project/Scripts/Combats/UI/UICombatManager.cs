@@ -10,6 +10,8 @@ public class UICombatManager : MonoBehaviour
     public UIActionsController ActionsController;
     public UIFighterChangeController ChangeFighterController;
     public UINotificationsController NotificationController;
+    public UICaptueMenuController CaptureController;
+    public UIFighterdataInfoMenuController FighterDataInfoController;
     public void EnableAction(bool enable)
     {
         if (ActionsController != null)

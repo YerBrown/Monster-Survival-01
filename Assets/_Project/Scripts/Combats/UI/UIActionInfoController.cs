@@ -9,12 +9,14 @@ public class UIActionInfoController : MonoBehaviour
     [Header("UI")]
     public GameObject InfoPopup;
     public Image ActionImage;
+    public Image ActionElement;
     public TMP_Text ActionNameText;
     public TMP_Text ActionTypeText;
     public TMP_Text ActionDescriptionText;
-    public void OpenInfoPanel(Sprite imageSprite, string actionName, string actionType, string actionDescription)
+    public void OpenInfoPanel(Sprite imageSprite, string actionName, string actionType, ElementType element ,string actionDescription)
     {
         ActionImage.sprite = imageSprite;
+        ActionElement.sprite = FightersInfoWiki.Instance.ElementSpritesDictionary[element];
         ActionNameText.text = actionName;
         ActionTypeText.text = actionType;
         ActionDescriptionText.text = actionDescription;

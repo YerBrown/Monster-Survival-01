@@ -8,7 +8,7 @@ public class DamageAndStateItem : CombatItemSO
 
     public override void Use(Fighter targetFighter)
     {
-        targetFighter.ReceiveDamage(Damage);
+        targetFighter.ReceiveDamage(Damage, ElementType.NO_TYPE);
         if (Random.Range(0, 100) < StatusRate)
         {
             targetFighter.AddStatusProblem(StatusProblem);

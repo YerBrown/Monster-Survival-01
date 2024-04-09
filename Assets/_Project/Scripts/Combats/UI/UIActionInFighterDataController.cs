@@ -20,7 +20,16 @@ public class UIActionInFighterDataController : MonoBehaviour
     Sequence _Sequence;
     public void UpdateFighterDataPanel(FighterData fighterData, int currentHP, int targetHP, int currentEnergy, int targetEnergy)
     {
-        ActionImage.sprite = FightersInfoWiki.Instance.FightersDictionary[fighterData.TypeID].c_AvatarSprite;
+        CreatureSO fighterInfo = fighterData.GetCreatureInfo();
+        if (fighterInfo!=null)
+        {
+            ActionImage.sprite = fighterInfo.c_AvatarSprite;
+        }
+        else
+        {
+            ActionImage.sprite = null;
+        }
+        
         ActionNameText.text = fighterData.Nickname;
         HPSlider.value = (float)currentHP / fighterData.MaxHealthPoints;
         EnergySlider.value = (float)currentEnergy / fighterData.MaxEnergyPoints;

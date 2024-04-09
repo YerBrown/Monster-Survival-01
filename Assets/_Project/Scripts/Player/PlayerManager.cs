@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,9 +10,11 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get { return _instance; } }
 
     public string Nickname;
-    public HumanFighter P_Fighter;
+    public int PlayerLevel;
+    public FighterData P_Fighter;
     public Inventory P_Inventory;
     public FighterData[] Team = new FighterData[6];
+    public CapturesController Captures;
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -22,9 +25,23 @@ public class PlayerManager : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
+            LoadPlayerInfo();
         }
+        
     }
 
+    private void LoadPlayerInfo()
+    {
+        for (int i = 0; i < Team.Length; i++)
+        {
+            if (Team[i].ID==P_Fighter.ID)
+            {
+                Team[i] = P_Fighter;
+                
+            }
+            Team[i].Lvl = PlayerLevel;
+        }
+    }
     public void LoadCombatScene()
     {
         SceneManager.LoadScene("Combat Field");
@@ -33,8 +50,4 @@ public class PlayerManager : MonoBehaviour
     {
         SceneManager.LoadScene("Expedition");
     }
-}
-public class HumanFighter : Fighter
-{
-
 }

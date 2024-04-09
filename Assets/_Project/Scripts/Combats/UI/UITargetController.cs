@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class UITargetController : MonoBehaviour
 {
     public List<GameObject> PlayerTargets = new();
     public List<GameObject> EnemyTargets = new();
+    public List<TMP_Text> EnemyCaptureRateTexts = new();
     public UIActionsController ActionsController;
     public void EnableAllTarget(bool enable)
     {
@@ -14,7 +16,6 @@ public class UITargetController : MonoBehaviour
         EnablePlayerTargets(enable);
         ActionsController.EnableCancelButton(enable);
     }
-
     public void EnableEnemyTargets(bool enable)
     {
         List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
@@ -24,6 +25,10 @@ public class UITargetController : MonoBehaviour
             if (posibleTargets.Contains(i))
             {
                 EnableEnemyTarget(i, enable);
+                if (!enable)
+                {
+                    EnemyCaptureRateTexts[i].gameObject.SetActive(false);
+                }
             }
         }
     }
@@ -93,6 +98,18 @@ public class UITargetController : MonoBehaviour
             CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id], id);
             EnableAllTarget(false);
             CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
+        }
+    }
+    public void EnableCaptureRates(int captureIntensity)
+    {
+        List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
+        for (int i = 0; i < EnemyTargets.Count; i++)
+        {            
+            if (posibleTargets.Contains(i))
+            {
+                EnemyCaptureRateTexts[i].text = $"{CombatManager.Instance.TeamsController.EnemyTeam.FightersInField[i].GetCaptureRate(captureIntensity)}%";
+                EnemyCaptureRateTexts[i].gameObject.SetActive(true);
+            }
         }
     }
 }
