@@ -18482,7 +18482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
       propertyPath: P_Fighter.EnergyPoints
-      value: 20
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
       propertyPath: P_Fighter.FisicalPower
@@ -18506,7 +18506,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
       propertyPath: P_Fighter.MaxEnergyPoints
-      value: 20
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
       propertyPath: P_Fighter.MaxHealthPoints
@@ -18554,7 +18554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
       propertyPath: Captures.CurrentMaxIntensity
-      value: 2
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
       propertyPath: P_Inventory.Slots.Array.size
@@ -18603,6 +18603,10 @@ PrefabInstance:
     - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
       propertyPath: Team.Array.data[5].HealthPoints
       value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
+      propertyPath: Captures.CaptureSlots.Array.size
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2486454318952834701, guid: 3f8e8d892d15dec4bbc5a159abc6aa8d, type: 3}
       propertyPath: Team.Array.data[3].MaxHealthPoints
@@ -19674,7 +19678,7 @@ MonoBehaviour:
       RangePower: 3
       Defense: 2
       Speed: 7
-      HealthPoints: 10
+      HealthPoints: 8
       EnergyPoints: 0
     - ID: truuoi
       TypeID: Totodile
@@ -19686,7 +19690,7 @@ MonoBehaviour:
       RangePower: 3
       Defense: 2
       Speed: 3
-      HealthPoints: 10
+      HealthPoints: 5
       EnergyPoints: 0
     - ID: bvnvbc
       TypeID: Electabuzz

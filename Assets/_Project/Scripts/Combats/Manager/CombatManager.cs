@@ -65,6 +65,10 @@ public class CombatManager : MonoBehaviour
         {
             TeamsController.PlayerTeam.Fighters = PlayerManager.Instance.Team;
         }
+        if (CombatExpeditionTransitionController.Instance != null)
+        {
+            TeamsController.EnemyTeam.Fighters= CombatExpeditionTransitionController.Instance.EnemyTeam;
+        }
         yield return new WaitForSeconds(.2f);
         TeamsController.SpawnStartingFighters();
         yield return new WaitForSeconds(.2f);
@@ -123,8 +127,12 @@ public class CombatManager : MonoBehaviour
                 allFighterInField.Add(fighterInField);
             }
         }
+        return CalculateTurnOrderByFighters(allFighterInField);
+    }
+    public List<Fighter> CalculateTurnOrderByFighters(List<Fighter> fighters)
+    {
         List<Fighter> fightersOrderBySpeed = new();
-        var groupedBySpeed = allFighterInField.GroupBy(fighter => fighter.CurrentStats.Speed);
+        var groupedBySpeed = fighters.GroupBy(fighter => fighter.CurrentStats.Speed);
         groupedBySpeed = groupedBySpeed.OrderByDescending(fighter => fighter.Key);
         foreach (var groupSpeed in groupedBySpeed)
         {
@@ -169,6 +177,23 @@ public class CombatManager : MonoBehaviour
         {
             CurrentTurnOrder.Insert(0, null);
         }
+        _NextTurnOrder = CalculateTurnOrder();
+    }
+    // Calculate the order when a fighter speed changed
+    public void CalculateTurnOrderOfCurrentTurn()
+    {
+        List<Fighter> calculatedFightersOrder = new();
+        if (CurrentTurnOrder.Count > 1)
+        {
+            for (int i = 1; i < CurrentTurnOrder.Count; i++)
+            {
+                calculatedFightersOrder.Add(CurrentTurnOrder[i]);
+            }
+        }
+        List<Fighter> finishOrder = new();
+        finishOrder = CalculateTurnOrderByFighters(calculatedFightersOrder);
+        finishOrder.Insert(0, CurrentTurnOrder[0]);
+        CurrentTurnOrder = finishOrder;
         _NextTurnOrder = CalculateTurnOrder();
     }
     // Set up the current turn fighter to the next one in order list.

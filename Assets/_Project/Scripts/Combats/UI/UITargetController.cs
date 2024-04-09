@@ -95,8 +95,8 @@ public class UITargetController : MonoBehaviour
     {
         if (CombatManager.Instance != null)
         {
-            CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id], id);
             EnableAllTarget(false);
+            CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id], id);
             CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
         }
     }
@@ -104,7 +104,7 @@ public class UITargetController : MonoBehaviour
     {
         List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
         for (int i = 0; i < EnemyTargets.Count; i++)
-        {            
+        {
             if (posibleTargets.Contains(i))
             {
                 EnemyCaptureRateTexts[i].text = $"{CombatManager.Instance.TeamsController.EnemyTeam.FightersInField[i].GetCaptureRate(captureIntensity)}%";

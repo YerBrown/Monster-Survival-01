@@ -40,6 +40,9 @@ public class UIWinAnimationController : MonoBehaviour
 
         _MySequence = DOTween.Sequence();
         _MySequence.Append(WinFrame1.rectTransform.DOAnchorPos (Vector2.zero, 1f).SetEase(Ease.InOutBack));
+        _MySequence.OnComplete(()=>{
+            CombatExpeditionTransitionController.Instance.LoadExpeditionScene();
+        });
     }
     public void AnimateWinShowRewards()
     {

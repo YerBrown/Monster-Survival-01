@@ -152,7 +152,7 @@ public class UIFighterController : MonoBehaviour
         _SequenceHP = DOTween.Sequence();
         _SequenceHP.Append(HealthChangeText.rectTransform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutElastic));
         _SequenceHP.Join(HealthChangeCanvasGroup.DOFade(1, 0.25f));
-        _SequenceHP.AppendInterval(1f);
+        _SequenceHP.AppendInterval(0.5f);
         _SequenceHP.Append(HealthChangeCanvasGroup.DOFade(0, 2f));
     }
     public void FrienshipPointsChanged(bool effectiveAdded)

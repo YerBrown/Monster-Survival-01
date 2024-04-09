@@ -19,6 +19,7 @@ public class Fighter : MonoBehaviour
     [SerializeField] private bool _IsInDefenseMode = false;
     [Header("Fighter Combat Status")]
     public List<(BasicStats, int)> StatsModifiers = new();
+    public BasicStats StatusProblemStatsModifier;
     public StatusProblemType CurrentStatusProblem = StatusProblemType.NONE;
     public int CurrentStatusProblemActiveTurns = 0;
     public int CurrentFriendshipPoints = 0;
@@ -382,8 +383,8 @@ public class Fighter : MonoBehaviour
             StatsModifiers[i] = (StatsModifiers[i].Item1, StatsModifiers[i].Item2 - 1);
         }
         StatsModifiers.RemoveAll(modifier => modifier.Item2 <= 0);
-        CalculateCurrentStats();
         ManageStatusOnFinishTurn();
+        CalculateCurrentStats();
     }
     // Manage the problem status when the fighter turn finished
     private void ManageStatusOnFinishTurn()
@@ -417,7 +418,11 @@ public class Fighter : MonoBehaviour
             UIController.UpdateGeneralUI();
             if (newStatusProblem == StatusProblemType.FROZEN)
             {
-                //AddStatModifier()
+                StatusProblemStatsModifier = new BasicStats()
+                {
+                    Speed = -Mathf.RoundToInt(BaseStats.Speed / 2f)
+                };
+                CalculateCurrentStats();
             }
         }
     }
@@ -426,6 +431,7 @@ public class Fighter : MonoBehaviour
     {
         CurrentStatusProblem = StatusProblemType.NONE;
         CurrentStatusProblemActiveTurns = 0;
+        StatusProblemStatsModifier = new();
         UIController.UpdateGeneralUI();
     }
     // Check if the player can do any action if is paralized
@@ -442,25 +448,36 @@ public class Fighter : MonoBehaviour
     private void CalculateCurrentStats()
     {
         BasicStats newStats = new();
+        int prevSpeed = CurrentStats.Speed;
+        newStats.AddStats(BaseStats);
+        newStats.AddStats(StatusProblemStatsModifier);
         foreach (var modifier in StatsModifiers)
         {
             newStats.AddStats(modifier.Item1);
         }
-        newStats.AddStats(BaseStats);
+
         CurrentStats = newStats;
         if (HealthPoints > CurrentStats.MaxHealthPoints)
         {
             HealthPoints = CurrentStats.MaxHealthPoints;
         }
         UIController.UpdateGeneralUI();
+        if (prevSpeed != CurrentStats.Speed && prevSpeed != 0)
+        {
+            CombatManager.Instance.CalculateTurnOrderOfCurrentTurn();
+        }
     }
     // Return the resolution of tried to catch this fighter
     public bool TryCatchFighter(int captureIntensity)
     {
         int randomNumber = UnityEngine.Random.Range(0, 100);
+        Debug.Log($"Random number: {randomNumber}");
         int capturePercetage = GetCaptureRate(captureIntensity);
+        Debug.Log($"Capture percentage: {capturePercetage}");
         if (randomNumber < capturePercetage)
         {
+            HealthPoints = 0;
+            CombatManager.Instance.TeamsController.UpdateFighterData(this);
             return true;
         }
         else
@@ -584,20 +601,31 @@ public class BasicStats
 
     public void AddStats(BasicStats addedStats)
     {
-        MaxHealthPoints += addedStats.MaxHealthPoints;
-        MaxEnergyPoints += addedStats.MaxEnergyPoints;
-        HitPower += addedStats.HitPower;
-        RangePower += addedStats.RangePower;
-        Defense += addedStats.Defense;
-        Speed += addedStats.Speed;
+        MaxHealthPoints = SumWithMinValue(MaxHealthPoints, addedStats.MaxHealthPoints);
+        MaxEnergyPoints = SumWithMinValue(MaxEnergyPoints, addedStats.MaxEnergyPoints);
+        HitPower = SumWithMinValue(HitPower, addedStats.HitPower);
+        RangePower = SumWithMinValue(RangePower, addedStats.RangePower);
+        Defense = SumWithMinValue(Defense, addedStats.Defense);
+        Speed = SumWithMinValue(Speed, addedStats.Speed);
     }
     public void RemoveStats(BasicStats removedStats)
     {
-        MaxHealthPoints -= removedStats.MaxHealthPoints;
-        MaxEnergyPoints -= removedStats.MaxEnergyPoints;
-        HitPower -= removedStats.HitPower;
-        RangePower -= removedStats.RangePower;
-        Defense -= removedStats.Defense;
-        Speed -= removedStats.Speed;
+        MaxHealthPoints = SubstractWithMinValue(MaxHealthPoints, removedStats.MaxHealthPoints);
+        MaxEnergyPoints = SubstractWithMinValue(MaxEnergyPoints, removedStats.MaxEnergyPoints);
+        HitPower = SubstractWithMinValue(HitPower, removedStats.HitPower);
+        RangePower = SubstractWithMinValue(RangePower, removedStats.RangePower);
+        Defense = SubstractWithMinValue(Defense, removedStats.Defense);
+        Speed = SubstractWithMinValue(Speed, removedStats.Speed);
+    }
+
+    private int SumWithMinValue(int a, int b)
+    {
+        int result = a + b;
+        return (result <= 0) ? 1 : result;
+    }
+    private int SubstractWithMinValue(int a, int b)
+    {
+        int result = a - b;
+        return (result <= 0) ? 1 : result;
     }
 }

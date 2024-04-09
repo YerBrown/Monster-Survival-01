@@ -1,4 +1,5 @@
 using UnityEngine;
+using VHierarchy.Libs;
 
 public class CreatureElement : InteractiveElement
 {
@@ -12,7 +13,7 @@ public class CreatureElement : InteractiveElement
     public override void Interact(CharacterInfo character = null)
     {
         base.Interact(character);
-        //Iniciar combate
+        MapManager.Instance.GoToCombatScene(FullTeam);
     }
     private void SetSprites()
     {

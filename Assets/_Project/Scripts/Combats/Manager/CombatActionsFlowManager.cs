@@ -42,10 +42,10 @@ public class CombatActionsFlowManager : MonoBehaviour
 
         foreach (CombatAction combatAction in combatActions)
         {
-            // Ejecuta la acción actual
+            // Ejecuta la acciï¿½n actual
             combatAction.C_Action?.Invoke();
 
-            // Si la acción requiere input del jugador, esperar hasta que se reciba el input
+            // Si la acciï¿½n requiere input del jugador, esperar hasta que se reciba el input
             if (combatAction.IsInputRequired)
             {
                 IsWaitingForInput = true;
@@ -56,7 +56,7 @@ public class CombatActionsFlowManager : MonoBehaviour
             }
             else
             {
-                // Esperar el tiempo de espera de la acción actual
+                // Esperar el tiempo de espera de la acciï¿½n actual
                 yield return new WaitForSeconds(combatAction.Time);
             }
         }
@@ -441,7 +441,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                          diedEnemyFighters[i].AnimationController.PlaySpawnOut();
                     }
                     Debug.Log("Change animation started");
-                }),1.1f, false),
+                }),1f, false),
                 new CombatAction((() =>
                 {
                     for (int i = 0; i < diedPlayerFighters.Count; i++)
@@ -587,19 +587,14 @@ public class CombatActionsFlowManager : MonoBehaviour
             {
                 new CombatAction((() =>
                 {
-                    PlayerManager.Instance.Captures.TryAddNewCreature(CombatManager.Instance.TeamsController.EnemyTeam.GetFighterDataInTeam(targetFighter.ID));
-                    playerFighter.AddEnergyPoints(-(GeneralValues.StaticCombatGeneralValues.Capture_CaptureIntensity_EnergyCosts[captureIntensity]), true);
+                    if (isCaptured)
+                    {
+                        PlayerManager.Instance.Captures.TryAddNewCreature(CombatManager.Instance.TeamsController.EnemyTeam.GetFighterDataInTeam(targetFighter.ID));
+                    }
+                    playerFighter.AddEnergyPoints(-GeneralValues.StaticCombatGeneralValues.Capture_CaptureIntensity_EnergyCosts[captureIntensity], true);
                     CombatManager.Instance.CaptureController.PlayCaptureRay(playerFighter, targetFighter, isCaptured);
                     Debug.Log("Try capture animation started");
                 }),1f,true),
-                new CombatAction((() =>
-                {
-                    if (isCaptured)
-                    {
-                        targetFighter.HealthPoints = 0;
-                        Debug.Log("Eliminate Target Fighter");
-                    }
-                }),0.10f, false),
                 new CombatAction((() =>
                 {
                     playerFighter.NextTurn();

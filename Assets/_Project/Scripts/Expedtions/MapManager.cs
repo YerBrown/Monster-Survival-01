@@ -40,7 +40,20 @@ public class MapManager : MonoBehaviour
     }
     private void Start()
     {
-        StartCoroutine(InitializeExpedition());
+        if (CombatExpeditionTransitionController.Instance != null)
+        {
+            if (CombatExpeditionTransitionController.Instance.CurrentMap != null)
+            {
+                ExpeditionMapSO loadMap = CombatExpeditionTransitionController.Instance.CurrentMap;
+                Vector2Int loadCoordinates = CombatExpeditionTransitionController.Instance.MapFieldCoordinates;
+                Vector2 playerStartPosition = CombatExpeditionTransitionController.Instance.PlayerLastPosition;
+                StartCoroutine(LoadLastFieldStatus(loadMap, loadCoordinates, playerStartPosition));
+            }
+            else
+            {
+                StartCoroutine(InitializeExpedition());
+            }
+        }
     }
     public void ChangeField(Vector2Int travelDistance, int pathSide)
     {
@@ -178,9 +191,9 @@ public class MapManager : MonoBehaviour
         }
         return null;
     }
-    private void SpawnPlayerFirst()
+    private void SpawnPlayerFirst(Vector2 spawnPosition)
     {
-        Cursor.SpawnPlayer(GetOverlayTile(CurrentField.transform.position));
+        Cursor.SpawnPlayer(GetOverlayTile(spawnPosition));
     }
     IEnumerator InitializeExpedition()
     {
@@ -194,7 +207,7 @@ public class MapManager : MonoBehaviour
         LoadAreaState();
         Debug.Log("Sincronizados todos los elementos interactivos");
         yield return new WaitForSeconds(.2f);
-        SpawnPlayerFirst();
+        SpawnPlayerFirst(CurrentField.transform.position);
         Debug.Log("Instanciado el player");
         yield return new WaitForSeconds(.2f);
         GeneralUIController.Instance.EnableBlackBackground(false);
@@ -214,6 +227,26 @@ public class MapManager : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         MovePlayerToInitialPos(travelDistance, pathSide);
         Debug.Log("Mover al player");
+        yield return new WaitForSeconds(.2f);
+        GeneralUIController.Instance.EnableBlackBackground(false);
+        Debug.Log("Fundido a blanco");
+    }
+    IEnumerator LoadLastFieldStatus(ExpeditionMapSO lastExpeditionMap, Vector2Int lastFieldCordinates, Vector2 playerLastPosition )
+    {
+        FullMap = lastExpeditionMap;
+        CurrentCoordinates = lastFieldCordinates;
+        GeneralUIController.Instance.EnableBlackBackground(true);
+        Debug.Log("Fundido a negro");
+        yield return new WaitForSeconds(.2f);
+        GoNextField(Vector2Int.zero);
+        AddAllOverlayTiles(CurrentField);
+        Debug.Log("A�adidas todas las overlay tiles");
+        yield return new WaitForSeconds(.2f);
+        LoadAreaState();
+        Debug.Log("Sincronizados todos los elementos interactivos");
+        yield return new WaitForSeconds(.2f);
+        SpawnPlayerFirst(playerLastPosition);
+        Debug.Log("Instanciado el player");
         yield return new WaitForSeconds(.2f);
         GeneralUIController.Instance.EnableBlackBackground(false);
         Debug.Log("Fundido a blanco");
@@ -317,6 +350,12 @@ public class MapManager : MonoBehaviour
             string completeRute = Path.Combine(folderPath, fileName);
             File.WriteAllText(completeRute, fieldDataJson);
         }
+    }
+
+    public void GoToCombatScene(FighterData[] enemyTeam)
+    {
+        SaveAreaState();
+        CombatExpeditionTransitionController.Instance.LoadCombatScene(enemyTeam);
     }
 }
 

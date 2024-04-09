@@ -212,17 +212,19 @@ public class CombatTeamsController : MonoBehaviour
     // Returns the fighters index in range of ha selectedfighter
     public List<int> GetFightersNumInRange(Fighter selectedFighter)
     {
+        CombatTeam fighterEnemyTeam = IsPlayerTeamFighter(selectedFighter) ? EnemyTeam : PlayerTeam;
         int currentFighterNum = GetFighterInFieldNum(selectedFighter);
 
-        List<int> fightersInRangeIndex = new()
+        List<int> fightersInRangeIndex = new();
+        if (fighterEnemyTeam.FightersInField[currentFighterNum] != null)
         {
-            currentFighterNum
-        };
-        if (currentFighterNum - 1 >= 0)
+            fightersInRangeIndex.Add(currentFighterNum);
+        }
+        if (currentFighterNum - 1 >= 0 && fighterEnemyTeam.FightersInField[currentFighterNum - 1] != null)
         {
             fightersInRangeIndex.Add(currentFighterNum - 1);
         }
-        if (currentFighterNum + 1 <= 2)
+        if (currentFighterNum + 1 <= 2 && fighterEnemyTeam.FightersInField[currentFighterNum + 1] != null)
         {
             fightersInRangeIndex.Add(currentFighterNum + 1);
         }
