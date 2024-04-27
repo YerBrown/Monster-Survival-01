@@ -169,7 +169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 35, y: -51.3}
+  m_AnchoredPosition: {x: 35, y: -51.30005}
   m_SizeDelta: {x: 70, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5896997462259862444
@@ -683,18 +683,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Nickname: 
+  PlayerLevel: 0
   P_Fighter:
-    ID: 
-    TypeID: 
-    Nickname: 
-    MaxHealthPoints: 0
-    MaxEnergyPoints: 0
-    FisicalPower: 0
-    RangePower: 0
-    Defense: 0
-    Speed: 0
-    HealthPoints: 0
-    EnergyPoints: 0
+    ID: '#PLAYER'
+    TypeID: Hunter
+    Nickname: Yeray
+    Lvl: 0
+    MaxHealthPoints: 20
+    MaxEnergyPoints: 20
+    FisicalPower: 20
+    RangePower: 5
+    Defense: 10
+    Speed: 20
+    HealthPoints: 20
+    EnergyPoints: 20
   P_Inventory:
     Inv_Name: Your Inventory
     Slots:
@@ -722,20 +724,10 @@ MonoBehaviour:
     OnItemAdded: {fileID: 11400000, guid: 0fa4b647cf118e5458a07d47f21a999a, type: 2}
     OnItemRemoved: {fileID: 11400000, guid: c544d32cb1a56584da032f5127b3ad50, type: 2}
   Team:
-  - ID: '#EMPOLEON_01'
-    TypeID: Empoleon
-    Nickname: Blas
-    MaxHealthPoints: 20
-    MaxEnergyPoints: 20
-    FisicalPower: 12
-    RangePower: 3
-    Defense: 2
-    Speed: 5
-    HealthPoints: 18
-    EnergyPoints: 3
   - ID: '#PLAYER'
     TypeID: Hunter
     Nickname: Yeray
+    Lvl: 0
     MaxHealthPoints: 20
     MaxEnergyPoints: 20
     FisicalPower: 5
@@ -744,9 +736,22 @@ MonoBehaviour:
     Speed: 10
     HealthPoints: 20
     EnergyPoints: 0
+  - ID: '#EMPOLEON_01'
+    TypeID: Empoleon
+    Nickname: Blas
+    Lvl: 0
+    MaxHealthPoints: 20
+    MaxEnergyPoints: 20
+    FisicalPower: 12
+    RangePower: 3
+    Defense: 2
+    Speed: 5
+    HealthPoints: 18
+    EnergyPoints: 3
   - ID: '#TOTODILE_03'
     TypeID: Totodile
     Nickname: Pepe
+    Lvl: 0
     MaxHealthPoints: 10
     MaxEnergyPoints: 10
     FisicalPower: 2
@@ -758,6 +763,7 @@ MonoBehaviour:
   - ID: '#BULBASUR_04'
     TypeID: Bulbasur
     Nickname: Derric
+    Lvl: 0
     MaxHealthPoints: 15
     MaxEnergyPoints: 10
     FisicalPower: 5
@@ -769,6 +775,7 @@ MonoBehaviour:
   - ID: '#ELECTABUZZ_05'
     TypeID: Electabuzz
     Nickname: Alfonso
+    Lvl: 0
     MaxHealthPoints: 15
     MaxEnergyPoints: 10
     FisicalPower: 4
@@ -780,6 +787,7 @@ MonoBehaviour:
   - ID: '#MAKUHITA_06'
     TypeID: Makuhita
     Nickname: Gozoi
+    Lvl: 0
     MaxHealthPoints: 10
     MaxEnergyPoints: 10
     FisicalPower: 8
@@ -793,6 +801,7 @@ MonoBehaviour:
     - ID: 
       TypeID: 
       Nickname: 
+      Lvl: 0
       MaxHealthPoints: 0
       MaxEnergyPoints: 0
       FisicalPower: 0
@@ -804,6 +813,7 @@ MonoBehaviour:
     - ID: 
       TypeID: 
       Nickname: 
+      Lvl: 0
       MaxHealthPoints: 0
       MaxEnergyPoints: 0
       FisicalPower: 0
@@ -812,4 +822,16 @@ MonoBehaviour:
       Speed: 0
       HealthPoints: 0
       EnergyPoints: 0
-    CurrentMaxIntensity: 1
+    - ID: 
+      TypeID: 
+      Nickname: 
+      Lvl: 0
+      MaxHealthPoints: 0
+      MaxEnergyPoints: 0
+      FisicalPower: 0
+      RangePower: 0
+      Defense: 0
+      Speed: 0
+      HealthPoints: 0
+      EnergyPoints: 0
+    CurrentMaxIntensity: 4

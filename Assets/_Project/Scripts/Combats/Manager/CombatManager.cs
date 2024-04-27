@@ -74,7 +74,8 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForSeconds(.2f);
         CurrentTurnOrder = CalculateTurnOrder();
         _NextTurnOrder = CalculateTurnOrder();
-        SelectNextFighter();
+        FinishCurrentFighterAction.RaiseEvent();
+        UIManager.StartCombat();
     }
     // Adds all the tiles to the current battle field.
     private void AddAllOverlayTiles()
@@ -197,7 +198,7 @@ public class CombatManager : MonoBehaviour
         _NextTurnOrder = CalculateTurnOrder();
     }
     // Set up the current turn fighter to the next one in order list.
-    private void SelectNextFighter()
+    public void SelectNextFighter()
     {
         CurrentTurnFighter = CurrentTurnOrder.First();
         foreach (var fighterInField in TeamsController.PlayerTeam.FightersInField)

@@ -15,4 +15,4 @@ MonoBehaviour:
   R_Name: Tree
   R_FullSprite: {fileID: 21300000, guid: d3ab37ffce98cea4893df243c27ffca4, type: 3}
   R_EmptySprite: {fileID: 21300000, guid: 0343b78978c27414d897d3e2fbe8f5fd, type: 3}
-  R_SkillNeeded: 0
+  R_SkillNeeded: 1

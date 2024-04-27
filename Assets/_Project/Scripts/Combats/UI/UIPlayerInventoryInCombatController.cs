@@ -99,13 +99,13 @@ public class UIPlayerInventoryInCombatController : PlayerInventoryManagementCont
         switch (SelectedItemType.i_TargetType)
         {
             case TargetSelectType.ALL:
-                TargetController.EnableAllTarget(true);
+                TargetController.EnableAllTarget();
                 break;
             case TargetSelectType.PLAYER_TEAM:
-                TargetController.EnablePlayerTargets(true);
+                TargetController.EnablePlayerTargets();
                 break;
             case TargetSelectType.ENEMY_TEAM:
-                TargetController.EnableEnemyTargets(true);
+                TargetController.EnableEnemyTargets();
                 break;
             default:
                 break;
@@ -129,14 +129,14 @@ public class UIPlayerInventoryInCombatController : PlayerInventoryManagementCont
     public void OpenTeam()
     {
         FighterChangeController.OpenPopupToSetItemTarget();
-        TargetController.EnableAllTarget(false);
+        TargetController.DisableAllTargets();
         CancelButton.gameObject.SetActive(false);
         TeamButton.gameObject.SetActive(false);
     }
     public void CancelTarget()
     {
         OpenPopup();
-        TargetController.EnableAllTarget(false);
+        TargetController.DisableAllTargets();
         CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
     }
     public override void CloseMenu()

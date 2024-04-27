@@ -24,10 +24,20 @@ public class CombatTeamsController : MonoBehaviour
         if (FightersInfoWiki.Instance == null) { return; }
         for (int i = 0; i < team.FightersInField.Length; i++)
         {
+            int nextIndex = i;
             FighterData nextFighterData = GetNextFighter(team);
-            if (team.FightersInField[i] == null && nextFighterData != null)
+            // Fix first place for midle position
+            if (i == 0)
             {
-                SpawnFighterInTeam(i, nextFighterData, team, true);
+                nextIndex = 1;
+            }
+            else if (i == 1)
+            {
+                nextIndex = 0;
+            }
+            if (team.FightersInField[nextIndex] == null && nextFighterData != null)
+            {
+                SpawnFighterInTeam(nextIndex, nextFighterData, team, true);
             }
         }
     }

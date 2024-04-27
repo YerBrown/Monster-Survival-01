@@ -10,13 +10,29 @@ public class UITargetController : MonoBehaviour
     public List<GameObject> EnemyTargets = new();
     public List<TMP_Text> EnemyCaptureRateTexts = new();
     public UIActionsController ActionsController;
-    public void EnableAllTarget(bool enable)
+    public void EnableAllTarget()
     {
-        EnableEnemyTargets(enable);
-        EnablePlayerTargets(enable);
-        ActionsController.EnableCancelButton(enable);
+        EnableEnemyTargets();
+        EnablePlayerTargets();
+        ActionsController.EnableCancelButton(true);
     }
-    public void EnableEnemyTargets(bool enable)
+    public void DisableAllTargets()
+    {
+        foreach (var playerTarget in PlayerTargets)
+        {
+            playerTarget.SetActive(false);
+        }
+        foreach (var enemyTarget in EnemyTargets)
+        {
+            enemyTarget.SetActive(false);
+        }
+        foreach(var captureRateText in EnemyCaptureRateTexts)
+        {
+            captureRateText.gameObject.SetActive(false);
+        }
+        ActionsController.EnableCancelButton(false);
+    }
+    public void EnableEnemyTargets()
     {
         List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
         for (int i = 0; i < EnemyTargets.Count; i++)
@@ -24,26 +40,22 @@ public class UITargetController : MonoBehaviour
             EnemyTargets[i].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.EnemyTeam.FightersPos[i].transform.position + Vector3.up * 0.15f);
             if (posibleTargets.Contains(i))
             {
-                EnableEnemyTarget(i, enable);
-                if (!enable)
-                {
-                    EnemyCaptureRateTexts[i].gameObject.SetActive(false);
-                }
+                EnableEnemyTarget(i);
             }
         }
     }
-    public void EnableEnemyFighterParnersTargets(bool enable, int fighterNum)
+    public void EnableEnemyFighterParnersTargets(int fighterNum)
     {
         for (int i = 0; i < EnemyTargets.Count; i++)
         {
             EnemyTargets[i].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.EnemyTeam.FightersPos[i].transform.position + Vector3.up * 0.15f);
             if (i != fighterNum)
             {
-                EnemyTargets[i].SetActive(enable);
+                EnemyTargets[i].SetActive(true);
             }
         }
     }
-    public void EnablePlayerTargets(bool enable)
+    public void EnablePlayerTargets()
     {
         List<int> posibleTargets = CombatManager.Instance.TeamsController.GetFightersNumInRange(CombatManager.Instance.CurrentTurnFighter);
         for (int i = 0; i < PlayerTargets.Count; i++)
@@ -51,35 +63,35 @@ public class UITargetController : MonoBehaviour
             PlayerTargets[i].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.PlayerTeam.FightersPos[i].transform.position + Vector3.up * 0.15f);
             if (posibleTargets.Contains(i))
             {
-                EnablePlayerTarget(i, enable);
+                EnablePlayerTarget(i);
             }
         }
     }
-    public void EnablePlayerFighterParnersTargets(bool enable, int fighterNum)
+    public void EnablePlayerFighterParnersTargets(int fighterNum)
     {
         for (int i = 0; i < PlayerTargets.Count; i++)
         {
             PlayerTargets[i].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.PlayerTeam.FightersPos[i].transform.position + Vector3.up * 0.15f);
             if (i != fighterNum)
             {
-                PlayerTargets[i].SetActive(enable);
+                PlayerTargets[i].SetActive(true);
             }
         }
     }
-    public void EnableEnemyTarget(int id, bool enable)
+    public void EnableEnemyTarget(int id)
     {
         EnemyTargets[id].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.EnemyTeam.FightersPos[id].transform.position + Vector3.up * 0.15f);
         if (CombatManager.Instance != null && CombatManager.Instance.TeamsController.EnemyTeam.FightersInField[id] != null)
         {
-            EnemyTargets[id].SetActive(enable);
+            EnemyTargets[id].SetActive(true);
         }
     }
-    public void EnablePlayerTarget(int id, bool enable)
+    public void EnablePlayerTarget(int id)
     {
         PlayerTargets[id].GetComponent<RectTransform>().position = Camera.main.WorldToScreenPoint(CombatManager.Instance.TeamsController.PlayerTeam.FightersPos[id].transform.position + Vector3.up * 0.15f);
         if (CombatManager.Instance != null && CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id] != null)
         {
-            PlayerTargets[id].SetActive(enable);
+            PlayerTargets[id].SetActive(true);
         }
     }
     public void SelectEnemyTarget(int id)
@@ -87,7 +99,7 @@ public class UITargetController : MonoBehaviour
         if (CombatManager.Instance != null)
         {
             CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.EnemyTeam.FightersInField[id], id);
-            EnableAllTarget(false);
+            DisableAllTargets();
             CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
         }
     }
@@ -95,8 +107,8 @@ public class UITargetController : MonoBehaviour
     {
         if (CombatManager.Instance != null)
         {
-            EnableAllTarget(false);
             CombatManager.Instance.SelectTargetFighter(CombatManager.Instance.TeamsController.PlayerTeam.FightersInField[id], id);
+            DisableAllTargets();
             CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
         }
     }

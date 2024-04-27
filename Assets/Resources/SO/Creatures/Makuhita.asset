@@ -18,7 +18,7 @@ MonoBehaviour:
   c_Sprite: {fileID: 720966771, guid: 40438a8255b3a95488378656a384ba6a, type: 3}
   c_AvatarSprite: {fileID: -218218948, guid: bd0a1dab58456dd49b2bf3ce5dd02477, type: 3}
   c_Animator: {fileID: 22100000, guid: 9abf2bdfae3383644a486fc1cf9afa6c, type: 2}
-  c_Skills: 01000000
+  c_Skills: 0000000002000000
   c_LvlBaseStats: []
   c_FavouriteFood:
   - {fileID: 11400000, guid: 8278e7da6c60b7f47be7ded640d7610c, type: 2}

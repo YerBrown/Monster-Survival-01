@@ -1,5 +1,6 @@
 public enum Skills
 {
+    COLLECT,
     CUT_DOWN,
     MININNG,
     SWIMMING,

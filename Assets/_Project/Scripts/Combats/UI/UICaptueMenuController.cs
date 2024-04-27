@@ -78,12 +78,12 @@ public class UICaptueMenuController : MonoBehaviour
         if (PlayerManager.Instance.P_Fighter.EnergyPoints > GeneralValues.StaticCombatGeneralValues.Capture_CaptureIntensity_EnergyCosts[CurrentIntensity] && PlayerManager.Instance.Captures.GetRemainingCapsules() > 0)
         {
             ActionsController.TargetController.EnableCaptureRates(CurrentIntensity);
-            ActionsController.TargetController.EnableEnemyTargets(true);
+            ActionsController.TargetController.EnableEnemyTargets();
             NotEnoughEnergyPopup.gameObject.SetActive(false);
         }
         else
         {
-            ActionsController.TargetController.EnableEnemyTargets(false);
+            ActionsController.TargetController.DisableAllTargets();
             StringBuilder warningText = new StringBuilder();
             if (PlayerManager.Instance.P_Fighter.EnergyPoints < GeneralValues.StaticCombatGeneralValues.Capture_CaptureIntensity_EnergyCosts[CurrentIntensity])
             {

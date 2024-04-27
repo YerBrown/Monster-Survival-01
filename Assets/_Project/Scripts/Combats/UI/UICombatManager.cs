@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,5 +19,9 @@ public class UICombatManager : MonoBehaviour
         {
             ActionsController.EnableAction(enable);
         }
+    }
+    public void StartCombat()
+    {
+        NotificationController.EnableStartCombat();
     }
 }

@@ -8,7 +8,7 @@ public class CharacterInfo : MonoBehaviour
     public Animator Animator;
     public Animator FollowerAnimator;
     public Inventory PlayerInventory;
-    public PairInventoriesEventChannelSO OnOpenInventoriesMenu;
+    public PairInventoriesEventChannelSO OnOpenInventoriesMenu; 
     public int ResourcesHitPower = 1;
     private void OnEnable()
     {

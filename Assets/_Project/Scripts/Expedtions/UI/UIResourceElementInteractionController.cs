@@ -5,6 +5,7 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class UIResourceElementInteractionController : MonoBehaviour
@@ -13,7 +14,9 @@ public class UIResourceElementInteractionController : MonoBehaviour
     public CharacterInfo PlayerTarget;
     public ResourceElementEventChannelSO OnResourceInteracted;
     public VoidEventChannelSO OnMovementGridPointed;
+    public StringEventChannelSO OnCreatureFarm;
 
+    private FighterData[] _CreaturesInTeam = new FighterData[0];
     [Header("UI")]
     public GameObject UIParent;
     public List<Button> TeamButtons = new();
@@ -43,7 +46,8 @@ public class UIResourceElementInteractionController : MonoBehaviour
         {
             ResourceTarget = newResource;
             PlayerTarget = MapManager.Instance.Character;
-            //Checkear el equipo del jugador
+            //TODO: Checkear el equipo del jugador
+            UpdateTeamMembersButtons();
             UIParent.SetActive(true);
         }
         else
@@ -58,7 +62,7 @@ public class UIResourceElementInteractionController : MonoBehaviour
         //PlayerTarget.PlayFisicalAttackAnim();
         (ItemSlot, ItemSlot, int) hitResourceAnswer = ResourceTarget.HitResource(PlayerTarget.ResourcesHitPower, PlayerTarget.PlayerInventory, PlayerTarget.transform);
         LootButton.interactable = false;
-        StartCoroutine(UpdateHitCooldown());
+        StartCoroutine(UpdateHitCooldown(LootButton, PlayerHitButtonFillImage));
     }
     public void ClosePopup()
     {
@@ -66,19 +70,63 @@ public class UIResourceElementInteractionController : MonoBehaviour
         UIParent.SetActive(false);
     }
 
+    public void UpdateTeamMembersButtons()
+    {
+        _CreaturesInTeam = PlayerManager.Instance.GetTeamCreatures();
+        for (int i = 0; i < TeamButtons.Count; i++)
+        {
+            if (i < _CreaturesInTeam.Length)
+            {
+                if (FightersInfoWiki.Instance.GetCreatureInfo(_CreaturesInTeam[i].TypeID, out CreatureSO creatureInfo))
+                {
+                    bool isFarmingPosible = creatureInfo.c_Skills.Contains(ResourceTarget.ResourceInfo.R_SkillNeeded);
+                    TeamButtons[i].transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = creatureInfo.c_AvatarSprite; ;
+                    TeamButtons[i].transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = creatureInfo.c_AvatarSprite; ;
+                    TeamButtons[i].interactable = isFarmingPosible;
 
-    IEnumerator UpdateHitCooldown()
+                    TeamButtons[i].transform.GetChild(0).GetChild(0).GetComponent<Image>().DOFade(isFarmingPosible? 1 : 0.25f, 0.25f);
+
+                }
+                TeamButtons[i].gameObject.SetActive(true);
+            }
+            else
+            {
+                TeamButtons[i].gameObject.SetActive(false);
+            }
+        }
+    }
+    public void FarmWithCreature(int index)
+    {
+        if (ResourceTarget == null || PlayerTarget == null) return;
+        OnCreatureFarm.RaiseEvent(_CreaturesInTeam[index].ID);
+        //PlayerTarget.PlayFisicalAttackAnim();
+        (ItemSlot, ItemSlot, int) hitResourceAnswer = ResourceTarget.HitResource(PlayerTarget.ResourcesHitPower, PlayerTarget.PlayerInventory, PlayerTarget.transform);
+        for (int i = 0; i < TeamButtons.Count; i++)
+        {
+            if (FightersInfoWiki.Instance.GetCreatureInfo(_CreaturesInTeam[i].TypeID, out CreatureSO creatureInfo))
+            {
+                bool isFarmingPosible = creatureInfo.c_Skills.Contains(ResourceTarget.ResourceInfo.R_SkillNeeded);
+                if (isFarmingPosible)
+                {
+                    StartCoroutine(UpdateHitCooldown(TeamButtons[i], TeamButtons[i].transform.GetChild(0).GetChild(1).GetComponent<Image>()));
+                }
+            }
+        }
+        //StartCoroutine(UpdateHitCooldown(TeamButtons[index], TeamButtons[index].transform.GetChild(0).GetChild(1).GetComponent<Image>()));
+    }
+    IEnumerator UpdateHitCooldown(Button button, Image icon)
     {
         float currentTime = 0f;
-        PlayerHitButtonFillImage.fillAmount = 0;
-        PlayerHitButtonFillImage.enabled = true;
+        icon.fillAmount = 0;
+        icon.enabled = true;
+        button.interactable = false;
         // Iterar hasta que haya pasado el tiempo de duración de la transición
         while (currentTime < HitCooldownTime)
         {
             // Calcular el valor actual en función del tiempo pasado
-            float currentValue = Mathf.Lerp(0f, 1f, currentTime / HitCooldownTime);
+            float currentValue = Mathf.Lerp(1f, 0f, currentTime / HitCooldownTime);
             //Update image
-            PlayerHitButtonFillImage.fillAmount = currentValue;
+            icon.fillAmount = currentValue;
 
             // Incrementar el tiempo pasado
             currentTime += Time.deltaTime;
@@ -87,8 +135,8 @@ public class UIResourceElementInteractionController : MonoBehaviour
             yield return null;
         }
         //Cooldown finished
-        PlayerHitButtonFillImage.fillAmount = 1;
-        LootButton.interactable = true;
-        PlayerHitButtonFillImage.enabled = false;
+        icon.fillAmount = 1;
+        button.interactable = true;
+        icon.enabled = false;
     }
 }

@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,9 +12,8 @@ public class CombatExpeditionTransitionController : MonoBehaviour
     public ExpeditionMapSO CurrentMap;
     public Vector2Int MapFieldCoordinates;
     public Vector2 PlayerLastPosition;
-
+    public string TeamID;
     public FighterData[] EnemyTeam = new FighterData[6];
-
 
     [Header("UI")]
     public Image BackgroundImage;
@@ -31,28 +31,41 @@ public class CombatExpeditionTransitionController : MonoBehaviour
 
     }
 
-    public void LoadCombatScene(FighterData[] team)
+    public void LoadCombatScene(string teamID,FighterData[] team)
     {
         CurrentMap = MapManager.Instance.FullMap;
         MapFieldCoordinates = MapManager.Instance.CurrentCoordinates;
         PlayerLastPosition = MapManager.Instance.Character.transform.position;
-
+        TeamID = teamID;
         EnemyTeam = team;
-        BackgroundImage.DOFade(1f, 1f).OnComplete(() =>
-        {
-            SceneManager.LoadScene("Combat Field");
-            BackgroundImage.DOFade(0, 1f);
-        });
 
+        StartCoroutine(LoadCombatSceneCoroutine());
     }
+    IEnumerator LoadCombatSceneCoroutine()
+    {
+        GeneralUIController.Instance.EnableBlackBackground(true);
+        yield return new WaitForSeconds(0.25f);
+        SceneManager.LoadScene("Combat Field");
+        yield return new WaitForSeconds(0.25f);
+        GeneralUIController.Instance.EnableBlackBackground(false);
+    }
+    
     public void LoadExpeditionScene()
     {
-        // TODO: set up saved map
-        // TODO: Spawn player in last position
-        BackgroundImage.DOFade(1f, 1f).OnComplete(() =>
-        {
-            SceneManager.LoadScene("Expedition");
-            BackgroundImage.DOFade(0, 1f);
-        });
+        
+        StartCoroutine(LoadExpeditionSceneCoroutine());
+    }
+    IEnumerator LoadExpeditionSceneCoroutine()
+    {
+        GeneralUIController.Instance.EnableBlackBackground(true);
+        yield return new WaitForSeconds(0.25f);
+        SceneManager.LoadScene("Expedition");
+    }
+    public (string, FighterData[]) LoadCombatResult()
+    {
+        var combatResult = (TeamID, EnemyTeam);
+        TeamID = null;
+        EnemyTeam = null;
+        return (combatResult);
     }
 }

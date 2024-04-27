@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 [Serializable]
 public class ExpeditionData
 {
@@ -28,7 +29,7 @@ public class ExpeditionData
         public Vector2Int Coordinates;                                      //Cordinates of the field in the expedition
         public List<BlockerData> Blockers = new List<BlockerData>();        //All blockers element in the field
         public List<ContainerData> Containers = new List<ContainerData>();  //All containers element in the field
-        //public List<ResourceData> Creatures = new List<ResourceData>();   //All creatures element in the field
+        public List<CreatureData> Creatures = new List<CreatureData>();   //All creatures element in the field
         public List<ItemData> Items = new List<ItemData>();                 //All items element in the field
         public List<ResourceData> Resources = new List<ResourceData>();     //All resources element in the field
         public List<SwitcherData> Switchers = new List<SwitcherData>();     //All switchers element in the field
@@ -39,7 +40,8 @@ public class ExpeditionData
         public void ClearData()
         {
             Blockers.Clear(); 
-            Containers.Clear(); 
+            Containers.Clear();
+            Creatures.Clear();
             Items.Clear(); 
             Resources.Clear(); 
             Switchers.Clear();
@@ -78,6 +80,16 @@ public class ExpeditionData
                     Containers.Add(newContainer);
                     break;
                 case CreatureElement creature_e:
+                    CreatureData newCreature = new CreatureData(creature_e.ID, creature_e.Interactive_Element_ID, creature_e.transform.position, creature_e.FullTeam);
+                    for (int i = 0; i < Creatures.Count; i++)
+                    {
+                        if (creature_e.ID == Creatures[i].ID)
+                        {
+                            Creatures[i] = newCreature;
+                            return;
+                        }
+                    }
+                    Creatures.Add(newCreature);
                     break;
                 case ItemElement item_e:
                     ItemData newItem = new ItemData(item_e.ID, item_e.Interactive_Element_ID, item_e.transform.position, item_e.Item.ItemInfo.i_Name, item_e.Item.Amount);

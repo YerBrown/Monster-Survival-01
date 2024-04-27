@@ -231,7 +231,7 @@ public class MapManager : MonoBehaviour
         GeneralUIController.Instance.EnableBlackBackground(false);
         Debug.Log("Fundido a blanco");
     }
-    IEnumerator LoadLastFieldStatus(ExpeditionMapSO lastExpeditionMap, Vector2Int lastFieldCordinates, Vector2 playerLastPosition )
+    IEnumerator LoadLastFieldStatus(ExpeditionMapSO lastExpeditionMap, Vector2Int lastFieldCordinates, Vector2 playerLastPosition)
     {
         FullMap = lastExpeditionMap;
         CurrentCoordinates = lastFieldCordinates;
@@ -265,7 +265,7 @@ public class MapManager : MonoBehaviour
             string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
             string fileName = "map_data.json";
             string completeRute = Path.Combine(folderPath, fileName);
-            if (Directory.Exists(completeRute))
+            if (Directory.Exists(folderPath) && File.Exists(completeRute))
             {
                 string json = File.ReadAllText(completeRute);
                 CurrentFieldData = JsonUtility.FromJson<ExpeditionData>(json);
@@ -278,7 +278,23 @@ public class MapManager : MonoBehaviour
             {
                 LoadAllInteractiveElements(currentFieldData);
             }
-
+            if (CombatExpeditionTransitionController.Instance != null)
+            {
+                string enemyID = CombatExpeditionTransitionController.Instance.TeamID;
+                if (!string.IsNullOrEmpty(enemyID))
+                {
+                    (string, FighterData[]) combatResult = CombatExpeditionTransitionController.Instance.LoadCombatResult();
+                    foreach (var creature in currentFieldData.Creatures)
+                    {
+                        CreatureElement newCreature = (CreatureElement)GetElement(creature.ID, creature.Element_ID, creature.Pos);
+                        if (newCreature.ID == combatResult.Item1)
+                        {
+                            newCreature.UpdateTeamAfterCombat(combatResult.Item2);
+                            break;
+                        }
+                    }
+                }
+            }
         }
     }
     private void LoadAllInteractiveElements(ExpeditionData.FieldData fieldData)
@@ -295,7 +311,11 @@ public class MapManager : MonoBehaviour
             ContainerElement newContainer = (ContainerElement)GetElement(container.ID, container.Element_ID, container.Pos);
             newContainer.UpdateElement(container);
         }
-
+        foreach (var creature in fieldData.Creatures)
+        {
+            CreatureElement newCreature = (CreatureElement)GetElement(creature.ID, creature.Element_ID, creature.Pos);
+            newCreature.UpdateElement(creature);
+        }
         foreach (var item in fieldData.Items)
         {
             ItemElement newItem = (ItemElement)GetElement(item.ID, item.Element_ID, item.Pos);
@@ -352,10 +372,22 @@ public class MapManager : MonoBehaviour
         }
     }
 
-    public void GoToCombatScene(FighterData[] enemyTeam)
+    public void GoToCombatScene(string teamId, FighterData[] enemyTeam)
     {
         SaveAreaState();
-        CombatExpeditionTransitionController.Instance.LoadCombatScene(enemyTeam);
+        CombatExpeditionTransitionController.Instance.LoadCombatScene(teamId, enemyTeam);
+    }
+
+    private void OnApplicationQuit()
+    {
+        // Delete current expedition data
+        string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+        if (Directory.Exists(folderPath))
+        {
+            string fileName = "map_data.json";
+            string completeRute = Path.Combine(folderPath, fileName);
+            File.Delete(completeRute);
+        }
     }
 }
 

@@ -73,7 +73,7 @@ Transform:
   m_GameObject: {fileID: 6292111954389055675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.25, y: 0.24999999, z: 0}
+  m_LocalPosition: {x: 0, y: -0.01, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -128,7 +128,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!95 &681325556489942504
@@ -234,7 +234,7 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 1
 --- !u!95 &8620413098149630194
@@ -283,10 +283,6 @@ PrefabInstance:
       value: 1.625
       objectReference: {fileID: 0}
     - target: {fileID: 6314763023517103712, guid: b080cc2977280dd4988700e019155916, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 6314763023517103712, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
@@ -323,16 +319,40 @@ PrefabInstance:
       value: ElementChild_1
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: Interactive_Element_ID
+      value: '#CREATURETEAM_1x2'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: ElementChilds.Array.size
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: FullTeam.Array.data[0].ID
+      value: '#ENEMY01'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[1].ID
-      value: '#CREATURETEST02'
+      value: '#ENEMY02'
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[2].ID
-      value: '#CREATURETEST03'
+      value: '#ENEMY03'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: FullTeam.Array.data[3].ID
+      value: '#ENEMY04'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: FullTeam.Array.data[4].ID
+      value: '#ENEMY05'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: FullTeam.Array.data[5].ID
+      value: '#ENEMY06'
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: SpriteRenderers.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: ElementChilds.Array.data[1]
@@ -340,23 +360,27 @@ PrefabInstance:
       objectReference: {fileID: 3517983591992454598}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[0].Speed
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[1].Speed
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[2].Speed
-      value: 4
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: FullTeam.Array.data[0].TypeID
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[1].TypeID
-      value: Makuhita
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[2].TypeID
-      value: Makuhita
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: SpriteRenderers.Array.data[1]
@@ -367,16 +391,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7551747043593066799}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: FullTeam.Array.data[0].Defense
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[1].Defense
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[2].Defense
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[0].Nickname
-      value: Japo1
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[1].HitPower
@@ -384,7 +412,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[1].Nickname
-      value: Japo2
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[2].HitPower
@@ -392,23 +420,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[2].Nickname
-      value: Japo3
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: FullTeam.Array.data[0].RangePower
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[1].RangePower
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[2].RangePower
-      value: 2
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: FullTeam.Array.data[0].HealthPoints
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[1].HealthPoints
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[2].HealthPoints
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[1].MaxHealtPoints
@@ -419,16 +455,28 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: FullTeam.Array.data[0].MaxEnergyPoints
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[1].MaxEnergyPoints
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7224632791662480627, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: FullTeam.Array.data[2].MaxEnergyPoints
-      value: 10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7447078779647596427, guid: b080cc2977280dd4988700e019155916, type: 3}
       propertyPath: m_Name
       value: CreaturesTeam 1x2 Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830901065982473141, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7830901065982473141, guid: b080cc2977280dd4988700e019155916, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.24999999
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -9,10 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0a04e2337f24684f810244ea97539d4, type: 3}
-  m_Name: Rock
+  m_Script: {fileID: 11500000, guid: cb276c3e0eb83934c8fbb317a2a74fc9, type: 3}
+  m_Name: TakeOutCreatureToFarm
   m_EditorClassIdentifier: 
-  R_Name: Rock
-  R_FullSprite: {fileID: 21300000, guid: 52624e68deba11a4687ea8c688620cd4, type: 3}
-  R_EmptySprite: {fileID: 21300000, guid: f2e9a889db6d6814a8103dae69e7b766, type: 3}
-  R_SkillNeeded: 2
+  m_Description: Event that send the creature id to take out and farm some resources.
