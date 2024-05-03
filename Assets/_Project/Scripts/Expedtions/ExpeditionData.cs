@@ -22,7 +22,7 @@ public class ExpeditionData
         Fields.Add(newFieldData);
         return newFieldData;
     }
-    
+
     [Serializable]
     public class FieldData
     {
@@ -39,11 +39,11 @@ public class ExpeditionData
         }
         public void ClearData()
         {
-            Blockers.Clear(); 
+            Blockers.Clear();
             Containers.Clear();
             Creatures.Clear();
-            Items.Clear(); 
-            Resources.Clear(); 
+            Items.Clear();
+            Resources.Clear();
             Switchers.Clear();
         }
         //Updates an interactive elements 
@@ -73,11 +73,22 @@ public class ExpeditionData
                     {
                         if (container_e.ID == Containers[i].ID)
                         {
-                            Containers[i] = newContainer;
+                            if (container_e.Interactive_Element_ID != "#ITEMSDROPEDBAG" || container_e.ContainerInventory.Slots.Count > 0)
+                            {
+                                Containers[i] = newContainer;
+                            }
+                            else if (container_e.Interactive_Element_ID == "#ITEMSDROPEDBAG")
+                            {
+                                Containers.RemoveAt(i);
+                            }
                             return;
                         }
                     }
-                    Containers.Add(newContainer);
+                    if (container_e.Interactive_Element_ID != "#ITEMSDROPEDBAG" || container_e.ContainerInventory.Slots.Count > 0)
+                    {
+                        Containers.Add(newContainer);
+                        return;
+                    }
                     break;
                 case CreatureElement creature_e:
                     CreatureData newCreature = new CreatureData(creature_e.ID, creature_e.Interactive_Element_ID, creature_e.transform.position, creature_e.FullTeam);

@@ -9,5 +9,4 @@ public class ConstructionSO : ScriptableObject
     public List<Sprite> c_Sprites;
     //In seconds
     public List<int> c_UpgradeTimes = new List<int>();
-    public List<ResourcesNeeded> c_UpgradeResources = new List<ResourcesNeeded>();
 }

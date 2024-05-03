@@ -22,10 +22,17 @@ public class UIResourceElementInteractionController : MonoBehaviour
     public List<Button> TeamButtons = new();
     public Button LootButton;
     public Image PlayerHitButtonFillImage;
-
+    public TMP_Text ResourceNameText;
+    public List<LootRateSlot> LootRateSlots = new();
+    public Slider ResourceHealthPointsSlider;
     public float HitCooldownTime = 2f;
-
-
+    [Serializable]
+    public class LootRateSlot
+    {
+        public GameObject SlotParent;
+        public Image LootImage;
+        public TMP_Text LootText;
+    }
     void OnEnable()
     {
         OnResourceInteracted.OnEventRaised += OpenResourceMenu;
@@ -48,6 +55,7 @@ public class UIResourceElementInteractionController : MonoBehaviour
             PlayerTarget = MapManager.Instance.Character;
             //TODO: Checkear el equipo del jugador
             UpdateTeamMembersButtons();
+            UpdateLootRateTable();
             UIParent.SetActive(true);
         }
         else
@@ -62,6 +70,7 @@ public class UIResourceElementInteractionController : MonoBehaviour
         //PlayerTarget.PlayFisicalAttackAnim();
         (ItemSlot, ItemSlot, int) hitResourceAnswer = ResourceTarget.HitResource(PlayerTarget.ResourcesHitPower, PlayerTarget.PlayerInventory, PlayerTarget.transform);
         LootButton.interactable = false;
+        CheckResourceHealthPoints();
         StartCoroutine(UpdateHitCooldown(LootButton, PlayerHitButtonFillImage));
     }
     public void ClosePopup()
@@ -84,7 +93,7 @@ public class UIResourceElementInteractionController : MonoBehaviour
                     TeamButtons[i].transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = creatureInfo.c_AvatarSprite; ;
                     TeamButtons[i].interactable = isFarmingPosible;
 
-                    TeamButtons[i].transform.GetChild(0).GetChild(0).GetComponent<Image>().DOFade(isFarmingPosible? 1 : 0.25f, 0.25f);
+                    TeamButtons[i].transform.GetChild(0).GetChild(0).GetComponent<Image>().DOFade(isFarmingPosible ? 1 : 0.25f, 0.25f);
 
                 }
                 TeamButtons[i].gameObject.SetActive(true);
@@ -101,18 +110,21 @@ public class UIResourceElementInteractionController : MonoBehaviour
         OnCreatureFarm.RaiseEvent(_CreaturesInTeam[index].ID);
         //PlayerTarget.PlayFisicalAttackAnim();
         (ItemSlot, ItemSlot, int) hitResourceAnswer = ResourceTarget.HitResource(PlayerTarget.ResourcesHitPower, PlayerTarget.PlayerInventory, PlayerTarget.transform);
-        for (int i = 0; i < TeamButtons.Count; i++)
+        if (ResourceTarget != null)
         {
-            if (FightersInfoWiki.Instance.GetCreatureInfo(_CreaturesInTeam[i].TypeID, out CreatureSO creatureInfo))
+            CheckResourceHealthPoints();
+            for (int i = 0; i < TeamButtons.Count; i++)
             {
-                bool isFarmingPosible = creatureInfo.c_Skills.Contains(ResourceTarget.ResourceInfo.R_SkillNeeded);
-                if (isFarmingPosible)
+                if (FightersInfoWiki.Instance.GetCreatureInfo(_CreaturesInTeam[i].TypeID, out CreatureSO creatureInfo))
                 {
-                    StartCoroutine(UpdateHitCooldown(TeamButtons[i], TeamButtons[i].transform.GetChild(0).GetChild(1).GetComponent<Image>()));
+                    bool isFarmingPosible = creatureInfo.c_Skills.Contains(ResourceTarget.ResourceInfo.R_SkillNeeded);
+                    if (isFarmingPosible)
+                    {
+                        StartCoroutine(UpdateHitCooldown(TeamButtons[i], TeamButtons[i].transform.GetChild(0).GetChild(1).GetComponent<Image>()));
+                    }
                 }
             }
         }
-        //StartCoroutine(UpdateHitCooldown(TeamButtons[index], TeamButtons[index].transform.GetChild(0).GetChild(1).GetComponent<Image>()));
     }
     IEnumerator UpdateHitCooldown(Button button, Image icon)
     {
@@ -138,5 +150,39 @@ public class UIResourceElementInteractionController : MonoBehaviour
         icon.fillAmount = 1;
         button.interactable = true;
         icon.enabled = false;
+    }
+    private void UpdateLootRateTable()
+    {
+        ResourceNameText.text = ResourceTarget.ResourceInfo.R_Name;
+        CheckResourceHealthPoints();
+        int sumOfRate = 0;
+        foreach (var loot in ResourceTarget.Loot)
+        {
+            sumOfRate += loot.ChanceRate;
+        }
+        for (int i = 0; i < LootRateSlots.Count; i++)
+        {
+            if (i < ResourceTarget.Loot.Count)
+            {
+                ResourceElement.LootRate loot = ResourceTarget.Loot[i];
+                float percentage = ((float)loot.ChanceRate / sumOfRate) * 100;
+                int percentageRounded = (int)Mathf.Round(percentage);
+                LootRateSlots[i].LootText.text = $"x{loot.Amount}\n%{percentageRounded}";
+                LootRateSlots[i].LootImage.sprite = loot.ItemType.i_Sprite;
+                LootRateSlots[i].SlotParent.SetActive(true);
+            }
+            else
+            {
+                LootRateSlots[i].SlotParent.SetActive(false);
+            }
+        }
+    }
+    private void CheckResourceHealthPoints()
+    {
+
+        if (ResourceTarget != null)
+        {
+            ResourceHealthPointsSlider.value = (float)ResourceTarget.LootPoints / ResourceTarget.MaxLootPoints;
+        }
     }
 }

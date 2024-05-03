@@ -35,6 +35,8 @@ public class FarmingCreatureController : MonoBehaviour
             CreaturePosition = PlayerManager.Instance.transform.position;
             CreatureSO fighterInfo = CurrentCreature.GetCreatureInfo();
             CreatureRenderer.gameObject.SetActive(true);
+            Vector2 playerRightDirection = new Vector2(playerLookDirection.y, -playerLookDirection.x);
+            CreatureRenderer.transform.localPosition = new Vector3(0.8f, 0.5f, 0) * playerRightDirection;
             CreatureAnimator.runtimeAnimatorController = fighterInfo.c_Animator;
             CreatureAnimator.SetFloat("Horizontal", playerLookDirection.x);
             CreatureAnimator.SetFloat("Vertical", playerLookDirection.y);

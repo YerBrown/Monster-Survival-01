@@ -6,10 +6,24 @@ using UnityEngine.UI;
 
 public class UITrashController : UI_SetAmountController
 {
+    private static UITrashController _instance;
+    public static UITrashController Instance { get { return _instance; } }
+
     public UIInventoriesManagementController InventoriesController;
     public PlayerInventoryManagementController PlayerInventoryController;
     [Header("+ UI Elements")]
     public Button RemoveAllButton;
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
     protected override void OnEnable()
     {
         base.OnEnable();

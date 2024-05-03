@@ -27,7 +27,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2202290458225133545}
@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 1369115797
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e13f2aed5cd5d49aa9ee6be418c60d2a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b8e0b4707e3ccda48982ac0f4f855b97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -83,7 +83,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_SpriteSortPoint: 1
 --- !u!1 &4093394946519351060
 GameObject:
   m_ObjectHideFlags: 0
@@ -193,6 +193,6 @@ MonoBehaviour:
     OnItemRemoved: {fileID: 0}
   IsOpened: 0
   Renderer: {fileID: 6586047589717574692}
-  FullSprite: {fileID: 0}
-  EmptySprite: {fileID: 0}
+  FullSprite: {fileID: 21300000, guid: b8e0b4707e3ccda48982ac0f4f855b97, type: 3}
+  EmptySprite: {fileID: 21300000, guid: 6caaded0384cccf448e8d6f71d2c138a, type: 3}
   OnClosePopup: {fileID: 11400000, guid: 4dd663c0d342a3f4db7e242906509872, type: 2}

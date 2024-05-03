@@ -9,6 +9,7 @@ public class ResourceElement : InteractiveElement
 {
     [SerializeField]
     public int LootPoints = 10;
+    public int MaxLootPoints = 10;
     public List<LootRate> Loot = new(); // Posible loot chances.
     public ResourceSO ResourceInfo; // Resource information scriptableObject.
     public Sprite LootFinishedSprite; // The sprite for empty resource.

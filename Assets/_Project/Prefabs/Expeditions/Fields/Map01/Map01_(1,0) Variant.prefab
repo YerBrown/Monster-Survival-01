@@ -3848,6 +3848,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2780640974493615449}
     m_Modifications:
+    - target: {fileID: 4951258619115869644, guid: 6d2044f5c483a634b98fbd1326b5e45a, type: 3}
+      propertyPath: Loot.Array.data[0].ChanceRate
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951258619115869644, guid: 6d2044f5c483a634b98fbd1326b5e45a, type: 3}
+      propertyPath: Loot.Array.data[1].ChanceRate
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 4951258619115869644, guid: 6d2044f5c483a634b98fbd1326b5e45a, type: 3}
+      propertyPath: Loot.Array.data[2].ChanceRate
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 6355812448355735981, guid: 6d2044f5c483a634b98fbd1326b5e45a, type: 3}
       propertyPath: m_Name
       value: BigTree

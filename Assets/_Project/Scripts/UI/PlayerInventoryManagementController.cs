@@ -13,15 +13,12 @@ public class PlayerInventoryManagementController : MonoBehaviour
     [SerializeField] protected ItemsSO SelectedItemType;
 
     public GameObject UIParent;
-    public RectTransform ItemPanel;
+    public CanvasGroup ItemSelectedPanel;
     [Header("Selected Item UI Window elements")]
     public Image SelectedItemImage;
     public TMP_Text SelectedItemName;
     public TMP_Text SelectedItemDescription;
     public TMP_Text SelectedItemAmount;
-
-
-
     public Button TrashButton;
     public Button CloseButton;
     public Sprite DefaultItemSprite;
@@ -115,10 +112,11 @@ public class PlayerInventoryManagementController : MonoBehaviour
         }
         if (SelectedItemType != null)
         {
+            ItemSelectedPanel.interactable = true;
             // Crear una secuencia de tweens encadenados
             secuencia = DOTween.Sequence();
             // Agregar tweens para mover el texto y cambiar su color
-            secuencia.Append(ItemPanel.DOAnchorPosX(0, 1f, true).SetEase(Ease.InOutQuad)); // Mover durante 2 segundos           
+            secuencia.Append(ItemSelectedPanel.DOFade(1, 1f).SetEase(Ease.InOutQuad));     
 
             selectedItemAmount = UIPlayerInventory.UI_Inventory.GetAmountOfType(SelectedItemType);
             if (SelectedItemImage != null)
@@ -133,10 +131,11 @@ public class PlayerInventoryManagementController : MonoBehaviour
         }
         else
         {
+            ItemSelectedPanel.interactable = false;
             // Crear una secuencia de tweens encadenados
             secuencia = DOTween.Sequence();
             // Agregar tweens para mover el texto y cambiar su color
-            secuencia.Append(ItemPanel.DOAnchorPosX(-250, 1f, true).SetEase(Ease.InOutQuad)); // Mover durante 2 segundos
+            secuencia.Append(ItemSelectedPanel.DOFade(0, 1f).SetEase(Ease.InOutQuad));
 
             //SelectedItemName.text = "";
             //SelectedItemDescription.text = "";
@@ -192,7 +191,8 @@ public class PlayerInventoryManagementController : MonoBehaviour
         {
             secuencia.Kill();
         }
-        ItemPanel.anchoredPosition = new Vector2(-250, ItemPanel.anchoredPosition.y);
+        ItemSelectedPanel.alpha = 0;
+        ItemSelectedPanel.interactable = false;
         UIParent.gameObject.SetActive(false);
         if (GeneralUIController.Instance != null)
         {

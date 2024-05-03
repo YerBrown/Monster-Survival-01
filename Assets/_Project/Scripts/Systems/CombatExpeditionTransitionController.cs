@@ -14,9 +14,6 @@ public class CombatExpeditionTransitionController : MonoBehaviour
     public Vector2 PlayerLastPosition;
     public string TeamID;
     public FighterData[] EnemyTeam = new FighterData[6];
-
-    [Header("UI")]
-    public Image BackgroundImage;
     private void Awake()
     {
         if (_instance != null && _instance != this)
