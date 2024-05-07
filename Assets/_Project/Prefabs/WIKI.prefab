@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5940794763523433132}
   - component: {fileID: 1661177667737033235}
   - component: {fileID: 2360502248028736522}
+  - component: {fileID: 7656101744615143246}
   m_Layer: 0
   m_Name: WIKI
   m_TagString: Untagged
@@ -124,3 +125,19 @@ MonoBehaviour:
     AnimClip: {fileID: 7400000, guid: 10e9448a0a7f2ad4dbaf4fa7f41fb856, type: 2}
   - ID: Range Attack
     AnimClip: {fileID: 7400000, guid: b9a4378a503b6684db045fe963f5b959, type: 2}
+--- !u!114 &7656101744615143246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620891282300136510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8df70ade4f7b7e459d0aceae864da6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuildingsLibrary:
+  - {fileID: 11400000, guid: 6bc39346efab6ad4aa6dfde6bc8c8ca8, type: 2}
+  - {fileID: 11400000, guid: 13a08f84345edaf4aa9334fb1eb1af99, type: 2}
+  - {fileID: 11400000, guid: 7bc8bb5809d47c04b9e9b1e1f8edc090, type: 2}

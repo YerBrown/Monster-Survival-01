@@ -2,29 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractiveElementsWiki : MonoBehaviour
+public class InteractiveElementsWiki : MonoSingleton<InteractiveElementsWiki>
 {
-    private static InteractiveElementsWiki _instance;
-    public static InteractiveElementsWiki Instance { get { return _instance; } }
-
     public List<GameObject> Blockers = new List<GameObject>();
     public List<GameObject> Containers = new List<GameObject>();
     public List<GameObject> Creatures = new List<GameObject>();
     public List<GameObject> Items = new List<GameObject>();
     public List<GameObject> Resources = new List<GameObject>();
     public List<GameObject> Switchers = new List<GameObject>();
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
     public GameObject GetPrefab(string element_ID)
     {
         GameObject prefab = null;

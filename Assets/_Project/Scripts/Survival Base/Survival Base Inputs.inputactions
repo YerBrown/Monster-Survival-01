@@ -1,0 +1,134 @@
+{
+    "name": "Survival Base Inputs",
+    "maps": [
+        {
+            "name": "Camera Movement",
+            "id": "4c38c1ac-0f47-4fc6-8a56-bff5f9c1a1bd",
+            "actions": [
+                {
+                    "name": "First Touch Contact",
+                    "type": "Button",
+                    "id": "5e254cd8-308a-4a60-a826-3536d9daee78",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Second Touch Contact",
+                    "type": "Button",
+                    "id": "347c2c52-7db0-4fb5-939e-7154b4b7fc87",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "First Touch Position",
+                    "type": "Value",
+                    "id": "59f41d1e-8594-4d94-91a0-82e0660dc7b2",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Second Touch Position",
+                    "type": "Value",
+                    "id": "160092bc-c0c6-4257-a11e-0654061ad61d",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "First Touch Delta Position",
+                    "type": "Value",
+                    "id": "1142ae5f-1173-48c0-bd3e-124b8be49a67",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Second Touch Delta Position",
+                    "type": "Value",
+                    "id": "a870bfd2-66a1-4c0a-9c89-a1418d4f7058",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "b50008c2-dc60-4f95-8839-0b99be679a1c",
+                    "path": "<Touchscreen>/touch0/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "First Touch Contact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29b176df-d9df-42fe-befa-0ecbbd87761c",
+                    "path": "<Touchscreen>/touch1/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Second Touch Contact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "fa0bf94c-51bf-40b4-a3f2-6ae73b158ce7",
+                    "path": "<Touchscreen>/touch0/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "First Touch Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0c379c97-1965-4465-9e24-cde2d82c31bb",
+                    "path": "<Touchscreen>/touch1/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Second Touch Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "60b7d3f2-e7b5-4af0-906d-3f2eba2bf913",
+                    "path": "<Touchscreen>/touch0/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "First Touch Delta Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3977e7fa-b21e-46d1-8438-434400498092",
+                    "path": "<Touchscreen>/touch1/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Second Touch Delta Position",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

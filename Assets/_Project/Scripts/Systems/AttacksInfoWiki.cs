@@ -3,11 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttacksInfoWiki : MonoBehaviour
+public class AttacksInfoWiki : MonoSingleton<AttacksInfoWiki>
 {
-    private static AttacksInfoWiki _instance;
-    public static AttacksInfoWiki Instance { get { return _instance; } }
-
     [SerializeField] private List<AttackInfo> _AllAttacks = new();
     private Dictionary<string, AttackInfo> _AttacksDictionary = new();
     [Serializable]
@@ -16,20 +13,11 @@ public class AttacksInfoWiki : MonoBehaviour
         public string ID;
         public AnimationClip AnimClip;
     }
-    private void Awake()
+    private void Start()
     {
-        if (_instance != null && _instance != this)
+        foreach (var attack in _AllAttacks)
         {
-            Destroy(gameObject);
-        }
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-            foreach (var attack in _AllAttacks)
-            {
-                _AttacksDictionary.Add(attack.ID, attack);
-            }
+            _AttacksDictionary.Add(attack.ID, attack);
         }
     }
 

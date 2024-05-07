@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a015a55a80eaa9f41b2c3e06b173cea8, type: 3}
+  m_Name: Camping Tent
+  m_EditorClassIdentifier: 
+  Name: Camping Tent
+  Description: Main building of the base, whre the player can change his appearance
+    and view his game stats.
+  Sprites:
+  - {fileID: 21300000, guid: 2fc09b5f44f409941a6f338691fbc5f8, type: 3}
+  Prefab: {fileID: 7172177837545331254, guid: f00f32ed3cb70fd4795d6eb10a651b3d, type: 3}
+  Costs:
+  - Costs:
+    - _ItemInfo: {fileID: 11400000, guid: 8a473a0dc201af1409344b7520b7a084, type: 2}
+      _Amount: 10
+    - _ItemInfo: {fileID: 11400000, guid: 7d58db3e81fd804488f9798341481cf1, type: 2}
+      _Amount: 5
+    - _ItemInfo: {fileID: 0}
+      _Amount: 0
+  FinishTimes:
+  - Days: 0
+    Hours: 0
+    Minutes: 1
+    Seconds: 30
+  - Days: 0
+    Hours: 0
+    Minutes: 0
+    Seconds: 0
+  - Days: 0
+    Hours: 0
+    Minutes: 0
+    Seconds: 0
+  Size: 1

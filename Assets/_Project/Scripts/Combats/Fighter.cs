@@ -3,7 +3,6 @@ using GeneralValues;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Rendering.FilterWindow;
 public class Fighter : MonoBehaviour
 {
     [Header("Fighter Info")]
