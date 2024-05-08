@@ -11,8 +11,8 @@ public class SurvivalBaseData : MonoBehaviour
         public string Area_ID;
         public string Building_ID;
         public int Level;
-        public string InProgress;
+        public bool InProgress;
         public string StartBuildingDateTime;
-        public string FinsihBuildingDateTime;
+        public string FinishBuildingDateTime;
     }
 }

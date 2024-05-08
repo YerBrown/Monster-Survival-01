@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7562316283514523435}
+  - component: {fileID: 7158142755255078459}
   m_Layer: 0
   m_Name: Resource Store 3x3
   m_TagString: Untagged
@@ -32,6 +33,21 @@ Transform:
   - {fileID: 817485774494530796}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7158142755255078459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 474739738133711557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ad80a3a9b4f4564fa52bb36859b03cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BuildingInfo: {fileID: 0}
+  Level: 0
+  InProgress: 0
 --- !u!1 &8955345195287925934
 GameObject:
   m_ObjectHideFlags: 0

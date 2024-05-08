@@ -1004,6 +1004,7 @@ MonoBehaviour:
   CameraLimits: {x: 50, y: 25}
   WasDraggingInLastMovement: 0
   MinDistanceToDetectDrag: 0.2
+  DebugMode: 0
 --- !u!1 &1007545423
 GameObject:
   m_ObjectHideFlags: 0
@@ -25173,6 +25174,7 @@ MonoBehaviour:
   - {fileID: 545826222}
   - {fileID: 317201883}
   MainCameraController: {fileID: 904329014}
+  CurrentData: {fileID: 0}
   BuildMenuController: {fileID: 2134147336}
 --- !u!1 &2060610774
 GameObject:
