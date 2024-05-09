@@ -2,38 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UIBuildMenuController : MonoBehaviour
+public class UIBuildMenuController : UIBuildingMenuController
 {
-    public BuildAreaController SelectedBuildArea;
-    public VoidEventChannelSO OnPointerClickedFloor;
-    [Header("UI")]
-    public RectTransform SelectBuildingPopup;
+    [Header("UI+")]
     public GameObject MenuParent;
     public List<BuildingSlotPanel> BuildingSlotPanels = new();
     private void OnEnable()
     {
-        OnPointerClickedFloor.OnEventRaised += UnselectBuildArea;
+
     }
     private void OnDisable()
     {
-        OnPointerClickedFloor.OnEventRaised -= UnselectBuildArea;
         
-    }
-    public void SelectNewBuildArea(BuildAreaController selectedArea)
-    {
-        SelectedBuildArea = selectedArea;
-        StartCoroutine(PopupFollowBuildArea());
-        SelectBuildingPopup.gameObject.SetActive(true);
-    }
-    public void UnselectBuildArea()
-    {
-        Debug.Log("Flor Clicked!");
-        SelectedBuildArea = null;
-        SelectBuildingPopup.gameObject.SetActive(false);
     }
     public void OpenBuildMenu()
     {
-        if (SelectedBuildArea != null)
+        if (CampManager.Instance.SelectedArea != null)
         {
             MenuParent.SetActive(true);
             UpdateBuildMenu();
@@ -48,7 +32,7 @@ public class UIBuildMenuController : MonoBehaviour
         List<BuildingSO> sameSizeBuildings = new();
         foreach (var building in BuildingInfoWiki.Instance.BuildingsDictionary)
         {
-            if (building.Value.Size == SelectedBuildArea.Size)
+            if (building.Value.Size == CampManager.Instance.SelectedArea.Size)
             {
                 sameSizeBuildings.Add(building.Value);
             }
@@ -70,16 +54,7 @@ public class UIBuildMenuController : MonoBehaviour
     }
     public void StartBuidling(BuildingSO selectedBuilding)
     {
-        CampManager.Instance.PlaceNewBuilding(selectedBuilding, SelectedBuildArea);
+        CampManager.Instance.PlaceNewBuilding(selectedBuilding);
         CloseBuildMenu();
-        UnselectBuildArea();
-    }
-    IEnumerator PopupFollowBuildArea()
-    {
-        while (SelectedBuildArea != null)
-        {
-            SelectBuildingPopup.transform.position = Camera.main.WorldToScreenPoint(SelectedBuildArea.transform.position);
-            yield return null;
-        }
     }
 }

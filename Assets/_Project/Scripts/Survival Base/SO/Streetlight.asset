@@ -10,32 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a015a55a80eaa9f41b2c3e06b173cea8, type: 3}
-  m_Name: Resource Store
+  m_Name: Streetlight
   m_EditorClassIdentifier: 
-  Name: Resource Store
-  Description: Place where all the objtects and resources are stored for future uses.
+  Name: Streetlight
+  Description: Decoration for the survival base, to add some light in the night
   Sprites:
-  - {fileID: 21300000, guid: b925a14652a3b29458523b684c3353e0, type: 3}
-  Prefab: {fileID: 5462219011173330480, guid: 083f3d68e9b1bd74185404b8870e3d6e, type: 3}
+  - {fileID: 21300000, guid: 4e4c743eaf4cf5c47b1a76ade5c95bf6, type: 3}
+  Prefab: {fileID: 3850939953756759009, guid: 567db2718e5d59442a02b20e0cffc33f, type: 3}
   Costs:
   - Costs:
     - _ItemInfo: {fileID: 11400000, guid: 8a473a0dc201af1409344b7520b7a084, type: 2}
-      _Amount: 20
-    - _ItemInfo: {fileID: 11400000, guid: 7d58db3e81fd804488f9798341481cf1, type: 2}
-      _Amount: 10
+      _Amount: 5
+    - _ItemInfo: {fileID: 0}
+      _Amount: 0
     - _ItemInfo: {fileID: 0}
       _Amount: 0
   FinishTimes:
   - Days: 0
     Hours: 0
-    Minutes: 1
-    Seconds: 12
-  - Days: 0
-    Hours: 0
     Minutes: 0
-    Seconds: 0
-  - Days: 0
-    Hours: 0
-    Minutes: 0
-    Seconds: 0
-  Size: 1
+    Seconds: 10
+  Size: 0

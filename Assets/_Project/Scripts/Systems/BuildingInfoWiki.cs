@@ -13,7 +13,7 @@ public class BuildingInfoWiki : MonoSingleton<BuildingInfoWiki>
             BuildingsDictionary.Add(building.name, building);
         }
     }
-    public BuildingSO GetItemByID(string id)
+    public BuildingSO GetBuildingByID(string id)
     {
         return BuildingsDictionary[id];
     }

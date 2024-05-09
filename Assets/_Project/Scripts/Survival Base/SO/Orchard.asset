@@ -17,7 +17,7 @@ MonoBehaviour:
     fruits and vegetables.
   Sprites:
   - {fileID: 21300000, guid: f1e35fc133cc8f942a2196787f21f916, type: 3}
-  Prefab: {fileID: 4609042095727314209, guid: 9331d035d9c978747bb17a38d83fddac, type: 3}
+  Prefab: {fileID: 262823957493029992, guid: a8976d3c7c3f3d64abdaa963d3d6ef79, type: 3}
   Costs:
   - Costs:
     - _ItemInfo: {fileID: 11400000, guid: 8a473a0dc201af1409344b7520b7a084, type: 2}
@@ -29,8 +29,8 @@ MonoBehaviour:
   FinishTimes:
   - Days: 0
     Hours: 0
-    Minutes: 5
-    Seconds: 0
+    Minutes: 3
+    Seconds: 10
   - Days: 0
     Hours: 0
     Minutes: 0

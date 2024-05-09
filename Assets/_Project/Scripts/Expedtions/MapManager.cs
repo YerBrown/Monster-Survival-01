@@ -7,10 +7,8 @@ using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class MapManager : MonoBehaviour
+public class MapManager : MonoSingleton<MapManager>
 {
-    private static MapManager _instance;
-    public static MapManager Instance { get { return _instance; } }
 
     public OverlayTile overlayTilePrefab;
     public GameObject overlayContainer;
@@ -27,26 +25,16 @@ public class MapManager : MonoBehaviour
     public ExpeditionMapSO FullMap;
     public GameObject DropedItemContainerPrefab;
     ExpeditionData CurrentFieldData = new ExpeditionData();
-    private void Awake()
-    {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-        }
-    }
+
     private void Start()
     {
-        if (CombatExpeditionTransitionController.Instance != null)
+        if (SceneLoadManager.Instance != null)
         {
-            if (CombatExpeditionTransitionController.Instance.CurrentMap != null)
+            if (SceneLoadManager.Instance.CurrentMap != null)
             {
-                ExpeditionMapSO loadMap = CombatExpeditionTransitionController.Instance.CurrentMap;
-                Vector2Int loadCoordinates = CombatExpeditionTransitionController.Instance.MapFieldCoordinates;
-                Vector2 playerStartPosition = CombatExpeditionTransitionController.Instance.PlayerLastPosition;
+                ExpeditionMapSO loadMap = SceneLoadManager.Instance.CurrentMap;
+                Vector2Int loadCoordinates = SceneLoadManager.Instance.MapFieldCoordinates;
+                Vector2 playerStartPosition = SceneLoadManager.Instance.PlayerLastPosition;
                 StartCoroutine(LoadLastFieldStatus(loadMap, loadCoordinates, playerStartPosition));
             }
             else
@@ -278,12 +266,12 @@ public class MapManager : MonoBehaviour
             {
                 LoadAllInteractiveElements(currentFieldData);
             }
-            if (CombatExpeditionTransitionController.Instance != null)
+            if (SceneLoadManager.Instance != null)
             {
-                string enemyID = CombatExpeditionTransitionController.Instance.TeamID;
+                string enemyID = SceneLoadManager.Instance.TeamID;
                 if (!string.IsNullOrEmpty(enemyID))
                 {
-                    (string, FighterData[]) combatResult = CombatExpeditionTransitionController.Instance.LoadCombatResult();
+                    (string, FighterData[]) combatResult = SceneLoadManager.Instance.LoadCombatResult();
                     foreach (var creature in currentFieldData.Creatures)
                     {
                         CreatureElement newCreature = (CreatureElement)GetElement(creature.ID, creature.Element_ID, creature.Pos);
@@ -375,7 +363,7 @@ public class MapManager : MonoBehaviour
     public void GoToCombatScene(string teamId, FighterData[] enemyTeam)
     {
         SaveAreaState();
-        CombatExpeditionTransitionController.Instance.LoadCombatScene(teamId, enemyTeam);
+        SceneLoadManager.Instance.LoadCombatFromExpeditionEnemyEncounter(teamId, enemyTeam);
     }
 
     private void OnApplicationQuit()

@@ -24,6 +24,7 @@ public class GeneralUIController : MonoBehaviour
         {
             _instance = this;
             DontDestroyOnLoad(gameObject);
+            BlackBackground.color = new Color(BlackBackground.color.r, BlackBackground.color.g, BlackBackground.color.b, 1f);
         }
     }
     public void OpenMenu(bool enable)

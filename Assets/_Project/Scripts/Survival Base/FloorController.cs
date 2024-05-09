@@ -26,12 +26,20 @@ public class FloorController : MonoBehaviour, IPointerClickHandler
             {
                 if (hit.collider.GetComponent<FloorController>() != null)
                 {
+                    Debug.Log($"Floor clicked");
                     OnClickOnFloor.RaiseEvent();
                 }
                 else if (hit.collider.GetComponent<BuildAreaController>() != null)
                 {
-                    hit.collider.GetComponent<BuildAreaController>().SelectArea();
+                    Debug.Log($"Build area {hit.collider.name} clicked");
+                    hit.collider.GetComponent<BuildAreaController>().TriggerSelectArea();
                 }
+                else if (hit.collider.GetComponent<BuildingController>() != null)
+                {
+                    Debug.Log($"Building {hit.collider.name} clicked");
+                    hit.collider.GetComponent<BuildingController>().TriggerSelectBuilding();
+                }
+                
             }
         }
     }

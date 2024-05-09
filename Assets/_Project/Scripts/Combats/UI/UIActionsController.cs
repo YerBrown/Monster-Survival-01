@@ -120,7 +120,7 @@ public class UIActionsController : MonoBehaviour
     }
     public void OnTryQuit()
     {
-        CombatExpeditionTransitionController.Instance.LoadExpeditionScene();
+        SceneLoadManager.Instance.LoadExpeditionFromCombat();
     }
     public void OnUseItem()
     {

@@ -65,9 +65,9 @@ public class CombatManager : MonoBehaviour
         {
             TeamsController.PlayerTeam.Fighters = PlayerManager.Instance.Team;
         }
-        if (CombatExpeditionTransitionController.Instance != null)
+        if (SceneLoadManager.Instance != null)
         {
-            TeamsController.EnemyTeam.Fighters= CombatExpeditionTransitionController.Instance.EnemyTeam;
+            TeamsController.EnemyTeam.Fighters= SceneLoadManager.Instance.EnemyTeam;
         }
         yield return new WaitForSeconds(.2f);
         TeamsController.SpawnStartingFighters();
