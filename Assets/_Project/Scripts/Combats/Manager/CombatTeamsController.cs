@@ -21,7 +21,7 @@ public class CombatTeamsController : MonoBehaviour
     // Spawn the staring fighters of and specific team
     private void SpawnFightersByTeam(CombatTeam team)
     {
-        if (FightersInfoWiki.Instance == null) { return; }
+        if (MainWikiManager.Instance == null) { return; }
         for (int i = 0; i < team.FightersInField.Length; i++)
         {
             int nextIndex = i;

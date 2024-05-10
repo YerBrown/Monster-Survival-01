@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteractiveElementsWiki : MonoSingleton<InteractiveElementsWiki>
+public class InteractiveElementsWiki : MonoBehaviour
 {
     public List<GameObject> Blockers = new List<GameObject>();
     public List<GameObject> Containers = new List<GameObject>();
@@ -10,6 +10,10 @@ public class InteractiveElementsWiki : MonoSingleton<InteractiveElementsWiki>
     public List<GameObject> Items = new List<GameObject>();
     public List<GameObject> Resources = new List<GameObject>();
     public List<GameObject> Switchers = new List<GameObject>();
+    private void Awake()
+    {
+        
+    }
     public GameObject GetPrefab(string element_ID)
     {
         GameObject prefab = null;

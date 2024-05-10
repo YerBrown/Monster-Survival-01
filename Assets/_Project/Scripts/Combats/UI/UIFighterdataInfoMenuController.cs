@@ -90,7 +90,7 @@ public class UIFighterdataInfoMenuController : MonoBehaviour
         CreatureSO fighter = _CurrentFighter.GetCreatureInfo();
         if (fighter != null)
         {
-            ElementType.sprite = FightersInfoWiki.Instance.ElementSpritesDictionary[fighter.c_Element];
+            ElementType.sprite = MainWikiManager.Instance.GetElementSprite(fighter.c_Element);
             NicknameText.text = _CurrentFighter.Nickname;
             RaceText.text = fighter.c_Name;
             HealthPointsText.text = $"HP {_CurrentFighter.HealthPoints}/{_CurrentFighter.MaxHealthPoints}";

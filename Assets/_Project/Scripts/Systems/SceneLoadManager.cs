@@ -10,9 +10,19 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public ExpeditionMapSO CurrentMap;
     public Vector2Int MapFieldCoordinates;
     public Vector2 PlayerLastPosition;
+    public VoidEventChannelSO OnRunAwayFromExpedition;
     [Header("Combat Data")]
     public string TeamID;
     public FighterData[] EnemyTeam = new FighterData[6];
+
+    public void OnEnable()
+    {
+        OnRunAwayFromExpedition.OnEventRaised += LoadSurvivalBaseFromExpedition;
+    }
+    public void OnDisable()
+    {
+        OnRunAwayFromExpedition.OnEventRaised -= LoadSurvivalBaseFromExpedition;    
+    }
     IEnumerator LoadCombatScene()
     {
         GeneralUIController.Instance.EnableBlackBackground(true);
@@ -48,6 +58,17 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public void LoadExpeditionFromCombat()
     {
         StartCoroutine(LoadExpeditionScene());
+    }
+    public void LoadExpeditionFromSurvivalBase(ExpeditionMapSO destinationMap)
+    {
+        CurrentMap = destinationMap;
+        MapFieldCoordinates = new Vector2Int(1, 0);
+        PlayerLastPosition = Vector2.zero;
+        StartCoroutine(LoadExpeditionScene());
+    }
+    public void LoadSurvivalBaseFromExpedition()
+    {
+        StartCoroutine(LoadSurvivalBaseSceneCoroutine());
     }
     public (string, FighterData[]) LoadCombatResult()
     {

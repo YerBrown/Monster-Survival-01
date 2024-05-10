@@ -70,7 +70,7 @@ public class UIFighterChangeController : MonoBehaviour
                     FisicalPower.text = fighterData.FisicalPower.ToString();
                     RangePower.text = fighterData.RangePower.ToString();
                     Defense.text = fighterData.Defense.ToString();
-                    ElementImage.sprite = FightersInfoWiki.Instance.ElementSpritesDictionary[creature.c_Element];
+                    ElementImage.sprite = MainWikiManager.Instance.GetElementSprite(creature.c_Element);
                     Parent.alpha = 1;
                     FighterInSlot = fighterData;
                 }

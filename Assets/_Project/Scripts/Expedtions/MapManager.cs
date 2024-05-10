@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class MapManager : MonoSingleton<MapManager>
 {
-
+    [Header("MAp Manager")]
     public OverlayTile overlayTilePrefab;
     public GameObject overlayContainer;
     public Grid MainGrid;
@@ -287,7 +288,7 @@ public class MapManager : MonoSingleton<MapManager>
     }
     private void LoadAllInteractiveElements(ExpeditionData.FieldData fieldData)
     {
-        if (InteractiveElementsWiki.Instance == null) return;
+        if (MainWikiManager.Instance == null) return;
         foreach (var blocker in fieldData.Blockers)
         {
             BlockerElement newBlocker = (BlockerElement)GetElement(blocker.ID, blocker.Element_ID, blocker.Pos);
@@ -331,7 +332,7 @@ public class MapManager : MonoSingleton<MapManager>
                 return element;
             }
         }
-        InteractiveElement spawnedElement = Instantiate(InteractiveElementsWiki.Instance.GetPrefab(element_id), CurrentField.EnvironmentParent).GetComponent<InteractiveElement>();
+        InteractiveElement spawnedElement = Instantiate(MainWikiManager.Instance.GetInteractiveElementByID(element_id), CurrentField.EnvironmentParent).GetComponent<InteractiveElement>();
         spawnedElement.transform.position = newPos;
         return spawnedElement;
     }

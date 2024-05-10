@@ -55,9 +55,9 @@ public class ItemElement : InteractiveElement
         if (data is ExpeditionData.ItemData)
         {
             base.UpdateElement(data);
-            if (ItemInfoWiki.Instance != null)
+            if (MainWikiManager.Instance != null)
             {
-                Item.ItemInfo = ItemInfoWiki.Instance.GetItemByID(((ExpeditionData.ItemData)data).ItemID);
+                Item.ItemInfo = MainWikiManager.Instance.GetItemByID(((ExpeditionData.ItemData)data).ItemID);
             }
             else
             {

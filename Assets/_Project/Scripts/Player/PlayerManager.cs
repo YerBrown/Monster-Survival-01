@@ -6,32 +6,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : MonoSingleton<PlayerManager>
 {
-    private static PlayerManager _instance;
-    public static PlayerManager Instance { get { return _instance; } }
-
+    [Header("Player Manager")]
     public string Nickname;
     public int PlayerLevel;
     public FighterData P_Fighter;
     public Inventory P_Inventory;
     public FighterData[] Team = new FighterData[6];
     public CapturesController Captures;
-    private void Awake()
+    private void Start()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-            LoadPlayerInfo();
-        }
-
+        LoadPlayerInfo();
     }
-
     private void LoadPlayerInfo()
     {
         for (int i = 0; i < Team.Length; i++)

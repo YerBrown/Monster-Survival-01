@@ -6,14 +6,15 @@ public class UIExpeditionMenuController : MonoBehaviour
 {
     public List<ExpeditionMapSO> Maps = new();
     public ExpeditionMapSO SelectedMap;
+    public GameObject MenuParent;
     public GameObject PoppupParent;
     public void OpenMenu()
     {
-
+        MenuParent.SetActive(true);
     }
     public void CloseMenu()
     {
-
+        MenuParent.SetActive(false);
     }
     public void OpenConfirmPopup(int mapSelected)
     {
@@ -27,6 +28,6 @@ public class UIExpeditionMenuController : MonoBehaviour
 
     public void ConfirmExpeditionDestination()
     {
-
+        SceneLoadManager.Instance.LoadExpeditionFromSurvivalBase(SelectedMap);
     }
 }

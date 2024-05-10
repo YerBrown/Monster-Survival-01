@@ -513,7 +513,7 @@ public class Fighter : MonoBehaviour
     // Get creature info of this fighter.
     public CreatureSO GetCreatureInfo()
     {
-        if (FightersInfoWiki.Instance.GetCreatureInfo(TypeID, out CreatureSO fighterInfo))
+        if (MainWikiManager.Instance.GetCreatureInfo(TypeID, out CreatureSO fighterInfo))
         {
             return fighterInfo;
         }
@@ -578,7 +578,7 @@ public class FighterData
     }
     public CreatureSO GetCreatureInfo()
     {
-        if (FightersInfoWiki.Instance.GetCreatureInfo(TypeID, out CreatureSO fighterInfo))
+        if (MainWikiManager.Instance.GetCreatureInfo(TypeID, out CreatureSO fighterInfo))
         {
             return fighterInfo;
         }

@@ -5,26 +5,17 @@ using UnityEngine;
 
 public class FightersInfoWiki : MonoBehaviour
 {
-    private static FightersInfoWiki _instance;
-    public static FightersInfoWiki Instance { get { return _instance; } }
+
 
     public List<CreatureSO> AllFighters = new();
     public Dictionary<string, CreatureSO> FightersDictionary = new();
     public List<Sprite> ElementSprites = new();
     public Dictionary<ElementType, Sprite> ElementSpritesDictionary = new();
+
     private void Awake()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-            SearchCreaturesInFolder();
-            AddElementSprites();
-        }
+        SearchCreaturesInFolder();
+        AddElementSprites();
     }
     // Reset element sprite info
     private void AddElementSprites()
@@ -34,6 +25,11 @@ public class FightersInfoWiki : MonoBehaviour
             ElementType element = (ElementType)i;
             ElementSpritesDictionary.Add(element, ElementSprites[i]);
         }
+    }
+
+    public Sprite GetElementSprite(ElementType element)
+    {
+        return ElementSpritesDictionary[element];
     }
     // Reset all creatures SO info
     private void SearchCreaturesInFolder()

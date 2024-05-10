@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/_Project/Scenes/Survival Base.unity
     guid: 97113db086e0f488f8d39ff609e029ae
   - enabled: 1
-    path: Assets/_Project/Scenes/Combat Field.unity
-    guid: ef0d0eee20226ea42ac0d4eaa13faef6
-  - enabled: 1
     path: Assets/_Project/Scenes/Expedition.unity
     guid: ad1afed9bf8f88c4f9b4adc2a66094e0
+  - enabled: 1
+    path: Assets/_Project/Scenes/Combat Field.unity
+    guid: ef0d0eee20226ea42ac0d4eaa13faef6
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9ef52c7bf7960d1409acc9c9c855e862, type: 2}

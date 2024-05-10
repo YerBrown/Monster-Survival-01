@@ -42,7 +42,7 @@ public class CampManager : MonoSingleton<CampManager>
     }
     public void PlaceBuildingInAreaFromSavedData(BuildAreaController area,SurvivalBaseData.BuildingData buildingData)
     {
-        BuildingSO buildInfo = BuildingInfoWiki.Instance.GetBuildingByID(buildingData.Building_ID);
+        BuildingSO buildInfo = MainWikiManager.Instance.GetBuildingByID(buildingData.Building_ID);
         BuildingController build = Instantiate(buildInfo.Prefab, area.transform).GetComponent<BuildingController>();
         build.transform.localPosition = Vector3.zero;
         area.ChildBuildingController = build;

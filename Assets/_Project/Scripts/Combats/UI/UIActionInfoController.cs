@@ -16,7 +16,7 @@ public class UIActionInfoController : MonoBehaviour
     public void OpenInfoPanel(Sprite imageSprite, string actionName, string actionType, ElementType element ,string actionDescription)
     {
         ActionImage.sprite = imageSprite;
-        ActionElement.sprite = FightersInfoWiki.Instance.ElementSpritesDictionary[element];
+        ActionElement.sprite = MainWikiManager.Instance.GetElementSprite(element);
         ActionNameText.text = actionName;
         ActionTypeText.text = actionType;
         ActionDescriptionText.text = actionDescription;

@@ -44,7 +44,7 @@ public class CreatureElement : InteractiveElement
         {
             if (i < livingCreatures.Count)
             {
-                if (FightersInfoWiki.Instance != null && FightersInfoWiki.Instance.FightersDictionary.TryGetValue(livingCreatures[i].TypeID, out CreatureSO creatureInfo))
+                if (MainWikiManager.Instance != null && MainWikiManager.Instance.GetCreatureInfo(livingCreatures[i].TypeID, out CreatureSO creatureInfo))
                 {
                     if (creatureInfo != null && SpriteRenderers[i] != null)
                     {

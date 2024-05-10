@@ -30,7 +30,7 @@ public class UIBuildMenuController : UIBuildingMenuController
     public void UpdateBuildMenu()
     {
         List<BuildingSO> sameSizeBuildings = new();
-        foreach (var building in BuildingInfoWiki.Instance.BuildingsDictionary)
+        foreach (var building in MainWikiManager.Instance.GetBuidlingsDictionary())
         {
             if (building.Value.Size == CampManager.Instance.SelectedArea.Size)
             {

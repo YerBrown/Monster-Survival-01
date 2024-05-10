@@ -25,7 +25,6 @@ public class UIActionsController : MonoBehaviour
         ActionsParent.gameObject.SetActive(enable);
         Fighter currentFighter = CombatManager.Instance.CurrentTurnFighter;
         FighterData currentData = CombatManager.Instance.TeamsController.GetFighterDataByFighter(currentFighter);
-        CurrentFighterElement = FightersInfoWiki.Instance.FightersDictionary[currentData.TypeID].c_Element;
         SpecialMoveButton.interactable = currentFighter.EnergyPoints >= GeneralValues.StaticCombatGeneralValues.Fighter_EnergyNeededFor_SpecialMovement;
         if (currentData != null)
         {
@@ -34,6 +33,7 @@ public class UIActionsController : MonoBehaviour
             {
                 CaptureButton.interactable = creatureInfo.c_Skills.Contains(Skills.CAPTURE);
                 UseItemsButton.interactable = creatureInfo.c_Skills.Contains(Skills.USE_ITEMS);
+                CurrentFighterElement = creatureInfo.c_Element;
             }
         }
     }

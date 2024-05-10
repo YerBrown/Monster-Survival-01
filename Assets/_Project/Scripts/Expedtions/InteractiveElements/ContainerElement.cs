@@ -44,12 +44,12 @@ public class ContainerElement : InteractiveElement
         newInventory.FlexibleSlots = data.FlexibleSlots;
         newInventory.OnlyRemoveItems = data.OnlyRemoveItems;
 
-        if (ItemInfoWiki.Instance != null)
+        if (MainWikiManager.Instance != null)
         {
             // Adds all items in data to real inventory.
             foreach (var itemSlot in data.AllItems)
             {
-                ItemSlot newSlot = new ItemSlot(ItemInfoWiki.Instance.GetItemByID(itemSlot.ItemID), itemSlot.Amount);
+                ItemSlot newSlot = new ItemSlot(MainWikiManager.Instance.GetItemByID(itemSlot.ItemID), itemSlot.Amount);
                 newInventory.AddNewItem(newSlot, false);
             }
         }

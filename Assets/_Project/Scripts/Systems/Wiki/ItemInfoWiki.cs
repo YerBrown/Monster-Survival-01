@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemInfoWiki : MonoSingleton<ItemInfoWiki>
+public class ItemInfoWiki : MonoBehaviour
 {
     public List<ItemsSO> ItemsLibrary = new List<ItemsSO>();
     public Dictionary<string, ItemsSO> ItemsDictionary = new Dictionary<string, ItemsSO>();
 
 
-    private void Start()
+    private void Awake()
     {
         SearchItemsInFolder();
     }

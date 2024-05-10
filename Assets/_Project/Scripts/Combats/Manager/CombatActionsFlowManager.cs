@@ -144,7 +144,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                     }),0f, true),
                     new CombatAction((() =>
                     {
-                        if (AttacksInfoWiki.Instance!=null)
+                        if (MainWikiManager.Instance!=null)
                         {
                             targetFighter.AnimationController.PlayAttack("Fisical Attack");
                         }
@@ -194,7 +194,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                     }),0f, true),
                     new CombatAction((() =>
                     {
-                        if (AttacksInfoWiki.Instance!=null)
+                        if (MainWikiManager.Instance!=null)
                         {
                             targetFighter.AnimationController.PlayAttack("Range Attack");
                         }
@@ -252,7 +252,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                         {
                             if (targetTeam.FightersInField[i]!=null && posibleTargets.Contains(i))
                             {
-                                if (AttacksInfoWiki.Instance!=null)
+                                if (MainWikiManager.Instance!=null)
                                 {
                                     targetTeam.FightersInField[i].AnimationController.PlayAttack("Range Attack");
                                 }
@@ -300,7 +300,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                 {
                     new CombatAction((() =>
                     {
-                        if (AttacksInfoWiki.Instance!=null)
+                        if (MainWikiManager.Instance!=null)
                         {
                             currentTurnFighter.AnimationController.PlayAttack("Enable Defense");
                         }

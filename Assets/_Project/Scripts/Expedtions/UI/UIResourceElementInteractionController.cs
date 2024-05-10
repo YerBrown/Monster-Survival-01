@@ -86,7 +86,7 @@ public class UIResourceElementInteractionController : MonoBehaviour
         {
             if (i < _CreaturesInTeam.Length)
             {
-                if (FightersInfoWiki.Instance.GetCreatureInfo(_CreaturesInTeam[i].TypeID, out CreatureSO creatureInfo))
+                if (MainWikiManager.Instance.GetCreatureInfo(_CreaturesInTeam[i].TypeID, out CreatureSO creatureInfo))
                 {
                     bool isFarmingPosible = creatureInfo.c_Skills.Contains(ResourceTarget.ResourceInfo.R_SkillNeeded);
                     TeamButtons[i].transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = creatureInfo.c_AvatarSprite; ;
@@ -115,7 +115,7 @@ public class UIResourceElementInteractionController : MonoBehaviour
             CheckResourceHealthPoints();
             for (int i = 0; i < TeamButtons.Count; i++)
             {
-                if (FightersInfoWiki.Instance.GetCreatureInfo(_CreaturesInTeam[i].TypeID, out CreatureSO creatureInfo))
+                if (MainWikiManager.Instance.GetCreatureInfo(_CreaturesInTeam[i].TypeID, out CreatureSO creatureInfo))
                 {
                     bool isFarmingPosible = creatureInfo.c_Skills.Contains(ResourceTarget.ResourceInfo.R_SkillNeeded);
                     if (isFarmingPosible)

@@ -30,7 +30,7 @@ public class BuildingController : MonoBehaviour
     private Sequence SelectBuildingSequence;
     public void CheckCurrentBuildingState(SurvivalBaseData.BuildingData buildingData)
     {
-        BuildingInfo = BuildingInfoWiki.Instance.GetBuildingByID(buildingData.Building_ID);
+        BuildingInfo = MainWikiManager.Instance.GetBuildingByID(buildingData.Building_ID);
         Level = buildingData.Level;
         InProgress = buildingData.InProgress;
         StartBuildingDateTime = DateTime.ParseExact(buildingData.StartBuildingDateTime, "o", CultureInfo.InvariantCulture);

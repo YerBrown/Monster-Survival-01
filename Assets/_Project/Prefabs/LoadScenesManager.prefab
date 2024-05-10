@@ -44,9 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ecb9e8761462c0747bc5edef23d13d24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _DontDestroyOnLoad: 1
   CurrentMap: {fileID: 0}
   MapFieldCoordinates: {x: 1, y: 0}
   PlayerLastPosition: {x: 0, y: 0}
+  OnRunAwayFromExpedition: {fileID: 11400000, guid: 99ccbe416646f3443a1280fe95ef9dff, type: 2}
   TeamID: 
   EnemyTeam:
   - ID: 
