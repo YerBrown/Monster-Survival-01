@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIPlayerInventoryInCombatController : PlayerInventoryManagementController
+public class UIPlayerInventoryInCombatController : UIPlayerInventoryMenuController
 {
+    [Header("In Combat Variables")]
     public Sprite SelectedFilterSprite;
     public Sprite UnselectedFilterSprite;
 
@@ -42,34 +43,6 @@ public class UIPlayerInventoryInCombatController : PlayerInventoryManagementCont
         }
         return null;
     }
-    public override void SelectItemToTransfer()
-    {
-        int selectedItemAmount = 0;
-
-        if (SelectedItemType != null)
-        {
-
-            selectedItemAmount = UIPlayerInventory.UI_Inventory.GetAmountOfType(SelectedItemType);
-            SelectedItemName.text = SelectedItemType.i_Name;
-            if (SelectedItemImage != null)
-            {
-                SelectedItemImage.sprite = SelectedItemType.i_Sprite;
-            }
-            SelectedItemDescription.text = SelectedItemType.i_Description;
-            SelectedItemAmount.text = $"x{selectedItemAmount}";
-
-        }
-        else
-        {
-            SelectedItemName.text = "";
-            if (SelectedItemImage != null)
-            {
-                SelectedItemImage.sprite = DefaultItemSprite;
-            }
-            SelectedItemDescription.text = "";
-            SelectedItemAmount.text = $"";
-        }
-    }
     public void SelectFighterDataTarget(FighterData fighterData)
     {
         Fighter fighterInField = CombatManager.Instance.TeamsController.PlayerTeam.GetFighterInField(fighterData.ID);
@@ -99,7 +72,7 @@ public class UIPlayerInventoryInCombatController : PlayerInventoryManagementCont
         switch (SelectedItemType.i_TargetType)
         {
             case TargetSelectType.ALL:
-                TargetController.EnableAllTarget();
+                TargetController.EnableAllTarget(false);
                 break;
             case TargetSelectType.PLAYER_TEAM:
                 TargetController.EnablePlayerTargets();
@@ -139,7 +112,7 @@ public class UIPlayerInventoryInCombatController : PlayerInventoryManagementCont
         TargetController.DisableAllTargets();
         CombatManager.Instance.UIManager.NotificationController.DisableActionInfoPopup();
     }
-    public override void CloseMenu()
+    public override void ClosePopup()
     {
         UIParent.gameObject.SetActive(false);
         ActionsController.OnCancelAction();

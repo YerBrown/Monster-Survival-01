@@ -44,7 +44,12 @@ public class UIInventoriesManagementController : MonoBehaviour
         TransferStackButton.onClick.AddListener(TransferStack);
         TransferPartButton.onClick.AddListener(OpenTransferAmountPopup);
         TrashButton.onClick.AddListener(OpenTrashPopup);
-        CloseButton.onClick.AddListener(CloseMenu);
+        if (CloseButton != null)
+        {
+            CloseButton.onClick.AddListener(CloseMenu);
+        }
+        TransferAllItemsButton_L.onClick.AddListener(TransferAllItemsL);
+        TransferAllItemsButton_R.onClick.AddListener(TransferAllItemsR);
         //reset selected item
         ResetSelected();
         CheckEmptyInventories();
@@ -59,7 +64,12 @@ public class UIInventoriesManagementController : MonoBehaviour
         TransferStackButton.onClick.RemoveListener(TransferStack);
         TransferPartButton.onClick.RemoveListener(OpenTransferAmountPopup);
         TrashButton.onClick.RemoveListener(OpenTrashPopup);
-        CloseButton.onClick.RemoveListener(CloseMenu);
+        if (CloseButton != null)
+        {
+            CloseButton.onClick.RemoveListener(CloseMenu);
+        }
+        TransferAllItemsButton_L.onClick.RemoveListener(TransferAllItemsL);
+        TransferAllItemsButton_R.onClick.RemoveListener(TransferAllItemsR);
     }
     //Select item and inventory 
     private void SelectItemSlot(UIInventoryController uiInventory, ItemsSO itemType)
@@ -130,11 +140,6 @@ public class UIInventoriesManagementController : MonoBehaviour
         }
         else
         {
-            //SelectedItemImage.sprite = ItemsRelatedUtilities.DefaultIcon();
-            //SelectedItemName.text = "???";
-            //SelectedItemDescription.text = "";
-            //SelectedItemAmount.text = $"x???";
-            //SelectedItemAmountStack.text = $"x???";
             SelectedItemImage.gameObject.SetActive(false);
             SelectedItemName.text = "";
             SelectedItemDescription.text = "";
@@ -199,13 +204,17 @@ public class UIInventoriesManagementController : MonoBehaviour
                 TransferItem(Inventory_R, Inventory_L, transferedSlot);
             }
         }
-        if (SelectedItemType != null)
-        {
-            Inventory_R.SetSelectedUI(SelectedItemType, SelectedInventory == Inventory_R);
-            Inventory_L.SetSelectedUI(SelectedItemType, SelectedInventory == Inventory_L);
-        }
         CheckEmptyInventories();
     }
+    public void TransferAllItemsL()
+    {
+        TransferAllItems(true);
+    }
+    public void TransferAllItemsR()
+    {
+        TransferAllItems(false);
+    }
+
     //Transfer one stack of one type of item
     public void TransferStack()
     {
@@ -232,9 +241,6 @@ public class UIInventoriesManagementController : MonoBehaviour
     private void SelectTransferTargets(ItemSlot transferedSlot)
     {
         TransferItem((SelectedInventory == Inventory_L) ? Inventory_L : Inventory_R, (SelectedInventory == Inventory_L) ? Inventory_R : Inventory_L, transferedSlot);
-
-        Inventory_R.SetSelectedUI(transferedSlot.ItemInfo, SelectedInventory == Inventory_R);
-        Inventory_L.SetSelectedUI(transferedSlot.ItemInfo, SelectedInventory == Inventory_L);
         CheckEmptyInventories();
     }
     //After transfer check the amount of the item
@@ -281,7 +287,10 @@ public class UIInventoriesManagementController : MonoBehaviour
     }
     public void CloseMenu()
     {
-        OnClosePopup.RaiseEvent();
+        if (OnClosePopup != null)
+        {
+            OnClosePopup.RaiseEvent();
+        }
         gameObject.SetActive(false);
         GeneralUIController.Instance.OpenMenu(false);
     }

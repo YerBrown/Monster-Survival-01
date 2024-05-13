@@ -63,7 +63,7 @@ public class UIActionInFighterDataController : MonoBehaviour
             }));
         }
         _Sequence.AppendInterval(1f);
-        _Sequence.Append(InfoPopup.DOAnchorPosX(250, 0.5f));
+        _Sequence.Append(InfoPopup.DOAnchorPosX(500, 0.5f));
         _Sequence.AppendInterval(1f);
         _Sequence.OnComplete(() =>
         {

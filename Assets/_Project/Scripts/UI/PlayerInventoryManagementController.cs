@@ -12,7 +12,6 @@ public class PlayerInventoryManagementController : MonoBehaviour
     public UIInventoryController UIPlayerInventory;
     [SerializeField] protected ItemsSO SelectedItemType;
 
-    public GameObject UIParent;
     public CanvasGroup ItemSelectedPanel;
     [Header("Selected Item UI Window elements")]
     public Image SelectedItemImage;
@@ -28,55 +27,41 @@ public class PlayerInventoryManagementController : MonoBehaviour
 
     public bool ResetOnSameType = false;
     public bool SelectFirstOnOpen = false;
-    public VoidEventChannelSO OnOpenPlayerInventory;
     public UITrashController TrashController;
 
     private Sequence secuencia; // Referencia a la secuencia de Dotween
-    private void OnEnable()
+    public virtual void OpenPopup()
     {
-        OnOpenPlayerInventory.OnEventRaised += OpenPopup;
         UIPlayerInventory.ItemSlotSelected.AddListener(SelectItemSlot);
 
         if (TrashButton != null)
         {
             TrashButton.onClick.AddListener(OpenTrashPopup);
         }
-        CloseButton.onClick.AddListener(CloseMenu);
-
+        //reset selected item
+        if (UIPlayerInventory.UI_Inventory.Slots.Count > 0 && SelectFirstOnOpen)
+        {
+            SelectItemSlot(UIPlayerInventory, UIPlayerInventory.UI_Inventory.Slots[0].ItemInfo);
+        }
+        else
+        {
+            ResetSelected();            
+        }
+        DisableFilter();
     }
-    private void OnDisable()
+    public virtual void ClosePopup()
     {
-        OnOpenPlayerInventory.OnEventRaised -= OpenPopup;
         UIPlayerInventory.ItemSlotSelected.RemoveListener(SelectItemSlot);
         if (TrashButton != null)
         {
             TrashButton.onClick.RemoveListener(OpenTrashPopup);
         }
-        CloseButton.onClick.RemoveListener(CloseMenu);
-    }
-    public virtual void OpenPopup()
-    {
-        if (PlayerManager.Instance != null) UIPlayerInventory.UI_Inventory = PlayerManager.Instance.P_Inventory;
-        //reset selected item
-        UIParent.gameObject.SetActive(true);
-
-        if (UIPlayerInventory.UI_Inventory.Slots.Count > 0)
+        if (secuencia != null)
         {
-            if (SelectFirstOnOpen)
-            {
-                SelectItemSlot(UIPlayerInventory, UIPlayerInventory.UI_Inventory.Slots[0].ItemInfo);
-            }            
+            secuencia.Kill();
         }
-        else
-        {
-            ResetSelected();
-            SelectItemToTransfer();
-        }
-        DisableFilter();
-        if (GeneralUIController.Instance != null)
-        {
-            GeneralUIController.Instance.OpenMenu(true);
-        }
+        ItemSelectedPanel.alpha = 0;
+        ItemSelectedPanel.interactable = false;
     }
     //Select item and inventory 
     protected void SelectItemSlot(UIInventoryController uiInventory, ItemsSO itemType)
@@ -90,7 +75,6 @@ public class PlayerInventoryManagementController : MonoBehaviour
             SelectedItemType = itemType;
 
             UIPlayerInventory.SetSelectedUI(itemType, true);
-
         }
         Debug.Log($"Inventario: {UIPlayerInventory.name}, ItemSlot: {itemType.i_Name} {UIPlayerInventory.UI_Inventory.GetAmountOfType(itemType)}");
         SelectItemToTransfer();
@@ -113,10 +97,11 @@ public class PlayerInventoryManagementController : MonoBehaviour
         if (SelectedItemType != null)
         {
             ItemSelectedPanel.interactable = true;
+
             // Crear una secuencia de tweens encadenados
             secuencia = DOTween.Sequence();
             // Agregar tweens para mover el texto y cambiar su color
-            secuencia.Append(ItemSelectedPanel.DOFade(1, 1f).SetEase(Ease.InOutQuad));     
+            secuencia.Append(ItemSelectedPanel.DOFade(1, 1f).SetEase(Ease.InOutQuad));
 
             selectedItemAmount = UIPlayerInventory.UI_Inventory.GetAmountOfType(SelectedItemType);
             if (SelectedItemImage != null)
@@ -126,7 +111,10 @@ public class PlayerInventoryManagementController : MonoBehaviour
             SelectedItemName.text = SelectedItemType.i_Name;
             SelectedItemDescription.text = SelectedItemType.i_Description;
             SelectedItemAmount.text = $"x{selectedItemAmount}";
-            TrashButton.interactable = true;
+            if (TrashButton != null)
+            {
+                TrashButton.interactable = true;
+            }
 
         }
         else
@@ -141,7 +129,10 @@ public class PlayerInventoryManagementController : MonoBehaviour
             //SelectedItemDescription.text = "";
             //SelectedItemAmount.text = "";
             //SelectedItemWeight.text = "";
-            TrashButton.interactable = false;
+            if (TrashButton != null)
+            {
+                TrashButton.interactable = false;
+            }
             //WeightIcon.SetActive(false);
         }
     }
@@ -184,20 +175,6 @@ public class PlayerInventoryManagementController : MonoBehaviour
     public virtual void EnableFilter()
     {
         UIPlayerInventory.SetFilter(IsFilterEnabled, MainFilter);
-    }
-    public virtual void CloseMenu()
-    {
-        if (secuencia != null)
-        {
-            secuencia.Kill();
-        }
-        ItemSelectedPanel.alpha = 0;
-        ItemSelectedPanel.interactable = false;
-        UIParent.gameObject.SetActive(false);
-        if (GeneralUIController.Instance != null)
-        {
-            GeneralUIController.Instance.OpenMenu(false);
-        }
     }
 }
 

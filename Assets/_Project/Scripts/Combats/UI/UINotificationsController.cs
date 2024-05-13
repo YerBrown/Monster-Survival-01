@@ -9,6 +9,7 @@ public class UINotificationsController : MonoBehaviour
     [SerializeField] UIWinAnimationController WinController;
     [SerializeField] UIActionInfoController ActionInfoController;
     [SerializeField] UIActionInFighterDataController ActionInFighterDataController;
+    [SerializeField] UIFighterHealthChangeNotificactionController FighterHealthChangeNotificationController;
     public TMP_Text CombatBeginsText;
     Sequence CombatBeginsSequence;
     public void PlayerWin()
@@ -41,5 +42,9 @@ public class UINotificationsController : MonoBehaviour
             CombatManager.Instance.SelectNextFighter();
         });
 
+    }
+    public void OnHealthChanged(Vector3 fighterPosition, int amount, Effectiveness effectiveness)
+    {
+        FighterHealthChangeNotificationController.NotificateHealthChange(fighterPosition, amount, effectiveness);
     }
 }

@@ -108,23 +108,23 @@ public class Inventory
                 int newAmount = Slots[i].Amount - amountRemoved;
                 if (newAmount <= 0)
                 {
-                    if (OnItemRemoved != null && amountRemoved > 0)
-                    {
-                        OnItemRemoved.RaiseEvent(new ItemSlot(itemType, Slots[i].Amount));
-                    }
                     Slots.RemoveAt(i);
                     if (newAmount < 0)
                     {
                         RemoveItemOfType(itemType, Mathf.Abs(newAmount));
                     }
+                    if (OnItemRemoved != null && amountRemoved > 0)
+                    {
+                        OnItemRemoved.RaiseEvent(new ItemSlot(itemType, Slots[i].Amount));
+                    }
                 }
                 else
                 {
+                    Slots[i].Amount = newAmount;
                     if (OnItemRemoved != null && amountRemoved > 0)
                     {
                         OnItemRemoved.RaiseEvent(new ItemSlot(itemType, amountRemoved));
                     }
-                    Slots[i].Amount = newAmount;
                 }
                 return;
             }

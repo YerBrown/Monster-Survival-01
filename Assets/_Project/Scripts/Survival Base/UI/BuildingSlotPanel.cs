@@ -14,8 +14,9 @@ public class BuildingSlotPanel : MonoBehaviour
     public TMP_Text TimeText;
     public Image BuildingImage;
     public TMP_Text[] ItemCostText = new TMP_Text[3];
+    public Color NotEnoughAmountColor = Color.white;
     public Image[] ItemCostImages = new Image[3];
-
+    public Button BuildButton;
     public void UpdatePanel(BuildingSO newBuilding)
     {
         CurrentBuilding = newBuilding;
@@ -44,7 +45,17 @@ public class BuildingSlotPanel : MonoBehaviour
         {
             if (CurrentBuilding.Costs[0].Costs[i].ItemInfo != null)
             {
-                ItemCostText[i].text = $"00/{CurrentBuilding.Costs[0].Costs[i].Amount.ToString("00")}";
+                string amountTextColor;
+                int currentAmount = SurvivalBaseStorageManager.Instance.GetItemAmount(CurrentBuilding.Costs[0].Costs[i].ItemInfo);
+                if (currentAmount >= CurrentBuilding.Costs[0].Costs[i].Amount)
+                {
+                    amountTextColor = ColorUtility.ToHtmlStringRGB(ItemCostText[i].color);
+                }
+                else
+                {
+                    amountTextColor = ColorUtility.ToHtmlStringRGB(NotEnoughAmountColor);
+                }
+                ItemCostText[i].text = $"<color=#{amountTextColor}>{currentAmount.ToString("00")}</color>/{CurrentBuilding.Costs[0].Costs[i].Amount.ToString("00")}";
                 ItemCostImages[i].sprite = CurrentBuilding.Costs[0].Costs[i].ItemInfo.i_Sprite;
                 ItemCostText[i].transform.parent.gameObject.SetActive(true);
             }
@@ -54,6 +65,8 @@ public class BuildingSlotPanel : MonoBehaviour
             }
         }
         BuildingImage.sprite = CurrentBuilding.Sprites[0];
+        bool isPosibleToBuild = SurvivalBaseStorageManager.Instance.IsPosibleToConsume(CurrentBuilding.Costs[0].Costs.ToList());
+        BuildButton.interactable = isPosibleToBuild;
     }
     public void ClearBuilding()
     {
@@ -61,6 +74,7 @@ public class BuildingSlotPanel : MonoBehaviour
     }
     public void StartBuilding()
     {
+        SurvivalBaseStorageManager.Instance.ConsumeItems(CurrentBuilding.Costs[0].Costs.ToList());
         BuildMenuController.StartBuidling(CurrentBuilding);
     }
 

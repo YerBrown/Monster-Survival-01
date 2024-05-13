@@ -15,7 +15,11 @@ public class UIBuildingMenuController : MonoBehaviour
         {
             EnableActionButtonsSequence.Kill();
         }
-        EnableActionButtonsSequence.Append(ActionButtonsParent.DOFade(1f, 0.25f));
+        EnableActionButtonsSequence.Append(ActionButtonsParent.DOFade(1f, 0.25f).OnComplete(() =>
+        {
+            ActionButtonsParent.interactable = true;
+            ActionButtonsParent.blocksRaycasts = true;
+        }));
     }
     public void DisableActionButtons()
     {
@@ -24,5 +28,7 @@ public class UIBuildingMenuController : MonoBehaviour
             EnableActionButtonsSequence.Kill();
         }
         EnableActionButtonsSequence.Append(ActionButtonsParent.DOFade(0f, 0.25f));
+        ActionButtonsParent.interactable = false;
+        ActionButtonsParent.blocksRaycasts = false;
     }
 }

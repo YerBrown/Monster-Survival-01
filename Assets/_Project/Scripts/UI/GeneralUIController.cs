@@ -5,31 +5,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GeneralUIController : MonoBehaviour
+public class GeneralUIController : MonoSingleton<GeneralUIController>
 {
-    public static GeneralUIController _instance;
-    public static GeneralUIController Instance { get { return _instance; } }
-
+    public BoolEventChannelSO OnOpenMenuPopup;
     public bool MenuOpened = false;
 
     public Image BlackBackground;
-
-    private void Awake()
+    private void Start()
     {
-        if (_instance != null && _instance != this)
-        {
-            Destroy(this.gameObject);
-        }
-        else
-        {
-            _instance = this;
-            DontDestroyOnLoad(gameObject);
-            BlackBackground.color = new Color(BlackBackground.color.r, BlackBackground.color.g, BlackBackground.color.b, 1f);
-        }
+        BlackBackground.color = new Color(BlackBackground.color.r, BlackBackground.color.g, BlackBackground.color.b, 1f);
     }
     public void OpenMenu(bool enable)
     {
         MenuOpened = enable;
+        OnOpenMenuPopup.RaiseEvent(MenuOpened);
     }
 
     public void EnableBlackBackground(bool enable)

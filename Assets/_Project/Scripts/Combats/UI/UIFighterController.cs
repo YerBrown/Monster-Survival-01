@@ -14,12 +14,9 @@ public class UIFighterController : MonoBehaviour
     public Slider EnergyPointsSlider;
     public Fighter CurrentFighter;
     public GameObject DefenseIcon;
-    public TMP_Text HealthChangeText;
-    public TMP_Text EffectivnessText;
     public Image FrienshipPointsFillImage;
     public CanvasGroup FriendshipPointsParent;
     public Image EffectiveAddedFriendshipPointsIcon;
-    public CanvasGroup HealthChangeCanvasGroup;
     public TMP_Text NextText;
     public RectTransform PlayerStatsPos;
     public RectTransform EnemyStatsPos;
@@ -115,45 +112,7 @@ public class UIFighterController : MonoBehaviour
     }
     public void HealthPointsChanged(int amount, Effectiveness effectiveness)
     {
-        if (_SequenceHP != null)
-        {
-            _SequenceHP.Kill();
-        }
-        if (amount > 0)
-        {
-            HealthChangeText.color = Color.green;
-            EffectivnessText.color = Color.green;
-        }
-        else if (amount < 0)
-        {
-            HealthChangeText.color = Color.red;
-            EffectivnessText.color = Color.red;
-        }
-        else
-        {
-            return;
-        }
-        switch (effectiveness)
-        {
-            case Effectiveness.NORMAL:
-                EffectivnessText.text = "";
-                break;
-            case Effectiveness.VERY_EFFECTIVE:
-                EffectivnessText.text = "Very Effective";
-                break;
-            case Effectiveness.LESS_EFFECTIVE:
-                EffectivnessText.text = "Not Very Effective";
-                break;
-            default:
-                break;
-        }
-        HealthChangeText.rectTransform.localScale = new Vector2(0.1f, 0.1f);
-        HealthChangeText.text = amount.ToString();
-        _SequenceHP = DOTween.Sequence();
-        _SequenceHP.Append(HealthChangeText.rectTransform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutElastic));
-        _SequenceHP.Join(HealthChangeCanvasGroup.DOFade(1, 0.25f));
-        _SequenceHP.AppendInterval(0.5f);
-        _SequenceHP.Append(HealthChangeCanvasGroup.DOFade(0, 2f));
+        CombatManager.Instance.UIManager.NotificationController.OnHealthChanged(transform.position, amount, effectiveness);
     }
     public void FrienshipPointsChanged(bool effectiveAdded)
     {

@@ -151,7 +151,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                         int calculatedDamage = targetFighter.ReceiveDamage(currentTurnFighter.CurrentStats.HitPower, currentTurnFighter.Element);
                         currentTurnFighter.AddEnergyPoints(calculatedDamage / 2, true);
                         Debug.Log($"{currentTurnFighter.Nickname} attacked fisicaly to {targetFighter.Nickname} dealing {calculatedDamage} hp");
-                    }),1f, true),
+                    }),1f, false),
                     new CombatAction((() =>
                     {
                         currentTurnFighter.ReturnToFighterPos();
@@ -201,7 +201,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                         int calculatedDamage = targetFighter.ReceiveDamage(currentTurnFighter.CurrentStats.RangePower, currentTurnFighter.Element);
                         currentTurnFighter.AddEnergyPoints(calculatedDamage / 2, true);
                         Debug.Log($"{currentTurnFighter.Nickname} attacked in raange to {targetFighter.Nickname} dealing {calculatedDamage} hp");
-                    }),1f, true),
+                    }),1f, false),
                     new CombatAction((() =>
                     {
                         currentTurnFighter.ReturnToFighterPos();
@@ -265,7 +265,7 @@ public class CombatActionsFlowManager : MonoBehaviour
                         }
                         currentTurnFighter.AddEnergyPoints(-(GeneralValues.StaticCombatGeneralValues.Fighter_EnergyNeededFor_SpecialMovement), true);
                         Debug.Log($"{currentTurnFighter.Nickname} attacked to all opposing fighters");
-                    }),1f, true),
+                    }),1f, false),
                     new CombatAction((() =>
                     {
                         currentTurnFighter.ReturnToFighterPos();

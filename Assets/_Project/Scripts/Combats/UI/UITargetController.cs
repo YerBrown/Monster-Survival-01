@@ -10,11 +10,11 @@ public class UITargetController : MonoBehaviour
     public List<GameObject> EnemyTargets = new();
     public List<TMP_Text> EnemyCaptureRateTexts = new();
     public UIActionsController ActionsController;
-    public void EnableAllTarget()
+    public void EnableAllTarget(bool enableCancelButton)
     {
         EnableEnemyTargets();
         EnablePlayerTargets();
-        ActionsController.EnableCancelButton(true);
+        ActionsController.EnableCancelButton(enableCancelButton);
     }
     public void DisableAllTargets()
     {

@@ -43,6 +43,10 @@ public class MapManager : MonoSingleton<MapManager>
                 StartCoroutine(InitializeExpedition());
             }
         }
+        else
+        {
+            StartCoroutine(InitializeExpedition());
+        }
     }
     public void ChangeField(Vector2Int travelDistance, int pathSide)
     {

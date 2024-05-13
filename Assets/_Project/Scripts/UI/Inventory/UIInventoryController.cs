@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class UIInventoryController : MonoBehaviour
 {
     public Inventory UI_Inventory;
+    private ItemsSO _SelectedItem;
     public TMP_Text InventoryNameText;
     public List<GameObject> ItemsBackground = new List<GameObject>();
     public List<UIItemSlotController> Items = new List<UIItemSlotController>();
@@ -118,13 +119,29 @@ public class UIInventoryController : MonoBehaviour
                 }
             }
         }
+        if (_SelectedItem != null)
+        {
+            EnableSelectedUI();
+        }
     }
     //Update all buttons to show item selected status
     public void SetSelectedUI(ItemsSO selectedItemType, bool thisInventory)
     {
+        if (thisInventory)
+        {
+            _SelectedItem = selectedItemType;
+        }
+        else
+        {
+            _SelectedItem = null;
+        }
+        EnableSelectedUI();
+    }
+    private void EnableSelectedUI()
+    {
         foreach (var item in Items)
         {
-            if (selectedItemType != null && item.Slot != null && item.Slot.ItemInfo == selectedItemType && thisInventory)
+            if (_SelectedItem != null && item.Slot != null && item.Slot.ItemInfo == _SelectedItem)
             {
                 item.EnableBack(true);
             }
