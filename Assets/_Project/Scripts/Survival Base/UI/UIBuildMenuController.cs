@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UIBuildMenuController : UIBuildingMenuController
 {
+    public WorkerCreature SelectedWorker;
     [Header("UI+")]
     public GameObject MenuParent;
     public List<BuildingSlotPanel> BuildingSlotPanels = new();
@@ -54,7 +55,7 @@ public class UIBuildMenuController : UIBuildingMenuController
     }
     public void StartBuidling(BuildingSO selectedBuilding)
     {
-        CampManager.Instance.PlaceNewBuilding(selectedBuilding);
+        CampManager.Instance.PlaceNewBuilding(selectedBuilding, SelectedWorker);
         CloseBuildMenu();
     }
 }

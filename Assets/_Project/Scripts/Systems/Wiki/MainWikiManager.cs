@@ -9,7 +9,8 @@ public class MainWikiManager : MonoSingleton<MainWikiManager>
     [SerializeField] private FightersInfoWiki _FightersWiki;
     [SerializeField] private BuildingInfoWiki _BuildingsWiki;
     [SerializeField] private AttacksInfoWiki _AttacksWiki;
-    [SerializeField] private InteractiveElementsWiki _InteractiveElementsWiki;
+    [SerializeField] private InteractiveElementsWiki _InteractiveElementsWiki;  
+    public Sprite MissingSprite;
     #region Items Wiki
     public ItemsSO GetItemByID(string id)
     {

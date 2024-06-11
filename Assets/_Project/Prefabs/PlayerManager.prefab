@@ -36,7 +36,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -20, y: -200}
+  m_AnchoredPosition: {x: -20, y: -20}
   m_SizeDelta: {x: 200, y: 70}
   m_Pivot: {x: 1, y: 1}
 --- !u!222 &5488793957533149655
@@ -482,6 +482,13 @@ MonoBehaviour:
     Speed: 20
     HealthPoints: 20
     EnergyPoints: 20
+  StatsWithoutEquipment:
+    MaxHealthPoints: 0
+    MaxEnergyPoints: 0
+    HitPower: 0
+    RangePower: 0
+    Defense: 0
+    Speed: 0
   P_Inventory:
     Inv_Name: Your Inventory
     Slots:
@@ -508,6 +515,9 @@ MonoBehaviour:
     OnlyRemoveItems: 0
     OnItemAdded: {fileID: 11400000, guid: 0fa4b647cf118e5458a07d47f21a999a, type: 2}
     OnItemRemoved: {fileID: 11400000, guid: c544d32cb1a56584da032f5127b3ad50, type: 2}
+    ItemTypeOrder: 000000000200000001000000
+  WeaponEquiped: {fileID: 0}
+  ArmorEquiped: {fileID: 0}
   Team:
   - ID: '#PLAYER'
     TypeID: Hunter

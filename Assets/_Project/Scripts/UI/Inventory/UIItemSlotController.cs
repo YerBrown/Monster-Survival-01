@@ -40,6 +40,11 @@ public class UIItemSlotController : MonoBehaviour, IPointerClickHandler
         {
             ItemImage.sprite = ItemsRelatedUtilities.CheckItemIcon(Slot.ItemInfo);
             AmountText.text = $"x{Slot.Amount}";
+            gameObject.SetActive(true);
+        }
+        else
+        {
+            gameObject.SetActive(false);
         }
     }
     public void EnableFilter(bool enable)

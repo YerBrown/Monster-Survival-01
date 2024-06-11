@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
-/// A Scriptable Object with the basic info of a Creature race
+/// A Scriptable Object with the basic info of a Creature specie
 /// </summary>
 [CreateAssetMenu(fileName = "CreatureSO", menuName = "ScriptableObjects/Creature")]
 public class CreatureSO : ScriptableObject
@@ -16,7 +16,8 @@ public class CreatureSO : ScriptableObject
     public List<Skills> c_Skills = new();
     public List<BasicStats> c_LvlBaseStats = new();
     public List<CombatItemSO> c_FavouriteFood = new();
-    public int c_MaxFrindshipPoints;
+    public BiomeSO c_Biome;
+    public int c_MaxFriendshipPoints;
     [Range(0, 250)]
     public int c_CaptureRate;
     public GameObject CombatFighterPrefab;

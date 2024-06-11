@@ -14,10 +14,11 @@ public class UIPlayerInventoryInCombatController : UIPlayerInventoryMenuControll
     public List<Button> FilterButtons = new();
     public Button CancelButton;
     public Button TeamButton;
-    public CombatItemType CombatFilter;
     public UITargetController TargetController;
     public UIActionsController ActionsController;
     public UIFighterChangeController FighterChangeController;
+    [Header("Filter")]
+    public CombatItemType CombatFilter;
     public override void OpenPopup()
     {
         base.OpenPopup();
@@ -131,13 +132,11 @@ public class UIPlayerInventoryInCombatController : UIPlayerInventoryMenuControll
                 FilterButtons[i].GetComponent<Image>().sprite = UnselectedFilterSprite;
             }
         }
-        MainFilter = ItemType.COMBAT;
         CombatFilter = (CombatItemType)Enum.Parse(typeof(CombatItemType), filterIndex.ToString());
-        IsFilterEnabled = true;
         EnableFilter();
     }
     // DIsable combat type filter
-    public override void DisableFilter()
+    public void DisableFilter()
     {
         for (int i = 0; i < FilterButtons.Count; i++)
         {
@@ -150,14 +149,16 @@ public class UIPlayerInventoryInCombatController : UIPlayerInventoryMenuControll
                 FilterButtons[i].GetComponent<Image>().sprite = UnselectedFilterSprite;
             }
         }
-        MainFilter = ItemType.COMBAT;
         CombatFilter = CombatItemType.GENERAL;
-        IsFilterEnabled = true;
         EnableFilter();
     }
     // Manage filters
-    public override void EnableFilter()
+    public void EnableFilter()
     {
-        UIPlayerInventory.SetFilter(IsFilterEnabled, MainFilter, CombatFilter);
+        UICombatInventoryController uiCombatInventory = UIPlayerInventory as UICombatInventoryController;
+        if (uiCombatInventory != null)
+        {
+            uiCombatInventory.SetFilter(CombatFilter);
+        }
     }
 }

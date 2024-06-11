@@ -43,7 +43,7 @@ public class BuildingSlotPanel : MonoBehaviour
 
         for (int i = 0; i < ItemCostText.Length; i++)
         {
-            if (CurrentBuilding.Costs[0].Costs[i].ItemInfo != null)
+            if ( i < CurrentBuilding.Costs[0].Costs.Length && CurrentBuilding.Costs[0].Costs[i].ItemInfo != null)
             {
                 string amountTextColor;
                 int currentAmount = SurvivalBaseStorageManager.Instance.GetItemAmount(CurrentBuilding.Costs[0].Costs[i].ItemInfo);

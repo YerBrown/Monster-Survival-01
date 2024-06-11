@@ -1,13 +1,8 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using static SurvivalBaseStorageManager;
+using MonsterSurvival.Data;
 
 public class PlayerManager : MonoSingleton<PlayerManager>
 {
@@ -15,9 +10,13 @@ public class PlayerManager : MonoSingleton<PlayerManager>
     public string Nickname;
     public int PlayerLevel;
     public FighterData P_Fighter;
+    public BasicStats StatsWithoutEquipment;
     public Inventory P_Inventory;
+    public EquipableItemSO WeaponEquiped;
+    public EquipableItemSO ArmorEquiped;
     public FighterData[] Team = new FighterData[6];
     public CapturesController Captures;
+    public bool SaveData = true;
     private void OnEnable()
     {
         P_Inventory.OnItemAdded.OnEventRaised += SavePlayerInventoryData;
@@ -68,21 +67,37 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         }
         return null;
     }
-
+    public BasicStats GetPlayerTotalStats()
+    {
+        BasicStats playerStatsWithEquipment = new(StatsWithoutEquipment);
+        if (WeaponEquiped != null)
+        {
+            playerStatsWithEquipment.AddStats(WeaponEquiped.AddedStats);
+        }
+        if (ArmorEquiped != null)
+        {
+            playerStatsWithEquipment.AddStats(ArmorEquiped.AddedStats);
+        }
+        return playerStatsWithEquipment;
+    }
     public void SavePlayerInventoryData(ItemSlot changedItemSlot)
     {
-        PlayerInventoryData playerInventoryData = new PlayerInventoryData(P_Inventory);
-
-        string storageDataJson = JsonUtility.ToJson(playerInventoryData, true);
-
-        string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
-        if (!Directory.Exists(folderPath))
+        if (SaveData)
         {
-            Directory.CreateDirectory(folderPath);
+
+            PlayerInventoryData playerInventoryData = new PlayerInventoryData(P_Inventory);
+
+            string storageDataJson = JsonUtility.ToJson(playerInventoryData, true);
+
+            string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            string fileName = "player_inventory_data.json";
+            string completeRute = Path.Combine(folderPath, fileName);
+            File.WriteAllText(completeRute, storageDataJson);
         }
-        string fileName = "player_inventory_data.json";
-        string completeRute = Path.Combine(folderPath, fileName);
-        File.WriteAllText(completeRute, storageDataJson);
     }
     public void LoadPlayerInventoryData()
     {
@@ -114,37 +129,6 @@ public class PlayerManager : MonoSingleton<PlayerManager>
         foreach (var item in inventoryData.AllItems)
         {
             P_Inventory.Slots.Add(new ItemSlot(MainWikiManager.Instance.GetItemByID(item.ItemID), item.Amount));
-        }
-    }
-    [Serializable]
-    public class PlayerInventoryData
-    {
-        public int MaxSlots;
-        public List<ItemContData> AllItems = new List<ItemContData>();
-        [Serializable]
-        public class ItemContData
-        {
-            public string ItemID;
-            public int Amount;
-            public ItemContData(string itemID, int amount)
-            {
-                ItemID = itemID;
-                Amount = amount;
-            }
-        }
-
-        public PlayerInventoryData(Inventory inventory)
-        {
-            MaxSlots = inventory.MaxSlots;
-            foreach (var slot in inventory.Slots)
-            {
-                Add(slot);
-            }
-        }
-
-        public void Add(ItemSlot slot)
-        {
-            AllItems.Add(new ItemContData(slot.ItemInfo.i_Name, slot.Amount));
         }
     }
 }

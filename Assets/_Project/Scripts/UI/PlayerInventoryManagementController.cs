@@ -22,9 +22,6 @@ public class PlayerInventoryManagementController : MonoBehaviour
     public Button CloseButton;
     public Sprite DefaultItemSprite;
     [Header("Other")]
-    public bool IsFilterEnabled;
-    public ItemType MainFilter;
-
     public bool ResetOnSameType = false;
     public bool SelectFirstOnOpen = false;
     public UITrashController TrashController;
@@ -47,7 +44,7 @@ public class PlayerInventoryManagementController : MonoBehaviour
         {
             ResetSelected();            
         }
-        DisableFilter();
+        //DisableFilter();
     }
     public virtual void ClosePopup()
     {
@@ -157,24 +154,6 @@ public class PlayerInventoryManagementController : MonoBehaviour
         SelectedItemType = null;
 
         UIPlayerInventory.SetSelectedUI(null, false);
-    }
-    // Disable current filter
-    public virtual void DisableFilter()
-    {
-        IsFilterEnabled = false;
-        EnableFilter();
-    }
-    // Enable a type of filter
-    public void SetMainFilter(int itemFilter)
-    {
-        MainFilter = (ItemType)Enum.Parse(typeof(ItemType), itemFilter.ToString()); ;
-        IsFilterEnabled = true;
-        EnableFilter();
-    }
-    // Manage filters
-    public virtual void EnableFilter()
-    {
-        UIPlayerInventory.SetFilter(IsFilterEnabled, MainFilter);
     }
 }
 

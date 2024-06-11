@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
-
+using MonsterSurvival.Data;
 public class CampManager : MonoSingleton<CampManager>
 {
     public List<BuildAreaController> BuildAreas = new();
@@ -13,8 +13,9 @@ public class CampManager : MonoSingleton<CampManager>
 
 
     public SurvivalBaseData CurrentSurvivalBaseData = new();
-
+    public WorkersManager CampWorkers;
     public VoidEventChannelSO OnPointerClickedFloor;
+    public bool SaveData = true;
     [Header("UI")]
     public UIBuildMenuController BuildMenuController;
     private void OnEnable()
@@ -30,17 +31,17 @@ public class CampManager : MonoSingleton<CampManager>
     {
         StartCoroutine(InitializeSurvivalBase());
     }
-    public void PlaceNewBuilding(BuildingSO newBuild)
+    public void PlaceNewBuilding(BuildingSO newBuild, WorkerCreature worker)
     {
         BuildingController build = Instantiate(newBuild.Prefab, SelectedArea.transform).GetComponent<BuildingController>();
         build.transform.localPosition = Vector3.zero;
         SelectedArea.ChildBuildingController = build;
         build.ParentArea = SelectedArea;
         DateTime finishDateTime = RealDateTimeManager.Instance.GetCurrentDateTime() + new TimeSpan(newBuild.FinishTimes[0].Days, newBuild.FinishTimes[0].Hours, newBuild.FinishTimes[0].Minutes, newBuild.FinishTimes[0].Seconds);
-        build.StartUpdate(finishDateTime);
+        build.StartUpdate(finishDateTime, worker);
         SelectBuilding(build);
     }
-    public void PlaceBuildingInAreaFromSavedData(BuildAreaController area,SurvivalBaseData.BuildingData buildingData)
+    public void PlaceBuildingInAreaFromSavedData(BuildAreaController area, BuildingData buildingData)
     {
         BuildingSO buildInfo = MainWikiManager.Instance.GetBuildingByID(buildingData.Building_ID);
         BuildingController build = Instantiate(buildInfo.Prefab, area.transform).GetComponent<BuildingController>();
@@ -111,18 +112,21 @@ public class CampManager : MonoSingleton<CampManager>
     }
     public void SaveBuildAreaData(BuildAreaController buildArea)
     {
-        CurrentSurvivalBaseData.UpdateBuildAreaData(buildArea);
-
-        string survivalBaseDataJson = JsonUtility.ToJson(CurrentSurvivalBaseData, true);
-
-        string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
-        if (!Directory.Exists(folderPath))
+        if (SaveData)
         {
-            Directory.CreateDirectory(folderPath);
+            CurrentSurvivalBaseData.UpdateBuildAreaData(buildArea);
+
+            string survivalBaseDataJson = JsonUtility.ToJson(CurrentSurvivalBaseData, true);
+
+            string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            string fileName = "survival_base_data.json";
+            string completeRute = Path.Combine(folderPath, fileName);
+            File.WriteAllText(completeRute, survivalBaseDataJson);
         }
-        string fileName = "survival_base_data.json";
-        string completeRute = Path.Combine(folderPath, fileName);
-        File.WriteAllText(completeRute, survivalBaseDataJson);
     }
     public void LoadSurvivalBaseData()
     {
@@ -171,7 +175,7 @@ public class CampManager : MonoSingleton<CampManager>
         yield return new WaitForSeconds(.2f);
         GeneralUIController.Instance.EnableBlackBackground(false);
         Debug.Log("Fundido a blanco");
-        
+
     }
 }
 

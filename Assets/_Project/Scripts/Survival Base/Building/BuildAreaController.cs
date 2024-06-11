@@ -11,7 +11,7 @@ public class BuildAreaController : MonoBehaviour
     public BuildingSO.BuildingSize Size;
     public SpriteRenderer HighlightRenderer;
     public BuildingController ChildBuildingController;
-    private Sequence HiglightSequence;
+    private Tween HiglightSequence;
     public void TriggerSelectArea()
     {
         if (ChildBuildingController != null)
@@ -29,9 +29,8 @@ public class BuildAreaController : MonoBehaviour
         {
             HiglightSequence.Kill();
         }
-        HiglightSequence = DOTween.Sequence();
-        HiglightSequence.Append(HighlightRenderer.DOFade(0f, 0.1f));
-        HiglightSequence.Append(HighlightRenderer.DOFade(0.2f, 0.25f).SetLoops(-1, LoopType.Yoyo));
+        HighlightRenderer.color = new Color(HighlightRenderer.color.r, HighlightRenderer.color.g, HighlightRenderer.color.b, 0);
+        HiglightSequence = HighlightRenderer.DOFade(0.2f, 0.25f).SetLoops(-1, LoopType.Yoyo);
     }
     public void UnselectArea()
     {
@@ -39,7 +38,13 @@ public class BuildAreaController : MonoBehaviour
         {
             HiglightSequence.Kill();
         }
-        HiglightSequence = DOTween.Sequence();
-        HiglightSequence.Append(HighlightRenderer.DOFade(0f, 0.5f));
+        HiglightSequence = HighlightRenderer.DOFade(0f, 0.5f);
+    }
+    private void OnDestroy()
+    {
+        if (HiglightSequence != null)
+        {
+            HiglightSequence.Kill();
+        }
     }
 }

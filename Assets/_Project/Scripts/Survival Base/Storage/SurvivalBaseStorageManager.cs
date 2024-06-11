@@ -1,13 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using Unity.VisualScripting;
 using UnityEngine;
-
+using MonsterSurvival.Data;
 public class SurvivalBaseStorageManager : MonoSingleton<SurvivalBaseStorageManager>
 {
     public Inventory StorageInventory;
     public PairInventoriesEventChannelSO OnOpenManageInventoriesMenu;
     public StorageData CurrentStorageData;
+    public bool SaveData = true;
     private void OnEnable()
     {
         StorageInventory.OnItemAdded.OnEventRaised += SaveStorageInventoryData;
@@ -53,18 +55,21 @@ public class SurvivalBaseStorageManager : MonoSingleton<SurvivalBaseStorageManag
 
     public void SaveStorageInventoryData(ItemSlot changedItemSlot)
     {
-        CurrentStorageData = new StorageData(StorageInventory);
-
-        string storageDataJson = JsonUtility.ToJson(CurrentStorageData, true);
-
-        string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
-        if (!Directory.Exists(folderPath))
+        if (SaveData)
         {
-            Directory.CreateDirectory(folderPath);
+            CurrentStorageData = new StorageData(StorageInventory);
+
+            string storageDataJson = JsonUtility.ToJson(CurrentStorageData, true);
+
+            string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            string fileName = "storage_data.json";
+            string completeRute = Path.Combine(folderPath, fileName);
+            File.WriteAllText(completeRute, storageDataJson);
         }
-        string fileName = "storage_data.json";
-        string completeRute = Path.Combine(folderPath, fileName);
-        File.WriteAllText(completeRute, storageDataJson);
     }
     public void LoadStorageInventoryData()
     {
@@ -95,37 +100,6 @@ public class SurvivalBaseStorageManager : MonoSingleton<SurvivalBaseStorageManag
         foreach (var item in storageData.AllItems)
         {
             StorageInventory.Slots.Add(new ItemSlot(MainWikiManager.Instance.GetItemByID(item.ItemID), item.Amount));
-        }
-    }
-    [Serializable]
-    public class StorageData
-    {
-        public int MaxSlots;
-        public List<ItemContData> AllItems = new List<ItemContData>();
-        [Serializable]
-        public class ItemContData
-        {
-            public string ItemID;
-            public int Amount;
-            public ItemContData(string itemID, int amount)
-            {
-                ItemID = itemID;
-                Amount = amount;
-            }
-        }
-
-        public StorageData(Inventory inventory)
-        {
-            MaxSlots = inventory.MaxSlots;
-            foreach (var slot in inventory.Slots)
-            {
-                Add(slot);
-            }
-        }
-
-        public void Add(ItemSlot slot)
-        {
-            AllItems.Add(new ItemContData(slot.ItemInfo.i_Name, slot.Amount));
         }
     }
 }

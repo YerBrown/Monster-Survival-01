@@ -2127,10 +2127,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -1115
       objectReference: {fileID: 0}
-    - target: {fileID: 5937078263654121084, guid: ebcb01f35a71a8d41b31cd50fdcd0b24, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -25
-      objectReference: {fileID: 0}
     - target: {fileID: 6000083448386720534, guid: ebcb01f35a71a8d41b31cd50fdcd0b24, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3377,5 +3373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8645270396896754a8994ca7ec52b5f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _DontDestroyOnLoad: 1
+  OnOpenMenuPopup: {fileID: 0}
   MenuOpened: 0
   BlackBackground: {fileID: 2890214818305298116}

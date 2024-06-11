@@ -2,6 +2,7 @@ using DG.Tweening;
 using GeneralValues;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using UnityEngine;
 public class Fighter : MonoBehaviour
 {
@@ -210,18 +211,18 @@ public class Fighter : MonoBehaviour
             {
                 addedFriendshipPoints *= 2;
                 CurrentFriendshipPoints += addedFriendshipPoints;
-                if (CurrentFriendshipPoints > creatureInfo.c_MaxFrindshipPoints)
+                if (CurrentFriendshipPoints > creatureInfo.c_MaxFriendshipPoints)
                 {
-                    CurrentFriendshipPoints = creatureInfo.c_MaxFrindshipPoints;
+                    CurrentFriendshipPoints = creatureInfo.c_MaxFriendshipPoints;
                 }
                 UIController.FrienshipPointsChanged(true);
             }
             else
             {
                 CurrentFriendshipPoints += addedFriendshipPoints;
-                if (CurrentFriendshipPoints > creatureInfo.c_MaxFrindshipPoints)
+                if (CurrentFriendshipPoints > creatureInfo.c_MaxFriendshipPoints)
                 {
-                    CurrentFriendshipPoints = creatureInfo.c_MaxFrindshipPoints;
+                    CurrentFriendshipPoints = creatureInfo.c_MaxFriendshipPoints;
                 }
                 UIController.FrienshipPointsChanged(false);
             }
@@ -492,7 +493,7 @@ public class Fighter : MonoBehaviour
         float creatureCaptureRate = creatureInfo.c_CaptureRate;
 
         float healthPointsModifier = ((float)(CurrentStats.MaxHealthPoints - HealthPoints) / CurrentStats.MaxHealthPoints) * (creatureCaptureRate / 100 * StaticCombatGeneralValues.Capture_Modifier_HealthPoints);
-        float frienshipPointsModifier = ((float)CurrentFriendshipPoints / creatureInfo.c_MaxFrindshipPoints) * (creatureCaptureRate / 100 * StaticCombatGeneralValues.Capture_Modifier_FriendshipPoints);
+        float frienshipPointsModifier = ((float)CurrentFriendshipPoints / creatureInfo.c_MaxFriendshipPoints) * (creatureCaptureRate / 100 * StaticCombatGeneralValues.Capture_Modifier_FriendshipPoints);
         float statusPoblemModifier = 0;
         // Check status problems
         if (CurrentStatusProblem == StatusProblemType.PARALIZED)
@@ -597,24 +598,60 @@ public class BasicStats
     public int RangePower;
     public int Defense;
     public int Speed;
+    public BasicStats()
+    {
 
-    public void AddStats(BasicStats addedStats)
-    {
-        MaxHealthPoints = SumWithMinValue(MaxHealthPoints, addedStats.MaxHealthPoints);
-        MaxEnergyPoints = SumWithMinValue(MaxEnergyPoints, addedStats.MaxEnergyPoints);
-        HitPower = SumWithMinValue(HitPower, addedStats.HitPower);
-        RangePower = SumWithMinValue(RangePower, addedStats.RangePower);
-        Defense = SumWithMinValue(Defense, addedStats.Defense);
-        Speed = SumWithMinValue(Speed, addedStats.Speed);
     }
-    public void RemoveStats(BasicStats removedStats)
+    public BasicStats(BasicStats referenceStats)
     {
-        MaxHealthPoints = SubstractWithMinValue(MaxHealthPoints, removedStats.MaxHealthPoints);
-        MaxEnergyPoints = SubstractWithMinValue(MaxEnergyPoints, removedStats.MaxEnergyPoints);
-        HitPower = SubstractWithMinValue(HitPower, removedStats.HitPower);
-        RangePower = SubstractWithMinValue(RangePower, removedStats.RangePower);
-        Defense = SubstractWithMinValue(Defense, removedStats.Defense);
-        Speed = SubstractWithMinValue(Speed, removedStats.Speed);
+        MaxHealthPoints = referenceStats.MaxHealthPoints;
+        MaxEnergyPoints= referenceStats.MaxEnergyPoints;
+        HitPower = referenceStats.HitPower;
+        RangePower = referenceStats.RangePower;
+        Defense = referenceStats.Defense;
+        Speed = referenceStats.Speed;
+    }
+    public void AddStats(BasicStats addedStats, bool minValue = true)
+    {
+        if (minValue)
+        {
+            MaxHealthPoints = SumWithMinValue(MaxHealthPoints, addedStats.MaxHealthPoints);
+            MaxEnergyPoints = SumWithMinValue(MaxEnergyPoints, addedStats.MaxEnergyPoints);
+            HitPower = SumWithMinValue(HitPower, addedStats.HitPower);
+            RangePower = SumWithMinValue(RangePower, addedStats.RangePower);
+            Defense = SumWithMinValue(Defense, addedStats.Defense);
+            Speed = SumWithMinValue(Speed, addedStats.Speed);
+        }
+        else
+        {
+            MaxHealthPoints += addedStats.MaxHealthPoints;
+            MaxEnergyPoints += addedStats.MaxEnergyPoints;
+            HitPower += addedStats.HitPower;
+            RangePower += addedStats.RangePower;
+            Defense += addedStats.Defense;
+            Speed += addedStats.Speed;
+        }
+    }
+    public void RemoveStats(BasicStats removedStats, bool minValue = true)
+    {
+        if (minValue)
+        {
+            MaxHealthPoints = SubstractWithMinValue(MaxHealthPoints, removedStats.MaxHealthPoints);
+            MaxEnergyPoints = SubstractWithMinValue(MaxEnergyPoints, removedStats.MaxEnergyPoints);
+            HitPower = SubstractWithMinValue(HitPower, removedStats.HitPower);
+            RangePower = SubstractWithMinValue(RangePower, removedStats.RangePower);
+            Defense = SubstractWithMinValue(Defense, removedStats.Defense);
+            Speed = SubstractWithMinValue(Speed, removedStats.Speed);
+        }
+        else
+        {
+            MaxHealthPoints -= removedStats.MaxHealthPoints;
+            MaxEnergyPoints -= removedStats.MaxEnergyPoints;
+            HitPower -= removedStats.HitPower;
+            RangePower -= removedStats.RangePower;
+            Defense -= removedStats.Defense;
+            Speed -= removedStats.Speed;
+        }
     }
 
     private int SumWithMinValue(int a, int b)

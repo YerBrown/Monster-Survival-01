@@ -307,7 +307,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 5435060869432645448}
   m_Direction: 2
   m_Value: 0.5
-  m_Size: 0.37902954
+  m_Size: 0.3600422
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -594,7 +594,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -299.43335}
+  m_AnchoredPosition: {x: 0, y: -284.4333}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &3498998506435008083
@@ -723,16 +723,19 @@ MonoBehaviour:
     OnlyRemoveItems: 0
     OnItemAdded: {fileID: 0}
     OnItemRemoved: {fileID: 0}
+    ItemTypeOrder: 
+    EquipItemTypeOrder: 
+    CombatTypeItemTypeOrder: 
   InventoryNameText: {fileID: 0}
   ItemsBackground: []
   Items: []
+  InventoryOrder: 000000000100000002000000
+  EquipOrder: 0100000002000000
+  CombatOrder: 00000000020000000100000003000000
   ItemSlotSelected:
     m_PersistentCalls:
       m_Calls: []
   I_ScrollRect: {fileID: 1665498933078009779}
-  IsFilterEnabled: 0
-  ItemMainFilter: 0
-  CombatFilter: 0
 --- !u!1001 &435848314898912224
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ using System.Text;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using MonsterSurvival.Data;
 public class BuildingController : MonoBehaviour
 {
     public BuildingSO BuildingInfo;
@@ -17,7 +17,7 @@ public class BuildingController : MonoBehaviour
     public DateTime StartBuildingDateTime;
     public DateTime FinishBuildingDateTime;
     private Coroutine _UpdateCoroutine;
-
+    public WorkerCreature ConstructionWorker;
     [Header("UI")]
     // Upgrade/ Build Time Remaining UI
     public CanvasGroup RemainingTimeUI;
@@ -28,11 +28,15 @@ public class BuildingController : MonoBehaviour
     public TMP_Text BuildingNameText;
     public TMP_Text BuildingLevelText;
     private Sequence SelectBuildingSequence;
-    public void CheckCurrentBuildingState(SurvivalBaseData.BuildingData buildingData)
+    public void CheckCurrentBuildingState(BuildingData buildingData)
     {
         BuildingInfo = MainWikiManager.Instance.GetBuildingByID(buildingData.Building_ID);
         Level = buildingData.Level;
         InProgress = buildingData.InProgress;
+        if (InProgress && !string.IsNullOrEmpty(buildingData.Worker_ID))
+        {
+            ConstructionWorker = CampManager.Instance.CampWorkers.GetConstructionWorkerByID(buildingData.Worker_ID);
+        }
         StartBuildingDateTime = DateTime.ParseExact(buildingData.StartBuildingDateTime, "o", CultureInfo.InvariantCulture);
         FinishBuildingDateTime = DateTime.ParseExact(buildingData.FinishBuildingDateTime, "o", CultureInfo.InvariantCulture);
         if (InProgress)
@@ -42,6 +46,8 @@ public class BuildingController : MonoBehaviour
             {
                 Level++;
                 InProgress = false;
+                ConstructionWorker.IsBusy = false;
+                ConstructionWorker = null;
                 CampManager.Instance.SaveBuildAreaData(ParentArea);
             }
             else
@@ -50,9 +56,11 @@ public class BuildingController : MonoBehaviour
             }
         }
     }
-    public void StartUpdate(DateTime finishDateTime)
+    public void StartUpdate(DateTime finishDateTime, WorkerCreature newWorker)
     {
         InProgress = true;
+        ConstructionWorker = newWorker;
+        ConstructionWorker.IsBusy = true;
         StartBuildingDateTime = RealDateTimeManager.Instance.GetCurrentDateTime();
         FinishBuildingDateTime = finishDateTime;
         StartUpdateCoroutine();

@@ -21,6 +21,13 @@ public enum CombatItemType
     WEAPON,
     STATS_MODIFY,
 }
+public enum EquipType
+{
+    NONE,
+    WEAPON,
+    ARMOR,
+}
+
 public enum TargetSelectType
 {
     ALL,

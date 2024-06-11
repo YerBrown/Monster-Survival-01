@@ -130,7 +130,7 @@ public class UIFighterController : MonoBehaviour
         }
         if (creatureInfo != null)
         {
-            _SequenceFriendPoints.Append(FrienshipPointsFillImage.DOFillAmount((float)CurrentFighter.CurrentFriendshipPoints / creatureInfo.c_MaxFrindshipPoints, 1f));
+            _SequenceFriendPoints.Append(FrienshipPointsFillImage.DOFillAmount((float)CurrentFighter.CurrentFriendshipPoints / creatureInfo.c_MaxFriendshipPoints, 1f));
         }
         if (effectiveAdded)
         {

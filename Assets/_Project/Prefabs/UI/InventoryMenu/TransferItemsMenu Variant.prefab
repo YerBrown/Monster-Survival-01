@@ -2125,6 +2125,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6641933615130340691, guid: 888817f121ef5544c8e9c09b7c9c6ec1, type: 3}
+      propertyPath: InventoryOrder.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6641933615130340691, guid: 888817f121ef5544c8e9c09b7c9c6ec1, type: 3}
+      propertyPath: InventoryOrder.Array.data[2]
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6663871709353004054, guid: 888817f121ef5544c8e9c09b7c9c6ec1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

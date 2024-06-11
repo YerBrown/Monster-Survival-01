@@ -1,5 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Search;
+using UnityEditorInternal.Profiling.Memory.Experimental;
 using UnityEngine;
 [Serializable]
 public class Inventory
@@ -11,6 +14,12 @@ public class Inventory
     public bool OnlyRemoveItems = false;
     public ItemSlotEventChannelSO OnItemAdded;
     public ItemSlotEventChannelSO OnItemRemoved;
+    public List<ItemType> ItemTypeOrder = new();
+    public List<EquipType> EquipItemTypeOrder = new();
+    public List<CombatItemType> CombatTypeItemTypeOrder = new();
+    private Dictionary<ItemType, int> _ItemOrder = new Dictionary<ItemType, int>();
+    private Dictionary<EquipType, int> _EquipItemOrder = new Dictionary<EquipType, int>();
+    private Dictionary<CombatItemType, int> _CombatItemOrder = new Dictionary<CombatItemType, int>();
     private ItemSlot CheckItemInInventory(ItemSlot slot)
     {
         for (int i = Slots.Count - 1; i >= 0; i--)
@@ -58,77 +67,155 @@ public class Inventory
     public int AddNewItem(ItemSlot newItem, bool transfer = true)
     {
         if (OnlyRemoveItems && transfer) return newItem.Amount;
-        ItemSlot inv_slot = CheckItemInInventory(newItem);
-        int remainingAmount = 0;
-        if (inv_slot != null)
-        {
-            int newAmount = inv_slot.Amount + newItem.Amount;
-            if (newAmount > inv_slot.ItemInfo.i_StackMax)
-            {
-                inv_slot.Amount = inv_slot.ItemInfo.i_StackMax;
 
-                int excess = newAmount - inv_slot.ItemInfo.i_StackMax;
-                ItemSlot newItemExcess = new ItemSlot(inv_slot.ItemInfo, excess);
-                remainingAmount = TryAddNewSlot(newItemExcess);
-                if (OnItemAdded != null)
-                {
-                    if (newItem.Amount - remainingAmount > 0)
-                        OnItemAdded.RaiseEvent(new ItemSlot(newItem.ItemInfo, newItem.Amount - remainingAmount));
-                }
-                return remainingAmount;
-            }
-            else
+        int remainingAmount = newItem.Amount;
+        foreach (var slot in Slots)
+        {
+            if (slot.ItemInfo == newItem.ItemInfo)
             {
-                inv_slot.Amount = newAmount;
-                if (OnItemAdded != null)
+                int posibleAmount = Math.Min(remainingAmount, newItem.ItemInfo.i_StackMax - slot.Amount);
+
+                slot.Amount += posibleAmount;
+                remainingAmount -= posibleAmount;
+
+                if (remainingAmount == 0)
                 {
-                    if (newItem.Amount - remainingAmount > 0)
+                    SortInventory();
+                    if (OnItemAdded != null)
+                    {
                         OnItemAdded.RaiseEvent(new ItemSlot(newItem.ItemInfo, newItem.Amount));
+                    }
+                    return 0; // Se añadió toda la cantidad a objetos existentes
                 }
-                return 0;
             }
         }
-        else
+        while (remainingAmount > 0)
         {
-            remainingAmount = TryAddNewSlot(newItem);
-            if (OnItemAdded != null)
+            if (!FlexibleSlots && Slots.Count >= MaxSlots)
             {
-                if (newItem.Amount - remainingAmount > 0)
-                    OnItemAdded.RaiseEvent(new ItemSlot(newItem.ItemInfo, newItem.Amount - remainingAmount));
+                if (remainingAmount < newItem.Amount)
+                {
+                    SortInventory();
+                    if (OnItemAdded != null)
+                    {
+                        OnItemAdded.RaiseEvent(new ItemSlot(newItem.ItemInfo, newItem.Amount - remainingAmount));
+                    }
+                }
+                return remainingAmount; // No se puede añadir más objetos, devolver la cantidad que no se pudo añadir
             }
-            return remainingAmount;
+
+            int posibleAmount = Math.Min(remainingAmount, newItem.ItemInfo.i_StackMax);
+
+            ItemSlot addedItem = new ItemSlot(newItem.ItemInfo, posibleAmount);
+
+            Slots.Add(addedItem);
+            remainingAmount -= posibleAmount;
         }
+        SortInventory();
+        if (OnItemAdded != null)
+        {
+            OnItemAdded.RaiseEvent(new ItemSlot(newItem.ItemInfo, newItem.Amount));
+        }
+        return 0; // Se pudo añadir toda la cantidad
     }
-    public void RemoveItemOfType(ItemsSO itemType, int amountRemoved)
+    public virtual void SortInventory()
     {
-        for (int i = Slots.Count - 1; i >= 0; i--)
+        _ItemOrder = new();
+        for (int i = 0; i < ItemTypeOrder.Count; i++)
         {
-            if (Slots[i].ItemInfo == itemType)
+            _ItemOrder.Add(ItemTypeOrder[i], i);
+        }
+        _EquipItemOrder = new();
+        for (int i = 0; i < EquipItemTypeOrder.Count; i++)
+        {
+            _EquipItemOrder.Add(EquipItemTypeOrder[i], i);
+        }
+        _CombatItemOrder = new();
+        for (int i = 0; i < CombatTypeItemTypeOrder.Count; i++)
+        {
+            _CombatItemOrder.Add(CombatTypeItemTypeOrder[i], i);
+        }
+
+
+        Comparison<ItemSlot> comparador = (x, y) =>
+        {
+            // Detect item types
+            EquipableItemSO xEquipItem = x.ItemInfo as EquipableItemSO;
+            EquipableItemSO yEquipItem = y.ItemInfo as EquipableItemSO;
+            CombatItemSO xCombatItem = x.ItemInfo as CombatItemSO;
+            CombatItemSO yCombatItem = y.ItemInfo as CombatItemSO;
+
+            int resultado = _ItemOrder[x.ItemInfo.i_ItemType].CompareTo(_ItemOrder[y.ItemInfo.i_ItemType]);
+            if (resultado == 0 && xEquipItem != null && yEquipItem != null)
             {
-                int newAmount = Slots[i].Amount - amountRemoved;
-                if (newAmount <= 0)
+                resultado = _EquipItemOrder[xEquipItem.EquipmentType].CompareTo(_EquipItemOrder[yEquipItem.EquipmentType]);
+            }else if(resultado == 0 && xCombatItem != null && yCombatItem != null)
+            {
+                resultado = _CombatItemOrder[xCombatItem.i_CombatType].CompareTo(_CombatItemOrder[yCombatItem.i_CombatType]);
+            }
+            if (resultado == 0)
+            {
+                resultado = x.ItemInfo.i_Name.CompareTo(y.ItemInfo.i_Name);
+            }
+            if (resultado == 0)
+            {
+                resultado = y.Amount.CompareTo(x.Amount);
+            }
+            return resultado;
+        };
+        Slots.Sort(comparador);
+    }
+    public int RemoveItemOfType(ItemsSO itemType, int removedAmount)
+    {
+        Slots = Slots.OrderBy(slot => slot.ItemInfo == itemType).ThenBy(slot => slot.Amount).ToList();
+
+        List<ItemSlot> slotsToRemove = new List<ItemSlot>();
+        int remainingAmount = removedAmount;
+        for (int i = 0; i < Slots.Count; i++)
+        {
+            if (Slots[i].ItemInfo == itemType && Slots[i].Amount > 0)
+            {
+                int cantidadARestar = Math.Min(remainingAmount, Slots[i].Amount);
+                Slots[i].Amount -= cantidadARestar;
+                remainingAmount -= cantidadARestar;
+
+                if (Slots[i].Amount <= 0)
                 {
-                    Slots.RemoveAt(i);
-                    if (newAmount < 0)
-                    {
-                        RemoveItemOfType(itemType, Mathf.Abs(newAmount));
-                    }
-                    if (OnItemRemoved != null && amountRemoved > 0)
-                    {
-                        OnItemRemoved.RaiseEvent(new ItemSlot(itemType, Slots[i].Amount));
-                    }
+                    slotsToRemove.Add(Slots[i]);
                 }
-                else
+
+                if (remainingAmount == 0)
                 {
-                    Slots[i].Amount = newAmount;
-                    if (OnItemRemoved != null && amountRemoved > 0)
-                    {
-                        OnItemRemoved.RaiseEvent(new ItemSlot(itemType, amountRemoved));
-                    }
+                    break;
                 }
-                return;
             }
         }
+
+        foreach (ItemSlot slot in slotsToRemove)
+        {
+            Slots.Remove(slot);
+        }
+        if (removedAmount > remainingAmount)
+        {
+            SortInventory();
+            if (OnItemRemoved != null)
+            {
+                OnItemRemoved.RaiseEvent(new ItemSlot(itemType, removedAmount - remainingAmount));
+            }
+        }
+        return remainingAmount;
+    }
+    private void OptimizeInventorySpace()
+    {
+        Inventory newInventory = new();
+        newInventory.MaxSlots = MaxSlots;
+        newInventory.FlexibleSlots = FlexibleSlots;
+        newInventory.OnlyRemoveItems = OnlyRemoveItems;
+        foreach (var item in Slots)
+        {
+            newInventory.AddNewItem(item);
+        }
+        Slots = newInventory.Slots;
     }
     public int GetAmountOfType(ItemsSO itemType)
     {

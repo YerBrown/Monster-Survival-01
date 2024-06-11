@@ -19,7 +19,7 @@ public class UIEquipmentMenuController : MonoBehaviour
         InventoriesTransferController.Inventory_L.UI_Inventory = PlayerManager.Instance.P_Inventory;
         InventoriesTransferController.Inventory_R.UI_Inventory = SurvivalBaseStorageManager.Instance.StorageInventory;
 
-        EquipmentController.UIPlayerInventory.UI_Inventory = PlayerManager.Instance.P_Inventory;
+        EquipmentController.EquipInventoryController.UI_Inventory = PlayerManager.Instance.P_Inventory;
     }
     public void OpenMenu()
     {
@@ -38,9 +38,7 @@ public class UIEquipmentMenuController : MonoBehaviour
 
         EquipmentButton.transform.GetChild(1).gameObject.SetActive(true);
         InventoriesButton.transform.GetChild(1).gameObject.SetActive(false);
-
-        TrashController.InventoriesController = null;
-        TrashController.PlayerInventoryController = EquipmentController;
+        
     }
     public void OpenInventories()
     {
@@ -51,7 +49,5 @@ public class UIEquipmentMenuController : MonoBehaviour
         EquipmentButton.transform.GetChild(1).gameObject.SetActive(false);
         InventoriesButton.transform.GetChild(1).gameObject.SetActive(true);
 
-        TrashController.InventoriesController = InventoriesTransferController;
-        TrashController.PlayerInventoryController = null;
     }
 }

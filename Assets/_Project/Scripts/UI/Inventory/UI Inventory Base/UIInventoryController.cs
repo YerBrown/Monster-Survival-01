@@ -9,15 +9,15 @@ using UnityEngine.UI;
 public class UIInventoryController : MonoBehaviour
 {
     public Inventory UI_Inventory;
-    private ItemsSO _SelectedItem;
+    protected ItemsSO _SelectedItem;
     public TMP_Text InventoryNameText;
     public List<GameObject> ItemsBackground = new List<GameObject>();
     public List<UIItemSlotController> Items = new List<UIItemSlotController>();
+    public List<ItemType> InventoryOrder = new List<ItemType>();
+    public List<EquipType> EquipOrder = new List<EquipType>();
+    public List<CombatItemType> CombatOrder = new List<CombatItemType>();
     public UnityEvent<UIInventoryController, ItemsSO> ItemSlotSelected;
     public ScrollRect I_ScrollRect;
-    public bool IsFilterEnabled = false;
-    public ItemType ItemMainFilter;
-    public CombatItemType CombatFilter;
     private void Awake()
     {
         //Add all the items in the parent to the list "Items"
@@ -48,10 +48,10 @@ public class UIInventoryController : MonoBehaviour
                 }
             }
             UpdateFullInventory();
-            for (int i = 0; i < Items.Count; i++)
+            foreach (var item in Items)
             {
                 //Add select item functionality to each button
-                Items[i].SelectSlotEvent?.AddListener(SelectItem);
+                item.SelectSlotEvent?.AddListener(SelectItem);
             }
             if (I_ScrollRect != null)
                 I_ScrollRect.verticalNormalizedPosition = 1;
@@ -70,7 +70,7 @@ public class UIInventoryController : MonoBehaviour
         }
     }
     //Disable not needed button
-    private void DisableItemSlot(UIItemSlotController itemSLot)
+    protected void DisableItemSlot(UIItemSlotController itemSLot)
     {
         itemSLot.Slot = null;
         itemSLot.gameObject.SetActive(false);
@@ -81,42 +81,25 @@ public class UIInventoryController : MonoBehaviour
         ItemSlotSelected?.Invoke(this, itemSlot.Slot.ItemInfo);
     }
     //Update UI after any change in inventory
-    public void UpdateFullInventory()
+    public virtual void UpdateFullInventory()
     {
         if (UI_Inventory != null)
         {
+            UI_Inventory.ItemTypeOrder = InventoryOrder;
+            UI_Inventory.EquipItemTypeOrder = EquipOrder;
+            UI_Inventory.CombatTypeItemTypeOrder = CombatOrder;
+            UI_Inventory.SortInventory();
             for (int i = 0; i < Items.Count; i++)
             {
                 if (i < UI_Inventory.Slots.Count)
                 {
                     Items[i].Slot = UI_Inventory.Slots[i];
-                    Items[i].UpdateUI();
-                    if (IsFilterEnabled)
-                    {
-                        ItemsSO currentItem = UI_Inventory.Slots[i].ItemInfo;
-                        bool activateFilter = currentItem.i_ItemType != ItemMainFilter;
-                        if (ItemMainFilter == ItemType.COMBAT)
-                        {
-                            if (CombatFilter != CombatItemType.GENERAL)
-                            {
-                                if (currentItem.i_CombatType != CombatFilter)
-                                {
-                                    activateFilter = true;
-                                }
-                            }
-                        }
-                        Items[i].EnableFilter(activateFilter);
-                    }
-                    else
-                    {
-                        Items[i].EnableFilter(false);
-                    }
-                    Items[i].gameObject.SetActive(true);
                 }
                 else
                 {
-                    DisableItemSlot(Items[i]);
+                    Items[i].Slot = null;
                 }
+                Items[i].UpdateUI();
             }
         }
         if (_SelectedItem != null)
@@ -137,7 +120,7 @@ public class UIInventoryController : MonoBehaviour
         }
         EnableSelectedUI();
     }
-    private void EnableSelectedUI()
+    protected void EnableSelectedUI()
     {
         foreach (var item in Items)
         {
@@ -162,14 +145,6 @@ public class UIInventoryController : MonoBehaviour
     public void RemoveItemFromInventory(ItemsSO itemInfo, int amount)
     {
         UI_Inventory.RemoveItemOfType(itemInfo, amount);
-        UpdateFullInventory();
-    }
-    // Add filter to inventory.
-    public void SetFilter(bool enableFilter, ItemType itemType, CombatItemType combatType = CombatItemType.GENERAL)
-    {
-        IsFilterEnabled = enableFilter;
-        ItemMainFilter = itemType;
-        CombatFilter = combatType;
         UpdateFullInventory();
     }
 }

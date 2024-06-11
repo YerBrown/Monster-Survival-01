@@ -55,6 +55,7 @@ MonoBehaviour:
   _BuildingsWiki: {fileID: 7656101744615143246}
   _AttacksWiki: {fileID: 2360502248028736522}
   _InteractiveElementsWiki: {fileID: 5940794763523433132}
+  MissingSprite: {fileID: 21300000, guid: 355479f4eb0364297806cf80ce8fcd29, type: 3}
 --- !u!114 &2666214061848250386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,7 +68,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9003080e16635fc4487113198bcb17bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DontDestroyOnLoad: 1
   ItemsLibrary: []
 --- !u!114 &5940794763523433132
 MonoBehaviour:
@@ -81,7 +81,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56adeb1a0aa8e484aa0bafe399767439, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DontDestroyOnLoad: 1
   Blockers:
   - {fileID: 7750162280700586990, guid: cf354665a9401454e85b9024cca4d52b, type: 3}
   - {fileID: 6578929101028903314, guid: 2454b08e4ffe62a45b87e0dd85fe9053, type: 3}
@@ -141,7 +140,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9faa38af61c8fe541b89ee6ce49881fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DontDestroyOnLoad: 1
   _AllAttacks:
   - ID: Fisical Attack
     AnimClip: {fileID: 7400000, guid: 10e9448a0a7f2ad4dbaf4fa7f41fb856, type: 2}
@@ -159,7 +157,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8df70ade4f7b7e459d0aceae864da6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _DontDestroyOnLoad: 1
   BuildingsLibrary:
   - {fileID: 11400000, guid: 6bc39346efab6ad4aa6dfde6bc8c8ca8, type: 2}
   - {fileID: 11400000, guid: 13a08f84345edaf4aa9334fb1eb1af99, type: 2}
@@ -167,3 +164,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a06a290c69104d74191defbe61ca7807, type: 2}
   - {fileID: 11400000, guid: 962f2f93d45a64044a71f89df56b06e8, type: 2}
   - {fileID: 11400000, guid: ecf76553f5ad664469586c5765fe9983, type: 2}
+  - {fileID: 11400000, guid: e1ec7b4d7de613f4badb636ac807ec7e, type: 2}
