@@ -365,7 +365,7 @@ public class CombatTeamsController : MonoBehaviour
 [Serializable]
 public class CombatTeam
 {
-    public FighterData[] Fighters = new FighterData[6];
+    public List<FighterData> Fighters = new ();
     public Fighter[] FightersInField = new Fighter[3];
     public Transform[] FightersPos = new Transform[3];
     public void SwipeFightersOrder(int index1, int index2)
@@ -377,7 +377,7 @@ public class CombatTeam
     }
     public int GetFighterDataIndex(string fighterId)
     {
-        for (int i = 0; i < Fighters.Length; i++)
+        for (int i = 0; i < Fighters.Count; i++)
         {
             if (Fighters[i].ID == fighterId)
             {

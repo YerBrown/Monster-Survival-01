@@ -13,10 +13,17 @@ public class UIActionInfoController : MonoBehaviour
     public TMP_Text ActionNameText;
     public TMP_Text ActionTypeText;
     public TMP_Text ActionDescriptionText;
-    public void OpenInfoPanel(Sprite imageSprite, string actionName, string actionType, ElementType element ,string actionDescription)
+    public void OpenInfoPanel(Sprite imageSprite, string actionName, string actionType, ElementType element, string actionDescription)
     {
         ActionImage.sprite = imageSprite;
-        ActionElement.sprite = MainWikiManager.Instance.GetElementSprite(element);
+        if (MainWikiManager.Instance.GetElementSprite(element, out Sprite elementSprite))
+        {
+            ActionElement.sprite = elementSprite;
+        }
+        else
+        {
+            ActionElement.sprite = MainWikiManager.Instance.MissingSprite;
+        }
         ActionNameText.text = actionName;
         ActionTypeText.text = actionType;
         ActionDescriptionText.text = actionDescription;

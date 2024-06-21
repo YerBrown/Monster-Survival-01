@@ -10,6 +10,8 @@ public class MainWikiManager : MonoSingleton<MainWikiManager>
     [SerializeField] private BuildingInfoWiki _BuildingsWiki;
     [SerializeField] private AttacksInfoWiki _AttacksWiki;
     [SerializeField] private InteractiveElementsWiki _InteractiveElementsWiki;  
+    [SerializeField] private SkillsInfoWiki _SkillsWiki;  
+    [SerializeField] private BiomesWiki _BiomesWiki;  
     public Sprite MissingSprite;
     #region Items Wiki
     public ItemsSO GetItemByID(string id)
@@ -36,9 +38,27 @@ public class MainWikiManager : MonoSingleton<MainWikiManager>
             return false;
         }
     }
-    public Sprite GetElementSprite(ElementType element)
+    public bool GetElementSprite(ElementType element, out Sprite elementSprite)
     {
-        return _FightersWiki.GetElementSprite(element);
+        if (_FightersWiki.GetElementSprite(element, out elementSprite))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool GetElementInfo(ElementType element, out FightersInfoWiki.ElementInfoUI elementInfo)
+    {
+        if (_FightersWiki.GetElementInfo(element, out elementInfo))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
     #endregion
     #region Buildings Wiki
@@ -61,6 +81,18 @@ public class MainWikiManager : MonoSingleton<MainWikiManager>
     public GameObject GetInteractiveElementByID(string id)
     {
         return _InteractiveElementsWiki.GetPrefab(id);
+    }
+    #endregion
+    #region
+    public (Color, Color, Sprite) GetSkillInfo(Skills skill)
+    {
+        return _SkillsWiki.GetSkillInfo(skill);
+    }
+    #endregion
+    #region Biomes Wiki
+    public BiomeSO GetBiomeByID(string id)
+    {
+        return _BiomesWiki.GetBiomeByID(id);
     }
     #endregion
 }

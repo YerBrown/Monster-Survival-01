@@ -4,29 +4,33 @@ using UnityEngine;
 
 public class UIBuildMenuController : UIBuildingMenuController
 {
+    public BoolEventChannelSO OnOpenMenuPopup;
     public WorkerCreature SelectedWorker;
     [Header("UI+")]
     public GameObject MenuParent;
     public List<BuildingSlotPanel> BuildingSlotPanels = new();
     private void OnEnable()
     {
-
+        OnOpenMenuPopup.OnEventRaised += CloseActionButtonsOnMenuOpened;
     }
     private void OnDisable()
     {
-        
+        OnOpenMenuPopup.OnEventRaised -= CloseActionButtonsOnMenuOpened;
+
     }
     public void OpenBuildMenu()
     {
         if (CampManager.Instance.SelectedArea != null)
         {
             MenuParent.SetActive(true);
+            OnOpenMenuPopup.RaiseEvent(true);
             UpdateBuildMenu();
         }
     }
     public void CloseBuildMenu()
     {
         MenuParent.SetActive(false);
+        OnOpenMenuPopup.RaiseEvent(false);
     }
     public void UpdateBuildMenu()
     {
@@ -57,5 +61,12 @@ public class UIBuildMenuController : UIBuildingMenuController
     {
         CampManager.Instance.PlaceNewBuilding(selectedBuilding, SelectedWorker);
         CloseBuildMenu();
+    }
+    private void CloseActionButtonsOnMenuOpened(bool enable)
+    {
+        if (enable && !MenuParent.activeSelf)
+        {
+            CampManager.Instance.UnselectBuildArea();
+        }
     }
 }

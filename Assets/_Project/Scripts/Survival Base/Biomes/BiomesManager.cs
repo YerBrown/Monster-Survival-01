@@ -1,6 +1,8 @@
+using MonsterSurvival.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Unity.Collections;
 using Unity.VisualScripting;
@@ -15,6 +17,17 @@ public class BiomesManager : MonoSingleton<BiomesManager>
         public List<Creature> CreatureSlots = new();
         public int UnlockedSlots;
         public int Level;
+        public CreatureBiome(BiomesData.CreatureBiomeData biomeData)
+        {
+            BiomeInfo = MainWikiManager.Instance.GetBiomeByID(biomeData.Biome_ID);
+            CreatureSlots.Clear();
+            foreach (var creatureData in biomeData.Creatures)
+            {
+                CreatureSlots.Add(new Creature(creatureData));
+            }
+            Level = biomeData.Level;
+            UnlockedSlots = Level * 6;
+        }
         public bool AddNewCreature(Creature addedCreature)
         {
             if (BiomeInfo.Creatures.Contains(addedCreature.CreatureInfo))
@@ -24,9 +37,9 @@ public class BiomesManager : MonoSingleton<BiomesManager>
                 {
                     for (int i = 0; i < UnlockedSlots; i++)
                     {
-                        if (CreatureSlots[i] == null || string.IsNullOrEmpty(CreatureSlots[i].ID))
+                        if (i == CreatureSlots.Count)
                         {
-                            CreatureSlots[i] = addedCreature;
+                            CreatureSlots.Add(addedCreature);
                             SortCreatureList();
                             return true;
                         }
@@ -39,9 +52,8 @@ public class BiomesManager : MonoSingleton<BiomesManager>
         {
             if (CreatureSlots.Contains(selectedCreature))
             {
-                Creature removedCreature = selectedCreature;
                 int removedIndex = CreatureSlots.IndexOf(selectedCreature);
-                CreatureSlots[removedIndex] = null;
+                CreatureSlots.RemoveAt(removedIndex);
                 SortCreatureList();
                 return true;
             }
@@ -73,7 +85,7 @@ public class BiomesManager : MonoSingleton<BiomesManager>
         }
         public void UpgradeLevel()
         {
-            if (Level < 3)
+            if (Level < GeneralValues.StaticCombatGeneralValues.Biomes_Max_Level)
             {
                 Level++;
                 UnlockedSlots += 6;
@@ -83,10 +95,19 @@ public class BiomesManager : MonoSingleton<BiomesManager>
                 }
             }
         }
+        public bool CheckCreatureAddPossibility(CreatureSO creatureInfo)
+        {
+            return BiomeInfo.Creatures.Contains(creatureInfo);
+        }
     }
 
     public List<CreatureBiome> CurrentBiomes = new();
-
+    public BiomesData CurrentBiomesData;
+    public bool SaveData = true;
+    private void Start()
+    {
+        LoadBiomesData();
+    }
     public bool AddCreatureToBiome(CreatureBiome biomeTarget, Creature addedCreature)
     {
         if (biomeTarget.BiomeInfo.Creatures.Contains(addedCreature.CreatureInfo))
@@ -95,6 +116,7 @@ public class BiomesManager : MonoSingleton<BiomesManager>
             if (slotsFull < biomeTarget.UnlockedSlots)
             {
                 bool success = biomeTarget.AddNewCreature(addedCreature);
+                SaveBiomesData(CurrentBiomes);
                 return success;
             }
         }
@@ -105,13 +127,67 @@ public class BiomesManager : MonoSingleton<BiomesManager>
         if (biomeTarget.CreatureSlots.Contains(removedCreature))
         {
             bool success = biomeTarget.RemoveCreature(removedCreature);
+            SaveBiomesData(CurrentBiomes);
             return success;
         }
         return false;
     }
     public void UpgradeBiome(CreatureBiome biomeTarget)
     {
-        //TODO: Consume resources
-        biomeTarget.UpgradeLevel();
+        if (biomeTarget.Level < GeneralValues.StaticCombatGeneralValues.Biomes_Max_Level)
+        {
+            biomeTarget.UpgradeLevel();
+            SaveBiomesData(CurrentBiomes);
+        }
     }
+
+    public void SaveBiomesData(List<CreatureBiome> biome)
+    {
+        if (SaveData)
+        {
+            CurrentBiomesData = new BiomesData(biome);
+
+            string biomesDataJson = JsonUtility.ToJson(CurrentBiomesData, true);
+
+            string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+            if (!Directory.Exists(folderPath))
+            {
+                Directory.CreateDirectory(folderPath);
+            }
+            string fileName = "biomes_data.json";
+            string completeRute = Path.Combine(folderPath, fileName);
+            File.WriteAllText(completeRute, biomesDataJson);
+        }
+    }
+    public void LoadBiomesData()
+    {
+        string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+        string fileName = "biomes_data.json";
+        string completeRute = Path.Combine(folderPath, fileName);
+        if (Directory.Exists(folderPath) && File.Exists(completeRute))
+        {
+            string json = File.ReadAllText(completeRute);
+            CurrentBiomesData = JsonUtility.FromJson<BiomesData>(json);
+            AddBiomesData(CurrentBiomesData);
+        }
+    }
+    public void DeleteBiomesData()
+    {
+        string folderPath = Path.Combine(Application.persistentDataPath, "Datos");
+        string fileName = "biomes_data.json";
+        string completeRute = Path.Combine(folderPath, fileName);
+        if (Directory.Exists(folderPath) && File.Exists(completeRute))
+        {
+            File.Delete(completeRute);
+        }
+    }
+    private void AddBiomesData(BiomesData biomesData)
+    {
+        CurrentBiomes.Clear();
+        foreach (var biome in biomesData.AllBiomes)
+        {
+            CurrentBiomes.Add(new CreatureBiome(biome));
+        }
+    }
+
 }

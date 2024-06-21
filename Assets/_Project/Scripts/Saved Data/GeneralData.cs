@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace MonsterSurvival.Data
@@ -22,6 +23,21 @@ namespace MonsterSurvival.Data
 
         public int HealthPoints;
         public int EnergyPoints;
+        public CreatureData(Creature creature)
+        {
+            Creature_ID = creature.ID;
+            Specie_ID = creature.CreatureInfo.c_Name;
+            Nickname = creature.Nickname;
+            Lvl = creature.Lvl;
+            MaxHealthPoints = creature.MaxHealthPoints;
+            MaxEnergyPoints = creature.MaxEnergyPoints;
+            FisicalPower = creature.FisicalPower;
+            RangePower = creature.RangePower;
+            Defense = creature.Defense;
+            Speed = creature.Speed;
+            HealthPoints = creature.HealthPoints;
+            EnergyPoints = creature.EnergyPoints;
+        }
     }
     [Serializable]
     public class SurvivalBaseData
@@ -113,17 +129,6 @@ namespace MonsterSurvival.Data
     {
         public int MaxSlots;
         public List<ItemContData> AllItems = new List<ItemContData>();
-        [Serializable]
-        public class ItemContData
-        {
-            public string ItemID;
-            public int Amount;
-            public ItemContData(string itemID, int amount)
-            {
-                ItemID = itemID;
-                Amount = amount;
-            }
-        }
 
         public StorageData(Inventory inventory)
         {
@@ -144,17 +149,7 @@ namespace MonsterSurvival.Data
     {
         public int MaxSlots;
         public List<ItemContData> AllItems = new List<ItemContData>();
-        [Serializable]
-        public class ItemContData
-        {
-            public string ItemID;
-            public int Amount;
-            public ItemContData(string itemID, int amount)
-            {
-                ItemID = itemID;
-                Amount = amount;
-            }
-        }
+
 
         public PlayerInventoryData(Inventory inventory)
         {
@@ -168,6 +163,98 @@ namespace MonsterSurvival.Data
         public void Add(ItemSlot slot)
         {
             AllItems.Add(new ItemContData(slot.ItemInfo.i_Name, slot.Amount));
+        }
+    }
+    [Serializable]
+    public class ItemContData
+    {
+        public string ItemID;
+        public int Amount;
+        public ItemContData(string itemID, int amount)
+        {
+            ItemID = itemID;
+            Amount = amount;
+        }
+    }
+    [Serializable]
+    public class BiomesData
+    {
+        public List<CreatureBiomeData> AllBiomes = new();
+        public BiomesData(List<BiomesManager.CreatureBiome> allBiomes)
+        {
+            AllBiomes.Clear();
+            foreach (var biome in allBiomes)
+            {
+                AllBiomes.Add(new CreatureBiomeData(biome));
+            }
+        }
+        [Serializable]
+        public class CreatureBiomeData
+        {
+            public string Biome_ID;
+            public int Level;
+            public List<CreatureData> Creatures = new();
+            public CreatureBiomeData(BiomesManager.CreatureBiome creatureBiome)
+            {
+                Biome_ID = creatureBiome.BiomeInfo.Name;
+                Level = creatureBiome.Level;
+                AddCreatureList(creatureBiome.CreatureSlots);
+            }
+            public void AddCreatureList(List<Creature> allCreatures)
+            {
+                Creatures.Clear();
+                foreach (Creature creature in allCreatures)
+                {
+                    Creatures.Add(new CreatureData(creature));
+                }
+            }
+        }
+    }
+    [Serializable]
+    public class PlayerTeamData
+    {
+        public PlayerFighterData PlayerData;
+        public List<CreatureData> TeamData = new();
+        public PlayerTeamData(FighterData playerData, EquipableItemSO armor, EquipableItemSO weapon, List<FighterData> teamData)
+        {
+            PlayerData = new PlayerFighterData(playerData, armor, weapon);
+
+            TeamData.Clear();
+            foreach (var fighter in teamData)
+            {
+                if (!string.IsNullOrEmpty(fighter.TypeID))
+                {
+                    TeamData.Add(new CreatureData(new Creature(fighter)));
+                }
+            }
+        }
+    }
+    [Serializable]
+    public class PlayerFighterData
+    {
+        public CreatureData FighterCreatureData;
+        public string ArmorItemName;
+        public string WeaponItemName;
+
+        public PlayerFighterData(FighterData playerData, EquipableItemSO armor, EquipableItemSO weapon)
+        {
+            FighterCreatureData = new CreatureData(new Creature(playerData));
+            if (armor != null)
+            {
+                ArmorItemName = armor.i_Name;
+            }
+            else
+            {
+                ArmorItemName = "";
+            }
+            if (weapon != null)
+            {
+                WeaponItemName = weapon.i_Name;
+            }
+            else
+            {
+                WeaponItemName = "";
+            }
         }
     }
 }

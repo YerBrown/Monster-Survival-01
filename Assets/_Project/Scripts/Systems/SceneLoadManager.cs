@@ -13,7 +13,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     public VoidEventChannelSO OnRunAwayFromExpedition;
     [Header("Combat Data")]
     public string TeamID;
-    public FighterData[] EnemyTeam = new FighterData[6];
+    public List<FighterData> EnemyTeam = new();
 
     public void OnEnable()
     {
@@ -21,7 +21,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     }
     public void OnDisable()
     {
-        OnRunAwayFromExpedition.OnEventRaised -= LoadSurvivalBaseFromExpedition;    
+        OnRunAwayFromExpedition.OnEventRaised -= LoadSurvivalBaseFromExpedition;
     }
     IEnumerator LoadCombatScene()
     {
@@ -45,7 +45,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
         yield return new WaitForSeconds(0.25f);
         GeneralUIController.Instance.EnableBlackBackground(false);
     }
-    public void LoadCombatFromExpeditionEnemyEncounter(string teamID, FighterData[] team)
+    public void LoadCombatFromExpeditionEnemyEncounter(string teamID, List<FighterData> team)
     {
         CurrentMap = MapManager.Instance.FullMap;
         MapFieldCoordinates = MapManager.Instance.CurrentCoordinates;
@@ -70,7 +70,7 @@ public class SceneLoadManager : MonoSingleton<SceneLoadManager>
     {
         StartCoroutine(LoadSurvivalBaseSceneCoroutine());
     }
-    public (string, FighterData[]) LoadCombatResult()
+    public (string, List<FighterData>) LoadCombatResult()
     {
         var combatResult = (TeamID, EnemyTeam);
         TeamID = null;

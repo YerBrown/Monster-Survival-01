@@ -21,6 +21,8 @@ namespace GeneralValues
         public static float Capture_Modifier_FriendshipPoints = 10;
         public static float Capture_Modifier_Paralized = 2.5f;
         public static float Capture_Modifier_Frozen = 5;
+        public static int Biomes_Max_Level = 4;
+        public static int Team_Max_Fighters = 6;
         public static Effectiveness GetDamageMultiplier(ElementType attackType, ElementType defenseType)
         {
             Effectiveness effectiveness = Effectiveness.NORMAL;

@@ -4,6 +4,7 @@ using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Rendering.FilterWindow;
 
 public class UIFighterdataInfoMenuController : MonoBehaviour
 {
@@ -90,7 +91,14 @@ public class UIFighterdataInfoMenuController : MonoBehaviour
         CreatureSO fighter = _CurrentFighter.GetCreatureInfo();
         if (fighter != null)
         {
-            ElementType.sprite = MainWikiManager.Instance.GetElementSprite(fighter.c_Element);
+            if (MainWikiManager.Instance.GetElementSprite(fighter.c_Element, out Sprite elementSprite))
+            {
+                ElementType.sprite = elementSprite;
+            }
+            else
+            {
+                ElementType.sprite = MainWikiManager.Instance.MissingSprite;
+            }
             NicknameText.text = _CurrentFighter.Nickname;
             RaceText.text = fighter.c_Name;
             HealthPointsText.text = $"HP {_CurrentFighter.HealthPoints}/{_CurrentFighter.MaxHealthPoints}";

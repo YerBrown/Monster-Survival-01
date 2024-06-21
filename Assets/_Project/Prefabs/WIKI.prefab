@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 1661177667737033235}
   - component: {fileID: 2360502248028736522}
   - component: {fileID: 7656101744615143246}
+  - component: {fileID: 1893066893460566618}
+  - component: {fileID: 2805992879115757366}
   m_Layer: 0
   m_Name: WIKI
   m_TagString: Untagged
@@ -55,6 +57,8 @@ MonoBehaviour:
   _BuildingsWiki: {fileID: 7656101744615143246}
   _AttacksWiki: {fileID: 2360502248028736522}
   _InteractiveElementsWiki: {fileID: 5940794763523433132}
+  _SkillsWiki: {fileID: 1893066893460566618}
+  _BiomesWiki: {fileID: 2805992879115757366}
   MissingSprite: {fileID: 21300000, guid: 355479f4eb0364297806cf80ce8fcd29, type: 3}
 --- !u!114 &2666214061848250386
 MonoBehaviour:
@@ -121,13 +125,31 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b60e34e9035711b419e5da2f445b0a13, type: 2}
   - {fileID: 11400000, guid: 2907c6755d99dfd43a094664faef36fb, type: 2}
   - {fileID: 11400000, guid: 4dbda56b2ddb0f749a18be880680e2a4, type: 2}
-  ElementSprites:
-  - {fileID: 21300000, guid: e1931668be174432d8086250f9509c74, type: 3}
-  - {fileID: 21300000, guid: 7e77f493420924d2088f5f1387fa6b18, type: 3}
-  - {fileID: 21300000, guid: 5e9d1fb5074084a03bbe34aac2ebe3b3, type: 3}
-  - {fileID: 21300000, guid: 86daed334fff94dfa9f72f3b253b47e8, type: 3}
-  - {fileID: 21300000, guid: d0ca0b28d1230438abece49a95b18b38, type: 3}
-  - {fileID: 21300000, guid: 9aaa7ffc8e74e4b99819ba1536f81aa4, type: 3}
+  AllElementsInfo:
+  - Element: 0
+    ElementSprite: {fileID: 21300000, guid: 88cfc580ce4ea4b9a84e706552cff8bf, type: 3}
+    BackgroundColor: {r: 0.20754719, g: 0.20754719, b: 0.20754719, a: 1}
+    ElementColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
+  - Element: 1
+    ElementSprite: {fileID: 21300000, guid: 1eb6414688d2b43ff8f72e641253b60b, type: 3}
+    BackgroundColor: {r: 0.12550642, g: 0.57861626, b: 0, a: 1}
+    ElementColor: {r: 0.3050313, g: 1, b: 0.31419894, a: 1}
+  - Element: 2
+    ElementSprite: {fileID: 21300000, guid: 53862eee291164d249363b52a2db5052, type: 3}
+    BackgroundColor: {r: 1, g: 0, b: 0, a: 1}
+    ElementColor: {r: 1, g: 0.63529414, b: 0, a: 1}
+  - Element: 3
+    ElementSprite: {fileID: 21300000, guid: 735e122a9bfbe4e98b8b9421d68ff034, type: 3}
+    BackgroundColor: {r: 0.57232696, g: 0.27528986, b: 0.008998794, a: 1}
+    ElementColor: {r: 0.84276724, g: 0.56394535, b: 0.35777843, a: 1}
+  - Element: 4
+    ElementSprite: {fileID: 21300000, guid: 3664e0d79ba3a4fb8ab2659c623bbdc2, type: 3}
+    BackgroundColor: {r: 0.49113283, g: 0.007843141, b: 0.57254905, a: 1}
+    ElementColor: {r: 0.84313726, g: 0.35686272, b: 0.7965047, a: 1}
+  - Element: 5
+    ElementSprite: {fileID: 21300000, guid: 3ffc5a49a5d9a4d90a1518eb0054eb81, type: 3}
+    BackgroundColor: {r: 0, g: 0.5882353, b: 1, a: 1}
+    ElementColor: {r: 0, g: 0.8588236, b: 1, a: 1}
 --- !u!114 &2360502248028736522
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,3 +187,41 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 962f2f93d45a64044a71f89df56b06e8, type: 2}
   - {fileID: 11400000, guid: ecf76553f5ad664469586c5765fe9983, type: 2}
   - {fileID: 11400000, guid: e1ec7b4d7de613f4badb636ac807ec7e, type: 2}
+--- !u!114 &1893066893460566618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620891282300136510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49638b3302018954dae80fa9d393aa21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AllSkils:
+  - Skill: 1
+    FrameColor: {r: 0.754717, g: 0.4479962, b: 0.0118665425, a: 1}
+    IconColor: {r: 1, g: 1, b: 1, a: 1}
+    IconSprite: {fileID: 21300000, guid: 13838f7fb237a468d8f17fd82b9a3df4, type: 3}
+  - Skill: 2
+    FrameColor: {r: 0.54088044, g: 0.54088044, b: 0.54088044, a: 1}
+    IconColor: {r: 1, g: 1, b: 1, a: 1}
+    IconSprite: {fileID: 21300000, guid: 17a42a597a6864beba82532675131e00, type: 3}
+  - Skill: 0
+    FrameColor: {r: 0.30617848, g: 0.8616352, b: 0.42675948, a: 1}
+    IconColor: {r: 1, g: 1, b: 1, a: 1}
+    IconSprite: {fileID: 21300000, guid: 79246e90421e54bbf9cae8fb475f107e, type: 3}
+--- !u!114 &2805992879115757366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6620891282300136510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 533b2808c2aab6e4ea5186328b10e885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BiomesLibrary: []

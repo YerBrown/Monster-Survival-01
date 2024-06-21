@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CreatureElement : InteractiveElement
 {
-    public FighterData[] FullTeam = new FighterData[6];
+    public List<FighterData> FullTeam = new();
     public SpriteRenderer[] SpriteRenderers = new SpriteRenderer[3];
     private void Start()
     {
@@ -79,7 +79,7 @@ public class CreatureElement : InteractiveElement
 
         }
     }
-    private void UpdateCreatures(FighterData[] team)
+    private void UpdateCreatures(List<FighterData> team)
     {
         FullTeam = team;
         SetSprites();
@@ -107,7 +107,7 @@ public class CreatureElement : InteractiveElement
             Debug.LogWarning("Can not be updated from another type of element.");
         }
     }
-    public void UpdateTeamAfterCombat(FighterData[] team)
+    public void UpdateTeamAfterCombat(List<FighterData> team)
     {
         UpdateCreatures(team);   
     }

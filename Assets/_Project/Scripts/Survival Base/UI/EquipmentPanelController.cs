@@ -234,12 +234,26 @@ public class EquipmentPanelController : MonoBehaviour
             totalStats.AddStats(CurrentSelectedItem.AddedStats, false);
             if (CurrentSelectedItem.EquipmentType == EquipType.WEAPON)
             {
-                AttackElementChangeImage.sprite = MainWikiManager.Instance.GetElementSprite(CurrentSelectedItem.EquipmentElement);
+                if (MainWikiManager.Instance.GetElementSprite(CurrentSelectedItem.EquipmentElement, out Sprite elementSprite))
+                {
+                    AttackElementChangeImage.sprite = elementSprite;
+                }
+                else
+                {
+                    AttackElementChangeImage.sprite = MainWikiManager.Instance.MissingSprite;
+                }
                 AttackElementChangeImage.gameObject.SetActive(true);
             }
             else
             {
-                DefenseElementChangeImage.sprite = MainWikiManager.Instance.GetElementSprite(CurrentSelectedItem.EquipmentElement);
+                if (MainWikiManager.Instance.GetElementSprite(CurrentSelectedItem.EquipmentElement, out Sprite elementSprite))
+                {
+                    DefenseElementChangeImage.sprite = elementSprite;
+                }
+                else
+                {
+                    DefenseElementChangeImage.sprite = MainWikiManager.Instance.MissingSprite;
+                }
                 DefenseElementChangeImage.gameObject.SetActive(true);
             }
         }
@@ -267,7 +281,7 @@ public class EquipmentPanelController : MonoBehaviour
         {
             UpdateChangeText(SpeedChangeText, totalStats.Speed);
         }
-        
+
     }
     private void UpdateChangeText(TMP_Text text, int statValue)
     {
@@ -310,28 +324,51 @@ public class EquipmentPanelController : MonoBehaviour
     }
     public void UpdateEquipedSlots()
     {
+        Sprite noTypeSprite = null;
+        if (MainWikiManager.Instance.GetElementSprite(ElementType.NO_TYPE, out Sprite elementSprite))
+        {
+            noTypeSprite = elementSprite;
+        }
+        else
+        {
+            noTypeSprite = MainWikiManager.Instance.MissingSprite;
+        }
         if (PlayerManager.Instance.WeaponEquiped != null)
         {
             WeaponEquipedImage.sprite = PlayerManager.Instance.WeaponEquiped.i_Sprite;
-            WeaponElementImage.sprite = MainWikiManager.Instance.GetElementSprite(PlayerManager.Instance.WeaponEquiped.EquipmentElement);
+            if (MainWikiManager.Instance.GetElementSprite(PlayerManager.Instance.WeaponEquiped.EquipmentElement, out Sprite equipedElementSprite))
+            {
+                WeaponElementImage.sprite = equipedElementSprite;
+            }
+            else
+            {
+                WeaponElementImage.sprite = MainWikiManager.Instance.MissingSprite;
+            }
             WeaponEquipedImage.enabled = true;
         }
         else
         {
             WeaponEquipedImage.sprite = null;
-            WeaponElementImage.sprite = MainWikiManager.Instance.GetElementSprite(ElementType.NO_TYPE);
+            WeaponElementImage.sprite = noTypeSprite;
             WeaponEquipedImage.enabled = false;
         }
         if (PlayerManager.Instance.ArmorEquiped != null)
         {
             ArmorEquipedImage.sprite = PlayerManager.Instance.ArmorEquiped.i_Sprite;
-            ArmorElementImage.sprite = MainWikiManager.Instance.GetElementSprite(PlayerManager.Instance.ArmorEquiped.EquipmentElement);
+            if (MainWikiManager.Instance.GetElementSprite(PlayerManager.Instance.ArmorEquiped.EquipmentElement, out Sprite equipedElementSprite))
+            {
+                ArmorElementImage.sprite = equipedElementSprite;
+            }
+            else
+            {
+                ArmorElementImage.sprite = MainWikiManager.Instance.MissingSprite;
+            }
             ArmorEquipedImage.enabled = true;
         }
         else
         {
             ArmorEquipedImage.sprite = null;
-            ArmorElementImage.sprite = MainWikiManager.Instance.GetElementSprite(ElementType.NO_TYPE);
+            ArmorElementImage.sprite = noTypeSprite;
             ArmorEquipedImage.enabled = false;
         }
     }

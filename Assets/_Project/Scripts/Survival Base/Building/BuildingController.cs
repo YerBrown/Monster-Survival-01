@@ -35,7 +35,7 @@ public class BuildingController : MonoBehaviour
         InProgress = buildingData.InProgress;
         if (InProgress && !string.IsNullOrEmpty(buildingData.Worker_ID))
         {
-            ConstructionWorker = CampManager.Instance.CampWorkers.GetConstructionWorkerByID(buildingData.Worker_ID);
+            //ConstructionWorker = CampManager.Instance.CampWorkers.GetConstructionWorkerByID(buildingData.Worker_ID);
         }
         StartBuildingDateTime = DateTime.ParseExact(buildingData.StartBuildingDateTime, "o", CultureInfo.InvariantCulture);
         FinishBuildingDateTime = DateTime.ParseExact(buildingData.FinishBuildingDateTime, "o", CultureInfo.InvariantCulture);
@@ -46,8 +46,8 @@ public class BuildingController : MonoBehaviour
             {
                 Level++;
                 InProgress = false;
-                ConstructionWorker.IsBusy = false;
-                ConstructionWorker = null;
+                //ConstructionWorker.IsBusy = false;
+                //ConstructionWorker = null;
                 CampManager.Instance.SaveBuildAreaData(ParentArea);
             }
             else
@@ -59,8 +59,8 @@ public class BuildingController : MonoBehaviour
     public void StartUpdate(DateTime finishDateTime, WorkerCreature newWorker)
     {
         InProgress = true;
-        ConstructionWorker = newWorker;
-        ConstructionWorker.IsBusy = true;
+        //ConstructionWorker = newWorker;
+        //ConstructionWorker.IsBusy = true;
         StartBuildingDateTime = RealDateTimeManager.Instance.GetCurrentDateTime();
         FinishBuildingDateTime = finishDateTime;
         StartUpdateCoroutine();

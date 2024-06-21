@@ -6779,6 +6779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ActionButtonsParent: {fileID: 4584636698541821411}
+  OnOpenMenuPopup: {fileID: 11400000, guid: e6e7a0ee1e890a9489a039b935faf8f0, type: 2}
   MenuParent: {fileID: 7513892645750804207}
   BuildingSlotPanels:
   - {fileID: 2399849641672042978}

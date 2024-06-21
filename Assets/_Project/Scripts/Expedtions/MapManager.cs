@@ -276,7 +276,7 @@ public class MapManager : MonoSingleton<MapManager>
                 string enemyID = SceneLoadManager.Instance.TeamID;
                 if (!string.IsNullOrEmpty(enemyID))
                 {
-                    (string, FighterData[]) combatResult = SceneLoadManager.Instance.LoadCombatResult();
+                    (string, List<FighterData>) combatResult = SceneLoadManager.Instance.LoadCombatResult();
                     foreach (var creature in currentFieldData.Creatures)
                     {
                         CreatureElement newCreature = (CreatureElement)GetElement(creature.ID, creature.Element_ID, creature.Pos);
@@ -365,7 +365,7 @@ public class MapManager : MonoSingleton<MapManager>
         }
     }
 
-    public void GoToCombatScene(string teamId, FighterData[] enemyTeam)
+    public void GoToCombatScene(string teamId, List<FighterData> enemyTeam)
     {
         SaveAreaState();
         SceneLoadManager.Instance.LoadCombatFromExpeditionEnemyEncounter(teamId, enemyTeam);

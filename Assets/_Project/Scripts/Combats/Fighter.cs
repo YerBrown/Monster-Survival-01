@@ -543,7 +543,36 @@ public class FighterData
 
     public int HealthPoints;
     public int EnergyPoints;
-
+    public FighterData()
+    {
+        ID = "";
+        TypeID = "";
+        Nickname = "";
+        Lvl = 0;
+        MaxHealthPoints = 0;
+        MaxEnergyPoints = 0;
+        FisicalPower = 0;
+        RangePower = 0;
+        Defense = 0;
+        Speed = 0;
+        HealthPoints = 0;
+        EnergyPoints = 0;
+    }
+    public FighterData(Creature creature)
+    {
+        ID = creature.ID;
+        TypeID = creature.CreatureInfo.c_Name;
+        Nickname = creature.Nickname;
+        Lvl = creature.Lvl;
+        MaxHealthPoints = creature.MaxHealthPoints;
+        MaxEnergyPoints = creature.MaxEnergyPoints;
+        FisicalPower = creature.FisicalPower;
+        RangePower = creature.RangePower;
+        Defense = creature.Defense;
+        Speed = creature.Speed;
+        HealthPoints = creature.HealthPoints;
+        EnergyPoints = creature.EnergyPoints;
+    }
     public bool IsDead()
     {
         return HealthPoints <= 0;
@@ -605,7 +634,7 @@ public class BasicStats
     public BasicStats(BasicStats referenceStats)
     {
         MaxHealthPoints = referenceStats.MaxHealthPoints;
-        MaxEnergyPoints= referenceStats.MaxEnergyPoints;
+        MaxEnergyPoints = referenceStats.MaxEnergyPoints;
         HitPower = referenceStats.HitPower;
         RangePower = referenceStats.RangePower;
         Defense = referenceStats.Defense;

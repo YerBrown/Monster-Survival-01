@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class UIEquipmentMenuController : MonoBehaviour
 {
     public GameObject MenuParent;
+    public BoolEventChannelSO OnOpenMenuPopup;
     public GameObject EquipmentMenu;
     public GameObject InventoryMenu;
     public GameObject InventoryMenuButtonsLayout;
@@ -24,11 +25,13 @@ public class UIEquipmentMenuController : MonoBehaviour
     public void OpenMenu()
     {
         MenuParent.SetActive(true);
+        OnOpenMenuPopup.RaiseEvent(true);
         OpenEquipment();
     }
     public void CloseMenu()
     {
         MenuParent.SetActive(false);
+        OnOpenMenuPopup.RaiseEvent(false);
     }
     public void OpenEquipment()
     {

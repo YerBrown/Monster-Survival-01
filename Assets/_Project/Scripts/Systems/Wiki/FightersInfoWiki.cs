@@ -9,9 +9,16 @@ public class FightersInfoWiki : MonoBehaviour
 
     public List<CreatureSO> AllFighters = new();
     public Dictionary<string, CreatureSO> FightersDictionary = new();
-    public List<Sprite> ElementSprites = new();
-    public Dictionary<ElementType, Sprite> ElementSpritesDictionary = new();
-
+    public List<ElementInfoUI> AllElementsInfo = new();
+    public Dictionary<ElementType, ElementInfoUI> ElementsInfoDictionary = new();
+    [Serializable]
+    public class ElementInfoUI
+    {
+        public ElementType Element;
+        public Sprite ElementSprite;
+        public Color BackgroundColor;
+        public Color ElementColor;
+    }
     private void Awake()
     {
         SearchCreaturesInFolder();
@@ -20,16 +27,39 @@ public class FightersInfoWiki : MonoBehaviour
     // Reset element sprite info
     private void AddElementSprites()
     {
-        for (int i = 0; i < ElementSprites.Count; i++)
+        for (int i = 0; i < AllElementsInfo.Count; i++)
         {
-            ElementType element = (ElementType)i;
-            ElementSpritesDictionary.Add(element, ElementSprites[i]);
+            ElementsInfoDictionary.Add(AllElementsInfo[i].Element, AllElementsInfo[i]);
         }
     }
 
-    public Sprite GetElementSprite(ElementType element)
+    public bool GetElementSprite(ElementType element, out Sprite elementSprite)
     {
-        return ElementSpritesDictionary[element];
+        elementSprite = null;
+        if (ElementsInfoDictionary.ContainsKey(element))
+        {
+            elementSprite = ElementsInfoDictionary[element].ElementSprite;
+            return true;
+        }
+        else
+        {
+            Debug.LogWarning($"Element type {element} not found in fighters wiki");
+            return false;
+        }
+    }
+    public bool GetElementInfo(ElementType element, out ElementInfoUI elemementInfo)
+    {
+        elemementInfo = null;
+        if (ElementsInfoDictionary.ContainsKey(element))
+        {
+            elemementInfo = ElementsInfoDictionary[element];
+            return true;
+        }
+        else
+        {
+            Debug.LogWarning($"Element type {element} not found in fighters wiki");
+            return false;
+        }
     }
     // Reset all creatures SO info
     private void SearchCreaturesInFolder()

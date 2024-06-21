@@ -17,3 +17,26 @@ MonoBehaviour:
   Creatures:
   - {fileID: 11400000, guid: b60e34e9035711b419e5da2f445b0a13, type: 2}
   - {fileID: 11400000, guid: ba13bf88903bcbf4aa6df882cf60a1d8, type: 2}
+  UpgradeCosts:
+  - Costs:
+    - _ItemInfo: {fileID: 11400000, guid: 8a473a0dc201af1409344b7520b7a084, type: 2}
+      _Amount: 8
+    - _ItemInfo: {fileID: 11400000, guid: 7d58db3e81fd804488f9798341481cf1, type: 2}
+      _Amount: 8
+  - Costs:
+    - _ItemInfo: {fileID: 11400000, guid: 8a473a0dc201af1409344b7520b7a084, type: 2}
+      _Amount: 15
+    - _ItemInfo: {fileID: 11400000, guid: 7d58db3e81fd804488f9798341481cf1, type: 2}
+      _Amount: 15
+  - Costs:
+    - _ItemInfo: {fileID: 11400000, guid: 8a473a0dc201af1409344b7520b7a084, type: 2}
+      _Amount: 20
+    - _ItemInfo: {fileID: 11400000, guid: 7d58db3e81fd804488f9798341481cf1, type: 2}
+      _Amount: 20
+    - _ItemInfo: {fileID: 11400000, guid: cefc62add4cb62d48b02ef55e6965431, type: 2}
+      _Amount: 30
+  BuyBiomePrice:
+  - _ItemInfo: {fileID: 11400000, guid: 7d58db3e81fd804488f9798341481cf1, type: 2}
+    _Amount: 20
+  - _ItemInfo: {fileID: 11400000, guid: cefc62add4cb62d48b02ef55e6965431, type: 2}
+    _Amount: 20

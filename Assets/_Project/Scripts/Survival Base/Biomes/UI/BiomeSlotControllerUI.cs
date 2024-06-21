@@ -8,6 +8,8 @@ public class BiomeSlotControllerUI : MonoBehaviour
     [SerializeField] private BiomePanelControllerUI UIBiomeController;
     public Creature CreatureSlot;
     public Image CreatureAvatarImage;
+    public Image FrameImage;
+    public Image BackgroundImage;
     public Button SlotButton;
     private void Awake()
     {
@@ -42,14 +44,18 @@ public class BiomeSlotControllerUI : MonoBehaviour
     }
     public void UnlockSlot()
     {
-        SlotButton.targetGraphic.color = Color.white;
+        BackgroundImage.color = Color.white;
         SlotButton.interactable = true;
     }
     public void LockSlot()
     {
-        SlotButton.targetGraphic.color = Color.gray;
+        BackgroundImage.color = Color.gray;
         CreatureAvatarImage.gameObject.SetActive(false);
         SlotButton.interactable = false;
+    }
+    public void EnableFrame(bool enable)
+    {
+        FrameImage.gameObject.SetActive(enable);
     }
 
 }

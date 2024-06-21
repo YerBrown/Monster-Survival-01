@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class BiomePanelControllerUI : MonoBehaviour
 {
-    [SerializeField] UIBiomesMenuController MenuController;
+    public UIBiomesMenuController MenuController;
     public List<BiomeSlotControllerUI> Slots = new();
     public BiomesManager.CreatureBiome CurrentBiome;
     public int CurrentBiomeIndex = 0;
@@ -25,7 +25,7 @@ public class BiomePanelControllerUI : MonoBehaviour
 
     public void SelectCreatureFromBiome(BiomeSlotControllerUI biomeSlot)
     {
-        MenuController.SelectCreature(biomeSlot.CreatureSlot);
+        MenuController.SelectCreatureFromBiome(biomeSlot.CreatureSlot);
     }
 
     public void UpdateBiome()
@@ -70,6 +70,7 @@ public class BiomePanelControllerUI : MonoBehaviour
                 Slots[i].UpdateSlot(null);
             }
         }
+        MenuController.CheckSendToBiomeFromTeam();
     }
     public void NextBiome()
     {
@@ -86,7 +87,8 @@ public class BiomePanelControllerUI : MonoBehaviour
         UpdateBiome();
         if (lastIndex != CurrentBiomeIndex)
         {
-            MenuController.SelectCreature(null);
+            MenuController.SelectCreatureFromBiome(null);
+            MenuController.CheckUpgradeBiomePossibility();
         }
     }
     public void PreviousBiome()
@@ -104,8 +106,69 @@ public class BiomePanelControllerUI : MonoBehaviour
         UpdateBiome();
         if (lastIndex != CurrentBiomeIndex)
         {
-            MenuController.SelectCreature(null);
+            MenuController.SelectCreatureFromBiome(null);
+            MenuController.CheckUpgradeBiomePossibility();
         }
     }
-
+    public void AddTeamCreatureToBiome(int index)
+    {
+        Creature teamCreature = new Creature(PlayerManager.Instance.Team[index]);
+        BiomesManager.Instance.AddCreatureToBiome(CurrentBiome, teamCreature);
+        UpdateBiome();
+        PlayerManager.Instance.RemoveTeamCreature(index);
+        MenuController.TeamManager.UpdateUI();
+        foreach (var slot in Slots)
+        {
+            if (slot.CreatureSlot != null && slot.CreatureSlot.ID == teamCreature.ID)
+            {
+                SelectCreatureFromBiome(slot);
+                return;
+            }
+        }
+    }
+    public void AddCreatureToTeam(Creature addedCreature)
+    {
+        int emptyIndex = PlayerManager.Instance.GetEmptyTeamSlotIndex();
+        if (emptyIndex >= 0)
+        {
+            PlayerManager.Instance.AddTeamCreature(emptyIndex, new FighterData(addedCreature));
+            MenuController.TeamManager.UpdateUI();
+            BiomesManager.Instance.RemoveCreatureFromBiome(CurrentBiome, addedCreature);
+            UpdateBiome();
+            MenuController.SelectTeamCreature(emptyIndex);
+        }
+    }
+    public void RemoveCreatureFromBiome(Creature creatureRemoved)
+    {
+        BiomesManager.Instance.RemoveCreatureFromBiome(CurrentBiome, creatureRemoved);
+        UpdateBiome();
+        DisableAllFrames();
+        MenuController.SelectCreatureFromBiome(null);
+    }
+    public void EnableFrameByCreatureID(string id)
+    {
+        for (int i = 0; i < Slots.Count; i++)
+        {
+            if (Slots[i].CreatureSlot != null)
+            {
+                Slots[i].EnableFrame(Slots[i].CreatureSlot.ID == id);
+            }
+            else
+            {
+                Slots[i].EnableFrame(false);
+            }
+        }
+    }
+    public void DisableAllFrames()
+    {
+        foreach (var slot in Slots)
+        {
+            slot.EnableFrame(false);
+        }
+    }
+    public void UpgradeBiome()
+    {
+        BiomesManager.Instance.UpgradeBiome(CurrentBiome);
+        UpdateBiome();
+    }
 }
