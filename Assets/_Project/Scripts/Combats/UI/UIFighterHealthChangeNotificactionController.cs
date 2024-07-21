@@ -1,4 +1,5 @@
 using DG.Tweening;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -17,10 +18,12 @@ public class UIFighterHealthChangeNotificactionController : MonoSingleton<UIFigh
         if (amount > 0)
         {
             HealthChangeText.color = Color.green;
+            HealthChangeText.text = $"+{Math.Abs(amount)}";
         }
         else if (amount < 0)
         {
             HealthChangeText.color = Color.red;
+            HealthChangeText.text = $"-{Math.Abs(amount)}";
         }
         else
         {

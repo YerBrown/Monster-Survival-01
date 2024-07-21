@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   c_Name: Combusken
   c_Description: The kun fu chicken
-  c_Element: 2
+  c_Element: 0
   c_Sprite: {fileID: 1862005736, guid: f4ca342ccd21f97409822d88c51ab5bd, type: 3}
   c_AvatarSprite: {fileID: -1455923825, guid: bd0a1dab58456dd49b2bf3ce5dd02477, type: 3}
   c_Animator: {fileID: 22100000, guid: 14d8946461aa4e3408dc2336a52980b8, type: 2}
@@ -22,6 +22,7 @@ MonoBehaviour:
   c_LvlBaseStats: []
   c_FavouriteFood:
   - {fileID: 11400000, guid: 06b62f302aba93d42ad3227cf54ee10f, type: 2}
-  c_MaxFrindshipPoints: 10
+  c_Biome: {fileID: 0}
+  c_MaxFriendshipPoints: 10
   c_CaptureRate: 200
   CombatFighterPrefab: {fileID: 2114116971004684190, guid: 735bf604c999c8a429e0a281888339de, type: 3}

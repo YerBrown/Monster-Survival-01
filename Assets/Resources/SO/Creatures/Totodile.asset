@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   c_Name: Totodile
   c_Description: The crocodile
-  c_Element: 5
+  c_Element: 0
   c_Sprite: {fileID: 2110005525, guid: b5ae1b46d41ed8b4d88a6cbed4255aa5, type: 3}
   c_AvatarSprite: {fileID: 354958816, guid: bd0a1dab58456dd49b2bf3ce5dd02477, type: 3}
   c_Animator: {fileID: 22100000, guid: 6a25cff0bed25a54a8744a9e98f2804a, type: 2}
@@ -22,6 +22,7 @@ MonoBehaviour:
   c_LvlBaseStats: []
   c_FavouriteFood:
   - {fileID: 11400000, guid: 8278e7da6c60b7f47be7ded640d7610c, type: 2}
-  c_MaxFrindshipPoints: 10
+  c_Biome: {fileID: 0}
+  c_MaxFriendshipPoints: 10
   c_CaptureRate: 200
   CombatFighterPrefab: {fileID: 7050917039595277632, guid: aa5931a0c70a23240a5aadcd6be6be9b, type: 3}

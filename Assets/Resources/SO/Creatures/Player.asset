@@ -21,6 +21,7 @@ MonoBehaviour:
   c_Skills: 0600000005000000
   c_LvlBaseStats: []
   c_FavouriteFood: []
-  c_MaxFrindshipPoints: 10
+  c_Biome: {fileID: 0}
+  c_MaxFriendshipPoints: 10
   c_CaptureRate: 200
   CombatFighterPrefab: {fileID: 2148422875654226134, guid: e4d67a30f17afaa499cb5c29fa3cc749, type: 3}
